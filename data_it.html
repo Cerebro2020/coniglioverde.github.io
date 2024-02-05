@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coniglioverde|data-it</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="data.css"> 
+  
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"/>
+
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    
+    <!-- Loading -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+        $(window).on("load", function() {
+            $("#loader").fadeOut("slow");
+        });
+        });
+    </script>
+
+</head>
+<body>
+
+    <script>
+        AOS.init();         
+    </script>
+
+    <div id="loader">
+        <div class="loader"></div>
+    </div>
+
+    <canvas class="writing">            			
+        <script type="importmap">
+            {
+                "imports": {
+                    "three": "./three_class/three.module.js"
+                    }
+            }
+            </script>		
+            <script type = "module">
+                    import scene from "./data.js";
+                    //import scene from "./aqvam.js";
+                    scene();
+            </script>            
+    </canvas>
+
+    <!-- HOME -->
+    <header>
+        <div id="logo">
+
+            <a href="index.html"><img src="images/loghi/coniglio_verde_logo.png" alt=""></a>
+
+        </div>
+
+        <input id="menu-toggle" type="checkbox" />
+
+        <label class='menu-button-container' for="menu-toggle">
+
+        <div class='menu-button'></div>
+
+        </label class='menu-button-container' for="menu-toggle">
+
+        <ul class="menu">                
+            <li><a href="index.html#data">DATA</a></li> 
+            <li><a href="#">H.E.ArtS</a></a></li>
+            <li><a href="data.html" style="font-style: normal; font-weight: 400;">EN | IT</a> 
+            </li>                             
+        </ul>
+
+    </header>      
+
+    <!-- FOOTER -->
+    <footer id="footer">
+
+        <ul>
+            <li>&copy; 2023 felice vino</li>
+            <li><a href="instagram.com">instagram</a></li>
+            <li><a href="facebook.com">meta</a></li>
+            <li><a href="vimeo.com">vimeo</a></li>                
+        </ul>
+
+    </footer>
+
+    <section>
+           
+        <div class="home-text">
+
+            <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+                <h1 >H.E.Arts</h1>
+
+            </div>                 
+            
+            <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                             
+                <p>
+                    H.E.Arts è l'acronimo di High Emotional Arts, un dispositivo progettato per registrare il viaggio emotivo di un visitatore di un museo, galleria o altra esperienza artistica basato su la "Geneva Wheel".<br>                    
+                    Il visitatore può selezionare il tipo di emozione che prova per descrivere la sua esperienza che si traduce in una visualizzazione di dtati personale e creativa.<br>
+                    Il primo prototipo presente in questa pagina vede l'utente registrare le proprie emozioni su una selezione di opere provenienti dal Museo del 900 di Milano.<br>
+                </p>
+
+            </div>
+
+            <div class="scrolling">
+
+                <img src="images/icons/scroll-down.svg" alt="scrolling">
+
+            </div>
+        
+        </div>
+            
+    </section>
+        
+    <!--HIGH -->             
+    <section>
+           
+        <div class="home-text">
+
+            <!--<div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+                <h1>
+                    HIGH
+                </h1>
+
+            </div>-->   
+            
+            <div class="paragraph-gallery">
+                
+                <div class="double-image-data">
+                    <div>
+                        <img src="images/hearts/gallery_quad/01.jpg" alt="">
+                    </div>
+                    <div>
+                        <img src="images/hearts/gallery_quad/05.jpg" alt="">
+                    </div>
+                </div>
+                
+                <div class="double-image-data">
+                    <div>
+                        <img src="images/hearts/gallery_quad/15.jpg" alt=""> 
+                    </div>
+                    <div>
+                        <img src="images/hearts/gallery_quad/19.jpg" alt="">
+                    </div>
+                </div>
+
+            </div>
+                
+            <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                
+                                 
+                <p>
+                    Prenditi il tuo tempo, guarda i dipinti e "lasciati sentire".<br>
+                    Presta attenzione alle tuoe emozioni più che a ciò che i dipindi dovrebbero significare.<br>                    Quello che conta è quello che provi tu. 
+                </p>
+
+            </div>
+
+            <div class="scrolling">
+                <img src="images/icons/favicon.ico" alt="scrolling">
+            </div>           
+
+        </div>
+            
+    </section>
+    
+    <!-- EMOTIONAL -->             
+    <section>
+           
+        <div class="home-text">
+
+            <!--<div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+                <h1>EMOTIONAL</h1>
+
+            </div>-->    
+            
+            <div class="paragraph-gallery">
+
+                <div class="double-image-data">
+                    <div>
+                        <img src="images/hearts/interfaccia_a1.jpg"  alt="">
+                    </div>
+                    <div>
+                        <img src="images/hearts/interfaccia_a2.jpg"  alt="">
+                    </div>
+                </div>
+
+                <div class="double-image-data">
+                    <div>
+                        <img src="images/hearts/interfaccia_a3.jpg"  alt="">
+                    </div>
+                    <div>
+                        <img src="images/hearts/interfaccia_a4.jpg"  alt="">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                             
+                <p>
+                    C'è un elenco di scelte nella nostra interfaccia, puoi sceglierne una, due o tre per descrivere quali sono le tuoe emozioni. <br>
+                    Dopo aver scelto la prima scorri con il dito sull'immagine per andare all'opera successiva e così via fino alla fine.<br>
+                    A questo punto seleziona il tasto "result" e potrai vedere come i tuoi dati personali creano un'opera unica frutto della tua personale esperienza.
+                </p>
+
+            </div>
+
+            <div class="scrolling">
+                <img src="images/icons/favicon.ico" alt="scrolling">
+            </div>
+
+        </div> 
+        
+    </section>
+    
+    <section>
+       
+        <div class="home-text">
+
+            <!--<div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+                <h1>ARTS</h1>
+
+            </div>-->
+            
+            <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                             
+                <p>
+                    Alla fine della raccolta dei dati, che puoi terminare in qualsiasi momento, potrai verificare il risultato.<br>
+                     Questa prima visualizzazione è pensata per un pubblico giovane.<br>
+                    <a href="hearts_it.html">Prova questa esperienza</a>.<br>
+                    Qeusta seconda visualizzazione è immginata un pubblico più adulto e si ispira a uno degli artisti presenti nel museo,<a href="hearts_pomo_it.html"> indovina quale?</a><br>
+                    Puoi usare i nostri contatti per farci conoscere il tuo parere. Buona creazione!
+                </p>
+
+            </div>
+
+            <div class="scrolling">
+                <img src="images/icons/scroll-up.svg" alt="scrolling">
+            </div>
+
+        </div> 
+        
+    </section> 
+</body>
+</html>

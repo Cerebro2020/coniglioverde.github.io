@@ -1,0 +1,135 @@
+body {    
+    height: 400vh;
+    background-image: url('images/bcg/SfondoI.jpg');
+    background-size: cover;   
+    z-index: -9999;  
+    
+}
+
+.home-text {     
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;    
+    width: 100%;
+    height: 80%;
+}
+
+.home-title {
+    width: 50%;
+}
+
+.home-title h1 {    
+    font-size: 60px;
+    letter-spacing: -2px;
+}
+
+.home-paragraph {
+    display: flex;
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    margin-top: auto;
+}
+
+.paragraph-gallery { 
+    width: 50%;
+    height: 50%;    
+    margin: 0px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+
+.double-image-data  {    
+    display: flex;    
+}
+
+.paragraph-gallery img {
+    height: 200px;
+    width: 200px;    
+    object-fit: cover;
+    overflow: hidden;
+    position: relative; 
+    padding: 0px;
+}
+
+
+@media (max-width: 1024px) {
+
+    .home-text { 
+                        
+        width:80%;
+        /*height: 70%;*/  
+        overflow: hidden;
+
+    }
+
+    .home-title {
+          
+        width: 100%;
+        text-align: left;
+    }
+
+    .home-paragraph {  
+           
+        width: 100%;
+        height: 50vh;
+        display: flex; 
+        align-items: center;
+        justify-items: center;             
+    }
+
+    .home-paragraph p {
+        
+        height: 30vh; 
+        
+    }        
+
+    .paragraph-gallery {              
+        width: 80%;               
+    }
+
+    .double-image-data {
+        margin: -4px;
+    }
+    
+    .paragraph-gallery img {
+        height: 160px;
+        width: 160px; 
+    }
+ 
+}
+
+@media (max-width: 724px) {
+
+    .home-text {        
+        width: 90%;
+        height: 80vh;
+    } 
+
+    .home-title h1 {
+        font-size: 50px;           
+        letter-spacing: -2px;        
+    } 
+    
+    .home-paragraph {
+        
+        width: 100%;
+    }
+
+    .paragraph-gallery {
+        flex-direction: column;
+    }
+
+    .paragraph-gallery img {
+        height: 130px;
+        width: 130px;      
+    }
+
+    .home-paragraph p {
+        font-size: 20px;
+        line-height: 22px;
+    }
+   
+}

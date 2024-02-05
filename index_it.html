@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>coniglioverde-it</title>
+
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"/>       
+        
+        <video id="lupin"  src="./video/cinematic/00_Lupin.mp4" autoplay loop muted style="display: none;"></video>
+        <video id="butterfly"  src="./video/cinematic/butterfly_spot.mp4" autoplay loop muted style="display: none;"></video>  
+
+        <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script> 
+
+        <!-- Loading -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function() {
+          $(window).on("load", function() {
+            $("#loader").fadeOut("slow");
+          });
+        });
+        </script>
+       
+
+    </head>
+
+    <body>
+
+        <script>
+            AOS.init();         
+        </script>
+
+        <div id="loader">
+            <div class="loader"></div>
+        </div>       
+
+        <canvas id="conigliobcg"> 
+
+            <script type="importmap">
+                {
+                    "imports": {
+                        "three": "./three_class/three.module.js"
+                        }
+                }
+            </script>		
+            
+            <script type = "module">
+                        import scene from "./index.js";                    
+                        scene();
+            </script>           
+                       
+        </canvas>                
+
+        <!-- HOME -->
+        <header>
+            <div id="logo">
+
+                <a href="#"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
+
+            </div>
+
+            <input id="menu-toggle" type="checkbox" />
+
+            <label class='menu-button-container' for="menu-toggle">
+
+            <div class='menu-button'></div>
+            
+            </label class='menu-button-container' for="menu-toggle">
+
+            <ul class="menu">
+                <li><a href="#">HOME</a></li></li>                              
+                <li><a href="#data">DATA</a></li>
+                <li><a href="#cinematic">CINEMATIC</a></li>
+                <li><a href="#writing">WRITING</a></li>
+                <li><a href="#static">STATIC</a></li>
+                <!--<li><a href="#researches">RESEARCHES</a></li>-->  
+                <!--<li><a href="#contact">CONTACT</a></li>-->                   
+                <li><a href="bio_it.html">BIO/CONTACT</a></li>
+                             
+                <li><a href="index.html" style="font-style: normal; font-weight: 400;">EN | IT</a> 
+                </li>            
+            </ul>
+
+        </header>
+
+        <!-- FOOTER -->
+        <footer id="footer"> 
+
+            <ul>
+                <li>&copy; 2023 felice vino</li>
+                <li><a href="instagram.com">instagram</a></li>
+                <li><a href="facebook.com">meta</a></li>
+                <li><a href="vimeo.com">vimeo</a></li>                
+            </ul>
+
+        </footer>
+        
+
+        <section> 
+
+            <div class="home-text">
+
+                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad"> 
+
+                    <h1>CONIGLIO VERDE</h1>
+
+                </div>  
+
+                <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+                    <p>
+                        Coniglio Verde vive in molteplici tane, in continua transizione.<br>
+                        Nel regno in cui i pixel incontrano la poesia, Coniglio Verde prospera.<br><br>
+                        Ispirandoci all'Alba di Kac, intrecciamo l'arte con i fili della tecnologia.<br>
+                        Immergiti dove il digitale danza con il divino.<br><br>
+                        Coniglio Verde costruisce stanze con poesie, assembla paesaggi con dati.<br>
+                        Coniglio Verde odia sprecare, siano esse persone, cose, tempo o idee, perché<br><br>
+                        <p style="font-style: italic;">tutto può essere trasformato.</p><br>
+                                                         
+                    </p>
+                    
+                </div>
+
+                <div class="scrolling">
+
+                    <img src="images/icons/scroll-down.svg" alt="scrolling">
+                    
+                </div>
+
+            </div> 
+
+        </section>         
+                    
+        <!--DATA -->             
+        <section id="data">
+        
+            <div class="home-text">
+                
+                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                    
+                    <h1>DATA</h1>
+                    
+                </div> 
+                
+                <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+                    <p>
+                        Nel panorama digitale di Coniglio Verde i dati assumono una nuova forma.<br>
+                        Diventano il tessuto organico della nostra esistenza digitale, sussurrando il linguaggio delle premonizioni.<br>
+                        È un'estensione di noi stessi, che rivela e nasconde allo stesso tempo, modellando i contorni delle nostre identità digitali.<br>
+                        <a href="data_it.html">Scendi in questo buco</a>.
+                    </p>   
+                    
+                </div> 
+                
+                <div class="scrolling">
+                    <img src="images/icons/favicon.ico" alt="scrolling">
+                </div>
+            
+            </div>
+
+        </section>
+
+        <!--CINEMATIC --> 
+        <section id="cinematic">
+
+            <div class="home-text">
+
+                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                    
+                    <h1>CINEMATIC</h1>
+                </div>
+                
+                <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+                    <p>
+                        Coniglio Verde, seduto comodamente sulla poltrona della sala cinematografica, rifletteva sul fatto che non c'era molta differenza tra un sogno e una visione.<br>
+                        L'unica differenza consisteva nel fatto che il sogno a cui stava assistendo non era il suo.<br>
+                        E' così che ha iniziato a provare a trasformare le sue stesse visioni in storie vere e proprie.<br>
+                        <a href="cinematic_it.html">Scendi in questo buco</a>.
+                        
+                    </p>
+                    
+                </div>
+
+                <div class="scrolling">
+                    <img src="images/icons/favicon.ico" alt="scrolling">
+                </div>
+                
+            </div>
+                
+        </section>  
+
+        <!--WRITING --> 
+        <section id="writing">
+        
+            <div class="home-text">
+
+                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                    
+                    <h1>WRITING</h1>
+                </div> 
+            
+                <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+                    <p>
+                        Coniglio Verde fa tesoro, dice, della frase di un narratore di storie strane che diceva che non tutte dovevano avere la forma di una casa.<br>
+                        Sempre con tetto, finestre, porte e un bel giardino.<br>
+                        Alcune potrebbero invece avere la forma di elefanti, tazzine di caffè e di chissà cos'altro.<br>
+                        <a href="writing_it.html">Scendi in questo buco</a>.
+                    </p>
+
+                </div>
+
+                <div class="scrolling">
+                    <img src="images/icons/favicon.ico" alt="scrolling">
+                </div>
+            
+            </div>
+
+        </section>
+
+        <!--STATIC --> 
+        <section id="static">
+
+            <div class="home-text">
+
+                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                    
+                    <h1>STATIC</h1>
+                </div> 
+
+                <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+                    <p>
+                        Ora, il tempo è una superficie, le immagini vi scorrono sopra, le immagini hanno un corpo, ma il corpo ha forma solo nella luce, e senza ombra non c'è neanche ombra.<br>
+                        Luce e ombra, ecco di cosa si tratta.<br>
+                        La luce del futuro, l'ombra del passato, ma forse il tempo gira e desiderio o nostalgia sono la stessa cosa.<br>
+                        O forse è il tempo che scorre e queste immagini sono superficiali.<br>
+                        <a href="static_it.html">Scendi da questo buco</a>.
+                    </p>           
+
+                </div>
+                
+                <div class="scrolling">
+                    <img src="images/icons/favicon.ico" alt="scrolling">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESEARCHES -->       
+         <!--<section id="researches">
+
+            <div class="home-text">
+
+                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                    <h1 >RESEARCHES</h1>
+                </div>  
+
+                <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">         
+                    <p>Green Rabbit saw the light in a lab, 
+                        Is an object of love of science and beauty.<br>
+                        Research is therefore inscribed in its DNA, which is the mystery of life, which is the mystery of knowledge.           
+                    </p>
+                </div>
+
+            </div>
+
+        </section>-->   
+        
+        <!-- CONTACT -->
+        <!--<section id="contact">       
+            <div class="contact_container">
+                <form action="action_page.php">
+            
+                <label for="fname">First Name/Company</label>
+                <input type="text" id="fname" name="firstname" placeholder="Your name.." data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+            
+                <label for="lname" data-aos="flip-down">Last Name</label>
+                <input type="text" id="lname" name="lastname" placeholder="Your last name.." data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+            
+                <label for="country">Country</label>
+                <select id="country" name="country" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                    
+                    <option value="afghanistan">Afghanistan</option>
+                    <option value="albania">Albania</option>
+                    <option value="algeria">Algeria</option>
+                    <option value="andorra">Andorra</option>
+                    <option value="angola">Angola</option>
+                    <option value="antigua and barbuda">Antigua and Barbuda</option>
+                    <option value="argentina">Argentina</option>
+                    <option value="armenia">Armenia</option>
+                    <option value="australia">Australia</option>
+                    <option value="austria">Austria</option>
+                    <option value="azerbaijan">Azerbaijan</option>
+                    <option value="bahamas">The Bahamas</option>
+                    <option value="bahrain">Bahrain</option>
+                    <option value="bangladesh">Bangladesh</option>
+                    <option value="barbados">Barbados</option>
+                    <option value="belarus">Belarus</option>
+                    <option value="belgium">Belgium</option>
+                    <option value="belize">Belize</option>
+                    <option value="benin">Benin</option>
+                    <option value="bhutan">Bhutan</option>
+                    <option value="bolivia">Bolivia</option>
+                    <option value="bosnia and herzegovina">Bosnia and Herzegovina</option>
+                    <option value="botswana">Botswana</option>
+                    <option value="brazil">Brazil</option>
+                    <option value="brunei">Brunei</option>
+                    <option value="bulgaria">Bulgaria</option>
+                    <option value="burkina faso">Burkina Faso</option>
+                    <option value="burundi">Burundi</option>
+                    <option value="cabo verde">Cabo Verde</option>
+                    <option value="cambodia">Cambodia</option>
+                    <option value="cameroon">Cameroon</option>
+                    <option value="canada">Canada</option>
+                    <option value="central african republic">Central African Republic</option>
+                    <option value="chad">Chad</option>
+                    <option value="chile">Chile</option>
+                    <option value="china">China</option>
+                    <option value="colombia">Colombia</option>
+                    <option value="comoros">Comoros</option>
+                    <option value="congo, democratic republic of the">Congo, Democratic Republic of the</option>
+                    <option value="congo, republic of the">Congo, Republic of the</option>
+                    <option value="costa rica">Costa Rica</option>
+                    <option value="côte d’ivoire">Côte d’Ivoire</option>
+                    <option value="croatia">Croatia</option>
+                    <option value="cuba">Cuba</option>
+                    <option value="cyprus">Cyprus</option>
+                    <option value="czech republic">Czech Republic</option>
+                    <option value="denmark">Denmark</option>
+                    <option value="djibouti">Djibouti</option>
+                    <option value="dominica">Dominica</option>
+                    <option value="dominican republic">Dominican Republic</option>
+                    <option value="east timor (timor-leste)">East Timor (Timor-Leste)</option>
+                    <option value="ecuador">Ecuador</option>
+                    <option value="egypt">Egypt</option>
+                    <option value="el salvador">El Salvador</option>
+                    <option value="equatorial guinea">Equatorial Guinea</option>
+                    <option value="eritrea">Eritrea</option>
+                    <option value="estonia">Estonia</option>
+                    <option value="eswatini">Eswatini</option>
+                    <option value="ethiopia">Ethiopia</option>
+                    <option value="fiji">Fiji</option>
+                    <option value="finland">Finland</option>
+                    <option value="france">France</option>
+                    <option value="gabon">Gabon</option>
+                    <option value="the gambia">The Gambia</option>
+                    <option value="georgia">Georgia</option>
+                    <option value="germany">Germany</option>
+                    <option value="ghana">Ghana</option>
+                    <option value="greece">Greece</option>
+                    <option value="grenada">Grenada</option>
+                    <option value="guatemala">Guatemala</option>
+                    <option value="guinea">Guinea</option>
+                    <option value="guinea-bissau">Guinea-Bissau</option>
+                    <option value="guyana">Guyana</option>
+                    <option value="haiti">Haiti</option>
+                    <option value="honduras">Honduras</option>
+                    <option value="hungary">Hungary</option>
+                    <option value="iceland">Iceland</option>
+                    <option value="india">India</option>
+                    <option value="indonesia">Indonesia</option>
+                    <option value="iran">Iran</option>
+                    <option value="iraq">Iraq</option>
+                    <option value="ireland">Ireland</option>
+                    <option value="israel">Israel</option>
+                    <option value="italia">Italia</option>
+                    <option value="jamaica">Jamaica</option>
+                    <option value="japan">Japan</option>
+                    <option value="jordan">Jordan</option>
+                    <option value="kazakhstan">Kazakhstan</option>
+                    <option value="kenya">Kenya</option>
+                    <option value="kiribati">Kiribati</option>
+                    <option value="korea, north">Korea, North</option>
+                    <option value="korea, south">Korea, South</option>
+                    <option value="kosovo">Kosovo</option>
+                    <option value="kuwait">Kuwait</option>
+                    <option value="kyrgyzstan">Kyrgyzstan</option>
+                    <option value="laos">Laos</option>
+                    <option value="latvia">Latvia</option>
+                    <option value="lebanon">Lebanon</option>
+                    <option value="lesotho">Lesotho</option>
+                    <option value="liberia">Liberia</option>
+                    <option value="libya">Libya</option>
+                    <option value="liechtenstein">Liechtenstein</option>
+                    <option value="lithuania">Lithuania</option>
+                    <option value="luxembourg">Luxembourg</option>
+                    <option value="madagascar">Madagascar</option>
+                    <option value="malawi">Malawi</option>
+                    <option value="malaysia">Malaysia</option>
+                    <option value="maldives">Maldives</option>
+                    <option value="mali">Mali</option>
+                    <option value="malta">Malta</option>
+                    <option value="marshall islands">Marshall Islands</option>
+                    <option value="mauritania">Mauritania</option>
+                    <option value="mauritius">Mauritius</option>
+                    <option value="mexico">Mexico</option>
+                    <option value="micronesia, federated states of">Micronesia, Federated States of</option>
+                    <option value="moldova">Moldova</option>
+                    <option value="monaco">Monaco</option>
+                    <option value="mongolia">Mongolia</option>
+                    <option value="montenegro">Montenegro</option>
+                    <option value="morocco">Morocco</option>
+                    <option value="mozambique">Mozambique</option>
+                    <option value="myanmar (burma)">Myanmar (Burma)</option>
+                    <option value="namibia">Namibia</option>
+                    <option value="nauru">Nauru</option>
+                    <option value="nepal">Nepal</option>
+                    <option value="netherlands">Netherlands</option>
+                    <option value="new zealand">New Zealand</option>
+                    <option value="nicaragua">Nicaragua</option>
+                    <option value="niger">Niger</option>
+                    <option value="nigeria">Nigeria</option>
+                    <option value="north macedonia">North Macedonia</option>
+                    <option value="norway">Norway</option>
+                    <option value="oman">Oman</option>
+                    <option value="pakistan">Pakistan</option>
+                    <option value="palau">Palau</option>
+                    <option value="panama">Panama</option>
+                    <option value="papua new guinea">Papua New Guinea</option>
+                    <option value="paraguay">Paraguay</option>
+                    <option value="peru">Peru</option>
+                    <option value="philippines">Philippines</option>
+                    <option value="poland">Poland</option>
+                    <option value="portugal">Portugal</option>
+                    <option value="qatar">Qatar</option>
+                    <option value="romania">Romania</option>
+                    <option value="russia">Russia</option>
+                    <option value="rwanda">Rwanda</option>
+                    <option value="saint kitts and nevis">Saint Kitts and Nevis</option>
+                    <option value="saint lucia">Saint Lucia</option>
+                    <option value="saint vincent and the grenadines">Saint Vincent and the Grenadines</option>
+                    <option value="samoa">Samoa</option>
+                    <option value="san marino">San Marino</option>
+                    <option value="sao tome and principe">Sao Tome and Principe</option>
+                    <option value="saudi arabia">Saudi Arabia</option>
+                    <option value="senegal">Senegal</option>
+                    <option value="serbia">Serbia</option>
+                    <option value="seychelles">Seychelles</option>
+                    <option value="sierra leone">Sierra Leone</option>
+                    <option value="singapore">Singapore</option>
+                    <option value="slovakia">Slovakia</option>
+                    <option value="slovenia">Slovenia</option>
+                    <option value="solomon islands">Solomon Islands</option>
+                    <option value="somalia">Somalia</option>
+                    <option value="south africa">South Africa</option> 
+                </select>
+            
+                <label for="subject">Subject</label>
+                <textarea id="subject" name="subject" placeholder="Write something.." style="height:136px" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad"></textarea>
+            
+                <input type="submit" value="Submit"data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+            
+                </form>
+
+            </div> 
+            
+        </section>--> 
+
+    </body>
+
+</html>

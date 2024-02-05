@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coniglioverde|static</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="static.css">
+
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script> 
+
+    <!-- Loading -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function() {
+      $(window).on("load", function() {
+        $("#loader").fadeOut("slow");
+      });
+    });
+    </script>
+
+  </head>
+
+  <body>
+    
+    <script>
+      AOS.init();         
+    </script>
+
+    <div id="loader">
+      <div class="loader"></div>
+    </div>
+    
+    <canvas id="writingBack">  
+
+      <script type="importmap">
+        {
+          "imports": {
+            "three": "./three_class/three.module.js"
+          }
+        }
+      </script>		
+
+      <script type = "module">
+        //import scene from "./static.js";
+        import scene from "./static_sala.js";
+        scene();
+      </script>
+      
+    </canvas>
+
+    <header>
+      
+      <div id="logo">
+          <a href="index.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
+      </div>
+
+      <input id="menu-toggle" type="checkbox" />
+      <label class='menu-button-container' for="menu-toggle">
+      <div class='menu-button'></div>
+      </label class='menu-button-container' for="menu-toggle">
+
+      <ul class="menu">
+
+        <li>
+          <a href="#nostalghiaG">NOSTALGHIA</a>
+        </li> 
+        <li>
+          <a href="#embryoG">EMBRYO</a>
+        </li>         
+          <li>
+            <a href="#algoreign_01G">ALGOREIGN</a>
+          </li>
+          <li>
+            <a href="#algoreign_02">ALGOREIGN 02</a>
+          </li>
+          <li>
+            <a href="#algoreign_03">ALGOREIGN 03</a>
+          </li>
+          <li>
+            <a href="#escapes">E-SCAPES</a>
+          </li>
+
+      </ul>
+
+    </header>
+
+     <!-- FOOTER --> 
+     <footer id="footer">                            
+      <ul>
+        <li>&copy; 2023 felice vino</li>
+        <li><a href="instagram.com">instagram</a></li>
+        <li><a href="facebook.com">meta</a></li>       
+        <li><a href="vimeo.com">vimeo</a></li>                
+      </ul>
+    </footer>
+
+    <!-- NOSTALGHIA -->
+    <section id="nostalghiaG">
+      <div class="home-text">
+
+        <div class="home-title" >                    
+
+            <h2 data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+              NOSTALGHIA
+            </h2>
+
+        </div>
+
+        <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+          <p>
+            This AI project is inspired by Tarkovsky’s work. The galleries feature surreal creatures, hybrids of human and non-human. <br>
+            They explore a deserted planet, perhaps a land long abandoned, where life is almost absent, a place where the ghosts of our future are already memories.                               
+          </p>
+            
+        </div>
+
+      </div>
+
+      <div class="scrolling">
+        <img src="images/icons/scroll-down.svg" alt="scrolling">
+      </div>
+
+    </section>
+    
+    <section id="nostalghia">
+
+      <div class="gallery_central"  >        
+
+        <div class="main-gallery" id="nostalghia-div">
+          <img src="images/statics/nostalghia/nostalghia1.jpeg" alt="nostaglhia1">
+        </div>  
+
+        <div class="thumbnail-gallery" id="nostalghia_thumb">
+          <img src="images/statics/nostalghia/nostalghia1.jpeg" alt="nostaglhia1" class="active">
+          <img src="images/statics/nostalghia/nostalghia2.jpeg" alt="nostaglhia2">
+          <img src="images/statics/nostalghia/nostalghia3.jpeg" alt="nostaglhia3">
+          <img src="images/statics/nostalghia/nostalghia4.jpeg" alt="nostaglhia4">  
+          <img src="images/statics/nostalghia/nostalghia5.jpeg" alt="nostaglhia5">                                
+        </div>  
+
+        <div class="title-gallery">
+          <p>NOSTALGHIA - 2023-24</p>
+          <p>AI artwork<br></p>
+        </div>
+
+      </div> 
+
+      <div class="scrolling">
+        <img src="images/icons/scroll-updown.gif" alt="scrolling">
+      </div>
+    </section> 
+    
+    <!-- EMBRYO -->
+    <section id="embryoG">
+      <div class="home-text">
+
+        <div class="home-title" >                    
+
+            <h2 data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+              EMBRYO
+            </h2>
+
+        </div>
+
+        <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+          <p>
+            During its development cycle, the human embryo traces the evolutionary history: cell, fish, reptile, mammal.<br>
+            In the series of digital elaborations, reinterpreting that journey in the light of scientific discoveries and cultural reflections.<br>
+            The embryos of possible creatures demonstrate the consequences of an opaque   evolution, the result of biological-alchemical overlapping and synthesis of the extended realms of living made up of animated and non-animated.                                  
+          </p>
+            
+        </div>
+
+      </div>
+
+      <div class="scrolling">
+        <img src="images/icons/scroll-down.svg" alt="scrolling">
+      </div>
+
+    </section>
+
+    <section id="embryo">
+
+      <div class="gallery_central"  >        
+
+        <div class="main-gallery" id="embryo-div">
+          <img src="images/statics/embryo/embryo (1).jpg" alt="Immagine 1">
+        </div>  
+
+        <div class="thumbnail-gallery" id="embryo_thumb">
+          <img src="images/statics/embryo/embryo (1).jpg" alt="embryo1" class="active">
+          <img src="images/statics/embryo/embryo (2).jpg" alt="embryo2">
+          <img src="images/statics/embryo/embryo (3).jpg" alt="embryo3">
+          <img src="images/statics/embryo/embryo (4).jpg" alt="embryo4">
+          <img src="images/statics/embryo/embryo (5).jpg" alt="embryo5">                       
+        </div>  
+
+        <div class="title-gallery">
+          <p>EMBRYO - 2020</p>
+          <p>Digital artwork<br>Iper hybridation</p>
+        </div>
+
+      </div> 
+
+      <div class="scrolling">
+        <img src="images/icons/scroll-updown.gif" alt="scrolling">
+      </div>
+    </section> 
+
+    <!-- ALGOREIGN -->    
+    <section id="algoreign_01G">
+      <div class="home-text">
+
+        <div class="home-title" >                    
+
+            <h2 data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+              ALGOREIGN
+            </h2>
+
+        </div>
+
+        <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+          <p>
+
+            Project Algoreign. A poor digital art project. 
+
+          </p>
+            
+        </div>
+
+      </div>
+
+      <div class="scrolling">
+        <img src="images/icons/scroll-updown.gif" alt="scrolling">
+      </div>
+
+    </section>    
+    
+    <!-- ALGOREIGN_01  -->  
+    <section>    
+
+      <div class="gallery_central" >        
+
+        <div class="main-gallery" id="algoreign_01-div">
+          <img src="images/statics/Algoreign_01/Algoreign_01 (1).jpeg" alt="Immagine 1">
+        </div>  
+
+          <div class="thumbnail-gallery" id="algoreign_01_thumb">
+          <img src="images/statics/Algoreign_01/Algoreign_01 (1).jpeg" alt="planetsB1" class="active">
+          <img src="images/statics/Algoreign_01/Algoreign_01 (2).jpeg" alt="planetsB2">
+          <img src="images/statics/Algoreign_01/Algoreign_01 (3).jpeg" alt="planetsB3">
+          <img src="images/statics/Algoreign_01/Algoreign_01 (4).jpeg" alt="planetsB4">
+          <img src="images/statics/Algoreign_01/Algoreign_01 (5).jpeg" alt="planetsB5">        
+          
+        </div>  
+
+        <div class="title-gallery">
+          <p>ALGOREIGN_01 - 2023</p>
+          <p>Digital artwork, "poor digital artwork"<br>a map beyond the algoreign</p>
+        </div>
+
+      </div>
+      
+      <div class="scrolling">
+        <img src="images/icons/scroll-updown.gif" alt="scrolling">
+      </div>
+      
+    </section>
+    
+    <!-- ALGOREIGN_02  -->  
+    <section id="algoreign_02">
+    
+      <div class="gallery_central">
+
+        <div class="main-gallery" id="algoreign_02-div">
+          <img src="images/statics/Algoreign_02/algoreign02 (1).jpeg" alt="Immagine 1">
+        </div> 
+
+        <div class="thumbnail-gallery" id="algoreign_02_thumb">
+
+          <img src="images/statics/Algoreign_02/algoreign02 (1).jpeg" alt="planetsW1" class="active">   
+          <img src="images/statics/Algoreign_02/algoreign02 (2).jpeg" alt="planetsW2">
+          <img src="images/statics/Algoreign_02/algoreign02 (3).jpeg" alt="planetsW3e">
+          <img src="images/statics/Algoreign_02/algoreign02 (4).jpeg" alt="planetsW4e">          
+          <img src="images/statics/Algoreign_02/algoreign02 (5).jpeg" alt="planetsW6">              
+
+        </div>
+
+        <div class="title-gallery">
+          <p>ALGOREIGNS_02 - 2023</p>
+          <p>Digital artwork, "poor digital artwork"<br>a transcription of the algoreign</p>
+        </div>
+
+      </div>
+
+      <div class="scrolling">
+        <img src="images/icons/scroll-up.svg" alt="scrolling">
+      </div>
+
+    </section> 
+
+     <!-- ALGOREIGN_03  -->      
+    <section id="algoreign_03">
+    
+      <div class="gallery_central">
+
+        <div class="main-gallery" id="algoreign_03-div">
+          <img src="images/statics/Algoreign_03/algoreign03 (1).jpeg" alt="algoreign031">
+        </div> 
+
+        <div class="thumbnail-gallery" id="algoreign_03_thumb">
+
+          <img src="images/statics/Algoreign_03/algoreign03 (1).jpeg" alt="planetsW1" class="active">   
+          <img src="images/statics/Algoreign_03/algoreign03 (2).jpeg" alt="algoreign032">
+          <img src="images/statics/Algoreign_03/algoreign03 (3).jpeg" alt="algoreign033">
+          <img src="images/statics/Algoreign_03/algoreign03 (4).jpeg" alt="algoreign034">         
+          <img src="images/statics/Algoreign_03/algoreign03 (5).jpeg" alt="algoreign035">            
+
+        </div>
+
+        <div class="title-gallery">
+          <p>ALGOREIGNS_03 - 2023</p>
+          <p>Digital artwork, "poor digital artwork"<br>a transcription of the algoreign</p>
+        </div>
+
+      </div>
+
+      <div class="scrolling">
+        <img src="images/icons/scroll-up.svg" alt="scrolling">
+      </div>
+
+    </section>  
+    
+    <!-- E-Scapes -->
+    <section id="escapes">
+      <div class="home-text">
+
+        <div class="home-title" >                    
+
+            <h2 data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+              E-SCAPES
+            </h2>
+
+        </div>
+
+        <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+          <p>
+            In this series of digital prints it’s explored the possibility of adopting mathematical syntax in composing poetic-scientific visual maps.
+            Working with generative graphics software, basic geometric figures are subjected to tensive forces until they reveal protein-like archetypes that recall the mind - such as memory and imaginative drive - life forms, objects and landscapes.
+            Environments and phenomena, digital and digitized, with which we interact and that act on us in an ever deeper way.                 
+          </p>
+            
+        </div>
+
+      </div>
+
+      <div class="scrolling">
+        <img src="images/icons/scroll-down.svg" alt="scrolling">
+      </div>
+
+    </section>
+    
+    <section>
+
+      <div class="gallery_central"  >        
+
+        <div class="main-gallery" id="escapes-div">
+          <img src="images/statics/eScapes/escapes (1).jpg" alt="nostaglhia1">
+        </div>  
+
+        <div class="thumbnail-gallery" id="escapes_thumb">
+          <img src="images/statics/eScapes/escapes (1).jpg" alt="eScapes" class="active">
+          <img src="images/statics/eScapes/escapes (2).jpg" alt="eScapes">
+          <img src="images/statics/eScapes/escapes (3).jpg" alt="eScapes">
+          <img src="images/statics/eScapes/escapes (4).jpg" alt="eScapes"> 
+          <img src="images/statics/eScapes/escapes (5).jpg" alt="eScapes">
+        </div>  
+
+        <div class="title-gallery">
+          <p>E-SCAPES - 2020</p>
+          <p>Digital artwork<br></p>
+        </div>
+
+      </div> 
+
+      <div class="scrolling">
+        <img src="images/icons/scroll-updown.gif" alt="scrolling">
+      </div>
+    </section> 
+
+    <script>
+
+      function setupGallery(mainGalleryId, thumbnailGalleryId) {
+        var mainImage = document.querySelector('#' + mainGalleryId + ' img');
+        var thumbnails = document.querySelectorAll('#' + thumbnailGalleryId + ' img');
+
+        thumbnails.forEach(function(thumbnail) {
+          thumbnail.addEventListener('click', function() {
+              mainImage.src = this.src;
+              thumbnails.forEach(function(thumbnail) {
+                thumbnail.classList.remove('active');
+              });
+              this.classList.add('active');
+          });
+        });
+      }
+      setupGallery('nostalghia-div', 'nostalghia_thumb'); 
+      setupGallery('embryo-div', 'embryo_thumb');
+      setupGallery('algoreign_01-div', 'algoreign_01_thumb');
+      setupGallery('algoreign_02-div', 'algoreign_02_thumb');
+      setupGallery('algoreign_03-div', 'algoreign_03_thumb');
+      setupGallery('escapes-div', 'escapes_thumb');
+
+    </script>
+
+  </body>
+
+</html>

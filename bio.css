@@ -110,20 +110,7 @@ section {
   }
 }
 
-@media (max-width: 300px){  
 
-  .bio-content{
-    border: 0px solid white;
-  }
-
-  .bio-text p {
-    font-size: 15px;  
-    line-height: 16px;
-    font-weight: 300;
-    text-align: left;
-    
-  }
-}
 
 
 /*CREDITS*/

@@ -223,7 +223,7 @@ a {
   transform: rotate(-405deg);
 }
   
-@media (max-width: 700px) {
+@media (max-width: 724px) {
  
   .menu-button-container {      
     display: flex;    
@@ -281,7 +281,7 @@ a {
   }
   
   .menu > li:not(:last-child) {
-    border-bottom: 1px solid #444;
+    border-bottom: 0px solid #444;
   }
 }
 

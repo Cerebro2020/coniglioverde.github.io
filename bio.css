@@ -27,7 +27,7 @@ section {
 }
 
 .bio-text {  
-  width: 47.22%;
+  width: 45.22%;
   border-right: 1px solid white; 
   text-align: left;   
 }
@@ -91,15 +91,16 @@ section {
   }
   
   .bio-img img {
-    height: 70%;  
+    height: 90%;  
   }
 
 }
 
-@media (max-width: 724px){  
+@media (max-width: 700px){  
 
   .bio-content{
     border: 0px solid white;
+    height: 80vh;
   }
 
   .bio-text p {
@@ -109,9 +110,6 @@ section {
     
   }
 }
-
-
-
 
 /*CREDITS*/
 #credits {     
@@ -171,9 +169,8 @@ section {
 }
 
 .cv h4 {
-  font-weight:300; 
-  animation-name: fadeIn;
-  animation-duration: 1s; 
+  font-size: 16px;
+  font-weight:300;   
   text-align: center; 
 }
 

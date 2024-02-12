@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
     <head>
 
@@ -10,10 +10,6 @@
 
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="cinematic.css"> 
-
-        <video id="geno"  src="./video/cinematic/02_genomachines.mp4" autoplay loop muted style="display: none;"></video>
-
-        <video id="butter"  src="./video/cinematic/butterfly_spot.mp4" autoplay loop muted style="display: none;"></video>
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"/>
@@ -62,10 +58,10 @@
         </canvas>  
         <header>
             <div id="logo">
-                <a href="index.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
+                <a href="index_it.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
             </div>
 
-            <input id="menu-toggle" type="checkbox"/>
+            <input id="menu-toggle" type="checkbox" aria-label="Toggle menu" />
             <label class='menu-button-container' for="menu-toggle">
             <div class='menu-button'></div>
             </label class='menu-button-container' for="menu-toggle">
@@ -75,35 +71,40 @@
                 <li><a href="#">CINEMATIC</a></li>                
                 <li><a href="#butterfly">BUTTERFLY</a></li>
                 <li><a href="#genomachines">GENOMACHINES</a></li>
-                <li><a href="cinematic.html" style="font-style: normal; font-weight: 400;">EN | IT</a>    
+                <li><a href="cinematic.html">EN | IT</a>    
             </ul>
 
         </header>
         
-        <footer id="footer">                            
+        <footer id="footer"> 
+
             <ul>
                 <li>&copy; 2023 felice vino</li>
-                <li><a href="instagram.com">instagram</a></li>
-                <li><a href="facebook.com">meta</a></li>
-                <li><a href="vimeo.com">vimeo</a></li>                
+                <li><a href="instagram.com"><img src="images/icons/instagram.png" alt="instagram icon"></a></li>
+                <li><a href="facebook.com"><img src="images/icons/meta.png" alt="meta icon"></a></li>
+                <li><a href="vimeo.com"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
+
             </ul>
+
         </footer>
 
         <section>
 
             <div class="home-text">
                 
-                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">    
+                <!-- <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">    
                     
                     <h1>CINEMATIC</h1>
 
-                </div>
+                </div> -->
 
                 <div div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
                     
                     <p>
-                        Il racconto per immagini ha superato i confini degli schermi, ovvero siamo circondati da altri schermi.<br>
-                        Le superfici archietettoniche, la pelle, le superifici naturali di ogni tipo, tutto può farsi schermo.<br> 
+                        Il racconto per immagini ha superato i confini degli schermi, ovvero siamo sempre circondati da ulteriori schermi, anche quando non ce ne accorgiamo.<br><br>
+                        Le pareti di un edificio, la pelle, un bosco, superifici di ogni tipo, tutto può farsi schermo.<br><br>
+                        La cinematografia, allo stesso tempo, ha ancora molto da dire anche nella sua forma più classica.<br><br>
+                        In questa sezione sono presenti progetti che percorrono entrambe le strade.
                     </p>
 
                 </div>
@@ -117,30 +118,28 @@
         </section>
 
         <section id="butterfly"> 
+
             <div class="page-container">  
                 
                 <div class="video-container">
                     <video src="./video/cinematic/butterfly_spot.mp4"></video>
                 </div>
 
-                <div class="text-container">
-                    <div class="text-c" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                <div class="text-container" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
 
-                        <p>
-                            Produciamo una quantità enorme di dati in tutti gli ambiti della nostra vita: amministrazione, guerra, intrattenimento.<br>
-                            Gli strumenti necessari per navigare tra loro sono altamente complessi, interconnessi, orientati allo sfruttamento dell'intelligenza artificiale.<br>
-                            <a href="cinematic_butterfly.html" target="_blank">Butterfly</a> ipotizza che da questo brodo digitale primordiale possano emergere nuove forme di vita o quasi-vita fuori dal nostro controllo; creature che sono allo stesso tempo belle e terribili. <a href="cinematic_butterfly_sala.html">SALA</a>
-                        </p>
-
-                    </div> 
+                    <p>
+                        Produciamo una quantità enorme di dati in tutti gli ambiti della nostra vita: amministrazione, guerra, intrattenimento.<br><br>
+                        Gli strumenti necessari per navigare tra loro sono altamente complessi, interconnessi, orientati all'uso delle intelligenze artificiali.<br><br>
+                        <a href="cinematic_butterfly.html" target="_blank">Butterfly</a> ipotizza che da questo brodo digitale primordiale possano emergere nuove forme di vita o quasi-vita fuori dal nostro controllo; creature che sono allo stesso tempo belle e terribili. <a href="cinematic_butterfly_room_it.html">SALA</a>
+                    </p>
 
                 </div>
 
-                <div class="scrolling">
-                    <img src="images/icons/favicon.ico" alt="scrolling">
-                </div>
-
-            </div>            
+            </div>
+            
+            <div class="scrolling">
+                <img src="images/icons/favicon.ico" alt="scrolling">
+            </div>
 
         </section>  
        
@@ -149,26 +148,22 @@
             <div class="page-container">
 
                 <div class="video-container">
-                    <video class="video-container" src="./video/cinematic/02_genomachines.mp4"></video>
+                    <video class="video-container" src="./video/cinematic/02_genomachines.mp4" autoplay loop muted></video>
                 </div>
 
-                <div class="text-container">
-                    <div class="text-c" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                <div class="text-container" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
 
-                        <p>
-                            <a href="cinematic_genomachines.html" target="_blank">Genomachines</a> è una docufiction che racconta il percorso della storia
-                            dal 2022 al 2122, dall'“Era della schiavitù degli algoritmi” all'“Era della libertà”.<br>
-                            Il tono del documentario è ironico, mostrando ad esempio le fabbriche di server dati come campi di cotone negli Stati Uniti; parlando della mobilitazione di A.I. come mobilitazione vegana contro i mangiatori di carne, ecc.
-                        </p>
-
-                    </div>
-
+                    <p>
+                        <a href="cinematic_genomachines.html" target="_blank">Genomachines</a> è una docufiction che racconta il percorso della storia
+                        dal 2022 al 2122, dall'“Era della schiavitù degli algoritmi” all'“Era della libertà”.<br><br>
+                        Il tono del documentario è ironico, mostrando ad esempio le fabbriche di server dati come campi di cotone negli Stati Uniti; parlando della mobilitazione di A.I. come mobilitazione vegana contro i mangiatori di carne, ecc.
+                    </p>
+                    
                 </div>
 
-                <div class="scrolling">
-                    <img src="images/icons/scroll-up.svg" alt="scrolling">
-                </div>
-
+            </div>
+            <div class="scrolling">
+                <img src="images/icons/scroll-up.svg" alt="scrolling">
             </div>
 
         </section>

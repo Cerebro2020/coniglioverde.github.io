@@ -6,25 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>coniglioverde|writing|ghost track</title>
     <link rel="stylesheet" href="style.css">  
-    <link rel="stylesheet" href="writing.css">  
-
-    <style>
-
-        .canvas {
-            z-index: -1;             
-        }
-
-        canvas {
-            position: absolute;
-            top: 0;
-            cursor: grab;
-        }
-
-        canvas:active {				
-        cursor: grabbing;
-        }
-
-    </style>
+    <link rel="stylesheet" href="writing.css">     
 
     <!-- Loading -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -59,25 +41,23 @@
     
     <header>
         <div id="logo">
-            <a href="index.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
+            <a href="index_it.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
         </div>
 
-        <input id="menu-toggle" type="checkbox" />
+        <input id="menu-toggle" type="checkbox" aria-label="Toggle menu" />
         <label class='menu-button-container' for="menu-toggle">
         <div class='menu-button'></div>
         </label class='menu-button-container' for="menu-toggle">
 
         <ul class="menu">                             
-            <li></li>            
-            <li><a href="index.html#projects">PROJECTS</a></li>
-            <li><a href="writing.html#">WRITING</a></li>                       
+            <li></li>
+            <li><a href="writing.html#">WRITING</a></li>
+            <li><a href="writing_ghosttrack_it.html">EN | IT</a></li>  
         </ul>
     </header>
 
-    <link rel="shortcut icon" href="#">
+    <link rel="shortcut icon" href="#">   
     
-    <video id="ghost" src="./video/writing/01_traccia_fantasma.mp4" autoplay loop style="display: none;"></video>  
-
     <div class="info_leyer">
         <div id="info">
             <p>
@@ -86,13 +66,16 @@
         </div>
     </div>
 
-    <footer id="footer">                            
+    <footer id="footer">
+
         <ul>
             <li>&copy; 2023 felice vino</li>
-            <li><a href="instagram.com">instagram</a></li>
-            <li><a href="facebook.com">meta</a></li>
-            <li><a href="vimeo.com">vimeo</a></li>                
+            <li><a href="instagram.com"><img src="images/icons/instagram.png" alt="instagram icon"></a></li>
+            <li><a href="facebook.com"><img src="images/icons/meta.png" alt="meta icon"></a></li>
+            <li><a href="vimeo.com"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
+
         </ul>
+        
     </footer>
     
 </body>

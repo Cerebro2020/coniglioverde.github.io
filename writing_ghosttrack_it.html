@@ -4,57 +4,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>coniglioverde|writing|dal deserto rosso</title>
+    <title>coniglioverde|writing|ghost track</title>
     <link rel="stylesheet" href="style.css">  
-    <link rel="stylesheet" href="writing.css">  
-
-    <style>
-
-        .canvas {
-            z-index: -1;             
-        }
-
-        canvas {
-            position: absolute;
-            top: 0;
-            cursor: grab;
-        }
-
-        canvas:active {				
-        cursor: grabbing;
-        }
-
-    </style>
+    <link rel="stylesheet" href="writing.css">     
 
     <!-- Loading -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script>
         $(document).ready(function() {
-        $(window).on("load", function() {
-            $("#loader").fadeOut("slow");
+            $(window).on("load", function() {
+                $("#loader").fadeOut("slow");
+            });
         });
-        });
-    </script>    
+    </script>
 
 </head>
-
-<body>
+<body> 
     
     <div id="loader">
         <div class="loader"></div>
     </div>
     
     <script type="importmap">
-            {
-                "imports": {
-                    "three": "./three_class/three.module.js"
-                    }
-            }
+        {
+            "imports": {
+                "three": "./three_class/three.module.js"
+                }
+        }
     </script>		
     
     <script type = "module">
-        import scene from "./writing_dal_deserto.js";
+        import scene from "./writing_ghosttrack.js";
         scene();
     </script> 
     
@@ -68,14 +49,14 @@
         <div class='menu-button'></div>
         </label class='menu-button-container' for="menu-toggle">
 
-        <ul class="menu">
+        <ul class="menu">                             
             <li></li>
-            <li><a href="writing.html#">WRITING</a></li>
-            <li><a href="writing_dal_deserto_it.html">EN | IT</a> 
+            <li><a href="writing_it.html#">WRITING</a></li>
+            <li><a href="writing_ghosttrack.html">EN | IT</a></li>
         </ul>
     </header>
 
-    <link rel="shortcut icon" href="#">
+    <link rel="shortcut icon" href="#">   
     
     <div class="info_leyer">
         <div id="info">
@@ -85,7 +66,7 @@
         </div>
     </div>
 
-    <footer id="footer"> 
+    <footer id="footer">
 
         <ul>
             <li>&copy; 2023 felice vino</li>
@@ -94,7 +75,7 @@
             <li><a href="vimeo.com"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
 
         </ul>
-
+        
     </footer>
     
 </body>

@@ -2,16 +2,31 @@ body {
     height: 400vh;
     background-image: url('images/bcg/SfondoI.jpg');
     background-size: cover;   
-    z-index: -9999;  
-    
+    z-index: -9999;      
 }
 
-.home-text {     
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;    
+.image-cover {
     width: 100%;
-    height: 80%;
+    height: 40vh;
+    position: absolute;
+    top:0;      
+    margin: 0px;  
+    background-image: url("./images/hearts/esperienza.jpg");
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: cover; 
+}
+
+.scrolling {
+    position: absolute;
+    bottom: 40px;
+}
+
+.home-text {
+    display: flex;
+    flex-direction: column;      
+    width: 100%;    
+    height: 80vh;
 }
 
 .home-title {
@@ -20,116 +35,113 @@ body {
 
 .home-title h1 {    
     font-size: 60px;
-    letter-spacing: -2px;
+    letter-spacing: 0px;    
+}
+
+.logoh {
+    position: relative;
+    left: -40px;
+}
+
+.logoh img {
+    width: 200px;
+    height: auto;    
 }
 
 .home-paragraph {
-    display: flex;
     width: 50%;
-    height: 50%;
-    align-items: center;
+    height: 36vh;
+    display: flex;   
+    align-items: flex-start;
     margin-top: auto;
 }
 
-.paragraph-gallery { 
-    width: 50%;
-    height: 50%;    
+
+/* GALLERY */
+.paragraph-gallery {
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 40vh;    
     margin: 0px;
+    display: flex;           
+}
+
+.double-image-data  {
+    position: relative;
+    width: 50%;
+    height: 100%;     
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-   
+    flex-direction: row;
+    overflow: hidden;    
 }
 
-.double-image-data  {    
-    display: flex;    
+.dids {  
+    width: 50%; 
 }
 
-.paragraph-gallery img {
-    height: 200px;
-    width: 200px;    
+.dids img {
     object-fit: cover;
-    overflow: hidden;
-    position: relative; 
-    padding: 0px;
+    object-position: center;    
+    width: 100%; 
 }
 
 
 @media (max-width: 1024px) {
 
-    .home-text { 
-                        
-        width:80%;
-        /*height: 70%;*/  
-        overflow: hidden;
-
+    .paragraph-gallery {        
+        flex-direction: column;
     }
 
-    .home-title {
-          
+    .double-image-data {
+        width: 100%;
+    }
+
+    .home-text {                        
+        width:80%;                 
+    }
+
+    .home-title {          
         width: 100%;
         text-align: left;
     }
 
-    .home-paragraph {  
-           
-        width: 100%;
-        height: 50vh;
-        display: flex; 
-        align-items: center;
-        justify-items: center;             
+    .home-paragraph {            
+        width: 90%;
+        height: 40%;                         
     }
 
-    .home-paragraph p {
-        
-        height: 30vh; 
-        
-    }        
-
-    .paragraph-gallery {              
-        width: 80%;               
-    }
-
-    .double-image-data {
-        margin: -4px;
-    }
-    
-    .paragraph-gallery img {
-        height: 160px;
-        width: 160px; 
-    }
+    .home-paragraph p {                   
+        font-size: 19px;     
+        line-height: 21px;
+    } 
  
 }
 
-@media (max-width: 724px) {
+@media (max-width: 700px) {
 
-    .home-text {        
-        width: 90%;
-        height: 80vh;
+    .home-text {  
+        width: 90%;      
+        height: 80vh;        
     } 
+
+    .paragraph-gallery {
+        height: 50vh;        
+    }
 
     .home-title h1 {
         font-size: 50px;           
         letter-spacing: -2px;        
     } 
     
-    .home-paragraph {
-        
+    .home-paragraph {  
         width: 100%;
-    }
-
-    .paragraph-gallery {
-        flex-direction: column;
-    }
-
-    .paragraph-gallery img {
-        height: 130px;
-        width: 130px;      
-    }
+        height: 36vh;                        
+    } 
 
     .home-paragraph p {
-        font-size: 20px;
-        line-height: 22px;
-    }
-   
+        font-size: 19px;
+        line-height: 21px;
+    } 
+
 }

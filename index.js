@@ -203,7 +203,7 @@ export default function(){
   });
 
   const material2 = new THREE.MeshPhysicalMaterial({
-    color: 0x555555,    
+    color: 0x333333,    
     wireframe: true,
     side: THREE.DoubleSide,    
     displacementMap: bumpP,

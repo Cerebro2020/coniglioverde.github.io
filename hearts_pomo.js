@@ -28,7 +28,7 @@ export default function(choose,quadri){
   // CONTROLS //////
   const controls = new OrbitControls( camera, renderer.domElement );  
   controls.listenToKeyEvents( window );
-  controls.minDistance =  1;    
+  controls.minDistance =  20;    
   controls.maxDistance = 400;
   //controls.maxPolarAngle = 1.5; 
 
@@ -144,7 +144,7 @@ export default function(choose,quadri){
             sheen: 1,
             sheenRoughness: 0.2,
             sheenColor: 0xc0652b, 
-            clearcoat: 1,                
+            //clearcoat: 1,                
             normalMap: TextureF, 
             normalScale: new THREE.Vector2(0.005,0.005),
           });
@@ -169,6 +169,7 @@ export default function(choose,quadri){
   
   );  
   
+
   // GRUPPO EMOZIONI //////
   let emotionGroup = new THREE.Group();
   const emozioni=_.map(choose,(v,k)=>{
@@ -224,7 +225,7 @@ export default function(choose,quadri){
       sheen: 1,
       sheenRoughness: 0.2,
       sheenColor: new THREE.Color(v[1]), 
-      clearcoat: 1,                
+      //clearcoat: 1,                
       normalMap: TextureF, 
       normalScale: new THREE.Vector2(0.005,0.005),                 
     }); 
@@ -317,7 +318,7 @@ export default function(choose,quadri){
   audioLoader.load('audio/hearts/436557__k2tr__major-drone02.mp3', function( buffer ) {
     backgroundSound.setBuffer( buffer );
     backgroundSound.setLoop( true );
-    backgroundSound.setVolume( 1 );
+    backgroundSound.setVolume( 0.3 );
     backgroundSound.play();
   });  
 

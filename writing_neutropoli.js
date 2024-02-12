@@ -90,6 +90,18 @@ export default function(){
     camera.position.copy(initialCameraPosition);  
   } 
 
+  //TEXTURES
+  const loader = new THREE.TextureLoader();
+  const texture1 = loader.load('./images/statics/Glitches/glitches_01 (5).jpg');
+  texture1.wrapS = THREE.RepeatWrapping;
+  texture1.wrapT = THREE.RepeatWrapping;
+  texture1.repeat.set(1, 1);  
+ 
+  const texture2 = loader.load('./images/statics/Glitches/glitches_01 (3).jpg');
+  texture2.wrapS = THREE.RepeatWrapping;
+  texture2.wrapT = THREE.RepeatWrapping;
+  texture2.repeat.set(1, 1); 
+
   //AUDIO
   // POETRY 1
   var listenerAlbero = new THREE.AudioListener();
@@ -176,9 +188,10 @@ export default function(){
         if (node.isMesh) {
 
           const materialSGL = new THREE.MeshPhysicalMaterial({
-            color: 0x111111,
-            roughness: 0,
-            metalness: 0,
+            color: 0x222222, 
+            //map: texture1,           
+            //roughness: 0,
+            //metalness: 0,
           });   
 
           node.material = materialSGL;
@@ -204,47 +217,7 @@ export default function(){
     }   
 
   ); 
-      
-  // SUBWAY
-  const loaderSubway = new OBJLoader();
-  let subway;
-   
-  // LOAD A RESOURCE
-  loaderSubway.load('3d/subway/Subway02.obj',
-    function ( object ) {
-      object.position.set( 7, 9, -50 );
-      object.rotation.set( 0, -Math.PI/2, 0 );      
-      try{
-      const matSubway=new THREE.MeshPhysicalMaterial({
-        color: 0X000000,
-        roughness: 0.5,
-        metalness: 0.9,                   
-        })     
-      
-      object.children[0].material=matSubway;
-      }catch(e){
-      console.log(e);
-      }
-      subway=object;     
-      console.log( 'body was loaded', subway );
-      //scene.add( subway );      
-      subway.scale.set( 3, 3, 3);
-      
-      // SUBWAY 2       
-      let subway2 = subway.clone();
-      subway2.position.set( 7, 9, 86 );          
-      //scene.add( subway2 );
-    },
-    // called when loading is in progresses
-    function ( xhr ) {
-      console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-    },
-    // called when loading has errors
-    function ( error ) {
-      console.log( 'An error happened' );
-    }
-  );  
-
+  
   // FEMALE    
   const loaderHousewife = new OBJLoader();
   let housewife;
@@ -256,14 +229,14 @@ export default function(){
       objHousewife.rotation.set( 0, Math.PI/2.2, 0 );      
       try{
         const matHousewife = new THREE.MeshPhysicalMaterial({
-         color: 0xffffff,
+          color: 0xffffff,
+          //map: texture1,
           metalness: 0,
           roughness: 0,
           transparency: 1,  
           transparent: true,  
           side: THREE.FrontSide,
-          clearcoat: 1.0,
-          clearcoatRoughness: 0.1                  
+                           
         })     
         
         objHousewife.children[0].material=matHousewife;
@@ -304,6 +277,7 @@ export default function(){
         if (node.isMesh) {
           const material = new THREE.MeshPhysicalMaterial({
             color: 0xffffff,
+            //map: texture1,
           });   
           node.material = material;
           node.castShadow = true;
@@ -334,6 +308,7 @@ export default function(){
         if (node.isMesh) {
           const material = new THREE.MeshPhysicalMaterial({
             color: 0xffffff,
+            //map: texture2,
           });   
           node.material = material;
           node.castShadow = true;
@@ -364,6 +339,7 @@ export default function(){
         if (node.isMesh) {
           const material = new THREE.MeshPhysicalMaterial({
             color: 0xffffff,
+            //map: texture1,
           });   
           node.material = material;
           node.castShadow = true;
@@ -394,6 +370,7 @@ export default function(){
         if (node.isMesh) {
           const material = new THREE.MeshPhysicalMaterial({
             color: 0xffffff,
+            //map: texture1,
         });   
   
         node.material = material;
@@ -413,14 +390,13 @@ export default function(){
       console.error(error);      
     }   
   ); 
-
-
+  
   // SITTING PEOPLE //
    
   const sitSGLoader = new GLTFLoader();
 
   sitSGLoader.load(    
-   './3d/6people3.glb',
+   './3d/humans/6people3.glb',
     function (glt) {
       const sitSSub = glt.scene;
       sitSSub.position.set( -6.2, -2, -65 );
@@ -431,6 +407,7 @@ export default function(){
  
         const materialSPS = new THREE.MeshPhysicalMaterial({
           color: 0xffffff,
+          //map: texture1,
           roughness: 0,
           metalness: 0,
         });   
@@ -442,7 +419,7 @@ export default function(){
  
     });   
        
-    scene.add(sitSSub);        
+    //scene.add(sitSSub);        
     sitSSub.castShadow = true; 
     sitSSub.receiveShadow = true; 
          
@@ -450,7 +427,7 @@ export default function(){
     sitSSub2.position.set( 6.2, -2, -82 );
     sitSSub2.rotation.set( 0, -Math.PI/2, 0 );      
     sitSSub2.scale.set( 3.4, 3.4, 3.4 );  
-    scene.add(sitSSub2);
+    //scene.add(sitSSub2);
  
   }, 
  
@@ -460,7 +437,6 @@ export default function(){
     }   
  
   ); 
-
 
   // CUBE
   const gCube = new THREE.BoxGeometry( 0.1, 0.1, 0.1 );

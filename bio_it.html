@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
     <head>
         <meta charset="UTF-8">
@@ -11,11 +11,6 @@
         <link rel="stylesheet" href="bio.css">
         
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-        
-        <video id="lupin"  src="/video/cinematic/00_Lupin.mp4" autoplay loop muted style="display: none;"></video>
-        <video id="butterfly"  src="/video/cinematic/butterfly_spot.mp4" autoplay loop muted style="display: none;"></video>
-
-
         <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"/>
 
         <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
@@ -28,9 +23,7 @@
             $("#loader").fadeOut("slow");
           });
         });
-        </script>
-
-        
+        </script>        
        
     </head>
     <body>
@@ -46,10 +39,10 @@
        <!-- HOME -->
        <header>
         <div id="logo">
-            <a href="index.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
+            <a href="index_it.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
         </div>
 
-        <input id="menu-toggle" type="checkbox" />
+        <input id="menu-toggle" type="checkbox" aria-label="Toggle-menu" />
 
         <label class='menu-button-container' for="menu-toggle">
 
@@ -57,21 +50,24 @@
         
         </label class='menu-button-container' for="menu-toggle">
 
-        <ul class="menu">
+        <ul class="menu">                       
             <li><a href="#">BIO</a></li></li>                              
             <li><a href="#credits">CREDITS</a></li>
-            <li><a href="bio.html" style="font-style: normal; font-weight: 400;">EN | IT</a>           
+            <li><a href="bio.html">EN | IT</a>           
         </ul>
+        
     </header>
 
     <!-- FOOTER -->
-    <footer id="footer">                            
+    <footer id="footer">
+
         <ul>
             <li>&copy; 2023 felice vino</li>
-            <li><a href="instagram.com">instagram</a></li>
-            <li><a href="facebook.com">meta</a></li>
-            <li><a href="vimeo.com">vimeo</a></li>                
+            <li><a href="instagram.com"><img src="images/icons/instagram.png" alt="instagram icon"></a></li>
+            <li><a href="facebook.com"><img src="images/icons/meta.png" alt="meta icon"></a></li>
+            <li><a href="vimeo.com"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
         </ul>
+
     </footer>
 
     <!-- BIO -->
@@ -83,24 +79,23 @@
                 <h1 data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">FELICE VINO</h1>
                 <br>                               
                 <p data-aos="flip-left"  data-aos-duration="600" data-aos-easing="ease-in-quad">
-                    Nato a Potenza, mi sono laureato con lode in Lingue e Letterature Straniere. Nel corso del tempo ho
-                    sperimentato diverse aree di lavoro e creatività: comunicazione, narrazione, visual, romanzo,
-                    teatro, fumetto -. Queste esperienze mi hanno portato alla realizzazione di video.                                 
-                    Come titolare di una società di produzione video ho realizzato videoclip, spot, corporate e ho scritto,
-                    ha diretto e prodotto la serie zero di una serie web di fantascienza.    
-                    Mi sono trasferita a Bologna nel 2016 per lavorare in una società di produzione televisiva specializzata in documentari e
-                    promozione del territorio. Lì ho ideato, scritto e diretto un format televisivo e un lungometraggio.
-                    </p>
+                    Nato a Potenza, sono laureato in Lingue e Letterature Straniere, nel corso del tempo ho sperimentato diverse forme espressive a cominciare dalla parola poetica.<br> 
+                    Ho cercato di incarnarla in altre materie: l'inchiosto del fumetto, la carne del teatro, la luce della cinematografia.<br>                
+                    Ho realizzato videoclip, spot, corporate, la serie zero di una web series di fantascienza. Ho scritto, diretto e prodotto, viaggiato, cambiato casa e vita, Roma, Bologna, Milano.<br> 
+                    La poesia mi ha suggerito il percorso, il cinema me lo ha mostrato, oggi lavoro con le AI, i dati, la CGI e qualsiasi strumento mi restituisca quel senso di meraviglia difronte alle forme che possono assumere il bello e l'ignoto. 
+                    <br>
+                    <br>                    
+                    vinofelice@gmail.com
             </div>
 
             <div class="bio-img" data-aos="flip-right" data-aos-duration="700" data-aos-easing="ease-in-quad">
-                <img src="images/cv/bio_2.jpg">
+                <img src="images/cv/bio_2.jpg" alt="Felice Vino">
             </div>
         
         </div>
 
-        <div class="scrolling">
-            <img src="images/icons/scroll-down.svg" alt="scrolling">
+        <div class="scrolling">            
+            <img src="images/icons/scroll-down.svg" alt="scrolling icon">
         </div>
 
     </section>
@@ -126,7 +121,7 @@
             <div id="textCV"> 
 
                 <div id="cvIntro" class="cv">
-                    <p><br><h4>CREDITS</h4><br>
+                    <p><br><h4 data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">CREDITS</h4><br>
                     </p>
                 </div>  
                     

@@ -9,11 +9,7 @@
         <title>coniglioverde|cinematic</title>       
 
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="cinematic.css"> 
-
-        <video id="geno"  src="./video/cinematic/02_genomachines.mp4" autoplay loop muted style="display: none;"></video>
-
-        <video id="butter"  src="./video/cinematic/butterfly_spot.mp4" autoplay loop muted style="display: none;"></video>
+        <link rel="stylesheet" href="cinematic.css">        
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"/>
@@ -64,7 +60,7 @@
                 <a href="index.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
             </div>
 
-            <input id="menu-toggle" type="checkbox"/>
+            <input id="menu-toggle" type="checkbox" aria-label="Toggle menu"/>
             <label class='menu-button-container' for="menu-toggle">
             <div class='menu-button'></div>
             </label class='menu-button-container' for="menu-toggle">
@@ -74,19 +70,22 @@
                 <li><a href="#">CINEMATIC</a></li>                
                 <li><a href="#butterfly">BUTTERFLY</a></li>
                 <li><a href="#genomachines">GENOMACHINES</a></li>
-                <li><a href="cinematic_it.html" style="font-style: normal; font-weight: 400;">EN | IT</a> 
+                <li><a href="cinematic_it.html">EN | IT</a> 
                 </li>    
             </ul>
 
         </header>
         
-        <footer id="footer">                            
+        <footer id="footer"> 
+
             <ul>
                 <li>&copy; 2023 felice vino</li>
-                <li><a href="instagram.com">instagram</a></li>
-                <li><a href="facebook.com">meta</a></li>
-                <li><a href="vimeo.com">vimeo</a></li>                
+                <li><a href="instagram.com"><img src="images/icons/instagram.png" alt="instagram icon"></a></li>
+                <li><a href="facebook.com"><img src="images/icons/meta.png" alt="meta icon"></a></li>
+                <li><a href="vimeo.com"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
+
             </ul>
+
         </footer>
 
         <section>
@@ -95,7 +94,7 @@
                 
                 <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">    
                     
-                    <h1>CINEMATIC</h1>
+                    <!-- <h1>CINEMATIC</h1> -->
 
                 </div>
 
@@ -123,24 +122,21 @@
                     <video src="./video/cinematic/butterfly_spot.mp4"></video>
                 </div>
 
-                <div class="text-container">
-                    <div class="text-c" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                <div class="text-container" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
 
-                        <p>
-                            We produce an extremely large amount of data in all areas of our lives:administration, war, entertainment.<br>
-                            The tools needed to navigate between them are highly complex, inter-connected, oriented towards the exploitation of AI.<br> 
-                            <a href="cinematic_butterfly.html" target="_blank"> Butterfly</a> hypothesizes that from this primordial digital broth new forms of life or quasi-life may emerge beyond our control; creatures that are both beautiful and terrible. <a href="cinematic_butterfly_room.html">ROOM</a> 
-                        </p>
-                        
-                    </div> 
+                    <p>
+                        We produce an extremely large amount of data in all areas of our lives:administration, war, entertainment.<br>
+                        The tools needed to navigate between them are highly complex, inter-connected, oriented towards the exploitation of AI.<br> 
+                        <a href="cinematic_butterfly.html" target="_blank"> Butterfly</a> hypothesizes that from this primordial digital broth new forms of life or quasi-life may emerge beyond our control; creatures that are both beautiful and terrible. <a href="cinematic_butterfly_room.html">ROOM</a> 
+                    </p>
 
                 </div>
 
-                <div class="scrolling">
-                    <img src="images/icons/favicon.ico" alt="scrolling">
-                </div>
-
-            </div>            
+            </div> 
+            
+            <div class="scrolling">
+                <img src="images/icons/favicon.ico" alt="scrolling">
+            </div>
 
         </section>  
        
@@ -149,25 +145,22 @@
             <div class="page-container">
 
                 <div class="video-container">
-                    <video class="video-container" src="./video/cinematic/02_genomachines.mp4"></video>
+                    <video class="video-container" src="./video/cinematic/02_genomachines.mp4" autoplay loop muted></video>
                 </div>
 
-                <div class="text-container">
-                    <div class="text-c" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                <div class="text-container" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
 
-                        <p>
-                            <a href="cinematic_genomachines.html" target="_blank">Genomachines</a> is a docufiction, that narrate the path of history 
-                            from 2022 to 2122, from the “slavery of algorithms Era” to the “freedom Era”.<br> 
-                            The tone of the documentary a is ironic, showing for example data server factories as cotton fields in the U.S; talking about the mobilisation of A.I. as vegan mobilisation against meat eaters, etc.
-                        </p>
-                    </div>
+                    <p>
+                        <a href="cinematic_genomachines.html" target="_blank">Genomachines</a> is a docufiction, that narrate the path of history 
+                        from 2022 to 2122, from the “slavery of algorithms Era” to the “freedom Era”.<br> 
+                        The tone of the documentary a is ironic, showing for example data server factories as cotton fields in the U.S; talking about the mobilisation of A.I. as vegan mobilisation against meat eaters, etc.
+                    </p>
 
                 </div>
 
-                <div class="scrolling">
-                    <img src="images/icons/scroll-up.svg" alt="scrolling">
-                </div>
-
+            </div>
+            <div class="scrolling">
+                <img src="images/icons/scroll-up.svg" alt="scrolling">
             </div>
 
         </section>

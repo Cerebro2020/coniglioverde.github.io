@@ -3,7 +3,8 @@
 
 *{
   margin: 0;
-  padding: 0;    
+  padding: 0; 
+    
 }
 
 #loader {
@@ -42,7 +43,7 @@
 }
 
 html{
-  scroll-behavior: smooth;    
+  scroll-behavior: smooth;   
 }
 
 body {
@@ -64,8 +65,7 @@ body {
 
 #info {  
   width: 160px;
-  height: 30px;
-  		
+  height: 30px;  		
   z-index: 999;
 }
 
@@ -76,10 +76,23 @@ body {
   font-weight: 400;		
 }
 
+#info-white {  
+  width: 160px;
+  height: 30px;  		
+  z-index: 999;
+}
+
+#info-white p {
+  color: rgb(255, 255, 255);  
+  text-align: center; 
+  font-size: 12px;
+  font-weight: 400;		
+}
+
 canvas {
   position: absolute;
   top: 0;
-  cursor: grab;
+  cursor: grab;  
 }
 
 canvas:active {				
@@ -91,25 +104,15 @@ canvas:active {
 }
 
 /* SCROLLBAR */
-::-webkit-scrollbar {
-  width: 4px;
-  height: 10px;
+/* Nasconde la barra di scorrimento */
+html {
+  scrollbar-width: none; /* Firefox */
 }
 
-::-webkit-scrollbar-thumb {
-  background: #000000; 
-  border-radius: 25px; 
+/* Nasconde la barra di scorrimento per Chrome, Safari e Opera */
+html::-webkit-scrollbar {
+  display: none;
 }
-
-::-webkit-scrollbar-track {
-  background: rgb(0,0,0,0);
-}
-  
-* {
-    scrollbar-width: thin; 
-    scrollbar-color: #888 #f1f1f1;
-  }
-
   
 /* HEADER */
 /* MENU AMBURGER */
@@ -126,18 +129,17 @@ header {
 }
 
 #logo {  
-  display: flex; 
-  width: 70px;
-  height: 50px;
+  width: 80px;
+  height: 60px;
+  display: flex;
+  align-items: center;
   justify-content: center;
   z-index: 1;
 }
 
-header img{
+header img {  
   content:'images/logo2.jpg';  
-  width: 50px; 
-  margin-left: 40px; 
-  margin-left: 34px;                     
+  width: 50px;                     
 }
   
 .menu {   
@@ -155,6 +157,11 @@ header img{
   margin: 0 1rem;
   margin-top: 10px;
   overflow: hidden; 
+}
+
+.menu li:last-child a {
+  font-style: normal;
+  font-weight: 400;
 }
 
 a {
@@ -188,8 +195,7 @@ a {
   height: 1px;  
 }
 
-/* BUTTON CONTAINER*/
-    
+/* BUTTON CONTAINER*/    
 .menu-button-container {
   display: none;
   height: 100%;
@@ -318,19 +324,19 @@ section {
   height: 80vh;
 }
 
-.swiper {     
+.swiper {      
   width: 100%;
-  height: 77vh;
+  height: 74vh;
   margin-top: 60px;
-  background-color: #000000;
+  background-color: #000000;   
 }
 
 .swiper-slide img {  
 	padding-bottom: 10px;
 	display: block;
-	margin: 0 auto 10px;  
+	margin: 0 auto 6px;  
   width: auto;	
-  height: 380px;
+  height: 400px;
   cursor: grab;
   transition: .3s ease-in-out;
 }
@@ -339,7 +345,7 @@ section {
   cursor: grabbing;
 }
 
-.swiper-slide {    
+.swiper-slide {     
 	width: 100%;
   cursor: grab;  
   color: rgb(255, 255, 255);/* colore testo scelta*/
@@ -357,22 +363,23 @@ section {
 	flex-wrap: wrap;
   justify-content: center;
   padding-bottom: 0px;
-  margin-left: 30%;
-  width: 42%;   
+  margin-left: 33%;
+  width: 36%;  
+ 
 }
 
 .swiper li {
   border: 1px solid rgb(77, 77, 77); 
-  width: 100px;
-  height: 24px;
+  width: 94px;
+  height: 20px;
   display: flex;
   justify-content: space-between;        
   align-items: center;
 	padding: 7px;   	
-	margin:10px;
+	margin:4px;
   border-radius: 10px;  
 	cursor: pointer;
-  font-size: 12px;    
+  font-size: 10px;    
 }
 
 .swiper li.active{
@@ -390,32 +397,27 @@ section {
   border: 1px solid rgb(255, 255, 255);  
 }
 
+
+
 @media (max-width: 1024px) {
 
-  .swiper-slide img {  
-    padding-bottom: 10px;          
-    height: 360px;
+  .swiper {    
+    width: 90%;
   }
-    
-  .swiper ul{       
-    margin-left: 5%;    
-    width: 90%;       
+
+  .swiper ul {
+    width: 80%;
+    margin-left: 70px;
   }
-  
-  .swiper li {    
-    width: 100px;
-    height: 24px;
-    padding: 7px;   	
-    margin:10px;    
-    font-size: 12px;    
-  } 
 }
+
 
 @media (max-width: 724px) {
 
-  .swiper {    
-    height: 70vh;
-   
+  .swiper { 
+    /* border: 1px solid green;  */
+    width: 98%;  
+    height: 74vh;   
   }
 
   .swiper-slide img {    
@@ -431,11 +433,11 @@ section {
   }
   
   .swiper li {    
-    width: 76px;
+    width: 62px;
     height: 24px;
-    padding: 3px;   	
-    margin:2px;        
-    font-size: 10px;    
+    padding-left: 2px;   	
+    margin:4px;        
+    font-size: 8px;    
     font-weight: 200;
   } 
 
@@ -445,30 +447,6 @@ section {
   }
    
 }
-
-@media (max-width: 400px) {
-
-  .swiper {       
-    height: 70vh;   
-  }
-
-  .swiper-slide img {    
-    margin-top: 10px;        
-    height: 280px;
-    max-width: 280px;
-  }    
-
-  .swiper li {    
-    width: 60px;
-    height: 24px;
-    padding: 3px;   	
-    margin:2px;        
-    font-size: 8px;    
-    font-weight: 200;
-  } 
- 
-}
-
 
 .label {  
 	color: rgb(255, 255, 255);
@@ -498,28 +476,51 @@ section {
 	z-index: 1;
 }  
 
-/*#button-container {
-    position: absolute;
-    top: 30%; /* Adjust this value to move the button higher or lower */
-    /*left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}*/
+.button-controls {
+  /* border: 1px solid red; */
+  width: 90%;
+  position: absolute;
+  display: flex;
+  bottom: 40px;
+  align-items: center;
+  justify-content: right;
+  z-index: 1;
+}
+
+#btn-audio button , #btn-camera button {
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  width:50px;
+  margin-right: 10px;;
+  border-radius: 12px;
+  font-size: 11px;    
+}
+
+#btn-audio button:hover, #btn-camera button:hover {
+  cursor: pointer;
+  border: 1px solid rgb(255, 1, 1);
+  color: rgb(255, 0, 0);
+}
+
 
 /* FOOTER */
 footer {  
   position: fixed;
   width: 100%;
-  height: 50px; 
+  height: 40px; 
   display: flex;
   align-items: center;
-  justify-content: center;
-	-webkit-justify-content: center;
+  justify-content: center;	
   bottom: 0;  
   color: rgb(162, 255, 0);
   font-size: 14px;    
   font-weight: 0;   
-  z-index: 999;    
+  z-index: 999; 
+}
+
+footer ul {
+  height: 40px;
 }
 
 footer li {    
@@ -533,6 +534,10 @@ footer a {
   font-style:normal;
 }
 
+footer img {
+  max-width: 14px;
+}
+
 @media (max-width: 724px) {
 
   footer {    
@@ -541,3 +546,8 @@ footer a {
   }
 
 }
+
+iframe {
+  width:100%; 
+  height:100vh;  
+ }

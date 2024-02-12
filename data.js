@@ -39,6 +39,7 @@ export default function(){
   const bcTexture = loader.load('images/bcg/SfondoI.jpg');
   
   const uvTexture = loader.load('images/textures/hearts/scrostato.jpg');
+  
 
   // SCENE & FOG
   //scene.background = new THREE.Color( 0x000000 );
@@ -93,14 +94,17 @@ export default function(){
     '3d/heart/heart.glb',
     function (gltfg) {
       const heart = gltfg.scene;
-      heart.position.set( 6, -28, -24 );      
+      heart.position.set( 8, -18, -24 );      
       heart.rotation.set( 0, 0, 0 );
       heart.scale.set( 4, 4, 4 );
 
       heart.traverse(function (node) {
         if (node.isMesh) {          
-          const material = new THREE.MeshNormalMaterial({                        
-            
+          const material = new THREE.MeshPhysicalMaterial({
+            color: 0xffffff,
+            map: Texture2,
+            roughness: 0,
+            metalness: 0,                            
           });
          
           node.material = material;          
@@ -133,11 +137,16 @@ export default function(){
 
   });
 
+  // SFERA
   let sfera = new THREE.Mesh( gSfera, materialN );
   sfera.position.set(-7 , 4, -28);
   scene.add(sfera);
 
-  //PROJECTS
+  let sfera2 = sfera.clone();
+  sfera2.position.set(17 , -50, -50);
+  scene.add(sfera2);
+
+  
   // CUBE
   const gBox = new THREE.BoxGeometry( 4, 4, 4 ); 
   const Box = new THREE.Mesh( gBox, materialN );
@@ -155,8 +164,8 @@ export default function(){
   piramid.rotation.set( 0, -2, -0.5 );
 
   let piramid2 = piramid.clone();
-  piramid2.position.set( -24, -50, -80 );
-  piramid2.rotation.set( 0.2, 0, -1.5 );
+  piramid2.position.set( -40, -60, -120 );
+  piramid2.rotation.set( 0.7, 0.2, -0.6 );
   scene.add( piramid, piramid2 ); 
 
   const gOctagon = new THREE.OctahedronGeometry( 4, 1 ); 
@@ -165,7 +174,7 @@ export default function(){
   octagon.rotation.set( -0.2, 2, -1.5 );
 
   let octagon2 = octagon.clone();
-  octagon2.position.set( -10, -18, -40 );
+  octagon2.position.set( -15, -18, -40 );
   octagon2.rotation.set( 0.2, 2, -0.5 );
   scene.add( octagon, octagon2 ); 
 

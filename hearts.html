@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 	<head>
 		
 		<meta charset="UTF-8">
@@ -41,10 +42,10 @@
 
 		<header>
 			<div id="logo">
-				<a href="index.html"><img src="images/loghi/coniglio_verde_logo.png" alt=""></a>
+				<a href="index.html"><img src="images/loghi/coniglio_verde_logo.png" alt="Coniglio Verde Logo"></a>
 			</div>
 
-			<input id="menu-toggle" type="checkbox" />
+			<input id="menu-toggle" type="checkbox" aria-label="Toggle Menu"/>
 			<label class='menu-button-container' for="menu-toggle">
 			<div class='menu-button'></div>
 			</label class='menu-button-container' for="menu-toggle">
@@ -54,22 +55,22 @@
 				<li></li>
 				<li>
 					<a href="data.html">DATA</a>
-				</li> 
-				<li>
-					<a href="hearts_material.html" target="_blank">DOCUMENTS</a>
-				</li>
-				<li><a href="hearts_it.html" style="font-style: normal; font-weight: 400;">EN | IT</a>     				          
+				</li> 				
+				<li><a href="hearts_it.html">EN | IT</a>     				          
 			</ul>
 		</header>		
 		
 		<!-- FOOTER -->
-        <footer id="footer">                            
+        <footer id="footer">
+
             <ul>
                 <li>&copy; 2023 felice vino</li>
-                <li><a href="instagram.com">instagram</a></li>
-                <li><a href="facebook.com">meta</a></li>
-                <li><a href="vimeo.com">vimeo</a></li>                
-            </ul>		
+                <li><a href="instagram.com"><img src="images/icons/instagram.png" alt="instagram icon"></a></li>
+                <li><a href="facebook.com"><img src="images/icons/meta.png" alt="meta icon"></a></li>
+                <li><a href="vimeo.com"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
+    
+            </ul>
+
         </footer>
 
 		<section>		
@@ -221,14 +222,24 @@
 					//scene();
 				</script>
 			
-			<!--<video src="/3dvideo_textures/water_loop.mp4" autoplay loop style="display: none;"></video>-->  
-
 			<div class="info_leyer">
 				<div id="info">
 					<p>
 						MOUSE WHEEL zoom<br>LEFT click orbit RIGHT pan
 					</p>
 				</div>
+			</div>
+
+			<div class="button-controls">
+
+				<div id="btn-camera">
+					<button>CAMERA</button>
+				</div>
+
+				<div id="btn-audio">
+					<button>AUDIO</button>
+				</div>
+
 			</div>
 			
 	</section>

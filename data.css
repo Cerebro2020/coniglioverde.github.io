@@ -118,15 +118,25 @@ body {
  
 }
 
-@media (max-width: 700px) {
+@media (max-width: 700px) {    
 
     .home-text {  
         width: 90%;      
         height: 80vh;        
     } 
 
+    .logoh {
+        position: relative;
+        left: -20px;
+    }
+    
+    .logoh img {
+        width: 140px;
+        height: auto;    
+    }
+
     .paragraph-gallery {
-        height: 50vh;        
+        height: 40vh;        
     }
 
     .home-title h1 {
@@ -136,12 +146,12 @@ body {
     
     .home-paragraph {  
         width: 100%;
-        height: 36vh;                        
+        height: 46vh;                        
     } 
 
     .home-paragraph p {
-        font-size: 19px;
-        line-height: 21px;
+        font-size: 16px;
+        line-height: 18px;
     } 
 
 }

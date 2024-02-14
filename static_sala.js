@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import {OrbitControls} from './three_class/OrbitControls.js';
-import { OBJLoader } from './three_class/OBJLoader.js';
 
 export default function(){
 
@@ -10,6 +9,9 @@ export default function(){
   //CAMERA
   const camera = new THREE.PerspectiveCamera( 50 , window.innerWidth / window.innerHeight, 0.1, 10000 );
   let player = { height:1.8, speed:0.2, turnSpeed:Math.PI*0.02 };
+  camera.position.set( 0, 0, 0);
+  camera.lookAt(new THREE.Vector3( 0, player.height, 0)); 
+  camera.setFocalLength ( 35 );
 
   //RENDERER
   const renderer = new THREE.WebGLRenderer({    
@@ -31,15 +33,10 @@ export default function(){
 
   // TEXTURS
   const loader = new THREE.TextureLoader();
-  const TextureQ2 = loader.load('images/textures/hearts/quadretti2i.jpg');
-  TextureQ2.wrapS = THREE.RepeatWrapping;
-  TextureQ2.wrapT = THREE.RepeatWrapping;
-  TextureQ2.repeat.set(1, 40); 
-
-  const bumpP = loader.load ('images/statics/textures/bump_planet_3.jpg');
+  const bumpP = loader.load ('./images/textures/bump_planet_3.jpg');
   bumpP.wrapS = THREE.RepeatWrapping;
   bumpP.wrapT = THREE.RepeatWrapping;
-  bumpP.repeat.set( 1, 10);
+  bumpP.repeat.set( 2, 800);
 
   // SCENE & FOG
   scene.background = new THREE.Color( 0x000000 );
@@ -48,22 +45,11 @@ export default function(){
   const gridHelper = new THREE.GridHelper( 1000, 1000 );
   gridHelper.position.set(0, -2, -40);  
   //scene.add(gridHelper);
-   
-  // CAMERA
-  camera.position.set( 0, 0, 0);
-  camera.lookAt(new THREE.Vector3( 0, player.height, 0)); 
-  camera.setFocalLength ( 35 );
 
   // LIGHTS
   //AMBIENT
   const ambiente = new THREE.AmbientLight ( 0xffffff, 4 )
   scene.add( ambiente);
-  //POINT
-  const pointLight = new THREE.PointLight( 0xffffff, 0.5, 100); 
-  pointLight.position.set( 0, 0, -40 );
-  const pointLight2 = new THREE.PointLight( 0xffffff, 0.5, 100);    
-  pointLight2.position.set(0,0, -79);   
-  //scene.add( pointLight, pointLight2);
   
   // ANIMATE SCENE
   function animateScene(){
@@ -85,24 +71,40 @@ export default function(){
   }
 
   document.body.onscroll = moveCamera;
+
   // MATERIALS
-  const material1 = new THREE.MeshPhysicalMaterial({
-    color: 0xac2ac2,    
-  });
-
   const material = new THREE.MeshPhysicalMaterial({
-    color: 0x090909,    
-    wireframe: true,
-    //map: TextureQ2,
-    side: THREE.DoubleSide,    
-    displacementMap: bumpP,
-    displacementScale: 0.2, 
+    color: 0x090909,        
+    wireframe: true,        
   });
-
-
+  
   //SALA
   const gSala = new THREE.BoxGeometry( 2, 800, 20, 8, 3200, 80 );
   let sala = new THREE.Mesh( gSala, material );
-  sala.position.set( 0, -90, 0 );  
-  scene.add(sala); 
+  sala.position.set( 0, -90, 0 ); 
+  scene.add(sala);
+  
+  // OBJ
+  for (let i=0; i<150; i++){
+    
+    const material3 = new THREE.MeshPhysicalMaterial( {
+      color: 0x090909,      
+    } );  
+    // Creazione della geometria del cubo
+    const gObj = new THREE.BoxGeometry(4,4,4);
+    // Creazione della geometria degli spigoli
+    const edges = new THREE.EdgesGeometry(gObj);
+
+    // Creazione del cubo con solo le linee
+    let objectS = new THREE.LineSegments(edges, material3);
+    objectS.position.set(0,40,-10);
+    objectS.rotation.set(0,0,0); 
+    // Aggiunta del cubo alla scena
+
+    const objectSclone = objectS.clone();
+    objectSclone.position.set(0,i*-4,-10);
+    objectSclone.rotation.set(0,i*-2,-10);
+    scene.add(objectSclone);
+  };
+
 };

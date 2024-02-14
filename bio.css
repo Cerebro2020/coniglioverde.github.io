@@ -244,3 +244,18 @@ section {
     font-weight: 200;      
   }
 }
+
+#credits {
+  height: 300vh;  
+}
+
+.credits {
+  position: absolute;
+  width: 80%;
+  top: 100px;
+  text-align: center;
+}
+
+.credits h2 {
+  font-weight: 400;
+}

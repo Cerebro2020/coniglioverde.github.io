@@ -29,17 +29,10 @@ export default function(){
     camera.updateProjectionMatrix();
   } );
 
-  // TEXTURS
+  // TEXTURES
   const loader = new THREE.TextureLoader();
-  const textureP = loader.load ('images/bcg/Sfondo.jpg'); 
-  textureP.wrapS = THREE.RepeatWrapping;
-  textureP.WrapT = THREE.RepeatWrapping;
-
-  const textureP2 = loader.load ('images/bcg/Sfondo2.jpg');
-  const textureP3 = loader.load ('images/bcg/SfondoS.jpg');
-  const textureSpace = loader.load ('images/equirectangulars/space.jpg');
-
-  const bumpP = loader.load ('images/statics/textures/bump_planet_3.jpg');
+  
+  const bumpP = loader.load ('images/textures/bump_planet_3.jpg');
   bumpP.wrapS = THREE.RepeatWrapping;
   bumpP.wrapT = THREE.RepeatWrapping;
   bumpP.repeat.set( 1, 10);
@@ -74,12 +67,7 @@ export default function(){
   // SCENE & FOG
   scene.background = new THREE.Color( 0x000000 );
   scene.fog = new THREE.Fog( 0x000000, 40, 180 );  
-
-  const gridHelper = new THREE.GridHelper( 200,200 );
-  //gridHelper.position.set(0, 0,0);  
-  //scene.add(gridHelper);
-
-  //scene.fog = new THREE.Fog(0x000000, 0, 0);  
+  
   // CAMERA
   camera.position.set( 0, 0, 0);
   camera.lookAt(new THREE.Vector3( 0, player.height, 0)); 
@@ -203,7 +191,7 @@ export default function(){
   });
 
   const material2 = new THREE.MeshPhysicalMaterial({
-    color: 0x333333,    
+    color: 0x333333,       
     wireframe: true,
     side: THREE.DoubleSide,    
     displacementMap: bumpP,

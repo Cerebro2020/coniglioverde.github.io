@@ -44,12 +44,16 @@ export default function(){
   //scene.background = new THREE.Color( 0xff0000 );
   
   // CAMERA
-  camera.position.set( 0, 0, 30);
+  camera.position.set( 0, 1.5, 20);
   camera.lookAt(new THREE.Vector3( 0, player.height, -200)); 
-  camera.setFocalLength ( 35 );
-
-  const h = 1.2;
-
+  camera.setFocalLength ( 25);
+   // ORBIT CONTROLS
+  const controls = new OrbitControls( camera, renderer.domElement );  
+  controls.listenToKeyEvents( window ); 
+  controls.minDistance = 0;
+  controls.maxDistance = 20;
+  controls.maxPolarAngle = 1.5;
+  
   // LIGHTS
   //AMBIENT
   const ambiente = new THREE.AmbientLight ( 0xffffff, 1 )
@@ -82,15 +86,6 @@ export default function(){
     renderer.render( scene, camera );
   };
   animateScene();
-
-  // ORBIT CONTROLS
-  const controls = new OrbitControls( camera, renderer.domElement );  
-  controls.listenToKeyEvents( window ); 
-  controls.minDistance = 1;
-  controls.maxDistance = 60;
-
-  //let grid = new THREE.GridHelper();
-  //scene.add(grid);
 
    // UV MAP //
    const uvLoader = new THREE.TextureLoader();
@@ -136,6 +131,7 @@ export default function(){
   });
   
   //SALA  
+  const h = 1.2; //altezza sala
 
   // DESTRA
   const gParteDestra = new THREE.BoxGeometry(0.1,h,9.245);
@@ -158,15 +154,15 @@ export default function(){
   let pSinistra3 = new THREE.Mesh( gParteSinistra3, material);
   pSinistra3.position.set(-((4.88+1.166)/2), h/2, 0);  
   scene.add(pSinistra3);
-  // SINISTRA 3
+  // SINISTRA 4
   const gParteSinistra4 = new THREE.BoxGeometry(0.1,h,1.056);
   let pSinistra4 = new THREE.Mesh( gParteSinistra4, material);
   pSinistra4.position.set(-((4.88+(1.166*2))/2), h/2, (1.056/2));  
   scene.add(pSinistra4);
   // SINISTRA 5
-  const gParteSinistra5 = new THREE.BoxGeometry(0.1,h,4.582);
+  const gParteSinistra5 = new THREE.BoxGeometry(0.1,h,4.682);
   let pSinistra5 = new THREE.Mesh( gParteSinistra5, material);
-  pSinistra5.position.set(-(4.88/2), h/2, -(4.582/2));  
+  pSinistra5.position.set(-(4.88/2), h/2, -(4.541/2));  
   scene.add(pSinistra5);  
 
   //FRONTALE
@@ -179,9 +175,8 @@ export default function(){
   const gPavimento = new THREE.BoxGeometry( 8, 0.1, 10.245, );
   let pavimento = new THREE.Mesh( gPavimento, material2);
   pavimento.position.set( 0, -0.05, 0 );
-  pavimento.receiveShadow = true;  
-  
-  scene.add(pavimento);
+  pavimento.receiveShadow = true;
+  //scene.add(pavimento);
 
   // TETTO
   const tetto = pavimento.clone();
@@ -192,7 +187,7 @@ export default function(){
   copertura.position.set(4.3, h/2, 4.75);
   let coperturaS = copertura.clone();
   coperturaS.position.set(-4.3, h/2, 4.75)
-  scene.add(copertura, coperturaS);
+  //scene.add(copertura, coperturaS);
 
   let sala = new THREE.Group();
   sala.add(pDestra, pSinistra1, pSinistra2, pSinistra3, pSinistra4, pSinistra5, pFrontale, pavimento, tetto, copertura, coperturaS );
@@ -200,7 +195,7 @@ export default function(){
   sala.scale.set(10,10,10);  
   scene.add(sala);
 
-  const gColonna = new THREE.CylinderGeometry(0.5,0.5,12,64);
+  const gColonna = new THREE.CylinderGeometry(0.4,0.4,12,64);
   let colonna1 = new THREE.Mesh(gColonna, material2);
   colonna1.position.set(-14,-4, 31);
   colonna1.castShadow = true; //default is false
@@ -226,7 +221,10 @@ export default function(){
   colonne16.position.set(0,5,-40);
   scene.add(colonne16);
 
- 
+  let room = new THREE.Group();
+  room.add(sala, colonne16);
+  room.position.set(0,0,50);
+  scene.add(room);
 
   // FEMALE    
   const loaderHousewife = new OBJLoader();
@@ -250,7 +248,7 @@ export default function(){
       }
       housewife=objHousewife;     
       console.log( 'body was loaded', housewife );
-      housewife.position.set(0,-5,-30);
+      housewife.position.set(0,-5,10);
       housewife.rotation.set(0, Math.PI,0); 
       housewife.castShadow = true;     
       scene.add( housewife );

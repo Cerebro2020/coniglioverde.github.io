@@ -12,12 +12,13 @@
 
     <!-- Loading -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script>
-    $(document).ready(function() {
-      $(window).on("load", function() {
-        $("#loader").fadeOut("slow");
+      $(document).ready(function() {
+        $(window).on("load", function() {
+          $("#loader").fadeOut("slow");
+        });
       });
-    });
     </script>
 
   </head>
@@ -30,6 +31,10 @@
 
     <div id="loader">
       <div class="loader"></div>
+      <span></span>
+        <div class="text-loader">
+          <p>Loading...</p>
+        </div>
     </div>
     
     <canvas id="writingBack">  
@@ -63,12 +68,13 @@
 
       <ul class="menu">
 
-          <li><a href="#nostalghiaG">NOSTALGHIA</a></li>
-          <li><a href="#embryoG">EMBRYO</a></li>
-          <li><a href="#algoreign_01G">ALGOREIGN</a></i>
-          <li><a href="#escapes">E-SCAPES</a></li>
-          <li><a href="#glitches">GLITCHES</a></li>
-          <li><a href="static_it.html">EN | IT</a>
+        <li><a href="#">STATIC</a></li>
+        <li><a href="#embryoG">EMBRYO</a></li>
+        <li><a href="#nostalghiaG">NOSTALGHIA</a></li>        
+        <li><a href="#algoreign_01G">ALGOREIGN</a></i>        
+        <li><a href="#glitches">GLITCHES</a></li>
+        <li><a href="#escapes">E-SCAPES</a></li>
+        <li><a href="static_it.html">EN | IT</a>
 
       </ul>
 
@@ -86,24 +92,16 @@
     </ul>
 
     </footer>
-
-    <!-- NOSTALGHIA -->
-    <section id="nostalghiaG">
-      <div class="home-text">
-
-        <div class="home-title" >                    
-
-            <h2 data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-              NOSTALGHIA
-            </h2>
-
-        </div>
+    <!-- HOME  -->
+    <section>
+      <div class="home-text">        
 
         <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
 
           <p>
-            This AI project is inspired by Tarkovsky’s work. The galleries feature surreal creatures, hybrids of human and non-human. <br>
-            They explore a deserted planet, perhaps a land long abandoned, where life is almost absent, a place where the ghosts of our future are already memories.                               
+            Questa galleria contiene una selezione dei lavori accomunati dalla staticità.<br><br>
+            Nei dettagli in-significanti che svelano il non visto, il non degno dell'esperienza, fino alla generazio a-immaginativa delle AI, questi progetti svelano, per ampiezza e durata, il resoconto di un processo.<br><br>
+            Come nel gigantesco autoritratto che l'autore fa attraverso le sue opere, così come scriveva Borges, questa è la tana della nudità di Coniglio Verde.                        
           </p>
             
         </div>
@@ -113,37 +111,9 @@
       <div class="scrolling">
         <img src="images/icons/scroll-down.svg" alt="scrolling">
       </div>
-
+    
     </section>
-    
-    <section id="nostalghia">
 
-      <div class="gallery_central"  >        
-
-        <div class="main-gallery" id="nostalghia-div">
-          <img src="images/statics/nostalghia/nostalghia1.jpeg" alt="nostaglhia1">
-        </div>  
-
-        <div class="thumbnail-gallery" id="nostalghia_thumb">
-          <img src="images/statics/nostalghia/nostalghia1.jpeg" alt="nostaglhia1" class="active">
-          <img src="images/statics/nostalghia/nostalghia2.jpeg" alt="nostaglhia2">
-          <img src="images/statics/nostalghia/nostalghia3.jpeg" alt="nostaglhia3">
-          <img src="images/statics/nostalghia/nostalghia4.jpeg" alt="nostaglhia4">  
-          <img src="images/statics/nostalghia/nostalghia5.jpeg" alt="nostaglhia5">                                
-        </div>  
-
-        <div class="title-gallery">
-          <p>NOSTALGHIA - 2023-24</p>
-          <p>AI artwork<br></p>
-        </div>
-
-      </div> 
-
-      <div class="scrolling">
-        <img src="images/icons/favicon.ico" alt="scrolling">
-      </div>
-    </section> 
-    
     <!-- EMBRYO -->
     <section id="embryoG">
       <div class="home-text">
@@ -201,6 +171,64 @@
         <img src="images/icons/favicon.ico" alt="scrolling">
       </div>
     </section> 
+    
+
+    <!-- NOSTALGHIA -->
+    <section id="nostalghiaG">
+      <div class="home-text">
+
+        <div class="home-title" >                    
+
+            <h2 data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+              NOSTALGHIA
+            </h2>
+
+        </div>
+
+        <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+
+          <p>
+            This AI project is inspired by Tarkovsky’s work. The galleries feature surreal creatures, hybrids of human and non-human. <br>
+            They explore a deserted planet, perhaps a land long abandoned, where life is almost absent, a place where the ghosts of our future are already memories.                               
+          </p>
+            
+        </div>
+
+      </div>
+
+      <div class="scrolling">
+        <img src="images/icons/scroll-down.svg" alt="scrolling">
+      </div>
+
+    </section>
+    
+    <section id="nostalghia">
+
+      <div class="gallery_central"  >        
+
+        <div class="main-gallery" id="nostalghia-div">
+          <img src="images/statics/nostalghia/nostalghia1.jpeg" alt="nostaglhia1">
+        </div>  
+
+        <div class="thumbnail-gallery" id="nostalghia_thumb">
+          <img src="images/statics/nostalghia/nostalghia1.jpeg" alt="nostaglhia1" class="active">
+          <img src="images/statics/nostalghia/nostalghia2.jpeg" alt="nostaglhia2">
+          <img src="images/statics/nostalghia/nostalghia3.jpeg" alt="nostaglhia3">
+          <img src="images/statics/nostalghia/nostalghia4.jpeg" alt="nostaglhia4">  
+          <img src="images/statics/nostalghia/nostalghia5.jpeg" alt="nostaglhia5">                                
+        </div>  
+
+        <div class="title-gallery">
+          <p>NOSTALGHIA - 2023-24</p>
+          <p>AI artwork<br></p>
+        </div>
+
+      </div> 
+
+      <div class="scrolling">
+        <img src="images/icons/favicon.ico" alt="scrolling">
+      </div>
+    </section>  
 
     <!-- ALGOREIGN -->    
     <section id="algoreign_01G">
@@ -327,65 +355,6 @@
 
     </section>  
     
-    <!-- E-Scapes -->
-    <section id="escapes">
-      <div class="home-text">
-
-        <div class="home-title" >                    
-
-            <h2 data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-              E-SCAPES
-            </h2>
-
-        </div>
-
-        <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-
-          <p>
-            In this series of digital prints it’s explored the possibility of adopting mathematical syntax in composing poetic-scientific visual maps.
-            Working with generative graphics software, basic geometric figures are subjected to tensive forces until they reveal protein-like archetypes that recall the mind - such as memory and imaginative drive - life forms, objects and landscapes.
-            Environments and phenomena, digital and digitized, with which we interact and that act on us in an ever deeper way.                 
-          </p>
-            
-        </div>
-
-      </div>
-
-      <div class="scrolling">
-        <img src="images/icons/favicon.ico" alt="scrolling">
-      </div>
-
-    </section>
-    
-    <section>
-
-      <div class="gallery_central"  >        
-
-        <div class="main-gallery" id="escapes-div">
-          <img src="images/statics/eScapes/escapes (1).jpg" alt="nostaglhia1">
-        </div>  
-
-        <div class="thumbnail-gallery" id="escapes_thumb">
-          <img src="images/statics/eScapes/escapes (1).jpg" alt="eScapes" class="active">
-          <img src="images/statics/eScapes/escapes (2).jpg" alt="eScapes">
-          <img src="images/statics/eScapes/escapes (3).jpg" alt="eScapes">
-          <img src="images/statics/eScapes/escapes (4).jpg" alt="eScapes"> 
-          <img src="images/statics/eScapes/escapes (5).jpg" alt="eScapes">
-        </div>  
-
-        <div class="title-gallery">
-          <p>E-SCAPES - 2020<br>
-          Digital artwork<br>
-          a transcription of the algoreign</p>
-        </div>
-
-      </div> 
-
-      <div class="scrolling">
-        <img src="images/icons/scroll-updown.gif" alt="scrolling">
-      </div>
-    </section> 
-
     <!-- Glitches_02 -->
     <section id="glitches">
       <div class="home-text">
@@ -471,6 +440,65 @@
         <img src="images/icons/scroll-up.svg" alt="scrolling">
       </div>
     </section> 
+
+       <!-- E-Scapes -->
+       <section id="escapes">
+        <div class="home-text">
+  
+          <div class="home-title" >                    
+  
+              <h2 data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                E-SCAPES
+              </h2>
+  
+          </div>
+  
+          <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+  
+            <p>
+              In this series of digital prints it’s explored the possibility of adopting mathematical syntax in composing poetic-scientific visual maps.
+              Working with generative graphics software, basic geometric figures are subjected to tensive forces until they reveal protein-like archetypes that recall the mind - such as memory and imaginative drive - life forms, objects and landscapes.
+              Environments and phenomena, digital and digitized, with which we interact and that act on us in an ever deeper way.                 
+            </p>
+              
+          </div>
+  
+        </div>
+  
+        <div class="scrolling">
+          <img src="images/icons/favicon.ico" alt="scrolling">
+        </div>
+  
+      </section>
+      
+      <section>
+  
+        <div class="gallery_central"  >        
+  
+          <div class="main-gallery" id="escapes-div">
+            <img src="images/statics/eScapes/escapes (1).jpg" alt="nostaglhia1">
+          </div>  
+  
+          <div class="thumbnail-gallery" id="escapes_thumb">
+            <img src="images/statics/eScapes/escapes (1).jpg" alt="eScapes" class="active">
+            <img src="images/statics/eScapes/escapes (2).jpg" alt="eScapes">
+            <img src="images/statics/eScapes/escapes (3).jpg" alt="eScapes">
+            <img src="images/statics/eScapes/escapes (4).jpg" alt="eScapes"> 
+            <img src="images/statics/eScapes/escapes (5).jpg" alt="eScapes">
+          </div>  
+  
+          <div class="title-gallery">
+            <p>E-SCAPES - 2020<br>
+            Digital artwork<br>
+            a transcription of the algoreign</p>
+          </div>
+  
+        </div> 
+  
+        <div class="scrolling">
+          <img src="images/icons/scroll-updown.gif" alt="scrolling">
+        </div>
+      </section> 
 
     <script>
 

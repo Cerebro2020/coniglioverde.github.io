@@ -96,6 +96,7 @@ cursor: grabbing;
 
 .button_div_writing button {
   font-size: 8px;
+  border-radius: 2px;
 }
 
 .button_camera {  

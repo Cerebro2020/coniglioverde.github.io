@@ -3,7 +3,6 @@ import {OrbitControls} from './three_class/OrbitControls.js';
 import { GLTFLoader } from './three_class/GLTFLoader.js';
 import { FlakesTexture } from './three_class/FlakesTexture.js';
 
-
 export default function(choose,quadri){
 
   const clock = new THREE.Clock();
@@ -43,7 +42,7 @@ export default function(choose,quadri){
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap; 
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-	renderer.toneMappingExposure = 1;
+	renderer.toneMappingExposure = 1;  
   renderer.setSize( window.innerWidth, window.innerHeight );
   document.body.appendChild( renderer.domElement );
     
@@ -101,26 +100,14 @@ export default function(choose,quadri){
   animateScene();
 
   //TEXTURES
-  const Loader = new THREE.TextureLoader();
-  const Texture1 = Loader.load('images/bcg/AI (6).jpg');
-  Texture1.wrapS = THREE.RepeatWrapping;
-  Texture1.wrapT = THREE.RepeatWrapping;
-  Texture1.repeat.set(1, 1); 
-  
-  const TextureMetal = Loader.load('images/textures/Bronze.jpg');
-  Texture1.wrapS = THREE.RepeatWrapping;
-  Texture1.wrapT = THREE.RepeatWrapping;
-  Texture1.repeat.set(1, 1); 
-
-  const TextureMetalColor = Loader.load('images/textures/BronzeEx2.png');
-  TextureMetalColor.wrapS = THREE.RepeatWrapping;
-  TextureMetalColor.wrapT = THREE.RepeatWrapping;
-  TextureMetalColor.repeat.set(10, 10);  
+  const loader = new THREE.TextureLoader();   
   
   let TextureF = new THREE.CanvasTexture(new FlakesTexture());
   TextureF.wrapS = THREE.RepeatWrapping;
   TextureF.wrapT = THREE.RepeatWrapping;
   TextureF.repeat.set(15, 15); 
+
+  const exhib = loader.load('./images/equirectangulars/space.jpg');
 
   // TORSOLO
   const loaderTorsolo = new GLTFLoader();
@@ -136,7 +123,7 @@ export default function(choose,quadri){
       torsolo.traverse(function (node) {
         if (node.isMesh) {
           const material = new THREE.MeshPhysicalMaterial({
-            color: 0xc0652b,            
+            color: 0xc0652b,          
             metalness: 0.9,            
             roughness: 0.5,
             ior: 2.3,
@@ -144,9 +131,11 @@ export default function(choose,quadri){
             sheen: 1,
             sheenRoughness: 0.2,
             sheenColor: 0xc0652b, 
-            //clearcoat: 1,                
+            clearcoat: 1, 
+            clearcoatRoughness: 0,               
             normalMap: TextureF, 
             normalScale: new THREE.Vector2(0.005,0.005),
+            
           });
   
           node.material = material;

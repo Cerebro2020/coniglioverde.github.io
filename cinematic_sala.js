@@ -29,7 +29,7 @@ export default function(){
     camera.updateProjectionMatrix();
   } );
 
-  // TEXTURS
+  // TEXTURES
   const loader = new THREE.TextureLoader();
   const textureP = loader.load ('images/bcg/Sfondo.jpg'); 
   textureP.wrapS = THREE.RepeatWrapping;
@@ -39,7 +39,7 @@ export default function(){
   const textureP3 = loader.load ('images/bcg/SfondoS.jpg');
   const textureSpace = loader.load ('images/equirectangulars/space.jpg');
 
-  const bumpP = loader.load ('images/statics/textures/bump_planet_3.jpg');
+  const bumpP = loader.load ('images/textures/texture_planet.jpeg');
   bumpP.wrapS = THREE.RepeatWrapping;
   bumpP.wrapT = THREE.RepeatWrapping;
   bumpP.repeat.set( 1, 10);
@@ -78,7 +78,7 @@ export default function(){
   scene.fog = new THREE.Fog( 0x000000, 1, 40 );  
 
   const gridHelper = new THREE.GridHelper( 1000, 1000 );
-  gridHelper.position.set(0, -2, -40);  
+  gridHelper.position.set(0, -3, -40);  
   scene.add(gridHelper);
    
   // CAMERA

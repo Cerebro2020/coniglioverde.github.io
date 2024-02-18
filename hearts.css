@@ -3,8 +3,7 @@
 
 *{
   margin: 0;
-  padding: 0; 
-    
+  padding: 0;     
 }
 
 #loader {
@@ -524,7 +523,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;	
-  bottom: 0;  
+  bottom: -5px;  
   color: rgb(162, 255, 0);
   font-size: 14px;    
   font-weight: 0;   
@@ -538,7 +537,8 @@ footer ul {
 footer li {    
   list-style: none;
   display: inline-block;
-  margin: 1rem;
+  align-items: baseline;  
+  margin: 1rem; 
 }
 
 footer a {            

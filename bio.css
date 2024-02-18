@@ -75,8 +75,8 @@ section {
   }
 
   .bio-text p {
-    font-size: 16px;  
-    line-height: 18px;
+    font-size: 18px;  
+    line-height: 20px;
     text-align: left;    
     padding-right: 0px;
   }
@@ -96,23 +96,23 @@ section {
 
 }
 
-@media (max-width: 700px){  
+@media (max-width: 724px){  
 
   .bio-content{
     border: 0px solid white;
     height: 80vh;
+    width: 100%;
   }
 
   .bio-text p {
-    font-size: 15px;  
-    line-height: 17px;
-    text-align: left;
-    
+    font-size: 17px;  
+    line-height: 19px;
+    text-align: left;    
   }
 }
 
-/*CREDITS*/
-#credits {     
+/*WITH*/
+#with {     
   display: flex;
   align-items:center;
   justify-content: center;
@@ -120,7 +120,7 @@ section {
 }
 
 #members {       
-  width: 100%;
+  width: 90%;
   height: 70vh;   
   display: flex;
   flex-direction: column;
@@ -229,8 +229,8 @@ section {
 
   #cvIntro {
     display: block;
-    font-size: 16px;
-    line-height: 17px;
+    font-size: 18px;
+    line-height: 20px;
   }
 
   #textCV {      
@@ -239,14 +239,15 @@ section {
   }
 
   .cv {  
-    font-size: 16px;
-    line-height: 17px;
+    font-size: 18px;
+    line-height: 20px;
     font-weight: 200;      
   }
+  
 }
 
 #credits {
-  height: 300vh;  
+  height: 100vh;  
 }
 
 .credits {
@@ -258,4 +259,18 @@ section {
 
 .credits h2 {
   font-weight: 400;
+}
+
+@media (max-width: 724px){
+
+  .content-credits {
+    font-size: 14px;
+  }
+
+  .credits h2 {
+    font-size: 20px;
+    line-height: 0px;
+    font-weight: 400;
+  }
+
 }

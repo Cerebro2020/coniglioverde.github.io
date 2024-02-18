@@ -59,7 +59,7 @@ html{
   overflow-y: scroll;    
 }
 
-body{    
+body {    
   font-size: 100%;  
   font-family: 'Source Sans 3', sans-serif; 
   font-weight: 200;
@@ -312,19 +312,20 @@ footer img {
   max-width: 14px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 724px) {
+
   footer {    
     height: 30px;
     font-size: 12px; 
   }
 }
 
-@media (max-width: 300px) {
+/* @media (max-width: 300px) {
   footer {  
     height: 40px;
     font-size: 9px; 
   }
-}
+} */
 
 /* IMPOSTAZIONE PAGINA*/
 section {   
@@ -403,8 +404,9 @@ canvas {
   width: auto;
   height: 30px;
   margin-top: 6px;
-  bottom: 40px;
+  bottom: 40px; 
  }
+ 
 .scrolling img {
   filter: invert(1);
   width: auto;
@@ -462,8 +464,8 @@ canvas {
   }
 
   .home-paragraph p {
-    font-size: 16px;     
-    line-height: 18px;    
+    font-size: 18px;     
+    line-height: 20px;    
   }
 } 
 

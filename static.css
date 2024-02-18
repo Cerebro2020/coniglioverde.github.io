@@ -1,3 +1,7 @@
+/* * { 
+  border: 1px solid greenyellow;
+}  */
+
 body {
   height: 100vh;   
   z-index: -9999;
@@ -138,42 +142,65 @@ footer {
     }
 }
 
-/* GALLERY */
-.gallery_central { 
+/* ----GALLERY---- */
+section {
   width: 100%;
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
+  height: auto;   
+  display: flex;  
   align-items: center;
   justify-content: center;
+}
+
+.home-text {
+  width: 80vw;
+  height: 100vh;
+}
+
+.gallery_central { 
+  width: 80vw;  
+  margin-top: 80px; 
+  margin-bottom: 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));  
+  grid-gap: 20px;
+  padding-bottom: 20px;  
+}
+
+.gallery_item {
+  border: 1px solid rgb(70, 70, 70);  
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
 }
 
 .main-gallery {     
   width: auto;
   height: 380px; 
   display: flex;       
+  flex-direction: column;
   align-items: center;
-  justify-content: center;       
+  justify-content: center;
+  padding: 16px;        
 }
     
 .main-gallery img {     
-  width:auto;  
-  max-height: 380px; 
-  transition: ease-in-out 0.2s; 
+  width:auto;   
+  max-height: 360px; 
+  transition: ease-in-out 0.2s;  
 }
     
-.thumbnail-gallery {       
-  width: 372px;
-  height: 68px; 
+.thumbnail-gallery {  
+  border: 1px solid rgb(91, 91, 91);    
+  width: 92%;  
+  height: 78px; 
   display: flex;
-  justify-content: center;
-  padding: 4px;     
+  align-items: center;
+  justify-content: space-around;    
 }
           
 .thumbnail-gallery img {   
   width:auto;
-  height: 66px; 
-  padding-right: 4px; 
+  height: 58px;   
   cursor: pointer;
   opacity: 1;
   transition: ease-in-out 0.2s;
@@ -188,154 +215,32 @@ footer {
   opacity: 1;  
 }
 
-.title-gallery {  
-  background-color: black;  
-  padding: 10px;  
-  width: 360px;
-  height: 50px;
+.title-gallery {
+  width: 98%;
+  height: 70px;      
+  margin-bottom: 0px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;     
+}
+
+.title-gallery p {
   font-size: 14px;
   line-height: 16px;  
-  font-weight: 200;    
-  margin-bottom: 10px;    
+  font-weight: 200;
+  padding-left: 20px; 
 }
 
+/*--- 1024 ---*/
 @media (max-width: 1024px) {
 
-  .main-gallery {  
-    width: 368px;
-    height: auto; 
-    display: flex;       
-    align-items: center;
-    justify-content: center;       
-  }
-    
-  .main-gallery img {   
-    width:auto;
-    height: 368; 
-    transition: ease-in-out 0.2s; 
-  }
-
-  .thumbnail-gallery {    
-    width: 368px;   
-    height: 70px; 
-    position: relative;
-    display:flex;           
-    margin-top: 6px; 
-  }
-          
-  .thumbnail-gallery img {   
-    width:auto;
-    height: 66px;  
-    padding-left: 1px;
-    cursor: pointer;
-    opacity: 1;
-    transition: ease-in-out 0.2s;
-  }
-
-  .title-gallery {     
-    padding: 10px;
-    width: 348px;
-    height: 50px;
-    font-weight: 200;    
+  section {    
+    width: 100%;
+    height: auto;
   }
 
 }
+
+
+
   
-@media (max-width: 724px) {
-
-  .home-text {    
-    width: 80%;
-    height: 70vh;
-    overflow: hidden;
-  }
-
-  .home-title h2 {
-    font-size: 40px;
-  }
-
-  .gallery_central {  
-    width: 100%;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .main-gallery { 
-    width: 300px;
-    height: auto; 
-    display: flex; 
-    justify-content: center;          
-  }
-    
-  .main-gallery img {    
-    width:auto;
-    height: 340px; 
-    transition: ease-in-out 0.2s;     
-  }
-    
-  .thumbnail-gallery {    
-    width: 260px;
-    height: 50px; 
-    position: relative;
-    display: flex;  
-    margin-top: 6px; 
-  }
-          
-  .thumbnail-gallery img {   
-    width:auto;
-    height: 44px;  
-    cursor: pointer;
-    opacity: 1;
-    transition: ease-in-out 0.2s;
-  } 
-
-  .title-gallery {      
-    padding:10px;
-    width: 300px;
-    height: 60px;
-    font-weight: 200;    
-  }
-}
-
-@media (max-width: 281px) {
-
-  .home-text {        
-    width: 90%;
-    height: 70vh;   
-  }
-
-  .home-title h2 {
-    font-size: 40px;
-  }
-
-  .gallery_central {  
-    width: 100%;
-    height: 80vh;    
-  }
-
-  .main-gallery {  
-    width: 240px;          
-  }
-    
-  .main-gallery img {    
-    width:240px;     
-  }
-    
-  .thumbnail-gallery {    
-    width: 260px;
-    height: 50px;   
-  }
-          
-  .thumbnail-gallery img {   
-    width:44px;
-    height: 44px;      
-  } 
-
-  .title-gallery {          
-    width: 240px;   
-    font-size: 14px;
-    font-weight: 200;    
-  }
-}

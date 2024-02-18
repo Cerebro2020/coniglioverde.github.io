@@ -61,17 +61,17 @@ export default function(choose,quadri){
 
   // LIGHTS //////
   //AMBIENT
-  const ambient = new THREE.AmbientLight( 0xffffff, 2.3 );  
+  const ambient = new THREE.AmbientLight( 0xffffff, 1 );  
   scene.add( ambient); 
 
   //POINTS 
-  const pLight = new THREE.PointLight( 0xffffff, 0.6, 600 );  
-  pLight.position.set( 0, 0, 0);
+  const pLight = new THREE.PointLight( 0xffffff, 0.25, 2000 );  
+  pLight.position.set( 0, 1, 0);
   const pHelper = new THREE.PointLightHelper(pLight); 
   pLight.castShadow = true; 
   //Set up shadow properties for the light
-  pLight.shadow.mapSize.width = 2048; // default
-  pLight.shadow.mapSize.height = 2048; // default
+  pLight.shadow.mapSize.width = 1024; // default
+  pLight.shadow.mapSize.height = 1024; // default
   pLight.shadow.camera.near = 0.5; // default
   pLight.shadow.camera.far = 10; // default
 
@@ -89,7 +89,7 @@ export default function(choose,quadri){
   pLight6.position.set(400,0,0);
   pLight7.position.set(-400,0,0);
 
-  scene.add( pLight, pLight2, pLight3, pLight4, pLight5, pLight6, pLight7 );
+  scene.add(pLight, pLight2, pLight3, pLight4, pLight5, pLight6, pLight7 );
 
   // ANIMATE SCENE //////
   function animateScene(){
@@ -207,16 +207,18 @@ export default function(choose,quadri){
     // EMOTION MATERIAL
     const emoMaterial = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color(v[1]),
+      sheenColor: new THREE.Color(v[1]),                  
       metalness: 0.9,            
       roughness: 0.5,
       ior: 2.3,
       reflectivity: 1,
       sheen: 1,
       sheenRoughness: 0.2,
-      sheenColor: new THREE.Color(v[1]), 
-      //clearcoat: 1,                
+      sheenColor: 0xc0652b, 
+      clearcoat: 1, 
+      clearcoatRoughness: 0,               
       normalMap: TextureF, 
-      normalScale: new THREE.Vector2(0.005,0.005),                 
+      normalScale: new THREE.Vector2(0.005,0.005),             
     }); 
 
     if (!forma) {
@@ -307,7 +309,7 @@ export default function(choose,quadri){
   audioLoader.load('audio/hearts/436557__k2tr__major-drone02.mp3', function( buffer ) {
     backgroundSound.setBuffer( buffer );
     backgroundSound.setLoop( true );
-    backgroundSound.setVolume( 0.3 );
+    backgroundSound.setVolume( 0.1 );
     backgroundSound.play();
   });  
 

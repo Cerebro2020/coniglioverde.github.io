@@ -95,22 +95,23 @@ cursor: grabbing;
 }
 
 .button_div_writing button {
-  font-size: 8px;
+  font-size: 8px;   
   border-radius: 2px;
+}
+
+.button_div {
+  width: 90%;
+  display: flex;
+  align-items: center; 
+  justify-content: right; 
 }
 
 .button_camera {  
   position: fixed;
+  align-items: right;
   height: 40px;
   bottom: 40px;  
   width: 100%;
-}
-
-.button_div {
-  width: 100%;
-  display: flex;
-  align-items: center; 
-  justify-content: center; 
 }
 
 .button {  
@@ -128,6 +129,11 @@ cursor: grabbing;
 .button:hover {  
   border: 1px solid  rgb(162, 255, 0);
   color:rgb(162, 255, 0);
+}
+
+.button_camera button {
+  border: 1px solid  rgb(0, 0, 0);  
+  color:rgb(1, 1, 1); 
 }
 
 @media (max-width: 1024px) {
@@ -165,8 +171,8 @@ cursor: grabbing;
   } 
   
   .text-book p {      
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 18px;
+    line-height: 20px;
     font-weight: 100; 
   } 
 
@@ -216,8 +222,8 @@ cursor: grabbing;
   } 
   
   .text-book p {
-    font-size: 16px;
-    line-height: 18px;
+    font-size: 18px;
+    line-height: 20px;
     font-weight: 100; 
   }  
 

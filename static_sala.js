@@ -79,9 +79,9 @@ export default function(){
   });
   
   //SALA
-  const gSala = new THREE.BoxGeometry( 2, 800, 20, 8, 3200, 80 );
+  const gSala = new THREE.BoxGeometry( 3, 1000, 20, 8, 4200, 80 );
   let sala = new THREE.Mesh( gSala, material );
-  sala.position.set( 0, -90, 0 ); 
+  sala.position.set( 0, -190, 0 ); 
   scene.add(sala);
   
   // OBJ
@@ -104,7 +104,7 @@ export default function(){
     const objectSclone = objectS.clone();
     objectSclone.position.set(0,i*-4,-10);
     objectSclone.rotation.set(0,i*-2,-10);
-    scene.add(objectSclone);
+    //scene.add(objectSclone);
   };
 
 };

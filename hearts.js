@@ -493,6 +493,40 @@ export default function(choose,quadri){
     }
      
   ); 
+      // MOUNT
+  const loaderMount = new GLTFLoader();
+
+  loaderMount.load(    
+    '3d/mountains3.glb',
+      function (glt) {
+      const mount = glt.scene;
+      mount.position.set(40, 240, -260 );
+      mount.rotation.set(Math.PI/2, -Math.PI/2, -Math.PI );      
+      mount.scale.set( 1, 1, 1 );
+      
+      mount.traverse(function (node) {
+        if (node.isMesh) {
+          const material = new THREE.MeshPhysicalMaterial({
+            map: TextureQ2,        
+            bumpMap: uvPaper,
+            bumpScale: 0.1, 
+          });
+          node.material = material;
+          node.castShadow = true;
+          node.receiveShadow = true;
+        }
+      });   
+
+      scene.add(mount);
+         
+    },
+             
+    undefined, // funzione di progresso opzionale da passare al caricatore
+    function (error) {
+      console.error(error);      
+    }
+        
+  ); 
   
    // OCEAN
    const loaderOcean = new GLTFLoader();
@@ -529,40 +563,7 @@ export default function(choose,quadri){
       
   ); 
 
-  // MOUNT
-  const loaderMount = new GLTFLoader();
 
-  loaderMount.load(    
-    '3d/mountains3.glb',
-      function (glt) {
-      const mount = glt.scene;
-      mount.position.set(40, 240, -260 );
-      mount.rotation.set(Math.PI/2, -Math.PI/2, -Math.PI );      
-      mount.scale.set( 1, 1, 1 );
-      
-      mount.traverse(function (node) {
-        if (node.isMesh) {
-          const material = new THREE.MeshPhysicalMaterial({
-            map: TextureQ2,        
-            bumpMap: uvPaper,
-            bumpScale: 0.1, 
-          });
-          node.material = material;
-          node.castShadow = true;
-          node.receiveShadow = true;
-        }
-      });   
-
-      scene.add(mount);
-         
-    },
-             
-    undefined, // funzione di progresso opzionale da passare al caricatore
-    function (error) {
-      console.error(error);      
-    }
-        
-  ); 
    
    
   // CONIGLIO

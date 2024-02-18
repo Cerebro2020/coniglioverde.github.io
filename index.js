@@ -18,6 +18,7 @@ export default function(){
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap; 
   renderer.setSize( window.innerWidth, window.innerHeight );
+  renderer.setPixelRatio( window.devicePixelRatio );
   document.body.appendChild( renderer.domElement );
  
   // RESIZE WINDOW

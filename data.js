@@ -36,10 +36,7 @@ export default function(){
 
   const Texture2 = loader.load('images/bcg/SfondoI2.jpg');
 
-  const bcTexture = loader.load('images/bcg/SfondoI.jpg');
-  
-  const uvTexture = loader.load('images/textures/hearts/scrostato.jpg');
-  
+  const bcTexture = loader.load('images/bcg/SfondoI.jpg');  
 
   // SCENE & FOG
   //scene.background = new THREE.Color( 0x000000 );

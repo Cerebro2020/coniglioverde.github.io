@@ -454,7 +454,7 @@ canvas {
 
   .home-title h1 {         
     font-size: 50px;       
-    line-height: 50px;  
+    line-height: 40px;  
   }
   
   .home-paragraph {        
@@ -464,8 +464,8 @@ canvas {
   }
 
   .home-paragraph p {
-    font-size: 18px;     
-    line-height: 20px;    
+    font-size: 16px;     
+    line-height: 17px;    
   }
 } 
 

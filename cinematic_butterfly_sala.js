@@ -29,7 +29,7 @@ export default function(){
     camera.updateProjectionMatrix();
   } );
 
-  // TEXTURS
+  // TEXTURES
   const loader = new THREE.TextureLoader();
   const textureP1 = loader.load ('images/bcg/AI (1).jpg'); 
   const textureP2 = loader.load ('images/bcg/AI (2).jpeg');

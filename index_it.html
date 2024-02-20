@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
-
     <head>
-        
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>coniglioverde-it</title>
-
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"/> 
-
         <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script> 
-
         <!-- Loading -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
@@ -21,16 +16,12 @@
             $("#loader").fadeOut("slow");
           });
         });
-        </script>      
-
+        </script>  
     </head>
-
     <body>
-
         <script>
             AOS.init();         
         </script>
-
         <div id="loader">
             
             <div class="loader"></div>
@@ -38,44 +29,30 @@
             <div class="text-loader">
                 <p>Loading...</p>
             </div>
-            
-        </div>       
-
+        </div>  
         <canvas id="conigliobcg"> 
-
             <script type="importmap">
                 {
                     "imports": {
                         "three": "./three_class/three.module.js"
                         }
                 }
-            </script>		
-            
+            </script>	
             <script type = "module">
                         import scene from "./index.js";                    
                         scene();
-            </script>           
-                       
-        </canvas>                
-
+            </script>   
+        </canvas>     
         <!-- HOME -->
         <header>
             <div id="logo">
-
                 <a href="#"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
-
             </div>
-            
             <input id="menu-toggle" type="checkbox" aria-label="Toggle-menu" />
-
             <label class='menu-button-container' for="menu-toggle">
-
-            <div class='menu-button'></div>
-            
+            <div class='menu-button'></div>            
             </label class='menu-button-container' for="menu-toggle">
-
             <ul class="menu">
-
                 <li><a href="#">HOME</a></li></li>           
                 <li><a href="#data">DATA</a></li>
                 <li><a href="#cinematic">CINEMATIC</a></li>
@@ -85,207 +62,136 @@
                 <!--<li><a href="#contact">CONTACT</a></li>-->                   
                 <li><a href="bio_it.html">BIO/CONTACT</a></li>     
                 <li><a href="index.html">EN | IT</a> 
-                </li> 
-                           
+                </li>      
             </ul>
-
         </header>
-
         <!-- FOOTER -->
         <footer id="footer"> 
-
             <ul>
                 <li>&copy; 2023 felice vino</li>
                 <li><a href="https://www.instagram.com/felice_vino/" target="_blank" rel="noopener"><img src="images/icons/instagram.png" alt="instagram icon"></a></li>
                 <li><a href="https://www.facebook.com/coniglio.verde.2024" target="_blank" rel="noopener"><img src="images/icons/meta.png" alt="meta icon"></a></li>
                 <li><a href="https://vimeo.com/felicevino" target="_blank" rel="noopener"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>                
             </ul>
-
         </footer>
-        
-
         <section> 
-
             <div class="home-text">
-
                 <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad"> 
-
                     <h1>CONIGLIO VERDE</h1>
-
                 </div>  
-
                 <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-
                     <p>                    
                         Coniglio Verde nasce da una ricerca sulle contaminazioni tra linguaggi, arte e tecnologia.<br><br>
                         Il nome è ispirato al progetto Alba di Eduardo Kac e alle sue ricerche sulle nuove forme di esperienza estetica e poetica.<br><br>
                         Coniglio Verde è uno spazio espositivo multimediale e un laboratorio di ricerca su tematiche come augmented realities, AI, ibridazioni e sostenibilità.<br><br>
                         Coniglio Verde non ama sprecare, e riutilizza tutto quello che può quando può, siano esse persone, cose, tempo o idee, perché<br><br>
                         <p class="p-italic">tutto si può trasformare.</p><br>           
-                    </p>
-                    
-                </div>                
-
-            </div> 
-
-            <div class="scrolling">
-
-                <img src="images/icons/scroll-down.svg" alt="scrolling icon">
-                
-            </div>
-
-        </section>         
-                    
-        <!--DATA -->             
-        <section id="data">
-        
-            <div class="home-text">
-                
-                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                    
-                    <h1>DATA</h1>
-                    
+                    </p>                    
                 </div> 
-                
+            </div> 
+            <div class="scrolling">
+                <img src="images/icons/scroll-down.svg" alt="scrolling icon">                
+            </div>
+        </section>   
+        <!--DATA -->             
+        <section id="data">        
+            <div class="home-text">                
+                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                    
+                    <h1>DATA</h1>                    
+                </div>                 
                 <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-
                     <p>
                         Dal punto di vista di Coniglio Verde appare chiaro che i dati assumono oggi un significato nuovo e complesso.<br><br>
                         I dati rappresentano il tessuto digitale e materiale del nostro presente, sussurrando brandelli di premonizioni come un tempo facevano gli oracoli.<br><br>
                         I dati rappresentano un'estensione di noi stessi che rivela e nasconde, allo stesso tempo, le nostre esistenze, modellandone i tratti in modi a noi ancora ignoti.<br><br>
                         <a href="data_it.html">Scendi in questa tana</a>.
                     </p>   
-                    
                 </div> 
-            
             </div>
-
             <div class="scrolling">
                 <img src="images/icons/favicon.ico" alt="scrolling">
             </div>
-
         </section>
-
         <!--CINEMATIC --> 
         <section id="cinematic">
-
             <div class="home-text">
-
                 <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                    
                     <h1>CINEMATIC</h1>
-                </div>
-                
+                </div>                
                 <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-
                     <p>
                         Coniglio Verde, seduto sulla poltrona della sala cinematografica, rifletteva su come un film potesse confondersi con un sogno.<br><br>          
                         Quel cinema che ha fatto sognare intere generazioni si è moltiplicato e frammentato disseminandosi su schermi di ogni tipo fino a proiettarsi sulle superfici delle strutture architettoniche.<br><br>
                         Coniglio Verde crede che la cinematografia sia ancora una forma di comunicazione e d'arte che non ha esaurito la sua forza, ma è attratto anche dalle sue declinazioni contemporanee come le esperienze cinematiche immersive.<br><br>
-                        <a href="cinematic_it.html">Scendi in questa tana</a>.
-                        
+                        <a href="cinematic_it.html">Scendi in questa tana</a>.                        
                     </p>
-                    
                 </div>
-
             </div>
-
             <div class="scrolling">
                 <img src="images/icons/favicon.ico" alt="scrolling">
             </div>
-            
-                
-        </section>  
-
+        </section> 
         <!--WRITING --> 
         <section id="writing">
-        
             <div class="home-text">
-
                 <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                    
                     <h1>WRITING</h1>
-                </div> 
-            
+                </div>             
                 <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-
                     <p>
                         Coniglio Verde fa tesoro della frase di un narratore di storie strane.<br><br>
                         Questo narratore diceva che non tutte le storie dovevano avere la forma di una casa, quella che possiamo immaginare più facilmente, con un tetto, delle finestre, una porta e un bel giardino.<br><br>
                         Alcune storie possono assumere la forma di elefanti, tazzine da caffè, sistemi planetari e chissà cos'altro ancora.<br><br>
-
                         Coniglio Verde sa che con le parole si possono creare nuovi mondi.<br><br> 
-
                         <a href="writing_it.html">Scendi in questa tana</a>.
                     </p>
-
-                </div>
-            
+                </div>            
             </div>
-
             <div class="scrolling">
                 <img src="images/icons/favicon.ico" alt="scrolling">
             </div>
-
         </section>
-
         <!--STATIC --> 
         <section id="static">
-
             <div class="home-text">
-
                 <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                    
                     <h1>STATIC</h1>
                 </div> 
-
                 <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-
                     <p>
                         Il tempo si imprime sulle superfici sensibili attraverso la luce. Le immagini scorrono, ma alcune di esse restano impigliate, si incollano allo sguardo.<br><br> 
                         Coniglio Verde sperimenta con le immagini statiche create con le AI, con gli algoritmi generativi, con la fotografia digitale.<br><br>
                         La luce del futuro, l'ombra del passato. Se il tempo girasse su se stesso può darsi che desiderio e nostalgia si rivelino essere, in fondo, la stessa cosa.<br><br>             
                         <a href="static_it.html">Scendi in questa tana</a>.
-                    </p>           
-
-                </div>               
-                
+                    </p>  
+                </div>  
             </div>
-
             <div class="scrolling">
                 <img src="images/icons/favicon.ico" alt="scrolling">
             </div>
-
         </section>
-
-
         <!-- RESEARCHES -->       
          <!--<section id="researches">
-
             <div class="home-text">
-
                 <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
                     <h1 >RESEARCHES</h1>
                 </div>  
-
                 <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">         
                     <p>Green Rabbit saw the light in a lab, 
                         Is an object of love of science and beauty.<br>
                         Research is therefore inscribed in its DNA, which is the mystery of life, which is the mystery of knowledge.           
                     </p>
                 </div>
-
             </div>
-
-        </section>-->   
-        
+        </section>-->           
         <!-- CONTACT -->
         <!--<section id="contact">       
             <div class="contact_container">
-                <form action="action_page.php">
-            
+                <form action="action_page.php">            
                 <label for="fname">First Name/Company</label>
-                <input type="text" id="fname" name="firstname" placeholder="Your name.." data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-            
+                <input type="text" id="fname" name="firstname" placeholder="Your name.." data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">            
                 <label for="lname" data-aos="flip-down">Last Name</label>
-                <input type="text" id="lname" name="lastname" placeholder="Your last name.." data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-            
+                <input type="text" id="lname" name="lastname" placeholder="Your last name.." data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">            
                 <label for="country">Country</label>
                 <select id="country" name="country" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                    
                     <option value="afghanistan">Afghanistan</option>
@@ -451,19 +357,12 @@
                     <option value="solomon islands">Solomon Islands</option>
                     <option value="somalia">Somalia</option>
                     <option value="south africa">South Africa</option> 
-                </select>
-            
+                </select>            
                 <label for="subject">Subject</label>
-                <textarea id="subject" name="subject" placeholder="Write something.." style="height:136px" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad"></textarea>
-            
-                <input type="submit" value="Submit"data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-            
+                <textarea id="subject" name="subject" placeholder="Write something.." style="height:136px" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad"></textarea>            
+                <input type="submit" value="Submit"data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">            
                 </form>
-
-            </div> 
-            
+            </div>             
         </section>--> 
-
     </body>
-
 </html>

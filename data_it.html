@@ -1,262 +1,166 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>coniglioverde|data-it</title>
-
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="data.css"> 
-  
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"/>
-
-    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
-    
-    <!-- Loading -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-        $(window).on("load", function() {
-            $("#loader").fadeOut("slow");
-        });
-        });
-    </script>
-
-</head>
-<body>
-
-    <script>
-        AOS.init();         
-    </script>
-
-    <div id="loader">
-        <div class="loader"></div>
-            <span></span>
-            <div class="text-loader">
-                <p>Loading...</p>
-            </div>
-    </div>
-
-    <canvas class="writing">            			
-        <script type="importmap">
-            {
-                "imports": {
-                    "three": "./three_class/three.module.js"
-                    }
-            }
-            </script>		
-            <script type = "module">
-                    import scene from "./data.js";
-                    //import scene from "./aqvam.js";
-                    scene();
-            </script>            
-    </canvas>
-
-    <!-- HOME -->
-    <header>
-        <div id="logo">
-
-            <a href="index_it.html"><img src="images/loghi/coniglio_verde_logo.png" alt="Coniglio Verde logo"></a>
-
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>coniglioverde|data-it</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="data.css"> 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+        <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"/>
+        <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+        <!-- Loading -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $(window).on("load", function() {
+                    $("#loader").fadeOut("slow");
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <script>
+            AOS.init();         
+        </script>
+        <div id="loader">
+            <div class="loader"></div>
+                <span></span>
+                <div class="text-loader">
+                    <p>Loading...</p>
+                </div>
         </div>
-
-        <input id="menu-toggle" type="checkbox" aria-label="Toggle menu"/>
-
-        <label class='menu-button-container' for="menu-toggle">
-
-        <div class='menu-button'></div>
-
-        </label class='menu-button-container' for="menu-toggle">
-
-        <ul class="menu">                
-            <li><a href="index.html#data">DATA</a></li> 
-            <li><a href="#">H.E.ArtS</a></a></li>
-            <li><a href="data.html">EN | IT</a> 
-            </li>                             
-        </ul>
-
-    </header>      
-
-    <!-- FOOTER -->
-    <footer id="footer">
-
-        <ul>
-            <li>&copy; 2023 felice vino</li>
-            <li><a href="https://www.instagram.com/felice_vino/" target="_blank" rel="noopener"><img src="images/icons/instagram.png" alt="instagram icon"></a></li>
-            <li><a href="https://www.facebook.com/coniglio.verde.2024" target="_blank" rel="noopener"><img src="images/icons/meta.png" alt="meta icon"></a></li>
-            <li><a href="https://vimeo.com/felicevino" target="_blank" rel="noopener"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
-        </ul>
-
-    </footer>
-
-    <section>
-           
-        <div class="home-text">
-
-            <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-
-                <h1 >H.E.Arts</h1>
-
-                <div  class="logoh">
-                    <img src="images/loghi/hearts_logo.png" alt="">
-                </div>
-
-            </div>                 
-            
-            <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-                             
-                <p>
-                    <a href="hearts_material_it.html" target="_blank">H.E.Arts</a> è l'acronimo di High Emotional Arts, un dispositivo basato sulla "Geneva Wheel" e progettato per registrare il viaggio emotivo di un visitatore di un museo, di una galleria d'arte o di altri tipi di fruizione artistica.<br><br>                     
-                    Il visitatore può selezionare il tipo di emozione che prova per descrivere la sua esperienza, per poi vederla tradotta in una visualizzazione di dati personalizzata e creativa.<br><br>
-                    Il prototipo presente in questa pagina permette all'utente di registrare le proprie emozioni a partire da una selezione di opere provenienti dal Museo del 900 di Milano.<br>
-                </p>
-
+        <canvas class="writing">            			
+            <script type="importmap">
+                {
+                    "imports": {
+                        "three": "./three_class/three.module.js"
+                        }
+                }
+                </script>		
+                <script type = "module">
+                        import scene from "./data.js";
+                        //import scene from "./aqvam.js";
+                        scene();
+                </script>            
+        </canvas>
+        <!-- HOME -->
+        <header>
+            <div id="logo">
+                <a href="index_it.html"><img src="images/loghi/coniglio_verde_logo.png" alt="Coniglio Verde logo"></a>
             </div>
-
-            <div class="scrolling">
-
-                <img src="images/icons/scroll-down.svg" alt="scrolling">
-
-            </div>
-        
-        </div>
-            
-    </section>
-        
-    <!-- GALLERY -->                 
-    <section>
-
-        <div class="paragraph-gallery">
-                
-            <div class="double-image-data">
-                <div  class="dids">
-                    <img src="images/hearts/gallery_quad/01.jpg" alt="">
+            <input id="menu-toggle" type="checkbox" aria-label="Toggle menu"/>
+            <label class='menu-button-container' for="menu-toggle">
+            <div class='menu-button'></div>
+            </label class='menu-button-container' for="menu-toggle">
+            <ul class="menu">                
+                <li><a href="index.html#data">DATA</a></li> 
+                <li><a href="#">H.E.ArtS</a></a></li>
+                <li><a href="data.html">EN | IT</a></li>                             
+            </ul>
+        </header>  
+        <!-- FOOTER -->
+        <footer id="footer">
+            <ul>
+                <li>&copy; 2023 felice vino</li>
+                <li><a href="https://www.instagram.com/felice_vino/" target="_blank" rel="noopener"><img src="images/icons/instagram.png" alt="instagram icon"></a></li>
+                <li><a href="https://www.facebook.com/coniglio.verde.2024" target="_blank" rel="noopener"><img src="images/icons/meta.png" alt="meta icon"></a></li>
+                <li><a href="https://vimeo.com/felicevino" target="_blank" rel="noopener"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
+            </ul>
+        </footer>
+        <section>            
+            <div class="home-text">
+                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                    <h1 >H.E.Arts</h1>
+                    <div  class="logoh">
+                        <img src="images/loghi/hearts_logo.png" alt="">
+                    </div>
+                </div>                
+                <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                    <p>
+                        <a href="hearts_material_it.html" target="_blank">H.E.Arts</a> è l'acronimo di High Emotional Arts, un dispositivo basato sulla "Geneva Wheel" e progettato per registrare il viaggio emotivo di un visitatore di un museo, di una galleria d'arte o di altri tipi di fruizione artistica.<br><br>                     
+                        Il visitatore può selezionare il tipo di emozione che prova per descrivere la sua esperienza, per poi vederla tradotta in una visualizzazione di dati personalizzata e creativa.<br><br>
+                        Il prototipo presente in questa pagina permette all'utente di registrare le proprie emozioni a partire da una selezione di opere provenienti dal Museo del 900 di Milano.<br>
+                    </p>
                 </div>
-                <div  class="dids">
-                    <img src="images/hearts/gallery_quad/05.jpg" alt="">
+                <div class="scrolling">
+                    <img src="images/icons/scroll-down.svg" alt="scrolling">
+                </div>            
+            </div>                
+        </section>            
+        <!-- GALLERY -->                 
+        <section>
+            <div class="paragraph-gallery">                    
+                <div class="double-image-data">
+                    <div  class="dids">
+                        <img src="images/hearts/gallery_quad/01.jpg" alt="">
+                    </div>
+                    <div  class="dids">
+                        <img src="images/hearts/gallery_quad/05.jpg" alt="">
+                    </div>
+                </div>                
+                <div class="double-image-data">
+                    <div  class="dids">
+                        <img src="images/hearts/gallery_quad/13.jpg" alt=""> 
+                    </div>
+                    <div class="dids">
+                        <img src="images/hearts/gallery_quad/20.jpg" alt="">
+                    </div>
                 </div>
-            </div>
-            
-            <div class="double-image-data">
-                <div  class="dids">
-                    <img src="images/hearts/gallery_quad/13.jpg" alt=""> 
+            </div>            
+            <div class="home-text">
+                <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                    <p>
+                        L'esperienza si svolge in questo modo. Per iniziare, durante la visita, prenditi il tuo tempo, guarda le opere d'arte e "lasciati sentire".<br><br>
+                        Presta attenzione alle tue emozioni in relazione a quello che le opere potrebbero significare.<br><br>                    
+                        "Ciò che conta è quello che provi."<br><br>
+                        Nel nostro caso troverai le opere selezionate nell'interfaccia dell'app.  
+                    </p>
                 </div>
-                <div class="dids">
-                    <img src="images/hearts/gallery_quad/20.jpg" alt="">
-                </div>
-            </div>
-
-        </div>
-           
-        <div class="home-text">        
-                         
-            <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                
-                                 
-                <p>
-                    L'esperienza si svolge in questo modo. Per iniziare, durante la visita, prenditi il tuo tempo, guarda le opere d'arte e "lasciati sentire".<br><br>
-                    Presta attenzione alle tue emozioni in relazione a quello che le opere potrebbero significare.<br><br>                    
-                    "Ciò che conta è quello che provi."<br><br>
-                    Nel nostro caso troverai le opere selezionate nell'interfaccia dell'app.  
-                </p>
-
-            </div>
-
-            <div class="scrolling">
-                <img src="images/icons/favicon.ico" alt="scrolling">
-            </div>           
-
-        </div>
-            
-    </section>
-    
-    <!-- INTERFACCIA -->           
-    <section>       
-
-        <!-- <div class="paragraph-gallery">
-
-            <div class="double-image-data">
-
-                <div class="dids">
-                    <img src="images/hearts/interfaccia_a1.jpg"  alt="">
-                </div>
-
-                <div class="dids">
-                    <img src="images/hearts/interfaccia_a2.jpg"  alt="">
-                </div>
-
-            </div>
-
-            <div class="double-image-data">
-
-                <div class="dids">
-                    <img src="images/hearts/interfaccia_a3.jpg"  alt="">
-                </div>
-
-                <div class="dids">
-                    <img src="images/hearts/interfaccia_a4.jpg"  alt="">
+                <div class="scrolling">
+                    <img src="images/icons/favicon.ico" alt="scrolling">
                 </div>
             </div>
-
-        </div> -->
-                   
-        <div class="home-text"> 
-
-            <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">                
-
-                <div  class="logoh">
-                    <img src="images/loghi/hearts_logo.png" alt="">
+        </section>        
+        <!-- INTERFACCIA -->           
+        <section>   
+            <div class="home-text">
+                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad"> 
+                    <div  class="logoh">
+                        <img src="images/loghi/hearts_logo.png" alt="">
+                    </div>
+                </div>  
+                <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                    <p>
+                        Nell'interfaccia troverai una gallery e un elenco di emozioni che potrai selezionare. Le emozioni sono raggruppate in quattro aree fondamentali.<br><br> 
+                        Scegline una, due o fino a un massimo di tre per descrivere le sfumature delle tue emozioni.<br><br> 
+                        Dopo aver effettuato la prima scelta trascina l'immagine per andare all'opera successiva e così via fino all'ultima.<br><br> 
+                        Al termine della gallery seleziona il tasto "result" e potrai vedere come i tuoi dati personali creano un'opera unica, frutto della tua personale esperienza.
+                    </p>
                 </div>
-
-            </div>   
-                
-            <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-                             
-                <p>
-                    Nell'interfaccia troverai una gallery e un elenco di emozioni che potrai selezionare. Le emozioni sono raggruppate in quattro aree fondamentali.<br><br> 
-                    Scegline una, due o fino a un massimo di tre per descrivere le sfumature delle tue emozioni.<br><br> 
-                    Dopo aver effettuato la prima scelta trascina l'immagine per andare all'opera successiva e così via fino all'ultima.<br><br> 
-                    Al termine della gallery seleziona il tasto "result" e potrai vedere come i tuoi dati personali creano un'opera unica, frutto della tua personale esperienza.
-                </p>
-
-            </div>
-
-            <div class="scrolling">
-                <img src="images/icons/favicon.ico" alt="scrolling">
-            </div>
-
-        </div> 
-        
-    </section>
-
-    <!-- ESPERIENZA -->      
-    <section>
-
-        <div class="image-cover"></div>
-       
-        <div class="home-text">           
-            
-            <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-                             
-                <p>
-                    Alla fine della raccolta dei dati, che puoi terminare in qualsiasi momento, potrai verificare il risultato.<br><br> 
-                    Una prima visualizzazione è pensata per dare vita a uno spazio da esplorare <a href="hearts_it.html">H.E.Arts_01</a>.<br><br> 
-                    Una seconda visualizzazione crea un oggetto unico, ispirato a uno degli artisti presenti nel museo<a href="hearts_pomo_it.html"> H.E.Arts_02</a>.<br>
-                    <br>
-                    Se ti va puoi usare i nostri contatti per raccontarci la tua esperienza.<br>                   
-                </p>
-
-            </div>
-
-            <div class="scrolling">
-                <img src="images/icons/scroll-up.svg" alt="scrolling">
-            </div>
-
-        </div> 
-        
-    </section> 
-</body>
+                <div class="scrolling">
+                    <img src="images/icons/favicon.ico" alt="scrolling">
+                </div>
+            </div> 
+        </section>
+        <!-- ESPERIENZA -->      
+        <section>
+            <div class="image-cover"></div>        
+            <div class="home-text">
+                <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                    <p>
+                        Alla fine della raccolta dei dati, che puoi terminare in qualsiasi momento, potrai verificare il risultato.<br><br> 
+                        Una prima visualizzazione è pensata per dare vita a uno spazio da esplorare <a href="hearts_it.html">H.E.Arts_01</a>.<br><br> 
+                        Una seconda visualizzazione crea un oggetto unico, ispirato a uno degli artisti presenti nel museo<a href="hearts_pomo_it.html"> H.E.Arts_02</a>.<br>
+                        <br>
+                        Se ti va puoi usare i nostri contatti per raccontarci la tua esperienza.<br>                   
+                    </p>
+                </div>
+                <div class="scrolling">
+                    <img src="images/icons/scroll-up.svg" alt="scrolling">
+                </div>
+            </div> 
+        </section> 
+    </body>
 </html>

@@ -1,92 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 	<head>
-		
 		<meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>coniglioverde|data|h.e.arts_01</title>		
 		<link href="./bootstrap-4.0.0-dist/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
-		
-		<!--<link rel="stylesheet" href="style.css">*-->
-		
-		<link rel="stylesheet" href="hearts.css">	
-
+		<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">		
+		<link rel="stylesheet" href="hearts.css">
 		<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 		<script src="jquery.min.js"></script>
-		
-
-		<style>
-			html {
-				background-color: black;
-			}
 		</style>
-
 		 <!-- Loading -->
 		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-		<script>
-			
+		<script>			
 			$(document).ready(function() {
 				$(window).on("load", function() {
 					$("#loader").fadeOut("slow");
 			   	});
 			});
-
 		</script>
-
 	</head>
-
 	<body>
-
 		<div id="loader">			           
             <div class="text-loader">
                 <p>Loading...</p>
             </div>
 		</div>
-
 		<header>
 			<div id="logo">
 				<a href="index.html"><img src="images/loghi/coniglio_verde_logo.png" alt="Coniglio Verde Logo"></a>
 			</div>
-
 			<input id="menu-toggle" type="checkbox" aria-label="Toggle Menu"/>
 			<label class='menu-button-container' for="menu-toggle">
 			<div class='menu-button'></div>
 			</label class='menu-button-container' for="menu-toggle">
-
 			<ul class="menu">
 				<li></li>
 				<li></li>
-				<li>
-					<a href="data.html">DATA</a>
-				</li> 				
+				<li><a href="data.html">DATA</a></li> 				
 				<li><a href="hearts_it.html">EN | IT</a>     				          
 			</ul>
-		</header>		
-		
+		</header>	
 		<!-- FOOTER -->
         <footer id="footer">
-
 			<ul>
                 <li>&copy; 2023 felice vino</li>
-                <li>
-					<a href="https://www.instagram.com/felice_vino/" target="_blank" rel="noopener"><img src="images/icons/instagram.png" alt="instagram icon"></a>
-				</li>
-                <li>
-					<a href="https://www.facebook.com/coniglio.verde.2024" target="_blank" rel="noopener"><img src="images/icons/meta.png" alt="meta icon"></a>
-				</li>
-                <li>
-					<a href="https://vimeo.com/felicevino" target="_blank" rel="noopener"><img src="images/icons/vimeo.png" alt="vimeo icon"></a>
-				</li>
+                <li><a href="https://www.instagram.com/felice_vino/" target="_blank" rel="noopener"><img src="images/icons/instagram.png" alt="instagram icon"></a></li>
+                <li><a href="https://www.facebook.com/coniglio.verde.2024" target="_blank" rel="noopener"><img src="images/icons/meta.png" alt="meta icon"></a></li>
+                <li><a href="https://vimeo.com/felicevino" target="_blank" rel="noopener"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
             </ul>
-
         </footer>
-
-		<section>		
-			
+		<section>			
 			<div id="first_step">
 				<div class="swiper">
 					<!-- Additional required wrapper -->
@@ -96,16 +61,13 @@
 					<div class="swiper-pagination">					
 					</div>			
 					<!-- If we need scrollbar -->
-				</div>			
-
+				</div>	
 				<div class="button-choose">		
 					<div id="choose">Hai scelto: <span></span>
 					</div>
 					<button class="btn btn-secondary" id="openscene" type="button">RESULT</button>
 				</div>
-
 			</div>
-
 			<canvas>>
 				<script type="importmap">
 					{
@@ -115,7 +77,6 @@
 					}
 				</script>
 			</canvas>
-
 				<script type = "module">
 						import Swiper from 'https://unpkg.com/swiper@8/swiper-bundle.esm.browser.min.js'
 						
@@ -232,8 +193,7 @@
 					});
 					
 					//scene();
-				</script>
-			
+				</script>			
 			<div class="info_leyer">
 				<div id="info">
 					<p>
@@ -241,21 +201,14 @@
 					</p>
 				</div>
 			</div>
-
 			<div class="button-controls">
-
 				<div id="btn-camera">
 					<button>CAMERA</button>
 				</div>
-
 				<div id="btn-audio">
 					<button>AUDIO</button>
 				</div>
-
-			</div>
-			
-	</section>
-
+			</div>			
+		</section>
 	</body>
-
 </html>

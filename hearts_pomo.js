@@ -65,7 +65,7 @@ export default function(choose,quadri){
   scene.add( ambient); 
 
   //POINTS 
-  const pLight = new THREE.PointLight( 0xffffff, 0.25, 2000 );  
+  const pLight = new THREE.PointLight( 0xffffff, 0.35, 2000 );  
   pLight.position.set( 0, 1, 0);
   const pHelper = new THREE.PointLightHelper(pLight); 
   pLight.castShadow = true; 

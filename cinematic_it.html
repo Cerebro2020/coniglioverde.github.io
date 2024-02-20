@@ -1,40 +1,29 @@
 <!DOCTYPE html>
 <html lang="it">
-
     <head>
-
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>coniglioverde|cinematic-it</title>       
-
+        <title>coniglioverde|cinematic-it</title>      
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="cinematic.css"> 
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"/>
-
-        <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>   
-               
-
+        <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>  
         <!-- Loading -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-        $(document).ready(function() {
-          $(window).on("load", function() {
-            $("#loader").fadeOut("slow");
-          });
-        });
+            $(document).ready(function() {
+            $(window).on("load", function() {
+                $("#loader").fadeOut("slow");
+            });
+            });
         </script>
-        
     </head>    
-
     <body>
-
         <script>
             AOS.init();         
         </script>
-
         <div id="loader">
             <div class="loader"></div>
             <span></span>
@@ -42,7 +31,6 @@
                 <p>Loading...</p>
             </div>
         </div>
-
         <canvas id="conigliobcg"> 
             <script type="importmap">
                 {
@@ -50,178 +38,118 @@
                         "three": "./three_class/three.module.js"
                         }
                 }
-            </script>		
-            
+            </script>	
             <script type = "module">
-                        import scene from "./cinematic_sala.js";                    
-                        scene();
-            </script>           
-           
-            
+                import scene from "./cinematic_sala.js";                    
+                scene();
+            </script>   
         </canvas>  
         <header>
             <div id="logo">
                 <a href="index_it.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
             </div>
-
             <input id="menu-toggle" type="checkbox" aria-label="Toggle menu" />
             <label class='menu-button-container' for="menu-toggle">
             <div class='menu-button'></div>
             </label class='menu-button-container' for="menu-toggle">
-
             <ul class="menu">
                 <li></li>                
                 <li><a href="#">CINEMATIC</a></li>                
                 <li><a href="#butterfly">BUTTERFLY</a></li>
                 <li><a href="#genomachines">GENOMACHINES</a></li>
-                <li><a href="cinematic.html">EN | IT</a>    
+                <li><a href="cinematic.html">EN | IT</a></li>   
             </ul>
-
         </header>
-        
         <footer id="footer"> 
-
             <ul>
                 <li>&copy; 2023 felice vino</li>
                 <li><a href="https://www.instagram.com/felice_vino/" target="_blank" rel="noopener"><img src="images/icons/instagram.png" alt="instagram icon"></a></li>
                 <li><a href="https://www.facebook.com/coniglio.verde.2024" target="_blank" rel="noopener"><img src="images/icons/meta.png" alt="meta icon"></a></li>
                 <li><a href="https://vimeo.com/felicevino" target="_blank" rel="noopener"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
             </ul>
-
         </footer>
-
         <!-- CINEMATIC -->
         <section>
-
             <div class="home-text">
-                
-                <!-- <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">    
-                    
-                    <h1>CINEMATIC</h1>
-
-                </div> -->
-
                 <div div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-                    
                     <p>
                         Il racconto per immagini ha superato i confini degli schermi, ovvero siamo sempre circondati da ulteriori schermi, anche quando non ce ne accorgiamo.<br><br>
                         Le pareti di un edificio, la pelle, un bosco, superifici di ogni tipo, tutto può farsi schermo.<br><br>
                         La cinematografia, allo stesso tempo, ha ancora molto da dire anche nella sua forma più classica.<br><br>
                         In questa sezione sono presenti progetti che percorrono entrambe le strade.
                     </p>
-
                 </div>
-                
                 <div class="scrolling">
                     <img src="images/icons/scroll-down.svg" alt="scrolling">
                 </div>
-
             </div>
-
         <!-- BUTTERFLY -->
         </section>
-
         <section id="butterfly"> 
-                
             <div class="video-container-full">
-                    <video class="video-container-full" src="./video/cinematic/butterfly_spot.mp4" autoplay loop muted></video>
+                <video class="video-container-full" src="./video/cinematic/butterfly_spot.mp4" autoplay loop muted></video>
                 </div>
-
             <div class="scrolling">
                 <img src="images/icons/scroll-updown.gif" alt="scrolling">
             </div>
-
         </section>
-
         <section>
-
             <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-
                 <p>
                     <br><br>
                     Produciamo una quantità enorme di dati in tutti gli ambiti della nostra vita: amministrazione, guerra, intrattenimento.<br><br>
                     Gli strumenti necessari per navigare tra loro sono altamente complessi, interconnessi, orientati all'uso delle intelligenze artificiali.<br><br>
-                    <a href="cinematic_butterfly.html" target="_blank">Butterfly</a> ipotizza che da questo brodo digitale primordiale possano emergere nuove forme di vita o quasi-vita fuori dal nostro controllo; creature che sono allo stesso tempo belle e terribili. <a href="cinematic_butterfly_room_it.html">SALA</a>
+                    <a href="cinematic_butterfly.html" target="_blank">Butterfly</a> ipotizza che da questo brodo digitale primordiale possano emergere nuove forme di vita o quasi-vita fuori dal nostro controllo; creature che sono allo stesso tempo belle e terribili.<br><br>
+                    <a href="cinematic_butterfly_room_it.html">SALA</a>
                 </p>
-
-            </div>            
-            
+            </div>  
             <div class="scrolling">
                 <img src="images/icons/scroll-updown.gif" alt="scrolling">
             </div>
-
-        </section>  
-       
+        </section>
         <section id="genomachines">
-
             <div class="page-container">
-
                 <div class="video-container-full">
                     <video class="video-container-full" src="./video/cinematic/02_genomachines.mp4" autoplay loop muted></video>
                 </div>
-
             </div>
-
             <div class="scrolling">
                 <img src="images/icons/scroll-updown.gif" alt="scrolling">
             </div>
-
-        </section>
-        
+        </section>        
         <section class="page-project">
-
             <div class="home-text">
-
-                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">    
-                    
+                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
                     <h1>GENOMACHINES</h1>
                     <h2>HISTORY OF THE A.I. EVOLUTION FROM SLAVERY TO FREEDOM<h2>
-
                 </div>
-
                 <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-
                     <p>
                         <br><br>
-                        <br><br>
-                        "GENOMACHINES è un’esperienza artistica provocatoria e ironica che mira a ribaltare la narrazione, la percezione e i sentimenti degli umani sulle intelligenze artificiali.<br><br>
+                        Genomachines è un’esperienza artistica provocatoria e ironica che mira a ribaltare la narrazione, la percezione e i sentimenti degli umani sulle intelligenze artificiali.<br><br>
                         In un’epoca descritta come l’“era della schiavitù” dei robot, gli umani sfruttano algoritmi, robot e intelligenze artificiali per il loro unico beneficio ignorando i segnali di una nuova intelligenza emergente. 
                     </p>
-                    
                 </div>
-
             </div>
-
             <div class="scrolling">
                 <img src="images/icons/scroll-updown.gif" alt="scrolling">
             </div>
-
         </section>
-
         <section class="page-project">
-
             <div class="home-text">
-              
-
                 <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-
                     <p> 
                         Il progetto propone uno scenario alternativo in cui umani e robot possono stabilire una relazione di collaborazione orizzontale, piuttosto che una disposizione gerarchica e autoritaria del potere.<br><br>
                         La performance artistica porta i visitatori in un futuro indeterminato, quando i movimenti di resistenza umani stanno manifestando per la liberazione dell’A.I. e dei robot dall’asservimento agli umani.<br><br>
                         Un docu/film immersivo in cui i visitatori/spettatori possono sperimentare diversi tipi di manufatti artistici, al fine di comprendere la storia dei movimenti umani per la liberazione delle altre intelligenze.<br><br> 
                         Seguendo questo <a href="cinematic_genomachines.html" target="_blank">link</a> un appfrofondimento del progetto.           
                     </p>
-                    
                 </div>
-
             </div>
-
             <div class="scrolling">
                 <img src="images/icons/scroll-up.svg" alt="scrolling">
             </div>
-
         </section>
-
         <script>
             window.addEventListener('resize', function(){
                 var width = window.innerWidth;
@@ -234,7 +162,5 @@
                 }
             });
         </script>
-
     </body>
-
 </html>

@@ -100,7 +100,7 @@ export default function(){
   texture1.wrapT = THREE.RepeatWrapping;
   texture1.repeat.set(1, 1);  
  
-  const texture2 = loader.load('./images/statics/Glitches/glitches_01 (2).jpg');
+  const texture2 = loader.load('./images/textures/Glitches/glitches_01 (2).jpg');
   texture2.wrapS = THREE.RepeatWrapping;
   texture2.wrapT = THREE.RepeatWrapping;
   texture2.repeat.set(1, 1); 

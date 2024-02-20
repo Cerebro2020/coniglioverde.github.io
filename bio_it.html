@@ -1,37 +1,29 @@
 <!DOCTYPE html>
 <html lang="it">
-
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>coniglioverde|bio-it</title>
-
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="bio.css">
-        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"/>
-
         <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
-
         <!-- Loading -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-        $(document).ready(function() {
-          $(window).on("load", function() {
-            $("#loader").fadeOut("slow");
-          });
-        });
-        </script>        
-       
+            $(document).ready(function() {
+                $(window).on("load", function() {
+                    $("#loader").fadeOut("slow");
+                });
+            });
+        </script>  
     </head>
     <body>
-
         <script>
             AOS.init();         
         </script>
-
         <div id="loader">
             <div class="loader"></div>
             <span></span>
@@ -39,265 +31,237 @@
                 <p>Loading...</p>
             </div>
         </div>
-
        <!-- HOME -->
        <header>
-        <div id="logo">
-            <a href="index_it.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
-        </div>
-
-        <input id="menu-toggle" type="checkbox" aria-label="Toggle-menu" />
-
-        <label class='menu-button-container' for="menu-toggle">
-
-        <div class='menu-button'></div>
-        
-        </label class='menu-button-container' for="menu-toggle">
-
-        <ul class="menu">                       
-            <li><a href="#">BIO</a></li></li>         
-            <li><a href="#with">WITH</a></li>
-            <li><a href="#credits">CREDITS</a></li>
-            <li><a href="bio.html">EN | IT</a>           
-        </ul>
-        
-    </header>
-
-    <!-- FOOTER -->
-    <footer id="footer">
-
-        <ul>
-            <li>&copy; 2023 felice vino</li>
-            <li><a href="https://www.instagram.com/felice_vino/" target="_blank" rel="noopener"><img src="images/icons/instagram.png" alt="instagram icon"></a></li>
-            <li><a href="https://www.facebook.com/coniglio.verde.2024" target="_blank" rel="noopener"><img src="images/icons/meta.png" alt="meta icon"></a></li>
-            <li><a href="https://vimeo.com/felicevino" target="_blank" rel="noopener"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
-        </ul>
-
-    </footer>
-
-    <!-- BIO -->
-    <section id="bio">
-
-        <div class="bio-content">
-
-            <div class="bio-text">
-                <h1 data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">FELICE VINO</h1>
-                <br>                               
-                <p data-aos="flip-left"  data-aos-duration="600" data-aos-easing="ease-in-quad">
-                    Nato a Potenza, sono laureato in Lingue e Letterature Straniere, negli anni ho sperimentato diverse forme espressive, scrittura, video, arte digitale.
-                    <br><br>
-                    Ho realizzato videoclip, spot, corporate, la serie zero di una web series di fantascienza. Ho scritto, diretto e prodotto, viaggiato, cambiato casa e vita, Potenza, Roma, Bologna, Milano.
-                    <br><br> 
-                    La poesia mi ha suggerito il percorso, il cinema me lo ha mostrato, oggi lavoro con le AI, i dati, la CGI e con qualsiasi strumento mi restituisca quel senso di meraviglia difronte alle forme che possono assumere il bello e l'ignoto.
-                </p>
-            </div>            
-
-            <div class="bio-img" data-aos="flip-right" data-aos-duration="700" data-aos-easing="ease-in-quad">
-                <img src="images/cv/bio_2.jpg" alt="Felice Vino">
+            <div id="logo">
+                <a href="index_it.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
             </div>
-        
-        </div>
-
-        <div class="scrolling">            
-            <img src="images/icons/scroll-down.svg" alt="scrolling icon">
-        </div>
-
-    </section>
-
-    <!-- WITH -->
-    <section id="with">  
-        <div id="members">            
-            <div id="fotoCV" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-                <img src="images/cv/CV_CR.jpg" alt="Collettivo Cerebro" onclick="mostraCV('cvMembro9')">
-                <img src="images/cv/CV_FV.jpg" alt="Fabio Volpi" onclick="mostraCV('cvMembro1')">
-                <img src="images/cv/CV_MC.jpg" alt="Marilina Ciaco" onclick="mostraCV('cvMembro2')">
-                <img src="images/cv/CV_GF.jpg" alt="Giorgio Funaro" onclick="mostraCV('cvMembro3')">
-                <!-- <img src="images/cv/CV_MB.jpg" alt="Maria Borio" onclick="mostraCV('cvMembro8')">  
-                <img src="images/cv/CV_AB.jpg" alt="Antonia Bruno" onclick="mostraCV('cvMembro4')">
-                <img src="images/cv/CV_GA.jpg" alt="Giulia Agostinetti" onclick="mostraCV('cvMembro5')"> -->
-                <img src="images/cv/CV_CB.jpg" alt="Cristian Rubini" onclick="mostraCV('cvMembro10')">
-                <!-- <img src="images/cv/CV_DA.jpg" alt="Davide Anzaldi" onclick="mostraCV('cvMembro11')">  -->
-                <img src="images/cv/CV_DdM.jpg" alt="Davide Del Monte" onclick="mostraCV('cvMembro6')">
-                <!-- <img src="images/cv/CV_MR.jpg" alt="Martin Romeo" onclick="mostraCV('cvMembro7')"> -->
+            <input id="menu-toggle" type="checkbox" aria-label="Toggle-menu" />
+            <label class='menu-button-container' for="menu-toggle">
+            <div class='menu-button'></div>        
+            </label class='menu-button-container' for="menu-toggle">
+            <ul class="menu">                       
+                <li><a href="#">BIO</a></li></li>         
+                <li><a href="#with">WITH</a></li>
+                <li><a href="#credits">CREDITS</a></li>
+                <li><a href="bio.html">EN | IT</a></li>           
+            </ul>        
+        </header>
+        <!-- FOOTER -->
+        <footer id="footer">
+            <ul>
+                <li>&copy; 2023 felice vino</li>
+                <li><a href="https://www.instagram.com/felice_vino/" target="_blank" rel="noopener"><img src="images/icons/instagram.png" alt="instagram icon"></a></li>
+                <li><a href="https://www.facebook.com/coniglio.verde.2024" target="_blank" rel="noopener"><img src="images/icons/meta.png" alt="meta icon"></a></li>
+                <li><a href="https://vimeo.com/felicevino" target="_blank" rel="noopener"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
+            </ul>
+        </footer>
+        <!-- BIO -->
+        <section id="bio">
+            <div class="bio-content">
+                <div class="bio-text">
+                    <h1 data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">FELICE VINO</h1>
+                    <p data-aos="flip-left"  data-aos-duration="600" data-aos-easing="ease-in-quad">
+                        Nato a Potenza, sono laureato in Lingue e Letterature Straniere, negli anni ho sperimentato diverse forme espressive, scrittura, video, arte digitale.
+                        <br><br>
+                        Ho realizzato videoclip, spot, corporate, la serie zero di una web series di fantascienza. Ho scritto, diretto e prodotto, viaggiato, cambiato casa e vita, Potenza, Roma, Bologna, Milano.
+                        <br><br> 
+                        La poesia mi ha suggerito il percorso, il cinema me lo ha mostrato, oggi lavoro con le AI, i dati, la CGI e con qualsiasi strumento mi restituisca quel senso di meraviglia difronte alle forme che possono assumere il bello e l'ignoto.
+                    </p>
+                </div> 
+                <div class="bio-img" data-aos="flip-right" data-aos-duration="700" data-aos-easing="ease-in-quad">
+                    <img src="images/cv/bio_2.jpg" alt="Felice Vino">
+                </div>
             </div>
-            <div id="textCV">
-
-                    <div id="cvIntro" class="cv">
-                        <p><h4>WITH</h4></p>
-                    </div>  
-                        
-                    <div id="cvMembro1" class="cv">    
+            <div class="scrolling">            
+                <img src="images/icons/scroll-down.svg" alt="scrolling icon">
+            </div>
+        </section>
+        <!-- WITH -->
+        <section id="with">  
+            <div id="members">            
+                <div id="fotoCV" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                    <img src="images/cv/CV_CR.jpg" alt="Collettivo Cerebro" onclick="mostraCV('cvMembro9')">
+                    <img src="images/cv/CV_FV.jpg" alt="Fabio Volpi" onclick="mostraCV('cvMembro1')">
+                    <img src="images/cv/CV_MC.jpg" alt="Marilina Ciaco" onclick="mostraCV('cvMembro2')">
+                    <img src="images/cv/CV_GF.jpg" alt="Giorgio Funaro" onclick="mostraCV('cvMembro3')">
+                    <!-- <img src="images/cv/CV_MB.jpg" alt="Maria Borio" onclick="mostraCV('cvMembro8')">  
+                    <img src="images/cv/CV_AB.jpg" alt="Antonia Bruno" onclick="mostraCV('cvMembro4')">
+                    <img src="images/cv/CV_GA.jpg" alt="Giulia Agostinetti" onclick="mostraCV('cvMembro5')"> -->
+                    <img src="images/cv/CV_CB.jpg" alt="Cristian Rubini" onclick="mostraCV('cvMembro10')">
+                    <!-- <img src="images/cv/CV_DA.jpg" alt="Davide Anzaldi" onclick="mostraCV('cvMembro11')">  -->
+                    <img src="images/cv/CV_DdM.jpg" alt="Davide Del Monte" onclick="mostraCV('cvMembro6')">
+                    <!-- <img src="images/cv/CV_MR.jpg" alt="Martin Romeo" onclick="mostraCV('cvMembro7')"> -->
+                </div>
+                <div id="textCV">
+                        <div id="cvIntro" class="cv">
+                            <p><h4>WITH</h4></p>
+                        </div>                          
+                        <div id="cvMembro1" class="cv">    
+                            <p class="with-name">
+                                FABIO VOLPI (a.k.a. dies_)
+                            </p>
+                            <p>
+                            <br>
+                            ...                     
+                            </p>
+                        </div>    
+                        <div id="cvMembro2" class="cv">
+                            <p class="with-name">
+                                MARILINA CIACO
+                            </p>
+                            <p>
+                            <br>
+                                è scrittrice, critica e studiosa di letteratura contemporanea.  Attualmente collabora con l’Università di Bologna e l’Università di Zurigo.<br>Laureata in Italianistica all’Università di Bologna, ha conseguito il Dottorato di ricerca in Letteratura Italiana Contemporanea e Visual Studies presso l’Università IULM di Milano. <br>Fra i suoi interessi di ricerca: la poesia contemporanea dal Novecento a oggi, le sperimentazioni poetiche dalla neoavanguardia alle scritture di ricerca del Duemila, la scrittura delle donne, i rapporti fra letteratura e arti visive, la teoria della poesia  tra estetica e  scienze cognitive).
+                                Come scrittrice ha pubblicato:<br> Gli anni del disincanto (XVI Quaderno italiano di poesia contemporanea, Marcos y Marcos, 2023),                Ghost Track (Biblion-Zacinto, 2022),Intermezzo e altre sinapsi (Edizioni Volatili, 2020). Suoi testi e articoli di critica sono apparsi su riviste e lit-blog, tra cui Il Manifesto, Le parole e le cose, Nazione Indiana, Nuovi Argomenti, La Balena Bianca, “La bottega della poesia” di Repubblica, Medium Poesia, Formavera, Poesia del nostro tempo, Anterem.<br><br>
+                                <a href="https://uzh.academia.edu/MarilinaCiaco" target="_blank" rel="noopener">academia.eu</a>
+                            </p>
+                        </div>                            
+                        <div id="cvMembro3" class="cv">
+                            <p class="with-name">
+                                GIORGIO FUNARO
+                            </p>
+                            <p>
+                            <br>
+                            ...                     
+                            </p>                  
+                        </div>    
+                        <!-- <div id="cvMembro4" class="cv">
+                            <p><br>
+                                <h4>ANTONIA BRUNO</h4><br>
+                                ..
+                            </p>                  
+                        </div> -->    
+                        <!-- <div id="cvMembro5" class="cv">
+                            <p><br>
+                                <h4>GIULIA AGOSTINETTO</h4>
+                                <br>...
+                            </p>                  
+                        </div> -->    
+                        <div id="cvMembro6" class="cv">
+                            <p class="with-name">
+                                DAVIDE DEL MONTE
+                            </p>
+                            <p>
+                            <br>
+                            ...                     
+                            </p>                
+                        </div>    
+                        <!-- <div id="cvMembro7" class="cv">
+                            <p><br>
+                                <h4>MARTIN ROMEO</h4>
+                                <br>...
+                            </p>                  
+                        </div>    
+                        <div id="cvMembro8" class="cv">
+                            <p><br>
+                                <h4>MARIA BORIO</h4>
+                                <br>...          
+                            </p>
+                        </div> -->
+                    <div id="cvMembro9" class="cv">
                         <p class="with-name">
-                            FABIO VOLPI (a.k.a. dies_)
+                            CEREBRO
+                        </p>
+                        <p>
+                        <br>
+                            È un collettivo informale nato nel 2020 durante la diffusione della pandemia COVID focalizzato sull’amplificazione della percezione umana
+                            da pratiche phygitali inscritte tra poesia e STEAM
+                            (Scienza, Tecnologia, Ingegneria, Arti, Matematica).
+                            I suoi strumenti espressivi sono: visualizzazione dei dati, new media art, video, poesia e musica.
+                        </p>                 
+                    </div>
+                    <div id="cvMembro10" class="cv">
+                        <p class="with-name">
+                            CRISTIAN RUBINI
                         </p>
                         <p>
                         <br>
                         ...                     
-                        </p>
-                    </div>    
-                    <div id="cvMembro2" class="cv">
-                        <p class="with-name">
-                            MARILINA CIACO
-                        </p>
-                        <p>
-                        <br>
-                            è scrittrice, critica e studiosa di letteratura contemporanea.  Attualmente collabora con l’Università di Bologna e l’Università di Zurigo.<br>Laureata in Italianistica all’Università di Bologna, ha conseguito il Dottorato di ricerca in Letteratura Italiana Contemporanea e Visual Studies presso l’Università IULM di Milano. <br>Fra i suoi interessi di ricerca: la poesia contemporanea dal Novecento a oggi, le sperimentazioni poetiche dalla neoavanguardia alle scritture di ricerca del Duemila, la scrittura delle donne, i rapporti fra letteratura e arti visive, la teoria della poesia  tra estetica e  scienze cognitive).
-                            Come scrittrice ha pubblicato:<br> Gli anni del disincanto (XVI Quaderno italiano di poesia contemporanea, Marcos y Marcos, 2023),                Ghost Track (Biblion-Zacinto, 2022),Intermezzo e altre sinapsi (Edizioni Volatili, 2020). Suoi testi e articoli di critica sono apparsi su riviste e lit-blog, tra cui Il Manifesto, Le parole e le cose, Nazione Indiana, Nuovi Argomenti, La Balena Bianca, “La bottega della poesia” di Repubblica, Medium Poesia, Formavera, Poesia del nostro tempo, Anterem.<br><br>
-                            <a href="https://uzh.academia.edu/MarilinaCiaco" target="_blank" rel="noopener">academia.eu</a>
-                        </p>
-                    </div>                            
-                    <div id="cvMembro3" class="cv">
-                        <p class="with-name">
-                            GIORGIO FUNARO
-                        </p>
-                        <p>
-                        <br>
-                        ...                     
-                        </p>                  
-                    </div>    
-                    <!-- <div id="cvMembro4" class="cv">
+                        </p>               
+                    </div>
+                    <!-- <div id="cvMembro11" class="cv">
                         <p><br>
-                            <h4>ANTONIA BRUNO</h4><br>
-                            ..
-                        </p>                  
-                    </div> -->    
-                    <!-- <div id="cvMembro5" class="cv">
-                        <p><br>
-                            <h4>GIULIA AGOSTINETTO</h4>
-                            <br>...
-                        </p>                  
-                    </div> -->    
-                    <div id="cvMembro6" class="cv">
-                        <p class="with-name">
-                            DAVIDE DEL MONTE
-                        </p>
-                        <p>
-                        <br>
-                        ...                     
-                        </p>                
-                    </div>    
-                    <!-- <div id="cvMembro7" class="cv">
-                        <p><br>
-                            <h4>MARTIN ROMEO</h4>
-                            <br>...
-                        </p>                  
-                    </div>    
-                    <div id="cvMembro8" class="cv">
-                        <p><br>
-                            <h4>MARIA BORIO</h4>
-                            <br>...          
-                        </p>
+                            <h4>DAVIDE ANZALDI</h4><br>
+                            ...
+                        </p>                 
                     </div> -->
-                <div id="cvMembro9" class="cv">
-                    <p class="with-name">
-                        CEREBRO
-                    </p>
-                    <p>
-                    <br>
-                        È un collettivo informale nato nel 2020 durante la diffusione della pandemia COVID focalizzato sull’amplificazione della percezione umana
-                        da pratiche phygitali inscritte tra poesia e STEAM
-                        (Scienza, Tecnologia, Ingegneria, Arti, Matematica).
-                        I suoi strumenti espressivi sono: visualizzazione dei dati, new media art, video, poesia e musica.
-                    </p>                 
                 </div>
-                <div id="cvMembro10" class="cv">
-                    <p class="with-name">
-                        CRISTIAN RUBINI
-                    </p>
-                    <p>
-                    <br>
-                    ...                     
-                    </p>               
-                </div>
-                <!-- <div id="cvMembro11" class="cv">
-                    <p><br>
-                        <h4>DAVIDE ANZALDI</h4><br>
-                        ...
-                    </p>                 
-                </div> -->
             </div>
-        </div>
-
-
-        <script>
-            let lastClicked = null;
-        
-            function mostraCV(id) {
-
-                var cvs = document.getElementsByClassName('cv');
-                for (var i = 0; i < cvs.length; i++) {
-                    cvs[i].style.display = 'none';
-                }             
-                
-                if(lastClicked !== id) {
-                    document.getElementById(id).style.display = 'block';
-                    lastClicked = id;
-                } else {
-                    // Al secondo click sullo stesso ID, azzera lastClicked
-                    lastClicked = null;
-                }  
-                
-                var cvIntro = document.getElementById('cvIntro');
-                if(lastClicked === null) {
-                cvIntro.style.display = 'block'; // 
-                } else {
-                cvIntro.style.display = 'none';
-                }                   
-
-            }
-
-        </script>  
-        
-        <div class="scrolling">            
-            <img src="images/icons/scroll-updown.gif" alt="scrolling icon">
-        </div>
-                        
-    </section>
-
-    <!-- CREDITS -->
-    <section id=credits >
-        <div class="credits">
+            <script>
+                let lastClicked = null;
             
-            <div class="title-credits">
-                <h2>CREDITS</h2>
+                function mostraCV(id) {
+
+                    var cvs = document.getElementsByClassName('cv');
+                    for (var i = 0; i < cvs.length; i++) {
+                        cvs[i].style.display = 'none';
+                    }             
+                    
+                    if(lastClicked !== id) {
+                        document.getElementById(id).style.display = 'block';
+                        lastClicked = id;
+                    } else {
+                        // Al secondo click sullo stesso ID, azzera lastClicked
+                        lastClicked = null;
+                    }  
+                    
+                    var cvIntro = document.getElementById('cvIntro');
+                    if(lastClicked === null) {
+                    cvIntro.style.display = 'block'; // 
+                    } else {
+                    cvIntro.style.display = 'none';
+                    }                   
+
+                }
+
+            </script> 
+            <div class="scrolling">            
+                <img src="images/icons/scroll-updown.gif" alt="scrolling icon">
+            </div>       
+        </section>
+        <!-- CREDITS -->
+        <section id=credits >
+            <div class="credits">            
+                <div class="title-credits">
+                    <h2>CREDITS</h2>
+                </div>
+                <br>
+                <div class="content-credits">
+                    <p>
+                        licensed under Creative Commons Attribution<br>
+                        <a href="http://creativecommons.org/licenses/by/4.0/"target="_blank" rel="noopener">http://creativecommons.org/licenses/by/4.0/</a>               
+                    </p>
+                    <br>
+                    <p>
+                        3D OBJECTS<br>                
+                        "Heart" <a href="https://skfb.ly/6WPTn" target="_blank" rel="noopener" >https://skfb.ly/6WPTna</a>by Diego T. Yamaguchi
+                    <br>                
+                        "Toon Tree 02" <a href="https://skfb.ly/JL7F" target="_blank" rel="noopener"> https://skfb.ly/JL7F </a>by Sergio Sotomayor
+                    <br>
+                    "Lowpoly People + Waldo"<a href="https://skfb.ly/6zqCE" target="_blank" rel="noopener"> https://skfb.ly/6zqCE </a>by Loïc Norgeot 
+                    <br>
+                        "WIP - Lowpoly People - 1" <a href="https://skfb.ly/6yXXZ" target="_blank" rel="noopener">https://skfb.ly/6yXXZ </a>by Loïc Norgeot 
+                    <br>
+                        "Freebie - Lowpoly People" <a href="https://skfb.ly/6SwtS" target="_blank" rel="noopener">https://skfb.ly/6SwtS</a>) by Studio Ochi 
+                    <br>                    
+                        "Bench" <a href="https://skfb.ly/6UQWR" target="_blank" rel="noopener">https://skfb.ly/6UQWR</a> by Spark 
+                    <br>                     
+                        "Dolphin" <a href="https://skfb.ly/onrqV" target="_blank" rel="noopener">https://skfb.ly/onrqV</a>by neutralize 
+                    <br>
+                        "Ship" <a href="https://skfb.ly/69Qwr" target="_blank" rel="noopener">https://skfb.ly/69Qwr</a> by VitSh 
+                    <br>
+                        "Boat lowpoly" <a href="https://skfb.ly/6EFnt" target="_blank" rel="noopener">https://skfb.ly/6EFnt</a> by Hawsky 
+                    <br>
+                        "Airplane" <a href=" https://skfb.ly/69pQJ" target="_blank" rel="noopener">  https://skfb.ly/69pQJ</a> by Edgar Vázquez 
+                    <br>
+                        "Game-ready Humpback Whale" <a href="https://skfb.ly/6RT69" target="_blank" rel="noopener">https://skfb.ly/6RT69</a> by Allie2k 
+                    </p>
+                </div>
             </div>
-            <br>
-
-            <div class="content-credits">
-                <p>
-                    licensed under Creative Commons Attribution<br>
-                    <a href="http://creativecommons.org/licenses/by/4.0/"target="_blank" rel="noopener">http://creativecommons.org/licenses/by/4.0/</a>               
-                </p>
-                <br>
-                <p>
-                    3D OBJECTS<br>                
-                    "Heart" <a href="https://skfb.ly/6WPTn" target="_blank" rel="noopener" >https://skfb.ly/6WPTna</a>by Diego T. Yamaguchi
-                <br>                
-                    "Toon Tree 02" <a href="https://skfb.ly/JL7F" target="_blank" rel="noopener"> https://skfb.ly/JL7F </a>by Sergio Sotomayor
-                <br>
-                   "Lowpoly People + Waldo"<a href="https://skfb.ly/6zqCE" target="_blank" rel="noopener"> https://skfb.ly/6zqCE </a>by Loïc Norgeot 
-                <br>
-                    "WIP - Lowpoly People - 1" <a href="https://skfb.ly/6yXXZ" target="_blank" rel="noopener">https://skfb.ly/6yXXZ </a>by Loïc Norgeot 
-                <br>
-                    "Freebie - Lowpoly People" <a href="https://skfb.ly/6SwtS" target="_blank" rel="noopener">https://skfb.ly/6SwtS</a>) by Studio Ochi 
-                <br>                    
-                    "Bench" <a href="https://skfb.ly/6UQWR" target="_blank" rel="noopener">https://skfb.ly/6UQWR</a> by Spark 
-                <br>                     
-                    "Dolphin" <a href="https://skfb.ly/onrqV" target="_blank" rel="noopener">https://skfb.ly/onrqV</a>by neutralize 
-                <br>
-                    "Ship" <a href="https://skfb.ly/69Qwr" target="_blank" rel="noopener">https://skfb.ly/69Qwr</a> by VitSh 
-                <br>
-                    "Boat lowpoly" <a href="https://skfb.ly/6EFnt" target="_blank" rel="noopener">https://skfb.ly/6EFnt</a> by Hawsky 
-                <br>
-                    "Airplane" <a href=" https://skfb.ly/69pQJ" target="_blank" rel="noopener">  https://skfb.ly/69pQJ</a> by Edgar Vázquez 
-                <br>
-                    "Game-ready Humpback Whale" <a href="https://skfb.ly/6RT69" target="_blank" rel="noopener">https://skfb.ly/6RT69</a> by Allie2k 
-                </p>
+            <div class="scrolling">            
+                <img src="images/icons/scroll-up.svg" alt="scrolling icon">
             </div>
-
-        </div>
-
-    </section>
-    
-</body>
+        </section>
+    </body>
 </html>

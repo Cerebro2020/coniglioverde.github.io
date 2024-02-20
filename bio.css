@@ -98,16 +98,34 @@ section {
 
 @media (max-width: 724px){  
 
-  .bio-content{
-    border: 0px solid white;
-    height: 80vh;
+  .bio-content{    
+    height: 78vh;
     width: 100%;
   }
 
+  .bio-text {
+    position: absolute;
+    /* border: 1px solid white; */
+    bottom: 12.5%;
+  }
+
+  .bio-text h1 {
+    /* border: 1px solid white; */
+    height: 10%;
+  }
+
   .bio-text p {
+    height: 90%;
+    /* border: 1px solid white; */
     font-size: 14px;  
     line-height: 15px;
     text-align: left;    
+  }
+
+  .bio-img {
+    height: 40%;
+    position: absolute;
+    top: 7.25%;
   }
 }
 
@@ -192,14 +210,14 @@ section {
 
 @media (max-width: 1024px){  
 
-  #members{   
+  #members{ 
     width: 100%;
     height: 60vh;       
   } 
 
-  #fotoCV {        
+  #fotoCV {      
     width: 84%;
-    height: 50%;   
+    height: 30%;   
   }
 
   #fotoCV img {     
@@ -208,12 +226,12 @@ section {
 
   #textCV {      
     width: 84%;
-    height: 50%;
+    height: 70%;
   }
   
   .cv {  
-    font-size: 18px;    
-    line-height: 20px;
+    font-size: 17px;    
+    line-height: 18px;
     font-weight: 200;      
   }
 }
@@ -249,7 +267,6 @@ section {
   }
 
   #textCV {
-    /* border: 1px solid red;      */
     margin-top: 20px;
     width: 90%;
     height: 80%;            

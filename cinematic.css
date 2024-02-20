@@ -1,3 +1,34 @@
+canvas {  
+  cursor: grab;  
+}
+
+canvas:active {				
+  cursor: grabbing;
+}
+
+.info_leyer {  
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;          
+}
+
+#info-white {  
+  width: 160px;
+  height: 30px;  		
+  z-index: 999;
+}
+
+#info-white p {
+  color: rgb(255, 255, 255);  
+  text-align: center; 
+  font-size: 12px;
+  font-weight: 400;		
+}
+
+
 .page-container {
   width: 100%;
   height: 86vh;

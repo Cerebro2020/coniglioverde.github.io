@@ -30,11 +30,7 @@ export default function(){
   } );
 
   // TEXTURES
-  const loader = new THREE.TextureLoader();
-  const textureP1 = loader.load ('images/bcg/AI (1).jpg'); 
-  const textureP2 = loader.load ('images/bcg/AI (2).jpeg');
-  const textureP3 = loader.load ('images/bcg/AI (3).jpeg');
-  const textureP4 = loader.load ('images/bcg/SfondoI.jpg');
+  const loader = new THREE.TextureLoader();  
   const TextureQ2 = loader.load('images/textures/hearts/quadretti2.jpg');
   TextureQ2.wrapS = THREE.RepeatWrapping;
   TextureQ2.wrapT = THREE.RepeatWrapping;
@@ -96,25 +92,129 @@ export default function(){
 
   // VIDEO  
   // VIDEO 1
-  var video1 = document.createElement('video');
-  video1.src = "./video/cinematic/butterfly_spot.mp4";
+  // var video1 = document.createElement('video');
+  // video1.src = "./video/cinematic/bf_01.mp4";
+  // //video1.src = "/video/writing/dal_deserto_rosso (1).mp4";
+  // //video1.src = "/video/writing/traccia_fantasma (1).mp4";
+  // video1.style.display = 'none';
+  // video1.muted = true; 
+  // video1.loop = true; 
+  // document.body.appendChild(video1); 
+  // video1.load();
+  // video1.play();
+  // var vTexture1 = new THREE.VideoTexture(video1);
+  // vTexture1.minFilter = THREE.LinearFilter;
+  // vTexture1.magFilter = THREE.LinearFilter;
+  // vTexture1.format = THREE.RGBAFormat;  
+
+  // VIDEO A1
+  var videoA1 = document.createElement('video');
+  videoA1.src = "./video/cinematic/BF_A1.mp4";
   //video1.src = "/video/writing/dal_deserto_rosso (1).mp4";
   //video1.src = "/video/writing/traccia_fantasma (1).mp4";
-  video1.style.display = 'none';
-  video1.muted = true; 
-  video1.loop = true; 
-  document.body.appendChild(video1); 
-  video1.load();
-  video1.play();
-  var vTexture1 = new THREE.VideoTexture(video1);
-  vTexture1.minFilter = THREE.LinearFilter;
-  vTexture1.magFilter = THREE.LinearFilter;
-  vTexture1.format = THREE.RGBAFormat;  
+  videoA1.style.display = 'none';
+  videoA1.muted = true; 
+  videoA1.loop = true; 
+  document.body.appendChild(videoA1); 
+  videoA1.load();
+  videoA1.play();
+  var vTextureA1 = new THREE.VideoTexture(videoA1);
+  vTextureA1.minFilter = THREE.LinearFilter;
+  vTextureA1.magFilter = THREE.LinearFilter;
+  vTextureA1.format = THREE.RGBAFormat; 
+    
+  // VIDEO A2
+  var videoA2 = document.createElement('video');
+  videoA2.src = "./video/cinematic/BF_A2.mp4";
+  //video1.src = "/video/writing/dal_deserto_rosso (1).mp4";
+  //video1.src = "/video/writing/traccia_fantasma (1).mp4";
+  videoA2.style.display = 'none';
+  //videoA2.muted = true; 
+  videoA2.loop = true; 
+  document.body.appendChild(videoA2); 
+  videoA2.load();
+  videoA2.play();
+  var vTextureA2 = new THREE.VideoTexture(videoA2);
+  vTextureA2.minFilter = THREE.LinearFilter;
+  vTextureA2.magFilter = THREE.LinearFilter;
+  vTextureA2.format = THREE.RGBAFormat;  
+
+  // VIDEO A3
+  var videoA3 = document.createElement('video');
+  videoA3.src = "./video/cinematic/BF_A3.mp4";
+  //video1.src = "/video/writing/dal_deserto_rosso (1).mp4";
+  //video1.src = "/video/writing/traccia_fantasma (1).mp4";
+  videoA3.style.display = 'none';
+  videoA3.muted = true; 
+  videoA3.loop = true; 
+  document.body.appendChild(videoA3); 
+  videoA3.load();
+  videoA3.play();
+  var vTextureA3 = new THREE.VideoTexture(videoA3);
+  vTextureA3.minFilter = THREE.LinearFilter;
+  vTextureA3.magFilter = THREE.LinearFilter;
+  vTextureA3.format = THREE.RGBAFormat;  
+
+  // Crea un array per memorizzare i tuoi video
+  var videos = [videoA1, videoA2, videoA3];
+  var textures = [vTextureA1, vTextureA2, vTextureA3];
+
+  // Contatore per tenere traccia dei video pronti per la riproduzione
+  var videosReady = 0;
+
+  // Aggiungi un listener per l'evento 'canplaythrough' a ciascun video
+  for (var i = 0; i < videos.length; i++) {
+    videos[i].addEventListener('canplaythrough', function() {
+      videosReady++;
+
+      // Se tutti i video sono pronti, avvia la riproduzione
+      if (videosReady === videos.length) {
+        for (var j = 0; j < videos.length; j++) {
+          videos[j].play();
+        }
+      }
+    });
+
+    // Carica il video
+    videos[i].load();
+  }
+
+
+  
+  // // Show loading animation.
+  // var playPromise = videoA2.play();
+
+  // if (playPromise !== undefined) {
+  //   playPromise.then(_ => {
+  //     // Automatic playback started!
+  //     // Show playing UI.
+  //   })
+  //   .catch(error => {
+  //     // Auto-play was prevented
+  //     // Show paused UI.
+  //   });
+  // }
+
   
   // MATERIALS
   const material = new THREE.MeshPhysicalMaterial({
+    color: 0x000000,
+    //map: vTexture1,       
+  }); 
+
+  const materialA1 = new THREE.MeshPhysicalMaterial({
     color: 0xffffff,
-    map: vTexture1,       
+    map: vTextureA1,       
+  }); 
+
+  const materialA2 = new THREE.MeshPhysicalMaterial({
+    color: 0xffffff,
+    map: vTextureA2,       
+  }); 
+
+  const materialA3 = new THREE.MeshPhysicalMaterial({
+    color: 0xffffff,
+    map: vTextureA3,       
   }); 
 
   const material2 = new THREE.MeshPhysicalMaterial({
@@ -123,7 +223,6 @@ export default function(){
     metalness: 0,  
     bumpMap: uvPaper,
     bumpScale: 0.05,
-
   });
 
   const material3 = new THREE.MeshPhysicalMaterial({
@@ -131,19 +230,13 @@ export default function(){
   });
   
   //SALA  
-  const h = 1.2; //altezza sala
-
-  // DESTRA
-  const gParteDestra = new THREE.BoxGeometry(0.1,h,9.245);
-  let pDestra = new THREE.Mesh( gParteDestra, material);
-  pDestra.position.set( (4.82/2),h/2,0.1);  
-  scene.add(pDestra);
+  const h = 1.2; //altezza sala  
 
   // SINISTRA 1
   const gParteSinistra1 = new THREE.BoxGeometry(0.1,h,3.609);
   let pSinistra1 = new THREE.Mesh( gParteSinistra1, material);
   pSinistra1.position.set(-(4.88/2), h/2, (3.709-(3.509/4)));  
-  scene.add(pSinistra1);
+  //scene.add(pSinistra1);
   // SINISTRA 2
   const gParteSinistra2 = new THREE.BoxGeometry(1.166,h,0.1);
   let pSinistra2 = new THREE.Mesh( gParteSinistra2, material);
@@ -159,24 +252,32 @@ export default function(){
   let pSinistra4 = new THREE.Mesh( gParteSinistra4, material);
   pSinistra4.position.set(-((4.88+(1.166*2))/2), h/2, (1.056/2));  
   scene.add(pSinistra4);
+
   // SINISTRA 5
   const gParteSinistra5 = new THREE.BoxGeometry(0.1,h,4.682);
-  let pSinistra5 = new THREE.Mesh( gParteSinistra5, material);
+  let pSinistra5 = new THREE.Mesh( gParteSinistra5, materialA1);
   pSinistra5.position.set(-(4.88/2), h/2, -(4.541/2));  
+  //pSinistra5.rotation.set(0,Math.PI, 0);
   scene.add(pSinistra5);  
 
   //FRONTALE
   const gPareteFrontale = new THREE.BoxGeometry( 4.78, h, 0.1 );
-  let pFrontale = new THREE.Mesh( gPareteFrontale, material);
-  pFrontale.position.set( 0, h/2, -(9.245/2) );  
+  let pFrontale = new THREE.Mesh( gPareteFrontale, materialA2);
+  pFrontale.position.set( 0, h/2, -(9/2) ); /*( 0, h/2, -(9.245/2) ); */  
   scene.add(pFrontale);
+
+  // DESTRA
+  const gParteDestra = new THREE.BoxGeometry(0.1,h,9.245);
+  let pDestra = new THREE.Mesh( gParteDestra, materialA3);
+  pDestra.position.set( (4.82/2),h/2,0);  /*( (4.82/2),h/2,0.1);  */
+  scene.add(pDestra);
 
   // PAVIMENTO
   const gPavimento = new THREE.BoxGeometry( 8, 0.1, 10.245, );
   let pavimento = new THREE.Mesh( gPavimento, material2);
   pavimento.position.set( 0, -0.05, 0 );
   pavimento.receiveShadow = true;
-  //scene.add(pavimento);
+  scene.add(pavimento);
 
   // TETTO
   const tetto = pavimento.clone();
@@ -193,7 +294,7 @@ export default function(){
   sala.add(pDestra, pSinistra1, pSinistra2, pSinistra3, pSinistra4, pSinistra5, pFrontale, pavimento, tetto, copertura, coperturaS );
   sala.position.set(0,-5,-40);
   sala.scale.set(10,10,10);  
-  scene.add(sala);
+  //scene.add(sala);
 
   const gColonna = new THREE.CylinderGeometry(0.4,0.4,12,64);
   let colonna1 = new THREE.Mesh(gColonna, material2);

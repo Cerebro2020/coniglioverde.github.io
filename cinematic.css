@@ -140,7 +140,6 @@ iframe {
 }
 
 /* PLAY */
-
 .button-controls {
   /* border: 1px solid red; */
   width: 90%;
@@ -152,19 +151,22 @@ iframe {
   z-index: 1;
 }
 
-#btn-audio button , #btn-camera button {
+#btn-pause button , #btn-camera button , #btn-audio button {
   background-color: rgba(255, 255, 255, 0);
   color: rgb(255, 255, 255);
   border: 1px solid rgb(255, 255, 255);
-  width:50px;
+  width:70px;
   height: 20px;
   margin-right: 10px;;
   border-radius: 12px;
-  font-size: 11px;    
+  font-size: 9px;
+  font-weight: 100;    
 }
 
-#btn-audio button:hover, #btn-camera button:hover {
+#btn-pause button:hover, #btn-camera button:hover,  #btn-audio button:hover {
   cursor: pointer;
-  border: 1px solid rgb(255, 1, 1);
-  color: rgb(255, 0, 0);
+  border: 1px solid rgb(162, 255, 0);
+  color: rgb(162, 255, 0);
 }
+
+

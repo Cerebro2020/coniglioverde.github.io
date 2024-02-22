@@ -506,7 +506,8 @@ section {
   background-color: rgba(255, 255, 255, 0);
   color: rgb(0, 0, 0);
   border: 1px solid black;
-  width:50px;
+  width:70px;
+  height: 20px;
   margin-right: 10px;;
   border-radius: 12px;
   font-size: 11px;    
@@ -514,8 +515,8 @@ section {
 
 #btn-audio button:hover, #btn-camera button:hover {
   cursor: pointer;
-  border: 1px solid rgb(255, 1, 1);
-  color: rgb(255, 0, 0);
+  border: 1px solid rgb(162, 255, 0);
+  color: rgb(162, 255, 0);
 }
 
 

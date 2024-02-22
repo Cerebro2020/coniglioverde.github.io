@@ -2,9 +2,9 @@
   z-index: -1;
 }  
 
-.info_leyer {    
+.info_leyer {  
   width: 100%;
-  height: 80px;
+  height: 80px; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +12,7 @@
 
 #info {    
   width: 160px;
-  height: 30px;  
+  height: 30px;   
   text-align: center; 
   font-size: 12px;;
 }
@@ -32,7 +32,7 @@ cursor: grabbing;
 }
 
 /* COVER AND BOOK CONTAINER*/
-.container-book {  
+.container-book {
   display: flex;
   flex-direction: column;
   flex-direction: row;   
@@ -95,8 +95,20 @@ cursor: grabbing;
 }
 
 .button_div_writing button {
+  background-color: rgba(0,0,0,0);
+  width: 70px;
+  height: 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
   font-size: 8px;   
   border-radius: 2px;
+}
+
+.button_div_writing button:hover {
+  cursor: pointer;
+  border: 1px solid rgb(162, 255, 0);
+  color: rgb(162, 255, 0);
 }
 
 .button_div {
@@ -114,26 +126,33 @@ cursor: grabbing;
   width: 100%;
 }
 
-.button {  
-  border: 1px solid  rgb(255, 255, 255);  
-  color:rgb(255, 255, 255);    
-  text-align: center;
-  width: 80px;
-  height: 24px;    
-  border-radius: 10px;    
-  background-color: rgba(0,0,0,0);
-  font-size: 10px;
+.button-controls {
+  /* border: 1px solid red; */
+  width: 90%;
+  position: absolute;
+  display: flex;
+  bottom: 40px;
+  align-items: center;
+  justify-content: right;
+  z-index: 1;
+}
+
+#btn-pause button , #btn-camera button , #btn-audio button {
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+  width:70px;
+  height: 20px;
+  margin-right: 10px;;
+  border-radius: 12px;
+  font-size: 9px;
+  font-weight: 100;    
+}
+
+#btn-pause button:hover, #btn-camera button:hover,  #btn-audio button:hover {
   cursor: pointer;
-}
-
-.button:hover {  
-  border: 1px solid  rgb(162, 255, 0);
-  color:rgb(162, 255, 0);
-}
-
-.button_camera button {
-  border: 1px solid  rgb(0, 0, 0);  
-  color:rgb(1, 1, 1); 
+  border: 1px solid rgb(162, 255, 0);
+  color: rgb(162, 255, 0);
 }
 
 @media (max-width: 1024px) {
@@ -230,5 +249,9 @@ cursor: grabbing;
   .button_div_writing {
     height: 10%;  
     justify-content: left;  
+  }
+
+  .button_div_writing {    
+    justify-content: center;    
   }
 }

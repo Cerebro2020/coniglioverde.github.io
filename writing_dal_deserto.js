@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import {OrbitControls} from './three_class/OrbitControls.js';
-import { OBJLoader } from './three_class/OBJLoader.js';
 
 export default function(){
   // SCENE  

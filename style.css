@@ -397,20 +397,18 @@ canvas {
   font-style: italic; font-weight: 400;
 }
 
-
 .scrolling {    
   position: absolute;
   display: flex;
   width: auto;
-  height: 30px;
-  margin-top: 6px;
+  height: 26px;  
   bottom: 40px; 
  }
  
 .scrolling img {
   filter: invert(1);
   width: auto;
-  height: 26px;
+  height: 22px;
 }
 
 @media (max-width: 1240px) {

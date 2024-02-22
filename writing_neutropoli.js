@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import {FirstPersonControls} from './three_class/FirstPersonControls.js';
-import { OBJLoader } from './three_class/OBJLoader.js';
 import { GLTFLoader } from './three_class/GLTFLoader.js';
 
 export default function(){
@@ -86,51 +85,54 @@ export default function(){
 
   pointLight.castShadow = true;
 
-  let initialCameraPosition = new THREE.Vector3();
-  initialCameraPosition.copy(camera.position);
-  // Crea una funzione per resettare la camera
-  function resetCamera() {
-    camera.position.copy(initialCameraPosition);  
-  } 
-
   //TEXTURES
   const loader = new THREE.TextureLoader();
   const texture1 = loader.load('./images/statics/Glitches/glitches_01 (6).jpg');
   texture1.wrapS = THREE.RepeatWrapping;
   texture1.wrapT = THREE.RepeatWrapping;
-  texture1.repeat.set(1, 1);  
- 
-  const texture2 = loader.load('./images/textures/Glitches/glitches_01 (2).jpg');
-  texture2.wrapS = THREE.RepeatWrapping;
-  texture2.wrapT = THREE.RepeatWrapping;
-  texture2.repeat.set(1, 1); 
+  texture1.repeat.set(1, 1);    
 
   //AUDIO
   // POETRY 1
-  var listenerAlbero = new THREE.AudioListener();
-  camera.add(listenerAlbero);  
-  var soundAlbero = new THREE.Audio(listenerAlbero); 
-  var loaderAlbero = new THREE.AudioLoader(); 
+  var listenerEmme = new THREE.AudioListener();
+  camera.add(listenerEmme);  
+  var soundEmme = new THREE.Audio(listenerEmme); 
+  var loaderEmme = new THREE.AudioLoader(); 
 
-  loaderAlbero.load('audio/neutropoli/Albero.m4a', function(buffer) {
-    soundAlbero.setBuffer(buffer);
-    soundAlbero.setLoop(true);
+  loaderEmme.load('./audio/neutropoli/emme.mp3', function(buffer) {
+    soundEmme.setBuffer(buffer);
+    soundEmme.setLoop(true);
     //sound.setVolume(0.5);
-    soundAlbero.play();
+    //soundEmme.play();
   });
 
   // POETRY 2
   var listenerFotogramma = new THREE.AudioListener();
   camera.add(listenerFotogramma);  
-  var soundFotogramma = new THREE.Audio(listenerAlbero); 
+  var soundFotogramma = new THREE.Audio(listenerEmme);
   var loaderFotogramma = new THREE.AudioLoader(); 
   
-  loaderFotogramma.load('audio/neutropoli/Fotogramna.m4a', function(buffer) {
+  loaderFotogramma.load('./audio/neutropoli/accavalla.mp3', function(buffer) {
   soundFotogramma.setBuffer(buffer);
   soundFotogramma.setLoop(true);
   //sound.setVolume(0.5);
-  soundFotogramma.play();
+  //soundFotogramma.play();
   });
+
+   // POETRY 3
+   var listenerChiaha = new THREE.AudioListener();
+   camera.add(listenerChiaha);  
+   var soundChiha = new THREE.Audio(listenerChiaha);
+   var loaderChiha = new THREE.AudioLoader(); 
+   
+   loaderChiha.load('./audio/neutropoli/chiha.mp3', function(buffer) {
+    soundChiha.setBuffer(buffer);
+    soundChiha.setLoop(true);
+   //sound.setVolume(0.5);
+   //soundFotogramma.play();
+   });
+
+  
   
  // BACKGROUND 
  const listenerBcg = new THREE.AudioListener();
@@ -151,17 +153,41 @@ export default function(){
 
  const audioLoader2 = new THREE.AudioLoader();
 
-//  const backgroundSound2 = new THREE.Audio( listenerBcg2 );
-//  audioLoader2.load('audio/neutropoli/Milano bcg.mp4', function( buffer ) {
-//    backgroundSound2.setBuffer( buffer );
-//    backgroundSound2.setLoop( true );
-//    backgroundSound2.setVolume( 0 );
-//    backgroundSound2.play();
-//  });
+   // Selezioniamo i pulsanti
+   let cameraButton = document.querySelector('#btn-camera button');   
+   cameraButton.addEventListener('click', function() {
+     resetCamera();
+   });  
+   // Funzione per resettare la camera
+   function resetCamera() {
+     camera.position.set(  0, 0, -150 ); 
+     camera.rotation.set( 1, 0, 0 );
+     camera.lookAt(new THREE.Vector3( 0, player.height, 0)); 
+     controls.listenToKeyEvents( window );
+     controls.minDistance =  5;    
+     controls.maxDistance = 1400;
+     controls.maxPolarAngle = 1.5; 
+   }
 
- // AUDIO DISTANCE  
-  resetCamera();
-    
+   let audioButton = document.querySelector('#btn-audio button');
+   let isPlaying = true;
+   audioButton.addEventListener('click', function() {
+     if (isPlaying) {
+        backgroundSound.pause();
+        soundEmme.pause();
+        soundFotogramma.pause();
+        soundChiha.pause();
+     } else {
+        backgroundSound.play();
+        soundEmme.play();
+        soundFotogramma.play();
+        soundChiha.play();
+     }
+     // Cambiamo lo stato
+     isPlaying = !isPlaying;
+   });
+
+  // AUDIO DISTANCE  
   function animateScene(){
     requestAnimationFrame( animateScene );   
     controls.update(clock.getDelta());
@@ -169,12 +195,30 @@ export default function(){
 
     var distance = camera.position.distanceTo(cube.position); 
     var distance2 = camera.position.distanceTo(cube2.position);
+    var distance3 = camera.position.distanceTo(cube3.position);
 
     var volume = 1 - Math.min(distance / 20, 1); 
     var volume2 = 1 - Math.min(distance2 / 20, 1); 
+    var volume3 = 1 - Math.min(distance3 / 20, 1);      
 
-    soundAlbero.setVolume(volume);
+    soundEmme.setVolume(volume);
     soundFotogramma.setVolume(volume2)
+    soundChiha.setVolume(volume3)
+
+    if (!soundEmme.isPlaying && volume > 0) {
+      soundEmme.play();
+    }
+    if (!soundFotogramma.isPlaying && volume2 > 0) {
+      soundFotogramma.play();
+    }
+
+    if (!soundChiha.isPlaying && volume2 > 0) {
+      soundChiha.play();
+    }
+  
+    soundEmme.setVolume(volume);
+    soundFotogramma.setVolume(volume2)
+    soundChiha.setVolume(volume3)
   };
 
   // SUBWAY GLB
@@ -239,14 +283,20 @@ export default function(){
 
   const cube = new THREE.Mesh(gCube, mCube);
   scene.add(cube);
-  cube.position.set( 0, 0, -50 );
+  cube.position.set( 0, 2, -50 );
   cube.rotation.set( 0, 0, 0 );
 
-  const cube2 = new THREE.Mesh(gCube, mCube);
+  const cube2 = cube.clone();
   scene.add(cube2);
-  cube2.position.set( 0, -20, -50 );
+  cube2.position.set( 0, -18, 50 );
   cube2.rotation.set( 0, 0, 0 );
   scene.add(cube2);
+
+  const cube3 = cube.clone();
+  scene.add(cube3);
+  cube3.position.set( 0, 22, -50 );
+  cube3.rotation.set( 0, 0, 0 );
+  scene.add(cube3);
 
   animateScene();
 

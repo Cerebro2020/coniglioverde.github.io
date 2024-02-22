@@ -1,12 +1,10 @@
 import * as THREE from 'three';
 import {OrbitControls} from './three_class/OrbitControls.js';
-import { OBJLoader } from './three_class/OBJLoader.js';
-import { GLTFLoader } from './three_class/GLTFLoader.js';
 
 export default function(){
   // SCENE  
   const scene = new THREE.Scene();
-  var gridHelper = new THREE.GridHelper(100, 100);
+  //var gridHelper = new THREE.GridHelper(100, 100);
   //scene.add(gridHelper);  
   
   // CAMERA
@@ -28,22 +26,21 @@ export default function(){
   } );
 
   // SCENE & FOG  
-  scene.background = new THREE.Color( 0xff0000 );
-  /*scene.fog = new THREE.Fog(0x000000, 0, 0);*/
+  scene.background = new THREE.Color( 0xc35831 );
+  scene.fog = new THREE.Fog(0xc35831 , 0, 100);
   
   // CAMERA
-  camera.position.set( 0, 0, 72);
+  camera.position.set( 0, 10, 82);  
   camera.lookAt(new THREE.Vector3( 0, player.height, 0)); 
-  camera.setFocalLength ( 15 );
+  camera.setFocalLength ( 35 );
 
   // LIGHTS
-  const ambiente = new THREE.AmbientLight ( 0xffffff, 1)
+  const ambiente = new THREE.AmbientLight ( 0xffffff, 0.5)
   scene.add( ambiente);
   const pointLight = new THREE.PointLight( 0xffffff, 1, 250);     
-  pointLight.position.set( -1, 5, 10 ); 
+  pointLight.position.set( -10, 25, 0 ); 
   const pointHelper = new THREE.PointLightHelper(pointLight, 1);
   scene.add( pointLight, /*pointHelper*/ );
-
   
   // ANIMATE SCENE
   function animateScene(){
@@ -55,14 +52,14 @@ export default function(){
   // ORBIT CONTROLS
   const controls = new OrbitControls( camera, renderer.domElement );  
   controls.listenToKeyEvents( window ); 
-  controls.minDistance = 2;
-  controls.maxDistance = 72;
+  controls.minDistance = 82;
+  controls.maxDistance = 120;
 
   // VIDEO
   var video = document.createElement('video');
-  video.src = "./video/writing/traccia_fantasma (1).mp4";
-  video.loop = true;
+  video.src = "./video/writing/dal_deserto_rosso (1).mp4";
   video.style.display = 'none';  // Nasconde l'elemento video
+  video.loop = true; 
   document.body.appendChild(video);  // Aggiunge l'elemento video al corpo del documento
 
   video.load();
@@ -72,84 +69,29 @@ export default function(){
   vTexture.minFilter = THREE.LinearFilter;
   vTexture.magFilter = THREE.LinearFilter;
   vTexture.format = THREE.RGBAFormat;
+  vTexture.wrapS = THREE.RepeatWrapping;
+  vTexture.wrapT = THREE.RepeatWrapping;
+  vTexture.repeat.set( 1, 1 );
+
+  let Loader = new THREE.TextureLoader();
+  let texturMars = Loader.load('./images/textures/Mars.jpg');
 
 
-  // CITY
-  // SUBWAY GLB
-  const cityLoader = new GLTFLoader();
-
-  cityLoader.load(    
-   './3d/city2.glb',
-    function (glt) {
-      const city = glt.scene;
-      city.position.set( 0, 0, 0 );
-      city.rotation.set( 0, 0, 0 );      
-      city.scale.set( 1, 1, 1 );        
-      city.traverse(function (node) {
-        if (node.isMesh) {
-
-          const materialSGL = new THREE.MeshPhysicalMaterial({
-            color: 0xf11f11,
-            roughness: 0,
-            metalness: 0,
-          });   
-
-          node.material = materialSGL;
-          node.castShadow = true;
-          node.receiveShadow = true;
-        }
-
-      });   
-      
-      scene.add(city);        
-    
-
-    }, 
-
-    undefined, // funzione di progresso opzionale da passare al caricatore
-    function (error) {
-    console.error(error);      
-    }   
-
-  ); 
-
-  // SPHERE
-  const gSphere = new THREE.SphereGeometry(80, 32, 32);
+  // MARTE
+  const gSphere = new THREE.SphereGeometry( 40, 64, 64 );
   const mSphere = new THREE.MeshPhysicalMaterial({ 
-    map: vTexture, 
-    side: THREE.DoubleSide,    
-  });  
+    //color: 0xff0000,       
+    map: texturMars,
+    
+    bumpMap: texturMars,
+    bumpScale: 0.1,
 
-  const sphere = new THREE.Mesh(gSphere, mSphere);
-
-  let coef = 20;
-
-  // SCHERMO
-  const gBox = new THREE.BoxGeometry( 1.6*(coef), 0.9*(coef), 1.6*(coef), 200, 200, 200);
-  const mBox = new THREE.MeshPhysicalMaterial({ 
-    map: vTexture, 
-    side: THREE.DoubleSide,    
   });
 
-  const schermo = new THREE.Mesh(gBox, mBox); 
-  schermo.rotation.set( 0, 0.8, 0 );
-  scene.add(sphere, schermo);
+  const sphere = new THREE.Mesh(gSphere, mSphere); 
+  sphere.position.set( 0, -35, 0 );
+  sphere.rotation.set( 0, 0, 0);
 
-
-
-
-  
-
-
-
-
-
-
-
-  
-    
-    
- 
- 
+  scene.add( sphere );
 
 };

@@ -132,26 +132,50 @@ export default function(){
    //soundFotogramma.play();
    });
 
+   // POETRY 4
+   var listenerCiocca = new THREE.AudioListener();
+   camera.add(listenerCiocca);  
+   var soundCiocca = new THREE.Audio(listenerCiocca);
+   var loaderCiocca = new THREE.AudioLoader(); 
+   
+   loaderCiocca.load('./audio/neutropoli/ciocca.mp3', function(buffer) {
+    soundCiocca.setBuffer(buffer);
+    soundCiocca.setLoop(true);
+   //sound.setVolume(0.5);
+   //soundFotogramma.play();
+   });
+
+   // POETRY 5
+   var listenerAccavalla= new THREE.AudioListener();
+   camera.add(listenerAccavalla);  
+   var soundAccavalla = new THREE.Audio(listenerAccavalla);
+   var loaderAccavalla = new THREE.AudioLoader(); 
+   
+   loaderAccavalla.load('./audio/neutropoli/periferia.mp3', function(buffer) {
+    soundAccavalla.setBuffer(buffer);
+    soundAccavalla.setLoop(true);
+   //sound.setVolume(0.5);
+   //soundFotogramma.play();
+  });  
   
-  
- // BACKGROUND 
- const listenerBcg = new THREE.AudioListener();
- camera.add(listenerBcg);
+  // BACKGROUND 
+  const listenerBcg = new THREE.AudioListener();
+  camera.add(listenerBcg);
 
- const audioLoader = new THREE.AudioLoader();
+  const audioLoader = new THREE.AudioLoader();
 
- const backgroundSound = new THREE.Audio( listenerBcg );
- audioLoader.load('audio/neutropoli/Milano metro bcg.mp3', function( buffer ) {
-   backgroundSound.setBuffer( buffer );
-   backgroundSound.setLoop( true );
-   backgroundSound.setVolume( 0.125 );
-   backgroundSound.play();
- });
+  const backgroundSound = new THREE.Audio( listenerBcg );
+  audioLoader.load('audio/neutropoli/Milano metro bcg.mp3', function( buffer ) {
+    backgroundSound.setBuffer( buffer );
+    backgroundSound.setLoop( true );
+    backgroundSound.setVolume( 0.125 );
+    backgroundSound.play();
+  });
 
- const listenerBcg2 = new THREE.AudioListener();
- camera.add(listenerBcg2);
+  const listenerBcg2 = new THREE.AudioListener();
+  camera.add(listenerBcg2);
 
- const audioLoader2 = new THREE.AudioLoader();
+  const audioLoader2 = new THREE.AudioLoader();
 
    // Selezioniamo i pulsanti
    let cameraButton = document.querySelector('#btn-camera button');   
@@ -177,11 +201,15 @@ export default function(){
         soundEmme.pause();
         soundFotogramma.pause();
         soundChiha.pause();
+        soundCiocca.pause();
+        soundAccavalla.pause();
      } else {
         backgroundSound.play();
         soundEmme.play();
         soundFotogramma.play();
         soundChiha.play();
+        soundCiocca.play();
+        soundAccavalla.play();
      }
      // Cambiamo lo stato
      isPlaying = !isPlaying;
@@ -196,14 +224,21 @@ export default function(){
     var distance = camera.position.distanceTo(cube.position); 
     var distance2 = camera.position.distanceTo(cube2.position);
     var distance3 = camera.position.distanceTo(cube3.position);
+    var distance4 = camera.position.distanceTo(cube4.position);
+    var distance5 = camera.position.distanceTo(cube5.position);
+
 
     var volume = 1 - Math.min(distance / 20, 1); 
     var volume2 = 1 - Math.min(distance2 / 20, 1); 
     var volume3 = 1 - Math.min(distance3 / 20, 1);      
+    var volume4 = 1 - Math.min(distance4 / 20, 1);  
+    var volume5 = 1 - Math.min(distance5 / 20, 1);  
 
     soundEmme.setVolume(volume);
     soundFotogramma.setVolume(volume2)
     soundChiha.setVolume(volume3)
+    soundCiocca.setVolume(volume4);
+    soundAccavalla.setVolume(volume5);
 
     if (!soundEmme.isPlaying && volume > 0) {
       soundEmme.play();
@@ -212,13 +247,23 @@ export default function(){
       soundFotogramma.play();
     }
 
-    if (!soundChiha.isPlaying && volume2 > 0) {
+    if (!soundChiha.isPlaying && volume3 > 0) {
       soundChiha.play();
+    }
+
+    if (!soundCiocca.isPlaying && volume4 > 0) {
+      soundCiocca.play();
+    }
+
+    if (!soundAccavalla.isPlaying && volume5 > 0) {
+      soundAccavalla.play();
     }
   
     soundEmme.setVolume(volume);
     soundFotogramma.setVolume(volume2)
     soundChiha.setVolume(volume3)
+    soundCiocca.setVolume(volume4)
+    soundAccavalla.setVolume(volume5)
   };
 
   // SUBWAY GLB
@@ -279,24 +324,28 @@ export default function(){
   const gCube = new THREE.BoxGeometry( 1, 1, 1 );
   const mCube = new THREE.MeshPhysicalMaterial({
     color: 0Xff5555,
+    transparent: true,
+    opacity: 0,
+
   });
 
-  const cube = new THREE.Mesh(gCube, mCube);
-  scene.add(cube);
-  cube.position.set( 0, 2, -50 );
-  cube.rotation.set( 0, 0, 0 );
+  const cube = new THREE.Mesh(gCube, mCube);  
+  cube.position.set( 0, 2, -50 ); 
 
   const cube2 = cube.clone();
   scene.add(cube2);
-  cube2.position.set( 0, -18, 50 );
-  cube2.rotation.set( 0, 0, 0 );
-  scene.add(cube2);
+  cube2.position.set( 0, -18, 50 );  
 
-  const cube3 = cube.clone();
-  scene.add(cube3);
-  cube3.position.set( 0, 22, -50 );
-  cube3.rotation.set( 0, 0, 0 );
-  scene.add(cube3);
+  const cube3 = cube.clone();  
+  cube3.position.set( 0, 22, -50 );   
+
+  const cube4 = cube.clone();
+  cube4.position.set( -22, 22, 50 );
+
+  const cube5 = cube.clone(); 
+  cube5.position.set( 22, -18, 50 );
+
+  scene.add(cube, cube2, cube3, cube4, cube5);
 
   animateScene();
 

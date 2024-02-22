@@ -177,6 +177,10 @@ section {
   animation-duration: 1s;  
 }
 
+.title {
+  font-style: italic;
+}
+
 #cvIntro {
   height: 100%;
     display: flex;

@@ -263,23 +263,25 @@ section {
     height: auto;     
   }
 
-  .home-text {
+  .home-text { 
     width: 90%;
     height: 100vh;
   }
 
   .home-title {
+    margin-top: -10px;      
     width: 100%;
     height: 10%;
   }
 
-  .home-title h2 {    
+  .home-title h2 { 
+    top: -20px;   
     font-size: 40px;
   }
 
-  .home-paragraph {
+  .home-paragraph { 
     width: 100%;
-    height: 64%;
+    height: 60%;
   }
 
   .home-paragraph p {

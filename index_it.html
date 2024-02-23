@@ -39,9 +39,28 @@
                 }
             </script>	
             <script type = "module">
-                        import scene from "./index.js";                    
-                        scene();
-            </script>   
+                import scene from "./index.js";                    
+                scene();
+            </script>
+             <script>
+                var videos = document.getElementsByClassName('video-container-full');
+     
+                 for (var i = 0; i < videos.length; i++) {
+                     var video = videos[i];
+                     var playPromise = video.play();
+     
+                     if (playPromise !== undefined) {
+                         playPromise.then(_ => {
+                             // La riproduzione automatica è iniziata!
+                             // Mostra l'interfaccia utente in riproduzione.
+                         })
+                         .catch(error => {
+                             // La riproduzione automatica è stata impedita.
+                             // Mostra l'interfaccia utente in pausa.
+                         });
+                     }
+                 }
+             </script> 
         </canvas>     
         <!-- HOME -->
         <header>

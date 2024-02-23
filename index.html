@@ -15,12 +15,31 @@
         <!-- Loading -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-        $(document).ready(function() {
-          $(window).on("load", function() {
-            $("#loader").fadeOut("slow");
-          });
-        });
+            $(document).ready(function() {
+                $(window).on("load", function() {
+                    $("#loader").fadeOut("slow");
+                });
+            });
         </script>
+         <script>
+            var videos = document.getElementsByClassName('video-container-full');
+ 
+             for (var i = 0; i < videos.length; i++) {
+                 var video = videos[i];
+                 var playPromise = video.play();
+ 
+                 if (playPromise !== undefined) {
+                     playPromise.then(_ => {
+                         // La riproduzione automatica è iniziata!
+                         // Mostra l'interfaccia utente in riproduzione.
+                     })
+                     .catch(error => {
+                         // La riproduzione automatica è stata impedita.
+                         // Mostra l'interfaccia utente in pausa.
+                     });
+                 }
+             }
+         </script> 
     </head>
     <body>        
         <div id="loader">

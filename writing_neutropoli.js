@@ -321,11 +321,11 @@ export default function(){
   ); 
   
   // CUBE
-  const gCube = new THREE.BoxGeometry( 1, 1, 1 );
+  const gCube = new THREE.BoxGeometry( 0.1, 0.1, 0.1 );
   const mCube = new THREE.MeshPhysicalMaterial({
     color: 0Xff5555,
-    transparent: true,
-    opacity: 0,
+    //transparent: true,
+    //opacity: 0,
 
   });
 

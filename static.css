@@ -269,6 +269,7 @@ section {
   }
 
   .home-title {
+    width: 100%;
     height: 10%;
   }
 
@@ -277,6 +278,7 @@ section {
   }
 
   .home-paragraph {
+    width: 100%;
     height: 64%;
   }
 
@@ -290,11 +292,12 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));  
     grid-gap: 20px;
-    padding-bottom: 20px;  
+    padding-bottom: 20px;      
   }
 
   .gallery_item {
-    width: 100vw;
+    width: 90vw;
+    margin-left: 16px;;
     border: 1px solid rgb(70, 70, 70);      
     display: flex;
     flex-direction: column;
@@ -312,9 +315,10 @@ section {
     padding: 0px;        
   }
       
-  .main-gallery img {     
+  .main-gallery img {         
     width:auto;   
-    max-height: 250px; 
+    max-height: 250px;
+    padding: 10px; 
     transition: ease-in-out 0.2s;  
   }
       

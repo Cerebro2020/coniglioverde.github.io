@@ -4,13 +4,13 @@
 
 .info_leyer {  
   width: 100%;
-  height: 80px; 
+  height: 80px;   
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#info {    
+#info {   
   width: 160px;
   height: 30px;   
   text-align: center; 
@@ -92,6 +92,7 @@ cursor: grabbing;
   display:flex;
   align-items:end;
   justify-content: left; 
+  bottom: 20px
 }
 
 .button_div_writing button {
@@ -202,6 +203,11 @@ cursor: grabbing;
 }
 
 @media (max-width: 700px) {
+
+  #info {
+    position: absolute;
+  top: 6px;
+  }
 
   .container-book {
     position: absolute;    

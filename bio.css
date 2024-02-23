@@ -106,7 +106,7 @@ section {
   .bio-text {
     position: absolute;
     /* border: 1px solid white; */
-    bottom: 12.5%;
+    bottom: 20%;
   }
 
   .bio-text h1 {
@@ -123,7 +123,7 @@ section {
   }
 
   .bio-img {
-    height: 40%;
+    height: 30%;
     position: absolute;
     top: 7.25%;
   }
@@ -277,8 +277,8 @@ section {
   }
 
   .cv {  
-    font-size: 13px;
-    line-height: 14px;
+    font-size: 14px;
+    line-height: 16px;
     font-weight: 200;      
   }
   
@@ -303,6 +303,7 @@ section {
 
   .content-credits {
     font-size: 14px;
+    line-height: 16px;
   }
 
   .credits h2 {

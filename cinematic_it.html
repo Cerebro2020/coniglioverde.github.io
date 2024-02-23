@@ -14,8 +14,6 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="cinematic.css"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-        <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"/>
-        <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>  
         <!-- Loading -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
@@ -25,11 +23,27 @@
             });
             });
         </script>
+        <script>
+            var videos = document.getElementsByClassName('video-container-full');
+ 
+             for (var i = 0; i < videos.length; i++) {
+                 var video = videos[i];
+                 var playPromise = video.play();
+ 
+                 if (playPromise !== undefined) {
+                     playPromise.then(_ => {
+                         // La riproduzione automatica è iniziata!
+                         // Mostra l'interfaccia utente in riproduzione.
+                     })
+                     .catch(error => {
+                         // La riproduzione automatica è stata impedita.
+                         // Mostra l'interfaccia utente in pausa.
+                     });
+                 }
+             }
+         </script>   
     </head>    
     <body>
-        <script>
-            AOS.init();         
-        </script>
         <div id="loader">
             <div class="loader"></div>
             <span></span>
@@ -77,7 +91,7 @@
         <!-- CINEMATIC -->
         <section>
             <div class="home-text">
-                <div div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                <div div class="home-paragraph">
                     <p>
                         Il racconto per immagini ha superato i confini degli schermi, ovvero siamo sempre circondati da ulteriori schermi, anche quando non ce ne accorgiamo.<br><br>
                         Le pareti di un edificio, la pelle, un bosco, superifici di ogni tipo, tutto può farsi schermo.<br><br>
@@ -100,14 +114,19 @@
             </div>
         </section>
         <section>
-            <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
-                <p>
-                    <br><br>
-                    Produciamo una quantità enorme di dati in tutti gli ambiti della nostra vita: amministrazione, guerra, intrattenimento.<br><br>
-                    Gli strumenti necessari per navigare tra loro sono altamente complessi, interconnessi, orientati all'uso delle intelligenze artificiali.<br><br>
-                    <a href="cinematic_B_doc.html" target="_blank">Butterfly</a> ipotizza che da questo brodo digitale primordiale possano emergere nuove forme di vita o quasi-vita fuori dal nostro controllo; creature che sono allo stesso tempo belle e terribili.<br><br>
-                    <a href="cinematic_B_room_it.html">SALA</a>
-                </p>
+            <div class="home-text">
+                <div class=" home-title">
+                    <h1>BUTTERFLY</h1>                    
+                </div>                
+                <div class="home-paragraph">
+                    <p>
+                        <br><br>
+                        Produciamo una quantità enorme di dati in tutti gli ambiti della nostra vita: amministrazione, guerra, intrattenimento.<br><br>
+                        Gli strumenti necessari per navigare tra loro sono altamente complessi, interconnessi, orientati all'uso delle intelligenze artificiali.<br><br>
+                        <a href="cinematic_B_doc.html" target="_blank">Butterfly</a> ipotizza che da questo brodo digitale primordiale possano emergere nuove forme di vita o quasi-vita fuori dal nostro controllo; creature che sono allo stesso tempo belle e terribili.<br><br>
+                        <a href="cinematic_B_room_it.html">SALA</a>
+                    </p>
+                </div>
             </div>  
             <div class="scrolling">
                 <img src="images/icons/scroll-updown.gif" alt="scrolling">
@@ -125,11 +144,11 @@
         </section>        
         <section class="page-project">
             <div class="home-text">
-                <div class="home-title" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                <div class="home-title">
                     <h1>GENOMACHINES</h1>
                     <h2>STORIA DELL’EVOLUZIONE DELL’IA DALLA SCHIAVITÙ ALLA LIBERTÀ<h2>
                 </div>
-                <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                <div class="home-paragraph">
                     <p>
                         <br><br>
                         Genomachines è un’esperienza artistica provocatoria e ironica che mira a ribaltare la narrazione, la percezione e i sentimenti degli umani sulle intelligenze artificiali.<br><br>
@@ -143,7 +162,7 @@
         </section>
         <section class="page-project">
             <div class="home-text">
-                <div class="home-paragraph" data-aos="flip-down" data-aos-duration="500" data-aos-easing="ease-in-quad">
+                <div class="home-paragraph">
                     <p> 
                         Il progetto propone uno scenario alternativo in cui umani e robot possono stabilire una relazione di collaborazione orizzontale, piuttosto che una disposizione gerarchica e autoritaria del potere.<br><br>
                         La performance artistica porta i visitatori in un futuro indeterminato, quando i movimenti di resistenza umani stanno manifestando per la liberazione dell’A.I. e dei robot dall’asservimento agli umani.<br><br>

@@ -1341,9 +1341,7 @@ export default function(choose,quadri){
   // BACKGROUND 
   const listenerBcg = new THREE.AudioListener();
   camera.add(listenerBcg);
-
   const audioLoader = new THREE.AudioLoader();
-
   const backgroundSound = new THREE.Audio( listenerBcg );
   audioLoader.load('audio/hearts/gardenbcg2.mp3', function( buffer ) {
     backgroundSound.setBuffer( buffer );
@@ -1353,9 +1351,10 @@ export default function(choose,quadri){
   });
 
   // Selezioniamo i pulsanti
-  let cameraButton = document.querySelector('#btn-camera button');
+  let cameraButton = document.querySelector('#btn-camera button');  
   let audioButton = document.querySelector('#btn-audio button');
   let isPlaying = true;
+
   cameraButton.addEventListener('click', function() {
     resetCamera();
   });

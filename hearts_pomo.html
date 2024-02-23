@@ -168,7 +168,9 @@
 					
 					setTimeout(function(){
 
-						$('#info-white').hide();						
+						$('#info-white').hide();
+						$('#btn-audio-white').hide();
+
 						
 						const swiper = new Swiper('.swiper',
 							{
@@ -198,6 +200,8 @@
 					$('#openscene').click(function(){
 						$('#first_step').hide();						
 						$('#info-white').show();
+						$('#btn-audio-white').show();
+						
 
 						scene(choose,quadri);
 					});
@@ -209,6 +213,11 @@
 					<p>
 						MOUSE WHEEL zoom<br>LEFT click orbit RIGHT pan
 					</p>			
+				</div>
+			</div>
+			<div class="button-controls">
+				<div id="btn-audio-white">
+					<button>AUDIO</button>
 				</div>
 			</div>
 		</section>

@@ -65,7 +65,7 @@ export default function(choose,quadri){
   scene.add( ambient); 
 
   //POINTS 
-  const pLight = new THREE.PointLight( 0xffffff, 0.35, 2000 );  
+  const pLight = new THREE.PointLight( 0xffffff, 0.38, 2000 );  
   pLight.position.set( 0, 1, 0);
   const pHelper = new THREE.PointLightHelper(pLight); 
   pLight.castShadow = true; 
@@ -295,22 +295,33 @@ export default function(choose,quadri){
     //ret.position.set( 2, k*1.1 + (0.2*Math.PI/Math.cos(k+8)), 0); //+ 2 aumeta distanza tra sfere
     ret.position.set(2,k,0);
     ret.rotation.set( 0, k/3.4, 0 );
-    ret.scale.set( 3,3,3 );   
-
+    ret.scale.set( 3,3,3 );
   })
 
-   // BACKGROUND 
-   const listenerBcg = new THREE.AudioListener();
-   camera.add(listenerBcg);
- 
-   const audioLoader = new THREE.AudioLoader();
-
+  // BACKGROUND 
+  const listenerBcg = new THREE.AudioListener();
+  camera.add(listenerBcg); 
+  const audioLoader = new THREE.AudioLoader();
   const backgroundSound = new THREE.Audio( listenerBcg );
   audioLoader.load('audio/hearts/436557__k2tr__major-drone02.mp3', function( buffer ) {
     backgroundSound.setBuffer( buffer );
     backgroundSound.setLoop( true );
     backgroundSound.setVolume( 0.1 );
     backgroundSound.play();
-  });  
+  }); 
+  
+  // Selezioniamo i pulsanti   
+  let audioButton = document.querySelector('#btn-audio-white button');
+  let isPlaying = true;  
+  
+  audioButton.addEventListener('click', function() {
+    if (isPlaying) {
+      backgroundSound.pause();
+    } else {
+      backgroundSound.play();
+    }
+    // Cambiamo lo stato
+    isPlaying = !isPlaying;
+  });
 
 };

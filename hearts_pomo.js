@@ -61,19 +61,19 @@ export default function(choose,quadri){
 
   // LIGHTS //////
   //AMBIENT
-  const ambient = new THREE.AmbientLight( 0xffffff, 1 );  
+  const ambient = new THREE.AmbientLight( 0xffffff, 0.5 );  
   scene.add( ambient); 
 
   //POINTS 
-  const pLight = new THREE.PointLight( 0xffffff, 0.38, 2000 );  
+  const pLight = new THREE.PointLight( 0xffffff, 0.28, 2000 );  
   pLight.position.set( 0, 1, 0);
   const pHelper = new THREE.PointLightHelper(pLight); 
-  pLight.castShadow = true; 
+  //pLight.castShadow = true; 
   //Set up shadow properties for the light
-  pLight.shadow.mapSize.width = 1024; // default
-  pLight.shadow.mapSize.height = 1024; // default
-  pLight.shadow.camera.near = 0.5; // default
-  pLight.shadow.camera.far = 10; // default
+  //pLight.shadow.mapSize.width = 1024; // default
+  //pLight.shadow.mapSize.height = 1024; // default
+  //pLight.shadow.camera.near = 0.5; // default
+  //pLight.shadow.camera.far = 10; // default
 
   let pLight2 = pLight.clone();
   let pLight3 = pLight.clone();
@@ -89,7 +89,7 @@ export default function(choose,quadri){
   pLight6.position.set(400,0,0);
   pLight7.position.set(-400,0,0);
 
-  scene.add(pLight, pLight2, pLight3, pLight4, pLight5, pLight6, pLight7 );
+  scene.add(/*pLight,*/ pLight2, pLight3, pLight4, pLight5, pLight6, pLight7 );
 
   // ANIMATE SCENE //////
   function animateScene(){
@@ -126,15 +126,15 @@ export default function(choose,quadri){
             color: 0xc0652b,          
             metalness: 0.9,            
             roughness: 0.5,
-            ior: 2.3,
-            reflectivity: 1,
-            sheen: 1,
-            sheenRoughness: 0.2,
-            sheenColor: 0xc0652b, 
-            clearcoat: 1, 
-            clearcoatRoughness: 0,               
-            normalMap: TextureF, 
-            normalScale: new THREE.Vector2(0.005,0.005),
+            // ior: 2.3,
+            // reflectivity: 1,
+            // sheen: 1,
+            // sheenRoughness: 0.2,
+            // sheenColor: 0xc0652b, 
+            // clearcoat: 1, 
+            // clearcoatRoughness: 0,               
+            // normalMap: TextureF, 
+            // normalScale: new THREE.Vector2(0.005,0.005),
             
           });
   
@@ -210,15 +210,15 @@ export default function(choose,quadri){
       sheenColor: new THREE.Color(v[1]),                  
       metalness: 0.9,            
       roughness: 0.5,
-      ior: 2.3,
-      reflectivity: 1,
-      sheen: 1,
-      sheenRoughness: 0.2,
-      sheenColor: 0xc0652b, 
-      clearcoat: 1, 
-      clearcoatRoughness: 0,               
-      normalMap: TextureF, 
-      normalScale: new THREE.Vector2(0.005,0.005),             
+      // ior: 2.3,
+      // reflectivity: 1,
+      // sheen: 1,
+      // sheenRoughness: 0.2,
+      // sheenColor: 0xc0652b, 
+      // clearcoat: 1, 
+      // clearcoatRoughness: 0,               
+      // normalMap: TextureF, 
+      // normalScale: new THREE.Vector2(0.005,0.005),             
     }); 
 
     if (!forma) {

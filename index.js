@@ -63,11 +63,11 @@ export default function(){
   var vTexture2 = new THREE.VideoTexture(video2);
   vTexture2.minFilter = THREE.LinearFilter;
   vTexture2.magFilter = THREE.LinearFilter;
-  vTexture2.format = THREE.RGBAFormat;
+  vTexture2.format = THREE.RGBAFormat;  
 
   // SCENE & FOG
   scene.background = new THREE.Color( 0x000000 );
-  scene.fog = new THREE.Fog( 0x000000, 40, 180 );  
+  scene.fog = new THREE.Fog( 0x000000, 40, 170);  
   
   // CAMERA
   camera.position.set( 0, 0, 0);
@@ -76,23 +76,9 @@ export default function(){
 
   // LIGHTS
   //AMBIENT
-  const ambiente = new THREE.AmbientLight ( 0xffffff, 1 )
+  const ambiente = new THREE.AmbientLight ( 0xffffff, 2 )
   scene.add( ambiente);
-  //POINT
-  const pointLight = new THREE.PointLight( 0xffffff, 1, 2500); 
-  pointLight.position.set(0,0,50);
-  const pointLight2 = new THREE.PointLight( 0xffffff, 1, 250);    
-  pointLight2.position.set(0,0,150);
-  const pointLight3 = new THREE.PointLight( 0xffffff, 0.1, 250); 
-  pointLight3.position.set( 0, 0, 2501 ); 
-  scene.add( pointLight, pointLight2, pointLight3 );
-
-  const dLight = new THREE.DirectionalLight( 0xffffff, 2);
-  dLight.position.set( 10, 0, -5);  
-  const dLight2 = new THREE.DirectionalLight( 0xffffff, 2);
-  dLight2.position.set( -10, 5, 0);
-  /*scene.add( dLight, dLight2 );*/
-  
+    
   // ANIMATE SCENE
   function animateScene(){
     requestAnimationFrame( animateScene );
@@ -113,7 +99,7 @@ export default function(){
   }
 
   document.body.onscroll = moveCamera;
-      
+
   // RABBIT - HOME
   const loaderRabbit = new OBJLoader();
   let rabbit;   
@@ -124,11 +110,11 @@ export default function(){
       object.rotation.set( 0, -Math.PI/2, 0 );      
       try{
       const matRabbit=new THREE.MeshPhysicalMaterial({
-        color: 0xC1FF4D,
+        color: 0xC1FF4D,        
+        map: vTexture1, 
         roughness:0,
-        metalness:0.5,
-        map: vTexture1,                  
-        })     
+        metalness:0.5,                 
+      })     
       
       object.children[0].material=matRabbit;
       }catch(e){
@@ -148,7 +134,7 @@ export default function(){
       
       //RABBIT 3 - CINEMATIC      
       let rabbit3 = rabbit.clone();
-      rabbit3.position.set( 7, -5, -260 );
+      rabbit3.position.set( 7, -5, -250 );
       rabbit3.scale.set(1, 1, 1); 
       rabbit3.rotation.set( 0, 5, 0.4 );     
       scene.add( rabbit3 );
@@ -180,19 +166,14 @@ export default function(){
    
   // MATERIALS
   const material1 = new THREE.MeshPhysicalMaterial({
-    color: 0xac2ac2,    
-    side: THREE.DoubleSide,   
-    map: vTexture2,   
-    bumpMap: bumpP, 
-    bumpScale: 0.1,
-    //wireframe: true,
-    displacementMap: vTexture2 ,
-    displacementScale: 0.3,
- 
+    color: 0xac2ac2,   
+    map: vTexture2,
+    roughness:0,
+    metalness:0.5 
   });
 
   const material2 = new THREE.MeshPhysicalMaterial({
-    color: 0x333333,       
+    color: 0x222222,       
     wireframe: true,
     side: THREE.DoubleSide,    
     displacementMap: bumpP,

@@ -119,13 +119,7 @@ export default function(){
   document.body.onscroll = moveCamera;
   // MATERIALS
   const material1 = new THREE.MeshPhysicalMaterial({
-    color: 0xac2ac2,    
-    //side: THREE.DoubleSide,   
-    //map: vTexture2,   
-    //bumpMap: bumpP, 
-    //bumpScale: 0.1,
-    //wireframe: true,
-    //displacementMap: vTexture2 ,
+    color: 0xac2ac2,       
     displacementScale: 0.3, 
   });
 

@@ -83,123 +83,105 @@ export default function(){
   };
   animateScene();
 
-   // UV MAP //
-   const uvLoader = new THREE.TextureLoader();
-   const uvPaper = uvLoader.load('images/uvmap/paper.jpg');
-   uvPaper.wrapS = THREE.RepeatWrapping;
-   uvPaper.wrapT = THREE.RepeatWrapping;
-   uvPaper.repeat.set(8, 8); 
+  // UV MAP //
+  const uvLoader = new THREE.TextureLoader();
+  const uvPaper = uvLoader.load('images/uvmap/paper.jpg');
+  uvPaper.wrapS = THREE.RepeatWrapping;
+  uvPaper.wrapT = THREE.RepeatWrapping;
+  uvPaper.repeat.set(8, 8); 
 
-  // VIDEO  
-  // VIDEO 1
-  // var video1 = document.createElement('video');
-  // video1.src = "./video/cinematic/bf_01.mp4";
-  // //video1.src = "/video/writing/dal_deserto_rosso (1).mp4";
-  // //video1.src = "/video/writing/traccia_fantasma (1).mp4";
-  // video1.style.display = 'none';
-  // video1.muted = true; 
-  // video1.loop = true; 
-  // document.body.appendChild(video1); 
-  // video1.load();
-  // video1.play();
-  // var vTexture1 = new THREE.VideoTexture(video1);
-  // vTexture1.minFilter = THREE.LinearFilter;
-  // vTexture1.magFilter = THREE.LinearFilter;
-  // vTexture1.format = THREE.RGBAFormat;  
+  // VIDEO A1
+  var videoA1 = document.createElement('video');
+  videoA1.src = "./video/cinematic/BF_A1.mp4";
+  videoA1.style.display = 'none';
+  //videoA1.muted = true; 
+  videoA1.loop = true; 
+  document.body.appendChild(videoA1); 
+  var vTextureA1 = new THREE.VideoTexture(videoA1);
+  vTextureA1.minFilter = THREE.LinearFilter;
+  vTextureA1.magFilter = THREE.LinearFilter;
+  vTextureA1.format = THREE.RGBAFormat; 
 
-// VIDEO A1
-var videoA1 = document.createElement('video');
-videoA1.src = "./video/cinematic/BF_A1.mp4";
-videoA1.style.display = 'none';
-//videoA1.muted = true; 
-videoA1.loop = true; 
-document.body.appendChild(videoA1); 
-var vTextureA1 = new THREE.VideoTexture(videoA1);
-vTextureA1.minFilter = THREE.LinearFilter;
-vTextureA1.magFilter = THREE.LinearFilter;
-vTextureA1.format = THREE.RGBAFormat; 
+  // VIDEO A2
+  var videoA2 = document.createElement('video');
+  videoA2.src = "./video/cinematic/BF_A2.mp4";
+  videoA2.style.display = 'none';
+  videoA2.muted = true; 
+  videoA2.loop = true; 
+  document.body.appendChild(videoA2); 
+  var vTextureA2 = new THREE.VideoTexture(videoA2);
+  vTextureA2.minFilter = THREE.LinearFilter;
+  vTextureA2.magFilter = THREE.LinearFilter;
+  vTextureA2.format = THREE.RGBAFormat;  
 
-// VIDEO A2
-var videoA2 = document.createElement('video');
-videoA2.src = "./video/cinematic/BF_A2.mp4";
-videoA2.style.display = 'none';
-videoA2.muted = true; 
-videoA2.loop = true; 
-document.body.appendChild(videoA2); 
-var vTextureA2 = new THREE.VideoTexture(videoA2);
-vTextureA2.minFilter = THREE.LinearFilter;
-vTextureA2.magFilter = THREE.LinearFilter;
-vTextureA2.format = THREE.RGBAFormat;  
+  // VIDEO A3
+  var videoA3 = document.createElement('video');
+  videoA3.src = "./video/cinematic/BF_A3.mp4";
+  videoA3.style.display = 'none';
+  videoA3.muted = true; 
+  videoA3.loop = true; 
+  document.body.appendChild(videoA3); 
+  var vTextureA3 = new THREE.VideoTexture(videoA3);
+  vTextureA3.minFilter = THREE.LinearFilter;
+  vTextureA3.magFilter = THREE.LinearFilter;
+  vTextureA3.format = THREE.RGBAFormat;  
 
-// VIDEO A3
-var videoA3 = document.createElement('video');
-videoA3.src = "./video/cinematic/BF_A3.mp4";
-videoA3.style.display = 'none';
-videoA3.muted = true; 
-videoA3.loop = true; 
-document.body.appendChild(videoA3); 
-var vTextureA3 = new THREE.VideoTexture(videoA3);
-vTextureA3.minFilter = THREE.LinearFilter;
-vTextureA3.magFilter = THREE.LinearFilter;
-vTextureA3.format = THREE.RGBAFormat;  
+  // Crea un array per memorizzare i tuoi video
+  var videos = [videoA1, videoA2, videoA3]; 
 
-// Crea un array per memorizzare i tuoi video
-var videos = [videoA1, videoA2, videoA3]; 
+  // Contatore per tenere traccia dei video pronti per la riproduzione
+  var videosReady = 0;
 
-// Contatore per tenere traccia dei video pronti per la riproduzione
-var videosReady = 0;
+  // Aggiungi un listener per l'evento 'loadeddata' a ciascun video
+  for (var i = 0; i < videos.length; i++) {
+      videos[i].addEventListener('loadeddata', function() {
+          videosReady++;
 
-// Aggiungi un listener per l'evento 'loadeddata' a ciascun video
-for (var i = 0; i < videos.length; i++) {
-    videos[i].addEventListener('loadeddata', function() {
-        videosReady++;
+          // Se tutti i video sono pronti, avvia la riproduzione
+          if (videosReady === videos.length) {
+              for (var j = 0; j < videos.length; j++) {
+                  videos[j].play();
+              }
+          }
+      });
 
-        // Se tutti i video sono pronti, avvia la riproduzione
-        if (videosReady === videos.length) {
-            for (var j = 0; j < videos.length; j++) {
-                videos[j].play();
-            }
-        }
-    });
+      // Carica il video
+      videos[i].load();
+  }
 
-    // Carica il video
-    videos[i].load();
-}
+  // Ottieni il riferimento al tuo pulsante
+  var playButton = document.querySelector('#btn-camera button');
 
-// Ottieni il riferimento al tuo pulsante
-var playButton = document.querySelector('#btn-camera button');
+  // Aggiungi un listener per l'evento 'click' al pulsante
+  playButton.addEventListener('click', function() {
+      // Avvia tutti e tre i video
+      videoA1.play();
+      videoA2.play();
+      videoA3.play();
+  });
 
-// Aggiungi un listener per l'evento 'click' al pulsante
-playButton.addEventListener('click', function() {
-    // Avvia tutti e tre i video
-    videoA1.play();
-    videoA2.play();
-    videoA3.play();
-});
+  var pauseButton = document.querySelector('#btn-pause button');
 
-var pauseButton = document.querySelector('#btn-pause button');
+  // Aggiungi un listener per l'evento 'click' al pulsante di pausa
+  pauseButton.addEventListener('click', function() {
+      // Metti in pausa tutti e tre i video
+      videoA1.pause();
+      videoA2.pause();
+      videoA3.pause();
+  });
 
-// Aggiungi un listener per l'evento 'click' al pulsante di pausa
-pauseButton.addEventListener('click', function() {
-    // Metti in pausa tutti e tre i video
-    videoA1.pause();
-    videoA2.pause();
-    videoA3.pause();
-});
+  let audioButton = document.querySelector('#btn-audio button');
+  let isMuted = false;
 
-let audioButton = document.querySelector('#btn-audio button');
-let isMuted = false;
-
-audioButton.addEventListener('click', function() {
-    if (isMuted) {
-        videoA2.muted = false;
-    } else {
-        videoA2.muted = true;
-    }
-    // Cambiamo lo stato
-    isMuted = !isMuted;
-});
-
+  audioButton.addEventListener('click', function() {
+      if (isMuted) {
+          videoA2.muted = false;
+      } else {
+          videoA2.muted = true;
+      }
+      // Cambiamo lo stato
+      isMuted = !isMuted;
+  });
   
   // MATERIALS
   const material = new THREE.MeshPhysicalMaterial({

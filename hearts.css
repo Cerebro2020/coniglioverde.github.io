@@ -45,7 +45,6 @@ html {
   justify-content: center;
 }
 
-
 /* Safari */
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
@@ -120,7 +119,6 @@ canvas:active {
   cursor: zoom-in;
 }
 
-/* Nasconde la barra di scorrimento per Chrome, Safari e Opera */
 html::-webkit-scrollbar {
   display: none;
 }
@@ -395,21 +393,13 @@ section {
 }
 
 .swiper li.active{
-	background:#b1cd7a;
-  background:#6b1880;  
-  /* border: 1px solid rgb(255, 255, 255);   */
+  background:#6b1880;   
 }
 
-/*.swiper-pagination {
-  border: 1px solid rgb(77, 77, 77);  
-  
-}*/
-
-/* .swiper-pagination-bullet {
-  border: 1px solid rgb(255, 255, 255);  
-} */
-
-
+.swiper-pagination-bullet {
+  background-color: #A2FF00;
+  border: #000000;  
+}
 
 @media (max-width: 1024px) {
 
@@ -422,7 +412,6 @@ section {
     margin-left: 70px;
   }
 }
-
 
 @media (max-width: 724px) {
 
@@ -456,15 +445,12 @@ section {
     width: 8px;
     height: 8px;
   }
+
+  .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+  }    
    
-}
-
-.swiper-pagination-bullet {
-  width: 6px;
-  height: 6px;
-  background-color: #A2FF00;
-  border: #000000;
-
 }
 
 .label {  
@@ -472,7 +458,7 @@ section {
   padding: 8px;
 }
 
-.button-choose {  
+.button-choose { 
   width: 100%;  
   display: flex;
   justify-content: center;
@@ -482,25 +468,27 @@ section {
 	display: none;   
 }
 
-#openscene {   	
-  background-color: rgba(0, 162, 255, 0);
-  color: rgb(255, 255, 255);  
+#openscene {  
+  background-color: #000000;
+  color: #ffffff;   
   width: 80px;
-  height: 30px;  
+  height: 20px;  
   border-radius: 10px;
 	position: absolute;	
+  display: flex;
+  align-items: center;
+  justify-content: center;
   bottom: 10%;  
   font-size: 10px;  
   text-align: center;  
 	z-index: 1;
-}  
+} 
 
 .button-controls {
-  /* border: 1px solid red; */
-  width: 90%;
+  width: 94%;
   position: absolute;
   display: flex;
-  bottom: 40px;
+  bottom: 30px;
   align-items: center;
   justify-content: right;
   z-index: 1;
@@ -591,4 +579,4 @@ footer img {
 iframe {
   width:100%; 
   height:100vh;  
- }
+}

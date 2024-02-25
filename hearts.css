@@ -3,7 +3,7 @@
 
 *{
   margin: 0;
-  padding: 0;     
+  padding: 0;   
 }
 
 html {
@@ -62,6 +62,7 @@ html{
 }
 
 body {
+  
   font-size: 100%;  
   font-family: 'Source Sans 3', sans-serif;   
   font-weight: 200;
@@ -337,7 +338,7 @@ section {
 
 .swiper {    
   width: 100%;
-  height: 68vh;
+  height: 76vh;
   margin-top: 60px;
   background-color: #000000;   
 }
@@ -380,9 +381,9 @@ section {
 }
 
 .swiper li {
-  border: 1px solid rgb(77, 77, 77); 
+  border: 1px solid rgb(77, 77, 77);   
   width: 94px;
-  height: 20px;
+  height: 22px;
   display: flex;
   justify-content: space-between;        
   align-items: center;
@@ -396,7 +397,7 @@ section {
 .swiper li.active{
 	background:#b1cd7a;
   background:#6b1880;  
-  border: 1px solid rgb(255, 255, 255);  
+  /* border: 1px solid rgb(255, 255, 255);   */
 }
 
 /*.swiper-pagination {
@@ -404,16 +405,16 @@ section {
   
 }*/
 
-.swiper-pagination-bullet {
+/* .swiper-pagination-bullet {
   border: 1px solid rgb(255, 255, 255);  
-}
+} */
 
 
 
 @media (max-width: 1024px) {
 
   .swiper {    
-    width: 90%;
+    width: 80%;
   }
 
   .swiper ul {
@@ -426,7 +427,7 @@ section {
 @media (max-width: 724px) {
 
   .swiper {
-    width: 98%;  
+    width: 100vw;  
     height: 70vh;   
   }
 
@@ -456,6 +457,14 @@ section {
     height: 8px;
   }
    
+}
+
+.swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  background-color: #A2FF00;
+  border: #000000;
+
 }
 
 .label {  

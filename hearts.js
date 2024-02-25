@@ -140,8 +140,8 @@ export default function(choose,quadri){
   const gPavimento = new THREE.BoxGeometry(440, 40, 440);
   const mPavimento = new THREE.MeshPhysicalMaterial({
     map: TextureQ2,
-    bumpMap: uvPaper,
-    bumpScale: 0.3,
+    // bumpMap: uvPaper,
+    // bumpScale: 0.3,
   })  
 
   const pavimento = new THREE.Mesh(gPavimento, mPavimento);
@@ -150,8 +150,8 @@ export default function(choose,quadri){
 
   const mPareteS = new THREE.MeshPhysicalMaterial({
     map: TextureQ2,
-    bumpMap: uvPaper,
-    bumpScale: 0.1,     
+    // bumpMap: uvPaper,
+    // bumpScale: 0.1,     
   })
   
   const pareteS = new THREE.Mesh(gPavimento, mPareteS)  
@@ -175,8 +175,8 @@ export default function(choose,quadri){
 
   const material2 = new THREE.MeshPhysicalMaterial({
     map: TextureQ2,
-    bumpMap: uvPaper,
-    bumpScale: 0.1,
+    // bumpMap: uvPaper,
+    // bumpScale: 0.1,
   })
   
   // TREE
@@ -194,8 +194,8 @@ export default function(choose,quadri){
         if (node.isMesh) {
           const material = new THREE.MeshPhysicalMaterial({           
             map: TextureQ2,
-            bumpMap: uvPaper,
-            bumpScale: 0.1,            
+            // bumpMap: uvPaper,
+            // bumpScale: 0.1,            
           });
 
           node.material = material;
@@ -256,8 +256,8 @@ export default function(choose,quadri){
         if (node.isMesh) {
           const material = new THREE.MeshPhysicalMaterial({
             map: TextureQ2,
-            bumpMap: uvPaper,
-            bumpScale: 0.1,             
+            // bumpMap: uvPaper,
+            // bumpScale: 0.1,             
           });
           node.material = material;
           node.castShadow = true;
@@ -326,8 +326,8 @@ export default function(choose,quadri){
          if (node.isMesh) {
            const material = new THREE.MeshPhysicalMaterial({                          
              map: TextureQ2, 
-             bumpMap: uvPaper,
-             bumpScale: 0.1,        
+            //  bumpMap: uvPaper,
+            //  bumpScale: 0.1,        
            });
            node.material = material;
            node.castShadow = true;
@@ -337,8 +337,8 @@ export default function(choose,quadri){
        
        let materialV = new THREE.MeshPhysicalMaterial({              
           map: TextureQ2, 
-          bumpMap: uvPaper,
-          bumpScale: 0.1,        
+          // bumpMap: uvPaper,
+          // bumpScale: 0.1,        
       });
 
       scene.add(park); 
@@ -383,8 +383,8 @@ export default function(choose,quadri){
           const material = new THREE.MeshPhysicalMaterial({  
                        
             map: TextureQ2, 
-            bumpMap: uvPaper,
-            bumpScale: 0.1,        
+            // bumpMap: uvPaper,
+            // bumpScale: 0.1,        
           });
           node.material = material;
           node.castShadow = true;
@@ -394,8 +394,8 @@ export default function(choose,quadri){
       
       let materialV = new THREE.MeshPhysicalMaterial({              
          map: TextureQ2, 
-         bumpMap: uvPaper,
-         bumpScale: 0.1,        
+        //  bumpMap: uvPaper,
+        //  bumpScale: 0.1,        
      });
 
      scene.add(park2); 
@@ -435,8 +435,8 @@ export default function(choose,quadri){
         if (node.isMesh) {
           const material = new THREE.MeshPhysicalMaterial({              
             map: TextureQ2, 
-            bumpMap: uvPaper,
-            bumpScale: 0.1,        
+            // bumpMap: uvPaper,
+            // bumpScale: 0.1,        
           });
           node.material = material;
           node.castShadow = true;
@@ -470,8 +470,8 @@ export default function(choose,quadri){
         if (node.isMesh) {
           const material = new THREE.MeshPhysicalMaterial({
             map: TextureQ2,        
-            bumpMap: uvPaper,
-            bumpScale: 0.1, 
+            // bumpMap: uvPaper,
+            // bumpScale: 0.1, 
           });
           node.material = material;
           node.castShadow = true;
@@ -508,8 +508,8 @@ export default function(choose,quadri){
         if (node.isMesh) {
           const material = new THREE.MeshPhysicalMaterial({
             map: TextureQ2,        
-            bumpMap: uvPaper,
-            bumpScale: 0.1, 
+            // bumpMap: uvPaper,
+            // bumpScale: 0.1, 
           });
           node.material = material;
           node.castShadow = true;
@@ -543,8 +543,8 @@ export default function(choose,quadri){
          if (node.isMesh) {
            const material = new THREE.MeshPhysicalMaterial({
              map: TextureQ2,        
-             bumpMap: uvPaper,
-             bumpScale: 0.1, 
+            //  bumpMap: uvPaper,
+            //  bumpScale: 0.1, 
            });
            node.material = material;
            node.castShadow = true;
@@ -554,17 +554,15 @@ export default function(choose,quadri){
          
       scene.add(ocean);    
        
-     },
+    },
            
-     undefined, // funzione di progresso opzionale da passare al caricatore
-     function (error) {
-       console.error(error);      
-     }
+    undefined, // funzione di progresso opzionale da passare al caricatore
+    function (error) {
+      console.error(error);      
+    }
       
   ); 
 
-
-   
    
   // CONIGLIO
   const loaderRabbit = new OBJLoader();
@@ -627,8 +625,8 @@ export default function(choose,quadri){
           const material = new THREE.MeshPhysicalMaterial({
             color: 0x55ff55,
             map: TextureQ2, 
-            bumpMap: uvPaper,
-            bumpScale: 0.1,
+            // bumpMap: uvPaper,
+            // bumpScale: 0.1,
           });   
           node.material = material;
           node.castShadow = true;
@@ -660,8 +658,8 @@ export default function(choose,quadri){
           const material = new THREE.MeshPhysicalMaterial({
             color: 0xff2255,
             map: TextureQ2, 
-            bumpMap: uvPaper,
-            bumpScale: 0.1,
+            // bumpMap: uvPaper,
+            // bumpScale: 0.1,
           });   
           node.material = material;
           node.castShadow = true;
@@ -693,8 +691,8 @@ export default function(choose,quadri){
           const material = new THREE.MeshPhysicalMaterial({
             color: 0x5656ff,
             map: TextureQ2, 
-            bumpMap: uvPaper,
-            bumpScale: 0.1,
+            // bumpMap: uvPaper,
+            // bumpScale: 0.1,
           });   
           node.material = material;
           node.castShadow = true;
@@ -726,8 +724,8 @@ export default function(choose,quadri){
           const material = new THREE.MeshPhysicalMaterial({
             color: 0x00ffff, 
             map: TextureQ2, 
-            bumpMap: uvPaper,
-            bumpScale: 0.1,
+            // bumpMap: uvPaper,
+            // bumpScale: 0.1,
         });   
   
         node.material = material;
@@ -752,8 +750,8 @@ export default function(choose,quadri){
   const gTorus = new THREE.TorusGeometry (30, 1.5, 16, 12);
   const mTorus = new THREE.MeshPhysicalMaterial({                
     map: TextureQ2,
-    bumpMap: uvPaper,
-    bumpScale: 0.1, 
+    // bumpMap: uvPaper,
+    // bumpScale: 0.1, 
   })
 
   const torus = new THREE.Mesh(gTorus, mTorus); 
@@ -783,8 +781,8 @@ export default function(choose,quadri){
   const gCylinder2 = new THREE.CylinderGeometry (30, 30, 0.2, 32, 1 );
   const mCylinder2 = new THREE.MeshPhysicalMaterial({
     color: 0xffffff,    
-    bumpMap: uvPaper,
-    bumpScale: 0.1,
+    // bumpMap: uvPaper,
+    // bumpScale: 0.1,
   })
 
   const basePool = new THREE.Mesh( gCylinder2, mPareteS ); 
@@ -818,8 +816,8 @@ export default function(choose,quadri){
         if (node4.isMesh) {          
           const mFish = new THREE.MeshPhysicalMaterial({
             color: 0xff0000,
-            bumpMap: uvPaper,
-            bumpScale: 0.1, 
+            // bumpMap: uvPaper,
+            // bumpScale: 0.1, 
           });
     
           node4.material = mFish;      
@@ -952,8 +950,8 @@ export default function(choose,quadri){
     const emoMaterial = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color(v[1]),
       map: espressione,  
-      bumpMap: uvPaper,
-      bumpScale: 0.1,     
+      // bumpMap: uvPaper,
+      // bumpScale: 0.1,     
       //metalness: 0,
       //roughness: 0,   
     }); 
@@ -1107,17 +1105,17 @@ export default function(choose,quadri){
 
   })
 
-  //// SNAKE
+  //// BUBBLE
   let leyerSnake = new THREE.Group();
   const livelli2=_.map(choose,(v,k)=>{ 
 
     const gSnake = new THREE.SphereGeometry( 2, 16, 16);
     const mSnake = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color(v[1]),      
-      bumpMap: uvPaper,
-      bumpScale: 0.1,
-      transparent:true,
-      opacity: 1,      
+      // bumpMap: uvPaper,
+      // bumpScale: 0.1,
+      // transparent:true,
+      // opacity: 1,      
     });   
     
     // SNAKE 1
@@ -1141,7 +1139,7 @@ export default function(choose,quadri){
     const snake3 = new THREE.Mesh (gSnake, newmatSnake2);
     snake3.castShadow = true;
     snake3.receiveShadow = true;
-    snake3.position.set( -284, 92, -20);
+    snake3.position.set( -284, 90, -20);
     snake3.scale.set( 0.6, 0.6, 0.6); 
     
     leyerSnake.add( snake1, snake2, snake3 );   
@@ -1161,10 +1159,10 @@ export default function(choose,quadri){
     const gSmoke =  new THREE.TorusGeometry( 2, 0.2, 16, 32 ); 
     const mSmoke = new THREE.MeshPhysicalMaterial({
       color: new THREE.Color(v[1]),     
-      bumpMap: uvPaper,
-      bumpScale: 0.1,
-      transparent:true,
-      opacity: 1,      
+      // bumpMap: uvPaper,
+      // bumpScale: 0.1,
+      // transparent:true,
+      // opacity: 1,      
     });   
     
     // SMOKE 1
@@ -1184,7 +1182,7 @@ export default function(choose,quadri){
     smoke2.position.set( -88.5, 200, 0);
     smoke2.rotation.set( Math.PI/2, Math.PI/2, 0 );  
           
-    // SNAKE 3
+    // SMOKE 3
     let newmatSmoke2 = mSmoke.clone(); 
     newmatSmoke2.color = new THREE.Color(v[3] ? v[3] : v[1]);
     const smoke3 = new THREE.Mesh (gSmoke, newmatSmoke2);
@@ -1195,7 +1193,7 @@ export default function(choose,quadri){
      
     leyerSmoke.add( smoke1, smoke2, smoke3 );   
 
-    // CLONE SNAKE
+    // CLONE SMOKE
     const leyerSmoke2 = leyerSmoke.clone(true);
     leyerSmoke2.position.set(k*(-0.1), 63, -346);
     leyerSmoke2.rotation.set(0, 0, k/60 );             
@@ -1317,8 +1315,8 @@ export default function(choose,quadri){
   const gCielo = new THREE.SphereGeometry(800, 16, 16);
   const mCielo = new THREE.MeshPhysicalMaterial({
     map: TextureQ2,
-    bumpMap: uvPaper,
-    bumpScale: 0.1,  
+    // bumpMap: uvPaper,
+    // bumpScale: 0.1,  
     side: THREE.DoubleSide, 
     alphaMap: alphaCielo,
     transparent: true,
@@ -1330,8 +1328,8 @@ export default function(choose,quadri){
   const gCielo2 = new THREE.SphereGeometry(1800, 16, 16);
   const mCielo2 = new THREE.MeshPhysicalMaterial({
     map: TextureB2,
-    bumpMap: uvPaper,
-    bumpScale: 0.1,  
+    // bumpMap: uvPaper,
+    // bumpScale: 0.1,  
     side: THREE.DoubleSide,     
   })
   const cielo2 = new THREE.Mesh(gCielo2, mCielo2);

@@ -1,5 +1,6 @@
 body {    
     height: 400vh;
+    background-color: black;
     background-image: url('images/bcg/SfondoI.jpg');
     background-size: cover;     
     background-repeat: no-repeat;

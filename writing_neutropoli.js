@@ -13,7 +13,7 @@ export default function(){
   //CAMERA
   const camera = new THREE.PerspectiveCamera( 50 , window.innerWidth / window.innerHeight, 0.1, 10000 );
   let player = { height:1.8, speed:0.2, turnSpeed:Math.PI*0.02 };
-  camera.position.set( 0, 0, -150 ) ;
+  camera.position.set( 0, 0, -150 );
 
   //RENDERER
   const renderer = new THREE.WebGLRenderer({    
@@ -48,8 +48,8 @@ export default function(){
   // CONTROLS
   const controls = new FirstPersonControls(camera, renderer.domElement);  
   
-  controls.movementSpeed = 7;
-  controls.lookSpeed = 0.02;
+  controls.movementSpeed = 6;
+  controls.lookSpeed = 0.015;
   // controls.constrainVertical = true; 
   // controls.verticalMin = 0.1; 
   // controls.lookVertical = 0;
@@ -87,10 +87,8 @@ export default function(){
 
   //TEXTURES
   const loader = new THREE.TextureLoader();
-  const texture1 = loader.load('./images/statics/Glitches/glitches_01 (6).jpg');
-  texture1.wrapS = THREE.RepeatWrapping;
-  texture1.wrapT = THREE.RepeatWrapping;
-  texture1.repeat.set(1, 1);    
+  const texture1 = loader.load('./images/statics/Glitches/glitches_01 (6).jpg'); 
+  const texture2 = loader.load('./images/statics/Glitches/glitches_01 (3).jpg');    
 
   //AUDIO
   // POETRY 1
@@ -102,8 +100,8 @@ export default function(){
   loaderEmme.load('./audio/neutropoli/emme.mp3', function(buffer) {
     soundEmme.setBuffer(buffer);
     soundEmme.setLoop(true);
-    //sound.setVolume(0.5);
-    //soundEmme.play();
+    sound.setVolume(0.5);
+    soundEmme.play();
   });
 
   // POETRY 2
@@ -112,11 +110,11 @@ export default function(){
   var soundFotogramma = new THREE.Audio(listenerEmme);
   var loaderFotogramma = new THREE.AudioLoader(); 
   
-  loaderFotogramma.load('./audio/neutropoli/accavalla.mp3', function(buffer) {
-  soundFotogramma.setBuffer(buffer);
-  soundFotogramma.setLoop(true);
-  //sound.setVolume(0.5);
-  //soundFotogramma.play();
+  loaderFotogramma.load('./audio/neutropoli/fotograma.mp3', function(buffer) {
+    soundFotogramma.setBuffer(buffer);
+    soundFotogramma.setLoop(true);
+    sound.setVolume(0.5);
+    soundFotogramma.play();
   });
 
    // POETRY 3
@@ -128,8 +126,8 @@ export default function(){
    loaderChiha.load('./audio/neutropoli/chiha.mp3', function(buffer) {
     soundChiha.setBuffer(buffer);
     soundChiha.setLoop(true);
-   //sound.setVolume(0.5);
-   //soundFotogramma.play();
+    sound.setVolume(0.5);
+    soundChiha.play();
    });
 
    // POETRY 4
@@ -141,8 +139,8 @@ export default function(){
    loaderCiocca.load('./audio/neutropoli/ciocca.mp3', function(buffer) {
     soundCiocca.setBuffer(buffer);
     soundCiocca.setLoop(true);
-   //sound.setVolume(0.5);
-   //soundFotogramma.play();
+    sound.setVolume(0.5);
+    soundCiocca.play();
    });
 
    // POETRY 5
@@ -151,11 +149,24 @@ export default function(){
    var soundAccavalla = new THREE.Audio(listenerAccavalla);
    var loaderAccavalla = new THREE.AudioLoader(); 
    
-   loaderAccavalla.load('./audio/neutropoli/periferia.mp3', function(buffer) {
+   loaderAccavalla.load('./audio/neutropoli/accavalla.mp3', function(buffer) {
     soundAccavalla.setBuffer(buffer);
     soundAccavalla.setLoop(true);
-   //sound.setVolume(0.5);
-   //soundFotogramma.play();
+    soundAccavalla.setVolume(0.5);
+    soundAccavalla.play();
+  }); 
+    
+  // POETRY 6
+  var listenerPeriferia= new THREE.AudioListener();
+  camera.add(listenerPeriferia);  
+  var soundPeriferia = new THREE.Audio(listenerPeriferia);
+  var loaderPeriferia = new THREE.AudioLoader(); 
+     
+  loaderPeriferia.load('./audio/neutropoli/periferia.mp3', function(buffer) {
+    soundPeriferia.setBuffer(buffer);
+    soundPeriferia.setLoop(true);
+    soundPeriferia.setVolume(0.5);
+    soundPeriferia.play();
   });  
   
   // BACKGROUND 
@@ -203,6 +214,7 @@ export default function(){
         soundChiha.pause();
         soundCiocca.pause();
         soundAccavalla.pause();
+        soundPeriferia.pausa();
      } else {
         backgroundSound.play();
         soundEmme.play();
@@ -210,6 +222,7 @@ export default function(){
         soundChiha.play();
         soundCiocca.play();
         soundAccavalla.play();
+        soundPeriferia.play();
      }
      // Cambiamo lo stato
      isPlaying = !isPlaying;
@@ -226,6 +239,7 @@ export default function(){
     var distance3 = camera.position.distanceTo(cube3.position);
     var distance4 = camera.position.distanceTo(cube4.position);
     var distance5 = camera.position.distanceTo(cube5.position);
+    var distance6 = camera.position.distanceTo(cube6.position);
 
 
     var volume = 1 - Math.min(distance / 20, 1); 
@@ -233,12 +247,14 @@ export default function(){
     var volume3 = 1 - Math.min(distance3 / 20, 1);      
     var volume4 = 1 - Math.min(distance4 / 20, 1);  
     var volume5 = 1 - Math.min(distance5 / 20, 1);  
+    var volume6 = 1 - Math.min(distance6 / 20, 1); 
 
     soundEmme.setVolume(volume);
     soundFotogramma.setVolume(volume2)
     soundChiha.setVolume(volume3)
     soundCiocca.setVolume(volume4);
     soundAccavalla.setVolume(volume5);
+    soundAccavalla.setVolume(volume6);
 
     if (!soundEmme.isPlaying && volume > 0) {
       soundEmme.play();
@@ -264,6 +280,7 @@ export default function(){
     soundChiha.setVolume(volume3)
     soundCiocca.setVolume(volume4)
     soundAccavalla.setVolume(volume5)
+    soundPeriferia.setVolume(volume6)
   };
 
   // SUBWAY GLB
@@ -321,16 +338,17 @@ export default function(){
   ); 
   
   // CUBE
-  const gCube = new THREE.BoxGeometry( 0.1, 0.1, 0.1 );
+  const gCube = new THREE.SphereGeometry( 1, 16, 16 );
   const mCube = new THREE.MeshPhysicalMaterial({
-    color: 0Xff5555,
+    color: 0Xffffff,
+    map:texture2,
     //transparent: true,
     //opacity: 0,
 
   });
 
   const cube = new THREE.Mesh(gCube, mCube);  
-  cube.position.set( 0, 2, -50 ); 
+  cube.position.set( -2, 2, -50 ); 
 
   const cube2 = cube.clone();
   scene.add(cube2);
@@ -345,7 +363,10 @@ export default function(){
   const cube5 = cube.clone(); 
   cube5.position.set( 22, -18, 50 );
 
-  scene.add(cube, cube2, cube3, cube4, cube5);
+  const cube6 = cube.clone(); 
+  cube6.position.set( -22, 228, 50 );
+
+  scene.add(cube, cube2, cube3, cube4, cube5, cube6);
 
   animateScene();
 

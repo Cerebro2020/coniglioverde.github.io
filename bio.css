@@ -313,3 +313,43 @@ section {
   }
 
 }
+
+/* wow */
+.wow {
+  visibility: hidden; 
+  animation-duration: 1s; 
+  animation-fill-mode: both; 
+}
+
+.wow.bounceInRight {
+  animation-name: bounceInRight;
+}
+
+.wow.bounceOutRight {
+  animation-name: bounceOutRight;
+}
+
+.wow.bounceInLeft {
+  animation-name: bounceInLeft;
+}
+
+.wow.bounceInUp {
+  animation-name: bounceInUp;
+}
+
+.wow.bounceInDown {
+  animation-name: bounceInDown;
+}
+
+.wow.zoomIn {
+  animation-name: zoomIn;
+}
+
+.wow.heartBeat {
+  animation-name: heartBeat;
+}
+
+.wow.fadeIn {
+  animation-name: fadeIn;
+ animation-duration: 2s;
+}

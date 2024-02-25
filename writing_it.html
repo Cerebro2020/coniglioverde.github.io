@@ -5,22 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Artista e narratore, specializzato in 3D per data visualization e User Emotional Experience. Autore in cinematografia, arte visiva, AI e Arte povera digitale.">
-        <meta property="og:title" content="CONIGLIO VERDE">
-        <meta property="og:description" content="Artista e narratore, specializzato in 3D per data visualization e User Emotional Experience. Autore in cinematografia, arte visiva, AI e Arte povera digitale.">
-        <link rel="canonical" href="https://cerebro2020.github.io/coniglioverde.github.io/">
-        <link rel="icon" href="./images/loghi/favicon.ico">
+    <meta property="og:title" content="CONIGLIO VERDE">
+    <meta property="og:description" content="Artista e narratore, specializzato in 3D per data visualization e User Emotional Experience. Autore in cinematografia, arte visiva, AI e Arte povera digitale.">
+    <link rel="canonical" href="https://cerebro2020.github.io/coniglioverde.github.io/">
+    <link rel="icon" href="./images/loghi/favicon.ico">
     <title>coniglioverde|writing-it</title>
     <link rel="stylesheet" href="style.css">  
-    <link rel="stylesheet" href="writing.css"> 
-      <!-- Loading -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script>
-          $(document).ready(function() {
+    <link rel="stylesheet" href="writing.css">
+    
+    <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">  
+        <script src="./node_modules/wowjs/dist/wow.min.js"></script> 
+        <!-- WOW -->
+        <script>
+            new WOW().init();
+        </script>
+
+    <!-- Loading -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
           $(window).on("load", function() {
               $("#loader").fadeOut("slow");
           });
-          });
-      </script>
+        });
+    </script>
     <body>
         <div id="loader">
             <div class="loader"></div>
@@ -60,7 +68,7 @@
                     <!-- <h1>WRITING</h1> -->
                 </div>  
                 <div class="home-paragraph">
-                    <p>
+                    <p class="wow bounceInUp">
                         Comunicare, condividere, cercare di tradurre il mondo che ci circonda o condividere l'univreso che ribolle in noi stessi, per fare tutto questo esistono le parole.<br><br> 
                         Poesia, teatro, letteratura, canto, la parola viaggia e cerca altri veicoli, altre forme da abitare.<br><br>
                         Al tempo delle metà-realtà, dei mondi virtuali, delle AI che possono imitare il pensiero, Coniglio Verde cerca la sua strada creando luoghi, processi e dispositivi per conforontarsi proprio con le parole. 
@@ -74,12 +82,12 @@
         <!-- NEUTROPOLI -->
         <section id="neutropoli">
             <div class="container-book" >
-                <div class="cover-container">            
+                <div class="cover-container wow zoomIn">            
                     <img src="images/writing/neutropoli/Neutropoli Cover.jpg" alt="cover Neutropoli">
                 </div>  
                 <div class="text-container">
                     <div class="text-book"> 
-                        <div class="paragraph-book">
+                        <div class="paragraph-book wow fadeIn">
                             <p>
                                 NEUTROPOLI<br><br>
                                 Una metropolitana affollata raccoglie la voce, forse i pensieri, di viaggiatori anonimi

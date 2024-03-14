@@ -1,5 +1,5 @@
-body {    
-    height: 400vh;
+body {        
+    min-height: 100vh;
     background-color: black;
     background-image: url('images/bcg/SfondoI.jpg');
     background-size: cover;     
@@ -25,33 +25,52 @@ body {
     bottom: 40px;
 }
 
-
 .logoh {
     position: relative;
-    left: -40px;
+    display: flex;
+    left: -28px;
 }
 
 .logoh img {
-    width: 200px;
+    width: 160px;
     height: auto;    
 }
+.home-text { 
+    height: 70vh;
+}
 
-.home-paragraph {  
-    height: 36vh;
+.home-title {            
+    height: 30%;
+}
+
+.home-paragraph {
+    height: 90%;
+    display: flex;       
+    align-items: flex-end;    
+    justify-content: flex-end;
+    margin-top: auto; 
+    flex-direction: column;
+}
+
+/* .home-paragraph-2 { 
+    width: 50%; 
+    height: 80%;
     display: flex;   
     align-items: flex-start;
     margin-top: auto;
-}
-
+    font-size: 22px;   
+    line-height: 24px; 
+} */
 
 /* GALLERY */
 .paragraph-gallery {
-    position: absolute;
+    position: fixed;
     top:0;
     width: 100%;
-    height: 40vh;    
+    height: 20vh;    
     margin: 0px;
-    display: flex;           
+    display: flex;
+    z-index: 1;           
 }
 
 .double-image-data  {
@@ -72,7 +91,6 @@ body {
     object-position: center;    
     width: 100%; 
 }
-
 
 @media (max-width: 1024px) {
 
@@ -109,7 +127,7 @@ body {
 
     .home-text {  
         width: 90%;      
-        height: 80vh;        
+        height: 70vh;        
     } 
 
     .logoh {
@@ -137,8 +155,8 @@ body {
     } 
 
     .home-paragraph p {
-        font-size: 16px;
-        line-height: 17px;
+        font-size: 17px;
+        line-height: 18px;
     } 
 
 }

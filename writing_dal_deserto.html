@@ -5,69 +5,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Felice Vino">
-        <meta name="description" content="Artista e narratore, specializzato in 3D per data visualization e User Emotional Experience. Autore in cinematografia, arte visiva, AI e Arte povera digitale.">
-        <meta property="og:title" content="CONIGLIO VERDE">
-        <meta property="og:description" content="Artista e narratore, specializzato in 3D per data visualization e User Emotional Experience. Autore in cinematografia, arte visiva, AI e Arte povera digitale.">
-        <link rel="canonical" href="https://cerebro2020.github.io/coniglioverde.github.io/">
-        <link rel="icon" href="./images/loghi/favicon.ico">
+    <meta name="description" content="Artista e narratore, specializzato in 3D per data visualization e User Emotional Experience. Autore in cinematografia, arte visiva, AI e Arte povera digitale.">
+    <meta property="og:title" content="CONIGLIO VERDE">
+    <meta property="og:description" content="Artista e narratore, specializzato in 3D per data visualization e User Emotional Experience. Autore in cinematografia, arte visiva, AI e Arte povera digitale.">
+    <link rel="canonical" href="https://cerebro2020.github.io/coniglioverde.github.io/">
+    <link rel="icon" href="./images/loghi/favicon.ico">
     <title>coniglioverde|writing|dal deserto rosso</title>
     <link rel="stylesheet" href="style.css">  
     <link rel="stylesheet" href="writing.css">  
-
-    <style>
-
-        .canvas {
-            z-index: -1;             
-        }
-
-        canvas {
-            position: absolute;
-            top: 0;
-            cursor: grab;
-        }
-
-        canvas:active {				
-        cursor: grabbing;
-        }
-
-    </style>
-
     <!-- Loading -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <script>
         $(document).ready(function() {
-        $(window).on("load", function() {
-            $("#loader").fadeOut("slow");
-        });
+            $(window).on("load", function() {
+                $("#loader").fadeOut("slow");
+            });
         });
     </script>    
-
 </head>
-
 <body>
-    
     <div id="loader">
         <div class="loader"></div>
       <span></span>
         <div class="text-loader">
           <p>Loading...</p>
         </div>
-    </div>
-    
-    <script type="importmap">
-            {
-                "imports": {
-                    "three": "./three_class/three.module.js"
-                    }
-            }
-    </script>		
-    
-    <script type = "module">
-        import scene from "./writing_dal_deserto.js";
-        scene();
-    </script> 
-    
+    </div>  
+        <script type="importmap">
+                {
+                    "imports": {
+                        "three": "./three_class/three.module.js"
+                        }
+                }
+        </script>
+        <script type = "module">
+            import scene from "./writing_dal_deserto.js";
+            scene();
+        </script>  
     <header>
         <div id="logo">
             <a href="index_it.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>

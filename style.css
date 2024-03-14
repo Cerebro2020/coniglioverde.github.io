@@ -346,14 +346,14 @@ section {
   justify-content: center;    
 }
 
-canvas { 
+ canvas { 
   box-sizing: border-box;     
   position:fixed;
   width: 100%; 
   height: auto;   
   top: 0%;
   z-index: -9999;
-} 
+}
 
 .home-text {   
   width: 100%;
@@ -440,7 +440,7 @@ canvas {
 
 } 
 
-@media (max-width: 724px) {
+@media (max-width: 724px) { 
 
   .home-text {
     height: 90vh;

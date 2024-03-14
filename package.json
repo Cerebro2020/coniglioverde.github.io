@@ -1,8 +1,19 @@
 {
   "dependencies": {
-    "animate": "^1.0.0",
     "animate.css": "^4.1.1",
+    "gsap": "^3.12.5",
+    "papaparse": "^5.4.1",
     "pizzicato": "^0.6.4",
     "wowjs": "^1.1.3"
-  }
+  },
+  "name": "coniglio_verde_web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

@@ -134,11 +134,9 @@
 						{color:'#3C6232',label:'Disprezzo'},
 						{color:'#0A5C0A',label:'Odio'},
 						{color:'#008000',label:'Rabbia'},
-					]
+					]					
 					
-					// prova ordine di scelta
 					let orderOfChoices = [];
-
 					let choose={};
 					for (let i = 0; i < quadri.length; i++) {
 						choose[i] = ['#ffffff']; // Imposta il valore predefinito su bianco
@@ -185,11 +183,13 @@
 								$(this).removeClass('active');
 							}else{
 								$(this).addClass('active');
-								choose[$(this).attr('quad')].push($(this).attr('val'));								
+								choose[$(this).attr('quad')].push($(this).attr('val'));
 							}
 							$('#choose span').html(JSON.stringify(choose));
 							console.log(choose);
+							
 						});
+
 					},500);
 					
 					import scene from "./hearts.js"

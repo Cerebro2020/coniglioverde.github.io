@@ -14,23 +14,22 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="data.css"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-        <!-- Loading -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
             $(document).ready(function() {
-                $(window).on("load", function() {
-                    $("#loader").fadeOut("slow");
-                });
+            $(window).on("load", function() {
+                $("#loader").fadeOut("slow");
             });
-        </script>
+            });
+        </script> 
     </head>
     <body>
         <div id="loader">
             <div class="loader"></div>
-                <span></span>
-                <div class="text-loader">
-                    <p>Loading...</p>
-                </div>
+            <span></span>
+            <div class="text-loader">
+                <p>Loading...</p>
+            </div>
         </div>
         <canvas class="writing">            			
             <script type="importmap">
@@ -49,9 +48,9 @@
         <!-- HOME -->
         <header>
             <div id="logo">
-                <a href="index_it.html"><img src="images/loghi/coniglio_verde_logo.png" alt="Coniglio Verde logo"></a>
+                <a href="index.html"><img src="images/loghi/coniglio_verde_logo.png" alt="Coniglio Verde logo"></a>
             </div>
-            <input id="menu-toggle" type="checkbox" aria-label="Toggle menu"/>
+            <input id="menu-toggle" type="checkbox" aria-label="Toggle Menu"/>
             <label class='menu-button-container' for="menu-toggle">
             <div class='menu-button'></div>
             </label class='menu-button-container' for="menu-toggle">
@@ -60,7 +59,7 @@
                 <li><a href="#">H.E.ArtS</a></a></li>
                 <li><a href="data.html">EN | IT</a></li>                             
             </ul>
-        </header>  
+        </header>   
         <!-- FOOTER -->
         <footer id="footer">
             <ul>
@@ -70,19 +69,41 @@
                 <li><a href="https://vimeo.com/felicevino" target="_blank" rel="noopener"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
             </ul>
         </footer>
+        <!-- GALLERY IMAGES -->
+        <!-- <div class="paragraph-gallery">           
+            <div class="double-image-data">
+                <div class="dids">
+                    <img src="images/hearts/gallery_quad/15.jpg" alt="">
+                </div>
+                <div class="dids">
+                    <img src="images/hearts/gallery_quad/01.jpg" alt="">
+                </div>
+            </div>                
+            <div class="double-image-data">
+                <div  class="dids">
+                    <img src="images/hearts/gallery_quad/05.jpg" alt=""> 
+                </div>
+                <div class="dids">
+                    <img src="images/hearts/gallery_quad/02.jpg" alt="">
+                </div>
+            </div>
+        </div>  -->
+         <!-- 1st TEXT  -->
         <section>            
             <div class="home-text">
                 <div class="home-title">
-                    <h1 >H.E.Arts</h1>
+                    <!-- <h1 >H.E.Arts</h1>                      -->
                     <div  class="logoh">
                         <img src="images/loghi/hearts_logo.png" alt="">
                     </div>
-                </div>                
+                </div>  
                 <div class="home-paragraph">
                     <p>
-                        <a href="hearts_material_it.html" target="_blank">H.E.Arts</a> è l'acronimo di High Emotional Arts, un dispositivo basato sulla "Geneva Wheel" e progettato per registrare il viaggio emotivo di un visitatore di un museo, di una galleria d'arte o di altri tipi di fruizione artistica.<br><br>                     
-                        Il visitatore può selezionare il tipo di emozione che prova per descrivere la sua esperienza, per poi vederla tradotta in una visualizzazione di dati personalizzata e creativa.<br><br>
-                        Il prototipo presente in questa pagina permette all'utente di registrare le proprie emozioni a partire da una selezione di opere provenienti dal Museo del 900 di Milano.<br>
+                        H.E.Arts sta per High Emotional Arts, un dispositivo basato sulla "Geneva Wheel" e progettato per registrare il viaggio emotivo di un visitatore in un museo, una galleria d'arte o altri tipi di esperienze artistiche. <br><br>                     
+                        H.E.Arts trasforma il viaggio emozionale del visitatore in una visualizzazione dei dati personalizzata e creativa. 
+                        È stato sviluppato durante il programma Innocult, grazie al contributo del MEET Digital Culture Centre.
+                        <br><br>  
+                        Il prototipo di questa pagina utilizza una selezione di opere del Museo 900 di Milano.<br>
                     </p>
                 </div>                          
             </div>    
@@ -90,78 +111,27 @@
                 <img src="images/icons/scroll-down.svg" alt="scrolling">
             </div>              
         </section>            
-        <!-- GALLERY -->                 
-        <section>
-            <div class="paragraph-gallery">                    
-                <div class="double-image-data">
-                    <div  class="dids">
-                        <img src="images/hearts/gallery_quad/01.jpg" alt="">
-                    </div>
-                    <div  class="dids">
-                        <img src="images/hearts/gallery_quad/05.jpg" alt="">
-                    </div>
-                </div>                
-                <div class="double-image-data">
-                    <div  class="dids">
-                        <img src="images/hearts/gallery_quad/13.jpg" alt=""> 
-                    </div>
-                    <div class="dids">
-                        <img src="images/hearts/gallery_quad/20.jpg" alt="">
-                    </div>
-                </div>
-            </div>            
-            <div class="home-text">
+        <!-- GALLERY -->             
+        <section>                                  
+            <div class="home-text">     
                 <div class="home-paragraph">
                     <p>
-                        L'esperienza si svolge in questo modo. Per iniziare, durante la visita, prenditi il tuo tempo, guarda le opere d'arte e "lasciati sentire".<br><br>
-                        Presta attenzione alle tue emozioni in relazione a quello che le opere potrebbero significare.<br><br>                    
-                        "Ciò che conta è quello che provi."<br><br>
-                        Nel nostro caso troverai le opere selezionate nell'interfaccia dell'app.  
+                        Troverai le opere selezionate nell'interfaccia dell'app con un elenco di emozioni che puoi selezionare, raggruppate in quattro aree chiave.  
+                        Prenditi il tuo tempo, guarda le opere d'arte e "lasciati sentire". <br><br>               
+                        "Ciò che conta è quello che senti." <br><br>       
+                        Scegli uno, due o fino a tre per descrivere le sfumature delle tue emozioni <br>
+                        Trascina l'immagine per passare al lavoro successivo e così via all'ultimo.<br>
+                        Seleziona il pulsante "risultato" per vedere come i tuoi dati personali creano un lavoro unico, il risultato della tua esperienza personale. <br><br>
+                        Una prima visualizzazione è progettata per creare uno spazio per esplorare <a href="hearts_it.html">H.E.Arts_01</a>. <br><br>
+                        Una seconda visualizzazione crea un oggetto unico, ispirato da uno degli artisti del museo<a href="hearts_pomo_it.html"> H.E.Arts_02</a>.<br><br>
+                        Se vuoi puoi usare i nostri contatti per raccontarci la tua esperienza. <br><br>
+                        <a href="hearts_material.html" target="_blank">documents</a>
                     </p>
-                </div>                
-            </div>
-            <div class="scrolling">
-                <img src="images/icons/scroll-updown.gif" alt="scrolling">
-            </div>
-        </section>        
-        <!-- INTERFACCIA -->           
-        <section>   
-            <div class="home-text">
-                <div class="home-title"> 
-                    <div  class="logoh">
-                        <img src="images/loghi/hearts_logo.png" alt="">
-                    </div>
                 </div>  
-                <div class="home-paragraph">
-                    <p>
-                        Nell'interfaccia troverai una gallery e un elenco di emozioni che potrai selezionare. Le emozioni sono raggruppate in quattro aree fondamentali.<br><br> 
-                        Scegline una, due o fino a un massimo di tre per descrivere le sfumature delle tue emozioni.<br><br> 
-                        Dopo aver effettuato la prima scelta trascina l'immagine per andare all'opera successiva e così via fino all'ultima.<br><br> 
-                        Al termine della gallery seleziona il tasto "result" e potrai vedere come i tuoi dati personali creano un'opera unica, frutto della tua personale esperienza.
-                    </p>
-                </div>                
-            </div> 
-            <div class="scrolling">
-                <img src="images/icons/scroll-updown.gif" alt="scrolling">
             </div>
-        </section>
-        <!-- ESPERIENZA -->      
-        <section>
-            <div class="image-cover"></div>        
-            <div class="home-text">
-                <div class="home-paragraph">
-                    <p>
-                        Alla fine della raccolta dei dati, che puoi terminare in qualsiasi momento, potrai verificare il risultato.<br><br> 
-                        Una prima visualizzazione è pensata per dare vita a uno spazio da esplorare <a href="hearts_it.html">H.E.Arts_01</a>.<br><br> 
-                        Una seconda visualizzazione crea un oggetto unico, ispirato a uno degli artisti presenti nel museo<a href="hearts_pomo_it.html"> H.E.Arts_02</a>.<br>
-                        <br>
-                        Se ti va puoi usare i nostri contatti per raccontarci la tua esperienza.<br>                   
-                    </p>
-                </div>                
-            </div> 
             <div class="scrolling">
                 <img src="images/icons/scroll-up.svg" alt="scrolling">
             </div>
-        </section> 
+        </section>
     </body>
 </html>

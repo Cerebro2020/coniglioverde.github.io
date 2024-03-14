@@ -90,7 +90,7 @@ export default function(choose,quadri){
       torsolo.traverse(function (node) {
         if (node.isMesh) {
           const material = new THREE.MeshPhysicalMaterial({
-            map: TextureF,
+            //map: TextureF,
             color: 0xc0652b,          
             metalness: 0.9,            
             roughness: 0.5,

@@ -2,6 +2,8 @@ import * as THREE from 'three';
 import {OrbitControls} from './three_class/OrbitControls.js';
 import { GLTFLoader } from './three_class/GLTFLoader.js';
 import { OBJLoader } from './three_class/OBJLoader.js';
+import { VRButton } from './three_class/VRButton.js';
+import { XRControllerModelFactory } from './three_class/XRControllerModelFactory.js';
 export default function(choose, quadri){
 
   const colore0 = choose[0][0]; 
@@ -30,21 +32,22 @@ export default function(choose, quadri){
   window.resetCamera = resetCamera;
   // SCENE  
   const scene = new THREE.Scene();
+  scene.background = new THREE.Color(  0x5555ff );
   // CAMERA //////
   const camera = new THREE.PerspectiveCamera( 50 , window.innerWidth / window.innerHeight, 0.1, 4000 );
   let player = { height:1.8, speed:0.2, turnSpeed:Math.PI*0.02 };  
-  camera.position.set(0, 200, 500 ); 
+  camera.position.set(0, 100, 200 ); 
   camera.rotation.set( 1, 0, 0 );
   camera.lookAt(new THREE.Vector3( 0, player.height, 0));  
-  camera.setFocalLength ( 35 );
+  camera.setFocalLength ( 25 );
   // RENDERER
-  const renderer = new THREE.WebGLRenderer({alpha:true, antialias:true});
+  const renderer = new THREE.WebGLRenderer({
+    alpha:true, 
+    antialias:true
+  });
   // CONTROLS //////
   const controls = new OrbitControls( camera, renderer.domElement );  
   controls.listenToKeyEvents( window );
-  controls.minDistance =  5;    
-  controls.maxDistance = 1400;
-  controls.maxPolarAngle = 1.5;
   let initialCameraPosition = new THREE.Vector3();
   initialCameraPosition.copy(camera.position);
   // Crea una funzione per resettare la camera
@@ -57,7 +60,8 @@ export default function(choose, quadri){
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
 	renderer.toneMappingExposure = 1;
   renderer.setSize( window.innerWidth, window.innerHeight );
-  document.body.appendChild( renderer.domElement );    
+  document.body.appendChild( renderer.domElement ); 
+  renderer.xr.enabled = true,    
   // RESIZE WINDOW //////
   window.addEventListener('resize', function(){
     var width = window.innerWidth;
@@ -66,8 +70,11 @@ export default function(choose, quadri){
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
   } );
-  // SCENE & FOG //////
-  scene.background = new THREE.Color(  0x5555ff );
+      //VRBUTTON
+      document.body.appendChild( VRButton.createButton( renderer ) );
+      renderer.setAnimationLoop( function () {
+          renderer.render( scene, camera );    
+      } );
   // LIGHTS //////
   //AMBIENT
   const ambient = new THREE.AmbientLight( 0xFFFFFF, 0.6 );  
@@ -122,8 +129,7 @@ export default function(choose, quadri){
   const eleMat = new THREE.MeshPhysicalMaterial({ 
     color: new THREE.Color(colore0), 
     map: TextureQ2,
-  });  
- 
+  }); 
   // GRUPPO EMOZIONI //////
   let emotionGroup = new THREE.Group();
   const emozioni=_.map(choose,(v,k)=>{
@@ -165,11 +171,8 @@ export default function(choose, quadri){
     //   contatoreEmo[3] += 1;
     // }  else if (gruppiColori[4].includes(coloreCorrente)) {
     //   contatoreEmo[4] += 1;
-    // } else contatoreEmo[1] += 0;            
-      
+    // } else contatoreEmo[1] += 0; 
     // }
-
-
     // Definisci i gruppi di colori
     const gruppiColori = [
       colori.slice(0, 5),  // Primi 5 colori

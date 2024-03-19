@@ -110,16 +110,16 @@ export default function(){
       rabbit2.position.set( 10, -8, -150 );
       rabbit2.rotation.set( 0, -0.5, 0 );  
       //rabbit2.scale.set(2, 2, 2);       
-      scene.add( rabbit2 );      
+      //scene.add( rabbit2 );      
       //RABBIT 3 - CINEMATIC      
       let rabbit3 = rabbit.clone();
-      rabbit3.position.set( 7, -5, -250 );
+      rabbit3.position.set( 6, -5, -245 );
       rabbit3.scale.set(1, 1, 1); 
       rabbit3.rotation.set( 0, 5, 0.4 );     
-      scene.add( rabbit3 );
+      //scene.add( rabbit3 );
       //RABBIT 4 - WRITING      
       let rabbit4 = rabbit.clone();
-      rabbit4.position.set( 7, -5, -360 );
+      rabbit4.position.set( 5, -5, -360 );
       rabbit4.scale.set(1, 1, 1); 
       rabbit4.rotation.set( 0, 3.5, 0 );     
       scene.add( rabbit4 );
@@ -128,7 +128,7 @@ export default function(){
       rabbit5 .position.set( -6, -6, -470 );
       rabbit5 .scale.set(1, 1, 1); 
       rabbit5 .rotation.set( 0, -4.5, 0 );     
-      scene.add( rabbit5  );
+      //scene.add( rabbit5  );
     },
     // called when loading is in progresses
     function ( xhr ) {

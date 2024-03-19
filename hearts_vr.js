@@ -2,7 +2,8 @@ import * as THREE from 'three';
 import {OrbitControls} from './three_class/OrbitControls.js';
 import { GLTFLoader } from './three_class/GLTFLoader.js';
 import { OBJLoader } from './three_class/OBJLoader.js';
-
+import { VRButton } from './three_class/VRButton.js';
+import { XRControllerModelFactory } from './three_class/XRControllerModelFactory.js';
 export default function(choose, quadri){
 
   const colore0 = choose[0][0]; 
@@ -32,11 +33,15 @@ export default function(choose, quadri){
   // SCENE  
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(  0x5555ff );
+  //scene.fog = new THREE.Fog(0xFFFFFF,10,300);
+  
+  scene.position.set(0, -16,-50);
+  scene.rotation.set(0,0,0);
   // CAMERA //////
   const camera = new THREE.PerspectiveCamera( 50 , window.innerWidth / window.innerHeight, 0.1, 4000 );
   let player = { height:1.8, speed:0.2, turnSpeed:Math.PI*0.02 };  
-  camera.position.set(0, 100, 200 ); 
-  camera.rotation.set( 1, 0, 0 );
+  camera.position.set(0, 0, 0 ); 
+  camera.rotation.set( 0, 0, 0 );
   camera.lookAt(new THREE.Vector3( 0, player.height, 0));  
   camera.setFocalLength ( 25 );
   // RENDERER
@@ -47,11 +52,8 @@ export default function(choose, quadri){
   // CONTROLS //////
   const controls = new OrbitControls( camera, renderer.domElement );  
   controls.listenToKeyEvents( window );
-  controls.listenToKeyEvents( window );
   controls.minDistance =  5;    
   controls.maxDistance = 1400;
-  controls.maxPolarAngle = 1.5;
- 
   let initialCameraPosition = new THREE.Vector3();
   initialCameraPosition.copy(camera.position);
   // Crea una funzione per resettare la camera
@@ -73,7 +75,12 @@ export default function(choose, quadri){
     renderer.setSize( width, height );
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
-  } );    
+  } );
+      //VRBUTTON
+      document.body.appendChild( VRButton.createButton( renderer ) );
+      renderer.setAnimationLoop( function () {
+          renderer.render( scene, camera );    
+      } );
   // LIGHTS //////
   //AMBIENT
   const ambient = new THREE.AmbientLight( 0xFFFFFF, 0.6 );  
@@ -1248,7 +1255,7 @@ export default function(choose, quadri){
   audioLoader.load('audio/hearts/gardenbcg2.mp3', function( buffer ) {
     backgroundSound.setBuffer( buffer );
     backgroundSound.setLoop( true );
-    backgroundSound.setVolume( 1 );
+    backgroundSound.setVolume( 0.5 );
     backgroundSound.play();
   });
   // Selezioniamo i pulsanti
@@ -1269,12 +1276,93 @@ export default function(choose, quadri){
   });
   // Funzione per resettare la camera
   function resetCamera() {
-    camera.position.set( 200, 40, 200 ); 
-    camera.rotation.set( 1, 0, 0 );
+    camera.position.set( 0, 0, 0 ); 
+    camera.rotation.set( 0, 0, 0 );
     camera.lookAt(new THREE.Vector3( 0, player.height, 0)); 
     controls.listenToKeyEvents( window );
     controls.minDistance =  5;    
     controls.maxDistance = 1400;
     controls.maxPolarAngle = 1.5; 
-  }    
+  }  
+   
+  /// ANMIATION KEYFRAME 
+  var scenePositions = [  
+
+    new THREE.Vector3(0, -16, 0),
+    new THREE.Vector3(0, -16, 0),
+
+    new THREE.Vector3(0, -30, -120),
+    new THREE.Vector3(0, -30, -120),
+
+    new THREE.Vector3(-150, -80, -130),
+    new THREE.Vector3(-150, -80, -130),
+
+    new THREE.Vector3(0, -80, -130),
+    new THREE.Vector3(0, -80, -130),
+    
+    new THREE.Vector3(200, -80, -130),
+    new THREE.Vector3(200, -80, -130), 
+
+    new THREE.Vector3(200, -80, 0),
+    new THREE.Vector3(200, -80, 0),
+
+    new THREE.Vector3(200, -280, 0),
+    new THREE.Vector3(200, -280, 0),
+
+    new THREE.Vector3(200,-440, 160),
+    new THREE.Vector3(200,-440, 160),
+
+    new THREE.Vector3(-150,-440, 160),
+    new THREE.Vector3(-150,-440, 160),
+
+    new THREE.Vector3(-150,-540, 300),
+    new THREE.Vector3(-150,-540, 300),
+
+    new THREE.Vector3(-150,-440, 160),
+    new THREE.Vector3(-150,-440, 160),
+
+    new THREE.Vector3(300,-540, -160),
+    new THREE.Vector3(300,-540, -160),
+
+    new THREE.Vector3(0,-540, -160),
+    new THREE.Vector3(0,-540, -160),
+
+    new THREE.Vector3(0,-540, 160),
+    new THREE.Vector3(0,-540, 160),
+
+    new THREE.Vector3(0,-80, 160),
+    new THREE.Vector3(0,-80, 160),
+
+
+
+   
+
+    // new THREE.Vector3(0, -16, 0),    
+  ];
+
+
+  var moveStartTime = Date.now();
+  var currentIndex = 0;
+  
+
+  var animate = function () {
+    requestAnimationFrame(animate);
+    var now = Date.now();            
+    var duration = 1*(5*(1000));
+    var elapsed = (now - moveStartTime) / duration;
+    if (elapsed > 1) {
+      moveStartTime = now;
+      elapsed = 0;
+      currentIndex = (currentIndex + 1) % scenePositions.length;
+    }
+
+    var currentPos = scenePositions[currentIndex];
+    var nextPos = scenePositions[(currentIndex + 1) % scenePositions.length];
+    scene.position.copy(currentPos);
+    scene.position.lerp(nextPos, elapsed);
+
+    renderer.render(scene, camera);    
+  };
+  animate();
+
 };

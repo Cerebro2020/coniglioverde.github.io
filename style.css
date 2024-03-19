@@ -55,8 +55,8 @@
 
 html{
   scroll-behavior: smooth;
-  scroll-snap-type:y proximity; 
-  overflow-y: scroll;    
+  scroll-snap-type:y proximity;   
+  overflow-y: scroll;   
 }
 
 body {    
@@ -404,6 +404,10 @@ section {
   font-style: italic; font-weight: 400;
 }
 
+.p-bold {
+  font-weight: 600;
+}
+
 .scrolling {    
   position: absolute;
   display: flex;
@@ -464,7 +468,7 @@ section {
   
   .home-paragraph {        
     width: 90%;
-    height: 60%;    
+    height: 65%;    
     margin-left: 0px;
   }
 
@@ -510,7 +514,8 @@ section {
     line-height: 40px;  
   }
   
-  .home-paragraph {        
+  .home-paragraph { 
+        
     width: 90%;
     height: 50%;    
     margin-left: 0px;

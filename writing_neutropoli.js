@@ -81,7 +81,7 @@ export default function(){
   camera.add(listenerEmme);  
   var soundEmme = new THREE.Audio(listenerEmme); 
   var loaderEmme = new THREE.AudioLoader(); 
-  loaderEmme.load('./audio/neutropoli/emme.mp3', function(buffer) {
+  loaderEmme.load('./audio/neutropoli/Emme.mp3', function(buffer) {
     soundEmme.setBuffer(buffer);
     soundEmme.setLoop(true);
     soundEmme.setVolume(0.5);

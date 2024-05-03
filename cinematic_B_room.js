@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import {OrbitControls} from './three_class/OrbitControls.js';
 import { OBJLoader } from './three_class/OBJLoader.js';
+import { GLTFLoader } from './three_class/GLTFLoader.js';
 
 export default function(){
 
@@ -55,7 +56,7 @@ export default function(){
   const ambiente = new THREE.AmbientLight ( 0xffffff, 1 )
   scene.add( ambiente);
   //POINT
-  const pointLight = new THREE.PointLight( 0xffffff, 0.02, 250);
+  const pointLight = new THREE.PointLight( 0xffffff, 0.05, 1000);
   pointLight.castShadow = true;
   pointLight.shadow.mapSize.width = 1024; // default
   pointLight.shadow.mapSize.height = 1024; // default
@@ -94,7 +95,7 @@ export default function(){
   var videoA1 = document.createElement('video');
   videoA1.src = "./video/cinematic/BF_A1.mp4";
   videoA1.style.display = 'none';
-  //videoA1.muted = true; 
+  videoA1.muted = true; 
   videoA1.loop = true; 
   document.body.appendChild(videoA1); 
   var vTextureA1 = new THREE.VideoTexture(videoA1);
@@ -106,7 +107,7 @@ export default function(){
   var videoA2 = document.createElement('video');
   videoA2.src = "./video/cinematic/BF_A2.mp4";
   videoA2.style.display = 'none';
-  videoA2.muted = true; 
+  videoA2.muted = false; 
   videoA2.loop = true; 
   document.body.appendChild(videoA2); 
   var vTextureA2 = new THREE.VideoTexture(videoA2);
@@ -208,8 +209,8 @@ export default function(){
     color: 0x080808, 
     roughness: 0.5,
     metalness: 0,  
-    bumpMap: uvPaper,
-    bumpScale: 0.05,
+    //bumpMap: uvPaper,
+    //bumpScale: 0.05,
   });
 
   const material3 = new THREE.MeshPhysicalMaterial({
@@ -283,7 +284,7 @@ export default function(){
   sala.scale.set(10,10,10);  
   //scene.add(sala);
 
-  const gColonna = new THREE.CylinderGeometry(0.4,0.4,12,64);
+  const gColonna = new THREE.CylinderGeometry(0.4,0.4,12,16);
   let colonna1 = new THREE.Mesh(gColonna, material2);
   colonna1.position.set(-14,-4, 31);
   colonna1.castShadow = true; //default is false
@@ -314,46 +315,138 @@ export default function(){
   room.position.set(0,0,50);
   scene.add(room);
 
+  // HUMANS 1
+  const loaderH1 = new GLTFLoader();
+  loaderH1.load(    
+    './3d/humans/Low_person_1.glb',
+    function (glt) {
+      const human1 = glt.scene;
+      human1.position.set( 2, -5, 10  );
+      human1.rotation.set(0, Math.PI/2, 0 );      
+      human1.scale.set(6,6,6);        
+      human1.traverse(function (node) {
+        if (node.isMesh) {
+          const material = new THREE.MeshPhysicalMaterial({
+            color: 0X666666,
+            roughness: 0.5,
+          });   
+          node.material = material;
+          node.castShadow = true;
+          node.receiveShadow = true;
+        }
+      });   
+      scene.add(human1);        
+      human1.castShadow = true; 
+      human1.receiveShadow = true;       
+    },       
+    undefined, 
+    function (error) {
+      console.error(error);      
+    }   
+  );
+
+
+    // HUMANS 2
+    const loaderH2 = new GLTFLoader();
+    loaderH2.load(    
+      './3d/humans/Low_person_2.glb',
+      function (glt) {
+        const human2 = glt.scene;
+        human2.position.set( 10, -5, -5  );
+        human2.rotation.set(0, Math.PI/2, 0 );      
+        human2.scale.set(6,6,6);        
+        human2.traverse(function (node) {
+          if (node.isMesh) {
+            const material = new THREE.MeshPhysicalMaterial({
+              color: 0X666666,
+              roughness: 0.5,
+            });   
+            node.material = material;
+            node.castShadow = true;
+            node.receiveShadow = true;
+          }
+        });   
+        scene.add(human2);        
+        human2.castShadow = true; 
+        human2.receiveShadow = true;       
+      },       
+      undefined, 
+      function (error) {
+        console.error(error);      
+      }   
+    );
+
+
+    // HUMANS 3
+    const loaderH3 = new GLTFLoader();
+    loaderH2.load(    
+      './3d/humans/Low_person_3.glb',
+      function (glt) {
+        const human2 = glt.scene;
+        human2.position.set( -10, -5, 0  );
+        human2.rotation.set(0, Math.PI, 0 );      
+        human2.scale.set(6,6,6);        
+        human2.traverse(function (node) {
+          if (node.isMesh) {
+            const material = new THREE.MeshPhysicalMaterial({
+              color: 0X666666,
+              roughness: 0.5,
+            });   
+            node.material = material;
+            node.castShadow = true;
+            node.receiveShadow = true;
+          }
+        });   
+        scene.add(human2);        
+        human2.castShadow = true; 
+        human2.receiveShadow = true;       
+      },       
+      undefined, 
+      function (error) {
+        console.error(error);      
+      }   
+    );
+
   // FEMALE    
-  const loaderHousewife = new OBJLoader();
-  let housewife;
+  // const loaderHousewife = new OBJLoader();
+  // let housewife;
      
   // LOAD A RESOURCE
-  loaderHousewife.load('3d/humans/housewife.obj',
-    function ( objHousewife ) {
-      objHousewife.position.set( -5, -4, -10 );
-      objHousewife.rotation.set( 0, Math.PI/2.2, 0 );      
-      try{
-        const matHousewife = new THREE.MeshPhysicalMaterial({
-         color: 0x555555,          
-          //clearcoat: 1.0,
-          //clearcoatRoughness: 0.1                  
-        })     
+  // loaderHousewife.load('3d/humans/housewife.obj',
+  //   function ( objHousewife ) {
+  //     objHousewife.position.set( -5, -4, -10 );
+  //     objHousewife.rotation.set( 0, Math.PI/2.2, 0 );      
+  //     try{
+  //       const matHousewife = new THREE.MeshPhysicalMaterial({
+  //        color: 0x555555,          
+  //         //clearcoat: 1.0,
+  //         //clearcoatRoughness: 0.1                  
+  //       })     
         
-        objHousewife.children[0].material=matHousewife;
-      }catch(e){
-        console.log(e);
-      }
-      housewife=objHousewife;     
-      console.log( 'body was loaded', housewife );
-      housewife.position.set(0,-5,10);
-      housewife.rotation.set(0, Math.PI,0); 
-      housewife.castShadow = true;     
-      scene.add( housewife );
-      let hh = 0.08;
+  //       objHousewife.children[0].material=matHousewife;
+  //     }catch(e){
+  //       console.log(e);
+  //     }
+  //     housewife=objHousewife;     
+  //     console.log( 'body was loaded', housewife );
+  //     housewife.position.set(0,-5,10);
+  //     housewife.rotation.set(0, Math.PI,0); 
+  //     housewife.castShadow = true;     
+  //     scene.add( housewife );
+  //     let hh = 0.08;
 
-      housewife.scale.set( hh, hh, hh);        
+  //     housewife.scale.set( hh, hh, hh);        
      
-      },
-      // called when loading is in progresses
-      function ( xhr ) {
-        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-      },
-    // called when loading has errors
-    function ( error ) {
-      console.log( 'An error happened' );
-    }
-  );
+  //     },
+  //     // called when loading is in progresses
+  //     function ( xhr ) {
+  //       console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+  //     },
+  //   // called when loading has errors
+  //   function ( error ) {
+  //     console.log( 'An error happened' );
+  //   }
+  // );
 
   animateScene();  
  

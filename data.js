@@ -68,7 +68,7 @@ export default function(){
   loaderHeart.load('3d/heart/heart.glb',
     function (gltfg) {
       const heart = gltfg.scene;
-      heart.position.set( 10, -4, -34 );      
+      heart.position.set( 12, -4, -34 );      
       heart.rotation.set( 0, 0, 0 );
       heart.scale.set( 4, 4, 4 );
       heart.traverse(function (node) {
@@ -120,13 +120,13 @@ export default function(){
   Box.rotation.set( 0, 0.4, -0.5 );
   scene.add( Box, Box2 );
   let Box3 = Box.clone();
-  Box3.position.set( -4, -7, -20 );
+  Box3.position.set( -7, -7, -20 );
   Box3.rotation.set( 0, -0.4, 0.5 );
   scene.add( Box, Box2, Box3 );
   //PIRAMID
   const gPiramid = new THREE.ConeGeometry( 10, 20, 3 ); 
   let piramid = new THREE.Mesh( gPiramid, materialN );
-  piramid.position.set( 0, -36, -120 );
+  piramid.position.set( 0, -58, -120 );
   piramid.rotation.set( 0, -2, -0.5 );
   let piramid2 = piramid.clone();
   piramid2.position.set( 35, -25, -120 );
@@ -141,7 +141,7 @@ export default function(){
   octagon2.position.set( -15, -18, -40 );
   octagon2.rotation.set( 0.2, 2, -0.5 );
   let octagon3 = octagon.clone();
-  octagon3.position.set( -4, -8, -50 );
+  octagon3.position.set( -4, 18, -150 );
   octagon3.rotation.set( 0.2, 2, -0.5 );
   scene.add( octagon, octagon2, octagon3 ); 
 };

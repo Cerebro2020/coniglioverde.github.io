@@ -8,10 +8,10 @@
 }
 
 html{
-  scroll-behavior: smooth; 
-  scroll-snap-type:y proximity;     
-  overflow-y: scroll;   
-} 
+  scroll-behavior: smooth;
+  scroll-snap-type:y mandatory;     
+  overflow-y: scroll;    
+}
 
 #loader {
   position: fixed;
@@ -58,7 +58,6 @@ html{
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
 
 body {    
   font-size: 100%;  
@@ -130,7 +129,9 @@ header img {
 }
 
 a {
-  color: #a2ff00;   
+  color: #a2ff00; 
+  /* color: #FF00A2; 
+  color: #00A2FF;    */
   font-weight: 400;
   text-decoration: none;     
 }
@@ -339,7 +340,7 @@ footer img {
 section {   
   width: 100%;  
   height: 100vh;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
   position: relative;
   display: flex;  
   flex-direction: column;
@@ -393,7 +394,7 @@ section {
   margin-left: 0%;
   height: 60%;   
   font-size: 22px;   
-  line-height: 24px;   
+  line-height: 26px;   
 }
 
 .home-paragraph a {   
@@ -405,6 +406,9 @@ section {
   font-style: italic; font-weight: 400;
 }
 
+.p-italic-s { 
+  font-style: italic;
+}
 .p-bold {
   font-weight: 600;
 }
@@ -428,12 +432,12 @@ section {
   .home-title {
     width: 80%;
     margin-left: 0%;
-    height: 20%;
+    height: 30%;
   }
 
   .home-title h1 {         
     font-size: 80px; 
-    line-height: 40px; 
+    line-height: 60px; 
   }
   
   .home-paragraph {  

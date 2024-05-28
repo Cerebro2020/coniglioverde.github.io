@@ -67,11 +67,22 @@ body {
   background-color: #000000;   
 }
 
+a {
+  color: #a2ff00;   
+  /* color: #FF00A2; 
+  color: #00A2FF;    */
+  font-weight: 400;
+  text-decoration: none;     
+}
+
+a:hover {
+  color: #00A2FF; 
+}
+
 /* Nasconde la barra di scorrimento per Chrome, Safari e Opera */
 html::-webkit-scrollbar {
   display: none;
 }
-
 
 /* HEADER */
 /* MENU AMBURGER */
@@ -126,14 +137,6 @@ header img {
 .menu li:last-child a {
   font-style: normal;
   font-weight: 400;
-}
-
-a {
-  color: #a2ff00; 
-  /* color: #FF00A2; 
-  color: #00A2FF;    */
-  font-weight: 400;
-  text-decoration: none;     
 }
 
 .menu li a {                

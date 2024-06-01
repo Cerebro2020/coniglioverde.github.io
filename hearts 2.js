@@ -31,7 +31,7 @@ export default function(choose, quadri){
   // SCENE  
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(  0x0A9EE8 );
-  scene.fog = new THREE.Fog( 0x0A9EE8, 1100, 1400 );
+  //scene.fog = new THREE.Fog( 0x0A9EE8, 1100, 1400 );
   scene.position.set(0,-30,0);
   // CAMERA //////
   const camera = new THREE.PerspectiveCamera( 50 , window.innerWidth / window.innerHeight, 0.1, 4000 );
@@ -39,7 +39,7 @@ export default function(choose, quadri){
   camera.position.set(0, 0, 80 ); 
   camera.rotation.set( 1, 0, 0 );
   camera.lookAt(new THREE.Vector3( 0, player.height, 0));  
-  camera.setFocalLength ( 15 );
+  camera.setFocalLength ( 20 );
   // RENDERER
   const renderer = new THREE.WebGLRenderer({
     alpha:true, 
@@ -109,7 +109,7 @@ export default function(choose, quadri){
   TextureB2.wrapS = THREE.RepeatWrapping;
   TextureB2.wrapT = THREE.RepeatWrapping;
   TextureB2.repeat.set(4,4);  
-  const alphaCielo =loader.load('images/textures/hearts/cieloalpha.jpg');
+  const alphaCielo =loader.load('images/textures/hearts/cieloalpha2.jpg');
   // UV MAP //  
   const uvPaper = loader.load('images/uvmap/paper.jpg'); 
   // VIDEO
@@ -158,21 +158,6 @@ export default function(choose, quadri){
       '227BFF', '3E39FF', '222EFF', '001DEC', '2A23A3',
       '49C51A', '2D7121', '3C6232', '0A5C0A', '008000'
     ]; 
-    // const totaleEmo = [
-    //   'FEF600', 'FF0000', '3E39FF', '2D7121'
-    // ];
-    // let contatoreEmo = [0,0,0,0]; 
-    // if (gruppiColori[1].includes(coloreCorrente)) {        
-    //   contatoreEmo[1] += 1;
-    //   console.log("contatore", contatoreEmo);
-    // } else if (gruppiColori[2].includes(coloreCorrente)) {
-    //   contatoreEmo[2] += 1;
-    // }  else if (gruppiColori[3].includes(coloreCorrente)) {
-    //   contatoreEmo[3] += 1;
-    // }  else if (gruppiColori[4].includes(coloreCorrente)) {
-    //   contatoreEmo[4] += 1;
-    // } else contatoreEmo[1] += 0; 
-    // }
     // Definisci i gruppi di colori
     const gruppiColori = [
       colori.slice(0, 5),  // Primi 5 colori
@@ -181,23 +166,74 @@ export default function(choose, quadri){
       colori.slice(15, 20)  // Ultimi 5 colori
     ];      
     const coloreCorrente = new THREE.Color(v[1]).getHexString().toUpperCase(); 
-    console.log("questo è colore corrente", coloreCorrente);
-    console.log("gruppiColori è questo", gruppiColori);
     let contaCorrente = [];
     for (let i = 0; i < gruppiColori.length; i++){
     contaCorrente.push('coloreCorrente');
-    console.log("conta Corrente",contaCorrente);
-    //const coloreCorrente = new THREE.Color(v[1]);
     }
 
     let forma;
-    // nome espressioni
     let espressione; 
 
+///////////////////////////////////////////////
+
+// Inizializza un array per tenere traccia del conteggio delle aree
+let conteggioAree = [0, 0, 0, 0];
+
+let mappaColori = {
+  'area1': '#FFFF00', // giallo
+  'area2': '#FF0000', // rosso
+  'area3': '#0000FF', // blu
+  'area4': '#008000'  // verde
+};
+
+
+// Itera su ogni colore scelto
+for (let quad in choose) {
+  // Ottieni il colore corrente
+  let coloreCorrente = new THREE.Color(choose[quad][1]).getHexString().toUpperCase();
+
+  // Determina a quale area appartiene il colore
+  let indiceArea;
+  for (let i = 0; i < gruppiColori.length; i++) {
+    if (gruppiColori[i].includes(coloreCorrente)) {
+      indiceArea = i;
+      break;
+    }
+  }
+
+  // Aggiorna il conteggio per l'area
+  if (indiceArea !== undefined && choose[quad][1] !== '#FFFFFF') {
+    conteggioAree[indiceArea]++;
+  }
+}
+
+// Trova l'area con il maggior numero di scelte
+let areaPiuScelta = conteggioAree.indexOf(Math.max(...conteggioAree));
+
+console.log(`L'area con il maggior numero di scelte è l'area ${areaPiuScelta + 1}.`);
+
+let coloreOggetto;
+// Assegna il colore corrispondente all'oggetto
+coloreOggetto = mappaColori[`area${areaPiuScelta + 1}`];
+
+console.log(`Il colore dell'oggetto è ${coloreOggetto}.`);
+
+let gTotale = new THREE.SphereGeometry(1200, 16, 16);
+let matTotale = new THREE.MeshPhysicalMaterial ({
+  color: new THREE.Color(coloreOggetto), 
+  map: TextureQ2,
+  side: THREE.DoubleSide, 
+  alphaMap: alphaCielo,
+  transparent: true,
+});
+let emotionTotale = new THREE.Mesh(gTotale, matTotale);
+emotionTotale.rotation.set(0,1,0);
+scene.add(emotionTotale);
+
+
+///////////////////////////////////////
+
     for (let i = 0; i < gruppiColori.length; i++) {
-      //console.log(`Checking group ${i}:`, gruppiColori[i]);
-      //console.log(`Current color:`, coloreCorrente);
-      //console.log(`Is color in group?`, gruppiColori[i].includes(coloreCorrente));
       if (gruppiColori[i].includes(coloreCorrente)) {
         forma = formeGeometriche[nomiFormeGeometriche[i]];
         espressione = textureEspressioni[nomiEspressioni[i]];        
@@ -363,33 +399,14 @@ export default function(choose, quadri){
     scene.add(leyerSnake2);
   })
 
-  // ROOM ////
-  // const gPavimento = new THREE.BoxGeometry(600, 40, 200);
+  // ROOM //// 
   const gPavimento = new THREE.CylinderGeometry(250, 250,10, 64,64, false, -Math.PI/2, Math.PI);
   const pavimento = new THREE.Mesh(gPavimento, eleMat);
   pavimento.position.set( 10, -5, -340 ); 
   pavimento.scale.set(6,1,6); 
   pavimento.receiveShadow = true; 
-  const pareteS = new THREE.Mesh(gPavimento, eleMat)  
-  pareteS.position.set(-230, 180, 0);  
-  pareteS.rotation.set(Math.PI/2, 0, -Math.PI/2 ); 
-  pareteS.scale.set(1,1,1);
-  pareteS.castShadow = true;
-  pareteS.receiveShadow = true; 
-  const gPareteF = new THREE.BoxGeometry(470, 40, 440);
-  const pareteF = new THREE.Mesh(gPareteF, eleMat );
-  pareteF.position.set(-15,180,-240);  
-  pareteF.rotation.set( Math.PI/2, 0, 0 ); 
-  pareteF.castShadow = true;
-  pareteF.receiveShadow = true;  
-  const room = new THREE.Group();
-  room.add(pavimento/*,pareteS, pareteF*/);
-  scene.add(room);
-  room.scale.set( 1, 1, 1 );
-  const material2 = new THREE.MeshPhysicalMaterial({
-    map: TextureQ2,
-  })  
-   // TREE TOON
+  scene.add(pavimento);
+  // TREE TOON
    const loaderTree = new GLTFLoader();
    loaderTree.load(    
      '3d/Tree/toon_tree.glb',
@@ -676,88 +693,7 @@ export default function(choose, quadri){
        console.error(error);      
      } 
    );
-   // PARK
-   const loaderPark = new GLTFLoader();
-   loaderPark.load(    
-     '3d/parkb.glb',
-       function (glt) {
-         const park = glt.scene;
-         park.position.set( 32, 280, -220 );
-         park.rotation.set(Math.PI/2, Math.PI, 0 );      
-         park.scale.set( 1, 1, 1 );     
-         park.traverse(function (node) {
-           if (node.isMesh) {
-             const material = new THREE.MeshPhysicalMaterial({
-               map: TextureQ2,
-             });
-             node.material = material;
-             node.castShadow = true;
-             node.receiveShadow = true;
-           }
-         });        
-       let materialV = new THREE.MeshPhysicalMaterial({              
-         map: TextureQ2,        
-       });
-       //scene.add(park);
-       let park2 = park.clone();
-       park2.position.set(100,0,-120);
-       park2.rotation.set(0,0,0);
-       let park3 = park.clone();
-       park3.position.set(-214,320, 100);
-       park3.rotation.set(0, 0, -Math.PI/2 );
-       let park4 = park.clone();
-       park4.position.set(-80, 0, -110);
-       park4.rotation.set(0, 0, 0 );
-       //scene.add(park2, park3, park4); 
-     }, 
-     undefined, // funzione di progresso opzionale da passare al caricatore
-     function (error) {
-       console.error(error);      
-     }
-   );
-   // PARK2
-   const loaderPark2 = new GLTFLoader();
-   loaderPark2.load(    
-     '3d/parkb2.glb',
-       function (glt) {
-       const park2 = glt.scene;
-       park2.position.set( -100, 160, -220 );
-       park2.rotation.set(Math.PI/2, Math.PI, 0 );      
-       park2.scale.set( 1, 1, 1 );    
-       park2.traverse(function (node) {
-         if (node.isMesh) {
-           const material = new THREE.MeshPhysicalMaterial({ 
-             map: TextureQ2,      
-           });
-           node.material = material;
-           node.castShadow = true;
-           node.receiveShadow = true;
-         }
-       });      
-       let materialV = new THREE.MeshPhysicalMaterial({              
-          map: TextureQ2,       
-      });
-      //scene.add(park2);
-      let park2B = park2.clone();
-      park2B.position.set(30,0,140);
-      park2B.rotation.set(0,0,0);
-      let park3B = park2.clone();
-      park3B.position.set(106, 0, 16);
-      park3B.scale.set( 0.9, 0.9, 0.9);
-      park3B.rotation.set(0, 0, 0 );
-      let park4B = park2.clone();
-      park4B.position.set(-214,180, -60);
-      park4B.rotation.set(1, 0, -Math.PI/2 ); 
-      let park5B = park2.clone();
-      park5B.position.set(-140,0,130);
-      park5B.rotation.set(0,0,0);
-      //scene.add(park2B, park3B, park4B, park5B);   
-    },        
-     undefined, // funzione di progresso opzionale da passare al caricatore
-     function (error) {
-       console.error(error);      
-     }   
-   );
+   
    // BENCH
    const loaderBench = new GLTFLoader();
    loaderBench.load(    
@@ -834,59 +770,132 @@ export default function(choose, quadri){
      }   
    );
 
-   // MOUNT
-   const loaderMount = new GLTFLoader();
-   loaderMount.load(    
-     '3d/mountains6.glb',
-       function (glt) {
-       const mount = glt.scene;
-       mount.position.set(0, 0.5, -160 );
-       mount.rotation.set(0, 0, 0 );      
-       mount.scale.set( 1, 1, 1 );      
-       mount.traverse(function (node) {
-         if (node.isMesh) {
-           const material = new THREE.MeshPhysicalMaterial({
-             map: TextureQ2, 
-           });
-           node.material = material;
-           node.castShadow = true;
-           node.receiveShadow = true;
-         }
-       });  
-       scene.add(mount);
-     },      
-     undefined, // funzione di progresso opzionale da passare al caricatore
-     function (error) {
-       console.error(error);      
-     } 
-   ); 
-   // OCEAN
-   const loaderOcean = new GLTFLoader();
-   loaderOcean.load(    
-     '3d/ocean2.glb',
-     function (glt) {
-       const ocean = glt.scene;
-       ocean.position.set( -450, 0, 20 );
-       ocean.rotation.set(0, 0, 0 );
-       ocean.scale.set( 1, 1, 1 );       
-       ocean.traverse(function (node) {
-         if (node.isMesh) {
-           const material = new THREE.MeshPhysicalMaterial({
-           //color: 0x89F1EE,
-           map: TextureQ2, 
-           });
-           node.material = material;
-           node.castShadow = true;
-           node.receiveShadow = true;
-         }
-       });    
-       //scene.add(ocean);   
-     },           
-     undefined, // funzione di progresso opzionale da passare al caricatore
-     function (error) {
-       console.error(error);      
-     }      
-   );   
+      // MOUNT
+      const loaderMount = new GLTFLoader();
+      loaderMount.load(    
+        '3d/mountains6B.glb',
+          function (glt) {
+          const mount = glt.scene;
+          mount.position.set(0, 0.5, -160 );
+          mount.rotation.set(0, 0, 0 );      
+          mount.scale.set( 1, 1, 1 ); 
+          mount.traverse(function (node) {
+            if (node.isMesh) {
+              const material = new THREE.MeshPhysicalMaterial({
+               map: TextureQ2, 
+              });
+              node.material = material;
+              node.castShadow = true;
+              node.receiveShadow = true;
+            }
+          });  
+          scene.add(mount);
+        },      
+        undefined, // funzione di progresso opzionale da passare al caricatore
+        function (error) {
+          console.error(error);      
+        } 
+      );   
+      const loaderMount2 = new GLTFLoader();
+      loaderMount.load(    
+        '3d/mountains6C.glb',
+          function (glt) {
+          const mount = glt.scene;
+          mount.position.set(0, 0.5, -160 );
+          mount.rotation.set(0, 0, 0 );      
+          mount.scale.set( 1, 1, 1 ); 
+          mount.traverse(function (node) {
+            if (node.isMesh) {
+              const material = new THREE.MeshPhysicalMaterial({
+               map: TextureQ2, 
+              });
+              node.material = material;
+              node.castShadow = true;
+              node.receiveShadow = true;
+            }
+          });  
+          scene.add(mount);
+        },      
+        undefined, // funzione di progresso opzionale da passare al caricatore
+        function (error) {
+          console.error(error);      
+        } 
+      );
+      const loaderMount3 = new GLTFLoader();
+      loaderMount.load(    
+        '3d/mountains6Cast.glb',
+          function (glt) {
+          const mount = glt.scene;
+          mount.position.set(0, 0.5, -160 );
+          mount.rotation.set(0, 0, 0 );      
+          mount.scale.set( 1, 1, 1 ); 
+          mount.traverse(function (node) {
+            if (node.isMesh) {
+              const material = new THREE.MeshPhysicalMaterial({
+               map: TextureQ2, 
+              });
+              node.material = material;
+              node.castShadow = true;
+              node.receiveShadow = true;
+            }
+          });  
+          scene.add(mount);
+        },      
+        undefined, // funzione di progresso opzionale da passare al caricatore
+        function (error) {
+          console.error(error);      
+        } 
+      );  
+      const loaderMount4 = new GLTFLoader();
+      loaderMount.load(    
+        '3d/mountains6O.glb',
+          function (glt) {
+          const mount = glt.scene;
+          mount.position.set(0, 0.5, -160 );
+          mount.rotation.set(0, 0, 0 );      
+          mount.scale.set( 1, 1, 1 ); 
+          mount.traverse(function (node) {
+            if (node.isMesh) {
+              const material = new THREE.MeshPhysicalMaterial({
+               map: TextureQ2, 
+              });
+              node.material = material;
+              node.castShadow = true;
+              node.receiveShadow = true;
+            }
+          });  
+          scene.add(mount);
+        },      
+        undefined, // funzione di progresso opzionale da passare al caricatore
+        function (error) {
+          console.error(error);      
+        } 
+      ); 
+      const loaderMount5 = new GLTFLoader();
+      loaderMount.load(    
+        '3d/mountains6T.glb',
+          function (glt) {
+          const mount = glt.scene;
+          mount.position.set(0, 0.5, -160 );
+          mount.rotation.set(0, 0, 0 );      
+          mount.scale.set( 1, 1, 1 ); 
+          mount.traverse(function (node) {
+            if (node.isMesh) {
+              const material = new THREE.MeshPhysicalMaterial({
+               map: TextureQ2, 
+              });
+              node.material = material;
+              node.castShadow = true;
+              node.receiveShadow = true;
+            }
+          });  
+          scene.add(mount);
+        },      
+        undefined, // funzione di progresso opzionale da passare al caricatore
+        function (error) {
+          console.error(error);      
+        } 
+      ); 
   
   // RABBIT 
   const loaderRabbitg = new GLTFLoader();
@@ -1429,11 +1438,9 @@ export default function(choose, quadri){
     );    
   });
 
+  // ELEMENTO
   const gElemento1 = new THREE.BoxGeometry( 10, 10, 10 );  
-    const elemento1 = new THREE.Mesh(gElemento1, eleMat); 
-    elemento1.position.set(0, 20, 0);
-    const elemento0 = elemento1.clone();  
-    //TREEC3
+    const elemento1 = new THREE.Mesh(gElemento1, eleMat);
     elemento1.traverse(function (child) {
       if (child instanceof THREE.Mesh) {
         child.material = child.material.clone(); 
@@ -1445,19 +1452,20 @@ export default function(choose, quadri){
     elemento1.castShadow = true;
     elemento1.receiveShadow = true; 
     // TREEC2   
-    const elemento2 = elemento1.clone();
+    const elemento2 = new THREE.Mesh(gElemento1, eleMat);
     elemento2.traverse(function (child) {
       if (child instanceof THREE.Mesh) {
         child.material = child.material.clone(); 
-        child.material.color.set(colore2);// D Tree Alto
+        child.material.color.set(colore2);
       }
     }); 
     elemento2.position.set( 270, 335, -100 );
     elemento2.scale.set( 5, 5, 5);
     elemento2.castShadow = true;
     elemento2.receiveShadow = true;
+
     // TREEC1
-    const elemento3 = elemento1.clone();
+    const elemento3 = new THREE.Mesh(gElemento1, eleMat);
     elemento3.traverse(function (child) {
       if (child instanceof THREE.Mesh) {
           child.material = child.material.clone(); 
@@ -1468,7 +1476,8 @@ export default function(choose, quadri){
     elemento3.scale.set( 5, 5, 5);   
     elemento3.castShadow = true;
     elemento3.receiveShadow = true;
-    const elemento4 = elemento1.clone();// regge albero sospeso
+
+    const elemento4 = new THREE.Mesh(gElemento1, eleMat);
     elemento4.traverse(function (child) {
       if (child instanceof THREE.Mesh) {
           child.material = child.material.clone(); 
@@ -1479,7 +1488,8 @@ export default function(choose, quadri){
     elemento4.scale.set( 4, 4, 4);    
     elemento4.castShadow = true;
     elemento4.receiveShadow = true;
-    const elemento5 = elemento1.clone(); 
+
+    const elemento5 = new THREE.Mesh(gElemento1, eleMat); 
     elemento5.traverse(function (child) {
       if (child instanceof THREE.Mesh) {
           child.material = child.material.clone(); 
@@ -1490,17 +1500,12 @@ export default function(choose, quadri){
     elemento5.scale.set( 4, 4, 4);    
     elemento5.castShadow = true;
     elemento5.receiveShadow = true;
-    const elemento6 = elemento1.clone();
-    elemento6.traverse(function (child) {
-      if (child instanceof THREE.Mesh) {
-          child.material = child.material.clone(); 
-          child.material.color.set(colore5);
-        }
-    }); 
-  scene.add( elemento1,elemento2, elemento3, elemento4,elemento5, );
+   
+  scene.add(elemento1,elemento2,elemento3, elemento4,elemento5 );
 
+  // PALLA 
   const gPalla1 = new THREE.SphereGeometry( 10, 16, 16 );
-  const palla1 = new THREE.Mesh(gPalla1, eleMat )
+  const palla1 = new THREE.Mesh(gPalla1, eleMat );
   palla1.traverse(function (child) {
     if (child instanceof THREE.Mesh) {
         child.material = child.material.clone(); 
@@ -1511,12 +1516,12 @@ export default function(choose, quadri){
   palla1.scale.set(3,3,3);
   palla1.castShadow = true;
   palla1.receiveShadow = true;  
-  const palla2 = palla1.clone();
 
+  const palla2 = new THREE.Mesh(gPalla1, eleMat );
   palla2.traverse(function (child) {
     if (child instanceof THREE.Mesh) {
         child.material = child.material.clone(); 
-        child.material.color.set(colore7);//S parete
+        child.material.color.set(colore7);
       }
   });   
   palla2.position.set( -220, 160, 450 );
@@ -1524,11 +1529,11 @@ export default function(choose, quadri){
   palla2.castShadow = true;
   palla2.receiveShadow = true;  
 
-  const palla3 = palla1.clone();
+  const palla3 = new THREE.Mesh(gPalla1, eleMat );
   palla3.traverse(function (child) {
     if (child instanceof THREE.Mesh) {
         child.material = child.material.clone(); 
-        child.material.color.set(colore8);// C grande
+        child.material.color.set(colore8);
       }
   }); 
   palla3.position.set( 700, 180, -210 );
@@ -1536,7 +1541,7 @@ export default function(choose, quadri){
   palla3.castShadow = true;
   palla3.receiveShadow = true;
 
-  const palla4 = palla1.clone();
+  const palla4 = new THREE.Mesh(gPalla1, eleMat );
   palla4.traverse(function (child) {
     if (child instanceof THREE.Mesh) {
         child.material = child.material.clone(); 
@@ -1548,7 +1553,7 @@ export default function(choose, quadri){
   palla4.castShadow = true;
   palla4.receiveShadow = true;
 
-  const palla5 = palla1.clone();
+  const palla5 = new THREE.Mesh(gPalla1, eleMat );
   palla5.traverse(function (child) {
     if (child instanceof THREE.Mesh) {
         child.material = child.material.clone(); 
@@ -1560,7 +1565,8 @@ export default function(choose, quadri){
   palla5.castShadow = true;
   palla5.receiveShadow = true;
   scene.add(palla1, palla2, palla3,palla4,palla5);
-  /// PIRAMIDI
+
+  /// PIRAMIDI  
   const gPiramid = new THREE.ConeGeometry( 5, 10, 4 );
   const piramid = new THREE.Mesh(gPiramid, eleMat);
   piramid.traverse(function (child) {
@@ -1569,11 +1575,12 @@ export default function(choose, quadri){
         child.material.color.set(colore11);
       }
   });   
-  piramid.position.set( 190, 220, 240 ); 
+  piramid.position.set( 190, 220, 640 ); 
   piramid.scale.set( 5, 5, 5);
   piramid.castShadow = true;
   piramid.receiveShadow = true;
-  const piramid2 = piramid.clone();
+
+  const piramid2 = new THREE.Mesh(gPiramid, eleMat);
   piramid2.traverse(function (child) {
     if (child instanceof THREE.Mesh) {
         child.material = child.material.clone(); 
@@ -1585,33 +1592,34 @@ export default function(choose, quadri){
   piramid2.rotation.set(0, 0, 0);
   piramid2.castShadow = true;
   piramid2.receiveShadow = true;
-  const piramid3 = piramid.clone();
+
+  const piramid3 = new THREE.Mesh(gPiramid, eleMat);
   piramid3.traverse(function (child) {
     if (child instanceof THREE.Mesh) {
         child.material = child.material.clone(); 
         child.material.color.set(colore13);
       }
   });   
-  piramid3.position.set( -600, 200, 100 ); 
+  piramid3.position.set( -600, 200, 500 ); 
   piramid3.scale.set( 6, 6, 6);
   piramid3.rotation.set(0, 0, 0);
   piramid3.castShadow = true;
   piramid3.receiveShadow = true;
 
-  const piramid4 = piramid.clone();
+  const piramid4 = new THREE.Mesh(gPiramid, eleMat);
   piramid4.traverse(function (child) {
     if (child instanceof THREE.Mesh) {
         child.material = child.material.clone(); 
         child.material.color.set(colore14);
       }
   });   
-  piramid4.position.set( 300, 300, -100 ); 
+  piramid4.position.set( 600, 400, 400 ); 
   piramid4.scale.set( 6, 6, 6);
   piramid4.rotation.set(0, 0, 0);
   piramid4.castShadow = true;
   piramid4.receiveShadow = true;
 
-  const piramid5 = piramid.clone();
+  const piramid5 = new THREE.Mesh(gPiramid, eleMat);
   piramid5.traverse(function (child) {
     if (child instanceof THREE.Mesh) {
         child.material = child.material.clone(); 
@@ -1623,7 +1631,6 @@ export default function(choose, quadri){
   piramid5.rotation.set(0, 0, 0);
   piramid5.castShadow = true;
   piramid5.receiveShadow = true;
-
   scene.add(piramid, piramid2, piramid3, piramid4, piramid5); 
 
   //DODECA
@@ -1638,10 +1645,10 @@ export default function(choose, quadri){
   dodeca.position.set( 0 , 60, 920 );
   dodeca.scale.set(0.6,0.6,0.6); 
   dodeca.castShadow = true;
-  dodeca.receiveShadow = true; 
-  const dodeca2 = dodeca.clone();
+  dodeca.receiveShadow = true;   
   
   // TREEC4 
+  const dodeca2 = new THREE.Mesh(gDodeca, eleMat);    
   dodeca2.position.set(-40,140,140);
   dodeca2.scale.set(0.8,0.8,0.8);
   dodeca2.traverse(function (child) {
@@ -1651,7 +1658,7 @@ export default function(choose, quadri){
       }
   }); 
 
-  const dodeca4 = dodeca.clone();
+  const dodeca4 = new THREE.Mesh(gDodeca, eleMat);
   dodeca4.position.set( 280,100, 180);
   dodeca4.scale.set(0.6,0.6,0.6);  
   dodeca4.traverse(function (child) {
@@ -1661,7 +1668,7 @@ export default function(choose, quadri){
       }
   });
 
-  const dodeca5 = dodeca.clone();
+  const dodeca5 = new THREE.Mesh(gDodeca, eleMat);
   dodeca5.position.set( 680,400, -180);
   dodeca5.scale.set(0.6,0.6,0.6);  
   dodeca5.traverse(function (child) {
@@ -1671,7 +1678,7 @@ export default function(choose, quadri){
       }
   });
 
-  const dodeca3 = dodeca.clone();
+  const dodeca3 = new THREE.Mesh(gDodeca, eleMat);
   dodeca3.position.set( -680,320, 180);
   dodeca3.scale.set(0.6,0.6,0.6);  
   dodeca3.traverse(function (child) {
@@ -1680,8 +1687,6 @@ export default function(choose, quadri){
         child.material.color.set(colore20);
       }
   });
-  
-
   scene.add(dodeca, dodeca2, dodeca3,dodeca4,dodeca5);
 
   // CIELO
@@ -1694,7 +1699,7 @@ export default function(choose, quadri){
   })
   const cielo = new THREE.Mesh(gCielo, mCielo);
   cielo.rotation.set(0,1.4,0);
-  scene.add(cielo);
+  //scene.add(cielo);
   const gCielo2 = new THREE.SphereGeometry(1300, 16, 16);
   const mCielo2 = new THREE.MeshPhysicalMaterial({
     map: TextureB2,

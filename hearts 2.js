@@ -773,7 +773,7 @@ scene.add(emotionTotale);
       // MOUNT
       const loaderMount = new GLTFLoader();
       loaderMount.load(    
-        '3d/mountains6B.glb',
+        './mountains6B.glb',
           function (glt) {
           const mount = glt.scene;
           mount.position.set(0, 0.5, -160 );
@@ -798,7 +798,7 @@ scene.add(emotionTotale);
       );   
       const loaderMount2 = new GLTFLoader();
       loaderMount.load(    
-        '3d/mountains6C.glb',
+        './mountains6C.glb',
           function (glt) {
           const mount = glt.scene;
           mount.position.set(0, 0.5, -160 );
@@ -823,7 +823,7 @@ scene.add(emotionTotale);
       );
       const loaderMount3 = new GLTFLoader();
       loaderMount.load(    
-        '3d/mountains6Cast.glb',
+        './mountains6Cast.glb',
           function (glt) {
           const mount = glt.scene;
           mount.position.set(0, 0.5, -160 );
@@ -848,7 +848,7 @@ scene.add(emotionTotale);
       );  
       const loaderMount4 = new GLTFLoader();
       loaderMount.load(    
-        '3d/mountains6O.glb',
+        './mountains6O.glb',
           function (glt) {
           const mount = glt.scene;
           mount.position.set(0, 0.5, -160 );
@@ -873,7 +873,7 @@ scene.add(emotionTotale);
       ); 
       const loaderMount5 = new GLTFLoader();
       loaderMount.load(    
-        '3d/mountains6T.glb',
+        './mountains6T.glb',
           function (glt) {
           const mount = glt.scene;
           mount.position.set(0, 0.5, -160 );

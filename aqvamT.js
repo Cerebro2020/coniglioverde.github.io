@@ -337,9 +337,9 @@ export default function(){
                 prevY = boxesArray[i].position.y;
                 // rotazone coda
                 if (currentY > prevY) {
-                  box.rotation.x = THREE.MathUtils.lerp(box.rotation.x, 0.75, lerpFactor);
+                  box.rotation.x = THREE.MathUtils.lerp(box.rotation.x, 0.95, lerpFactor);
                 } else if (currentY < prevY) {
-                  box.rotation.x = THREE.MathUtils.lerp(box.rotation.x, -2.2, lerpFactor);
+                  box.rotation.x = THREE.MathUtils.lerp(box.rotation.x, -2, lerpFactor);
                 } else {
                   box.rotation.x = THREE.MathUtils.lerp(box.rotation.x, Math.PI / 2, lerpFactor);
                 }

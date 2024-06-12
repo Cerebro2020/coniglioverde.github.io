@@ -94,7 +94,7 @@ cursor: grabbing;
   display:flex;
   align-items:end;
   justify-content: left; 
-  bottom: 20px
+  bottom: 0px
 }
 
 .button_div_writing button {
@@ -129,34 +129,7 @@ cursor: grabbing;
   width: 100%;
 }
 
-.button-controls {
-  /* border: 1px solid red; */
-  width: 90%;
-  position: absolute;
-  display: flex;
-  bottom: 40px;
-  align-items: center;
-  justify-content: right;
-  z-index: 1;
-}
 
-#btn-start button , #btn-play button , #btn-pause button , #btn-count button , #btn-back button , #btn-camera button , #btn-audio button {
-  background-color: rgba(255, 255, 255, 0);
-  color: rgb(255, 255, 255);
-  border: 1px solid rgb(255, 255, 255);
-  width:70px;
-  height: 20px;
-  margin-right: 10px;;
-  border-radius: 12px;
-  font-size: 9px;
-  font-weight: 100;    
-}
-
-#btn-start button:hover , #btn-play button:hover , #btn-pause button:hover, #btn-camera button:hover,  #btn-count button:hover , #btn-back button:hover, #btn-audio button:hover {
-  cursor: pointer;
-  border: 1px solid rgb(162, 255, 0);
-  color: rgb(162, 255, 0);
-}
 
 @media (max-width: 1024px) {
 
@@ -257,4 +230,5 @@ cursor: grabbing;
   .button_div_writing {    
     justify-content: center;    
   }
+  
 }

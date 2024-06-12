@@ -1,0 +1,125 @@
+.canvas {
+    z-index: -1;
+  }  
+  
+  .info_leyer { 
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 60px;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #info {   
+    width: 160px;
+    height: 30px;   
+    text-align: center; 
+    font-size: 12px;;
+  }
+  
+  .canvas {
+    z-index: -1;             
+  }
+  
+  canvas {
+    position: absolute;
+    top: 0;
+    cursor: grab;
+  }
+
+canvas:active {				
+    cursor: grabbing;
+}
+
+
+/* .button-controls {
+    width: 90%;
+    position: absolute;
+    display: flex;
+    bottom: 40px;
+    align-items: center;
+    justify-content: right;
+    z-index: 1;
+} */
+
+.button-controls-aqvam-left {
+  height: 220px;
+  width: 100px;
+  position: absolute; 
+  display: flex;
+  flex-direction: column;
+  left: 30px;
+  bottom: 20px;  
+  align-items: center;
+  justify-content: right;
+  z-index: 1;
+}
+
+.button-controls-jump {  
+  height: 220px;
+  width: 100px;
+  position: absolute; 
+  display: flex;
+  flex-direction: column;
+  left: 120px;
+  bottom: 20px;  
+  align-items: center;
+  justify-content: right;
+  z-index: 1;
+}  
+  
+.button-controls-aqvam {
+  height: 220px;
+  width: 100px;
+  position: absolute; 
+  display: flex;
+  flex-direction: column;
+  right: 30px;
+  bottom: 20px;  
+  align-items: center;
+  justify-content: right;
+  z-index: 1;
+}
+
+
+#btn-start button , #btn-play button , #btn-pause button , #btn-count button , #btn-quantity button , #btn-back button , #btn-camera button , #btn-audio button, #btn-cameraC button, #btn-cameraH button, #btn-hide-boxes1 button, #btn-hide-boxes2 button, #btn-hide-boxes3 button, #btn-jump-to-column button, #btn-previous-column button {
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+  width:70px;
+  height: 20px;
+  margin-right: 10px;;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 9px;
+  font-weight: 100;    
+}
+  
+  #btn-start button:hover , #btn-play button:hover , #btn-pause button:hover, #btn-camera button:hover,  #btn-count button:hover , #btn-quantity button:hover, #btn-back button:hover, #btn-audio button:hover, #btn-cameraC button:hover, #btn-cameraH button:hover, #btn-hide-boxes1 button:hover, #btn-hide-boxes2 button:hover,#btn-hide-boxes3 button:hover, #btn-jump-to-column button:hover, #btn-previous-column button:hover  {
+    cursor: pointer;
+    border: 1px solid rgb(162, 255, 0);
+    color: rgb(162, 255, 0);
+  }
+
+  @media (max-width: 724px) {  
+    /* da sostare in data */
+
+  .button-controls-aqvam {   
+    bottom: -82px;
+  }
+
+  .button-controls-aqvam-left {   
+    bottom: -82px;     
+  }
+
+  #btn-start button , #btn-play button , #btn-pause button , #btn-count button , #btn-quantity button , #btn-back button , #btn-camera button , #btn-audio button, #btn-cameraC button, #btn-cameraH button, #btn-hide-boxes1 button, #btn-hide-boxes2 button, #btn-hide-boxes3 button {
+    width:66px;
+    height: 16px;
+    border-radius: 12px;
+    font-size: 7px;
+    font-weight: 100;    
+  }
+
+}

@@ -79,40 +79,7 @@ export default function(choose,quadri){
   TextureF.repeat.set(15, 15); 
   const exhib = loader.load('./images/equirectangulars/space.jpg');
   let TextureRoom = loader.load('./images/textures/Bronze.jpg')
-  // TORSOLO
-  const loaderTorsolo = new GLTFLoader();
-  loaderTorsolo.load(    
-    './3d/Torsolo17.glb',
-    function (glt) {
-      const torsolo = glt.scene;
-      torsolo.position.set(0, -5, 0);
-      torsolo.rotation.set(0, -Math.PI/1.4, 0);      
-      torsolo.scale.set(10, 10, 10);       
-      torsolo.traverse(function (node) {
-        if (node.isMesh) {
-          const material = new THREE.MeshPhysicalMaterial({
-            //map: TextureF,
-            color: 0xc0652b,          
-            //metalness: 0.1,            
-            //roughness: 1,
-            //sheenColor: new THREE.Color(v[1]),                  
-      metalness: 0.9,            
-      roughness: 0.5,
-          });  
-          node.material = material;
-          node.castShadow = true;
-          node.receiveShadow = true;
-        }
-      });  
-      scene.add(torsolo);       
-      torsolo.castShadow = true; 
-      torsolo.receiveShadow = true;  
-    },      
-    undefined, 
-    function (error) {
-      console.error(error);      
-    }  
-  );  
+  
   // GRUPPO EMOZIONI //////
   let emotionGroup = new THREE.Group();
   const emozioni=_.map(choose,(v,k)=>{
@@ -138,7 +105,103 @@ export default function(choose,quadri){
       colori.slice(15, 20)  // Ultimi 5 colori
     ];    
     const coloreCorrente = new THREE.Color(v[1]).getHexString().toUpperCase(); 
-    let forma; 
+    let forma;
+    
+    
+    ///////////////////////////////////////////////
+
+// Inizializza un array per tenere traccia del conteggio delle aree
+let conteggioAree = [0, 0, 0, 0];
+
+let mappaColori = {
+  'area1': '#AA8A0E', // giallo
+  'area2': '#AA0E28', // rosso
+  'area3': '#0E5FAA', // blu
+  'area4': '#2D821C'  // verde
+};
+
+
+// Itera su ogni colore scelto
+for (let quad in choose) {
+  // Ottieni il colore corrente
+  let coloreCorrente = new THREE.Color(choose[quad][1]).getHexString().toUpperCase();
+
+  // Determina a quale area appartiene il colore
+  let indiceArea;
+  for (let i = 0; i < gruppiColori.length; i++) {
+    if (gruppiColori[i].includes(coloreCorrente)) {
+      indiceArea = i;
+      break;
+    }
+  }
+
+  // Aggiorna il conteggio per l'area
+  if (indiceArea !== undefined && choose[quad][1] !== '#FFFFFF') {
+    conteggioAree[indiceArea]++;
+  }
+}
+
+// Trova l'area con il maggior numero di scelte
+let areaPiuScelta = conteggioAree.indexOf(Math.max(...conteggioAree));
+
+console.log(`L'area con il maggior numero di scelte è l'area ${areaPiuScelta + 1}.`);
+
+let coloreOggetto;
+// Assegna il colore corrispondente all'oggetto
+coloreOggetto = mappaColori[`area${areaPiuScelta + 1}`];
+
+console.log(`Il colore dell'oggetto è ${coloreOggetto}.`);
+
+// let gTotale = new THREE.SphereGeometry(1200, 16, 16);
+// let matTotale = new THREE.MeshPhysicalMaterial ({
+//   color: new THREE.Color(coloreOggetto), 
+//   map: TextureQ2,
+//   side: THREE.DoubleSide, 
+//   alphaMap: alphaCielo,
+//   transparent: true,
+// });
+// let emotionTotale = new THREE.Mesh(gTotale, matTotale);
+// emotionTotale.rotation.set(0,1,0);
+// scene.add(emotionTotale);
+
+// TORSOLO
+const loaderTorsolo = new GLTFLoader();
+loaderTorsolo.load(    
+  './3d/Torsolo17.glb',
+  function (glt) {
+    const torsolo = glt.scene;
+    torsolo.position.set(0, -5, 0);
+    torsolo.rotation.set(0, -Math.PI/1.4, 0);      
+    torsolo.scale.set(10, 10, 10);       
+    torsolo.traverse(function (node) {
+      if (node.isMesh) {
+        const material = new THREE.MeshPhysicalMaterial({
+          //map: TextureF,
+          //color: 0xc0652b,
+          color: new THREE.Color(coloreOggetto), 
+          //metalness: 0.1,            
+          //roughness: 1,
+          //sheenColor: new THREE.Color(v[1]),                  
+    metalness: 0.9,            
+    roughness: 0.5,
+        });  
+        node.material = material;
+        node.castShadow = true;
+        node.receiveShadow = true;
+      }
+    });  
+    scene.add(torsolo);       
+    torsolo.castShadow = true; 
+    torsolo.receiveShadow = true;  
+  },      
+  undefined, 
+  function (error) {
+    console.error(error);      
+  }  
+);  
+
+
+///////////////////////////////////////
     for (let i = 0; i < gruppiColori.length; i++) {
       console.log(`Checking group ${i}:`, gruppiColori[i]);
       console.log(`Current color:`, coloreCorrente);

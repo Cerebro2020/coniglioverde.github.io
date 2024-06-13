@@ -45,7 +45,7 @@ export default function(choose,quadri){
   // SCENE & FOG 
   scene.background = new THREE.Color(  0x000000 );
   //AMBIENT
-  const ambient = new THREE.AmbientLight( 0xffffff, 0.5 );  
+  const ambient = new THREE.AmbientLight( 0xffffff, 0 );  
   scene.add( ambient); 
   //POINTS 
   const pLight = new THREE.PointLight( 0xffffff, 0.26, 2000 );  
@@ -63,7 +63,8 @@ export default function(choose,quadri){
   pLight5.position.set(0,0,-400);
   pLight6.position.set(400,0,0);
   pLight7.position.set(-400,0,0);
-  scene.add(pLight, pLight2, pLight3, pLight4, pLight5, pLight6, pLight7 );
+  camera.add(pLight, pLight2, pLight3, pLight4, pLight5, pLight6, pLight7 );
+  scene.add(camera);
   // ANIMATE SCENE //////
   function animateScene(){
     requestAnimationFrame( animateScene );
@@ -92,8 +93,11 @@ export default function(choose,quadri){
           const material = new THREE.MeshPhysicalMaterial({
             //map: TextureF,
             color: 0xc0652b,          
-            metalness: 0.9,            
-            roughness: 0.5,
+            //metalness: 0.1,            
+            //roughness: 1,
+            //sheenColor: new THREE.Color(v[1]),                  
+      metalness: 0.9,            
+      roughness: 0.5,
           });  
           node.material = material;
           node.castShadow = true;
@@ -211,15 +215,16 @@ export default function(choose,quadri){
     ret.rotation.set( 0, k/3.4, 0 );
     ret.scale.set( 3,3,3 );
   })
-  let gRoom = new THREE.SphereGeometry(351, 128, 128 );
+  let gRoom = new THREE.SphereGeometry(351, 64, 64 );
   let mRoom = new THREE.MeshPhysicalMaterial({
     color: 0x050101,
-    roughness:0.3,
-    metalness:0.2,
-    flatShading: true,
-    sheenColor: 0x000000, 
-    clearcoat: 0.1, 
-    clearcoatRoughness: 0.1,
+    //color: 0xc0652b,          
+    roughness:0.8,
+    metalness:0.1,
+    //flatShading: true,
+    sheenColor: 0xffffff, 
+    clearcoat: 0.2, 
+    clearcoatRoughness: 0.3,
     side: THREE.DoubleSide,
   });
   let room = new THREE.Mesh(gRoom, mRoom);

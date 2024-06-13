@@ -128,7 +128,7 @@ export default function(){
       function createBoxSet(columnIndex, boxesArray) {
         for (let i = 0; i < allCsvData.length; i++) {
 
-          const xOffset = columnIndex * 2;//offset
+          const xOffset = columnIndex * 0;//offset
           let color;
           // materiale                 
           const gBox = new THREE.SphereGeometry(5, 8, 8);                  
@@ -168,6 +168,19 @@ export default function(){
       createBoxSet(1, boxes1 ); 
       createBoxSet(2, boxes2 ); 
       createBoxSet(3, boxes3 ); 
+
+      // Function to scale the boxes in the boxes1 array
+      function scaleBoxes(boxesArray, scaleX, scaleY, scaleZ) {
+        boxesArray.forEach(box => {
+          box.scale.set(scaleX, scaleY, scaleZ);
+        });
+      }
+
+      // Scale the boxes1 array
+      scaleBoxes(boxes2,0.98, 1,0.98); 
+      scaleBoxes(boxes3,0.97, 1,0.97); 
+
+
       // Inizia dalla terza colonna dei dati numerici (indice 3) e assegna il colore bianco
       document.getElementById('btn-pause').addEventListener('click', function() {
         document.getElementById('submenu').style.display = 'block';
@@ -388,7 +401,7 @@ export default function(){
     roughness: 0,
     metalness: 0,
   });
-  const torus1G = new THREE.TorusGeometry( 600,1.2,128,128);
+  const torus1G = new THREE.TorusGeometry( 600,0.9,128,128);
   const torus1 = new THREE.Mesh(torus1G, torusMat);
   torus1.position.set( 0, 0, 0 );
   torus1.rotation.set( Math.PI/2, 0, 0 );

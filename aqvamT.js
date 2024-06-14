@@ -48,7 +48,6 @@ const colorsArray = [
   "#0028FF", "#001EFF", "#0014FF", "#000AFF", "#0000FF"
 ];
 
-
 export default function(){ 
   const clock = new THREE.Clock(); 
   window.resetCamera = resetCamera;
@@ -86,12 +85,12 @@ export default function(){
   controls.minDistance =  0.1;    
   controls.maxDistance = 3900;
   //controls.maxPolarAngle = 1.5;
-  const ambiente = new THREE.AmbientLight ( 0xffffff, 0.5 );
+  const ambiente = new THREE.AmbientLight ( 0xffffff, 1.5 );
   const pointL = new THREE.PointLight(0xffffff, 1, 2000);
   pointL.position.set(0, 5 ,0);
   let pointL2 = new THREE.PointLight(0xffffff, 2, 1600);
   pointL2.position.set(0,1200,0);
-  scene.add( ambiente, pointL, pointL2);
+  scene.add( ambiente, /*pointL, pointL2*/);
   // XHR
   const xhr = new XMLHttpRequest();
   xhr.open('GET', './texts/aqvam.csv', true);
@@ -132,7 +131,7 @@ export default function(){
           let color;
           // materiale                 
           const gBox = new THREE.SphereGeometry(5, 8, 8);                  
-          let mBoxColor = color !== undefined ? color : (columnIndex === 2 ? 0x0A9EE8 : (columnIndex === 3 ? 0xffffff : 0x0000ff/*colorsArray[i % colorsArray.length]*/));
+          let mBoxColor = color !== undefined ? color : (columnIndex === 2 ?  0x008AD1 : (columnIndex === 3 ? 0xffffff : 0x2D821C/*colorsArray[i % colorsArray.length]*/));
           const mBox = new THREE.MeshPhysicalMaterial({
             color: mBoxColor,
             roughness: 0.5,
@@ -179,9 +178,7 @@ export default function(){
       // Scale the boxes1 array
       scaleBoxes(boxes2,0.98, 1,0.98); 
       scaleBoxes(boxes3,0.97, 1,0.97); 
-
-
-      // Inizia dalla terza colonna dei dati numerici (indice 3) e assegna il colore bianco
+      
       document.getElementById('btn-pause').addEventListener('click', function() {
         document.getElementById('submenu').style.display = 'block';
         document.getElementById('jump-controls').style.display = 'block';       
@@ -211,8 +208,7 @@ export default function(){
       btnHideBoxes3.addEventListener('click', () => {
         isVisibleBoxes3 = !isVisibleBoxes3;
         setBoxesVisibility(boxes3, isVisibleBoxes3);
-      });  
-
+      });
 
       function setBoxesVisibility(boxes, isVisible) {
         boxes.forEach(box => {
@@ -223,19 +219,28 @@ export default function(){
         });
       }
 
+      ////
+        // Ensure the boxes' visibility is respected during jump or previous actions
+      function updateVisibility() {
+        setBoxesVisibility(boxes1, isVisibleBoxes1);
+        setBoxesVisibility(boxes2, isVisibleBoxes2);
+        setBoxesVisibility(boxes3, isVisibleBoxes3);
+      }
 
-
-
+      ////
 
       document.getElementById('btn-jump-to-column').addEventListener('click', () => {
         if (isPaused) {
           jumpToNextColumn();
+          updateVisibility(); // Apply visibility state after jumping
         }
       });
 
       document.getElementById('btn-previous-column').addEventListener('click', () => {
         if (isPaused) {
           goToPreviousColumn();
+          updateVisibility(); // Apply visibility state after going to the previous column
+
         }
       });
       
@@ -257,7 +262,6 @@ export default function(){
         centro.rotation.y = targetRotation;
       }
       
-
       function animateBoxesImmediately() {
         function animateBoxes(boxesArray, startColumnIndex) {
           for (let i = 0; i < allCsvData.length; i++) {
@@ -297,10 +301,7 @@ export default function(){
         animateBoxes(boxes1, 1);
         animateBoxes(boxes2, 2);
         animateBoxes(boxes3, 3);
-      }    
-      
-
-
+      }  
 
       let currentColumn = 0;
       let totalColumns = Math.floor(allCsvData[0].length / 3); // Numero totale di colonne da considerare (1 ogni 3)

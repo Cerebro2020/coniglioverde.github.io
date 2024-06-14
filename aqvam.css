@@ -57,7 +57,15 @@ canvas:active {
   align-items: center;
   justify-content: right;
   z-index: 1;
-}  
+} 
+
+#btn-jump-to-column button img {
+  max-height: 10px;
+}
+
+#btn-previous-column button img {
+  max-height: 10px;
+}
   
 .button-controls-aqvam {
   height: 220px;
@@ -103,8 +111,6 @@ canvas:active {
   font-size: 9px;
   font-weight: 100;  
 }
-
-
 
 #btn-hide-boxes1 button {
   background-color: rgba(0, 0, 0, 0.5);  

@@ -104,9 +104,9 @@ export default function(){
       let gLuna = new THREE.SphereGeometry(20,64,64);
       let mLuna = new THREE.MeshPhysicalMaterial({
         color: 0xffffff,
-        roughness: 0.5,
-        metalness: 0.5,
-        flatShading: true,
+        // roughness: 0.5,
+        // metalness: 0.5,
+        // flatShading: true,
       });
       const mTrans = new THREE.MeshPhysicalMaterial({
         color: 0xff0000,

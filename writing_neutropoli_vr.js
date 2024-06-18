@@ -181,7 +181,7 @@ export default function(){
   camera.add(listenerBcg2);
   const audioLoader2 = new THREE.AudioLoader();
   const backgroundSound2 = new THREE.Audio( listenerBcg2 );
-  audioLoader2.load('audio/Attraction_3.mp3', function( buffer ) {
+  audioLoader2.load('./audio/Attraction_3.mp3', function( buffer ) {
     backgroundSound2.setBuffer( buffer );
     backgroundSound2.setLoop( true );
     backgroundSound2.setVolume( 0.05 );

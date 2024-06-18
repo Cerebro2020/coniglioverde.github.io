@@ -2,35 +2,59 @@
     z-index: -1;
   }  
   
-  .info_leyer { 
-    position: absolute;
-    top: 0px;
-    width: 100%;
-    height: 60px;   
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  #info {   
-    width: 160px;
-    height: 30px;   
-    text-align: center; 
-    font-size: 12px;;
-  }
-  
-  .canvas {
-    z-index: -1;             
-  }
-  
-  canvas {
-    position: absolute;
-    top: 0;
-    cursor: grab;
-  }
+.info_leyer { 
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 60px;   
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
 
 canvas:active {				
     cursor: grabbing;
+}
+
+.button-controls {
+  width: 94%;
+  position: absolute;
+  display: flex;
+  bottom: 30px;
+  align-items: center;
+  justify-content: right;
+  z-index: 1;
+}
+
+#btn-audio button {
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(0, 0, 0);
+  border: 1px solid black;
+  width:70px;
+  height: 20px;
+  margin-right: 10px;;
+  border-radius: 12px;
+  font-size: 11px;    
+}
+
+#btn-audio-white button {
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(255, 255, 255);
+  border: 1.4px solid rgb(255, 255, 255);  
+  width:30px;
+  height: 30px;
+  margin-right: 0px;;
+  border-radius: 14px;
+  font-size: 11px;
+  display: flex;   
+  align-items: center; 
+  justify-content: center;
+}
+
+#btn-audio-white button img {
+  filter: invert();
+  width: 14px;   
+  height: 14px;
 }
 
 .button-controls-aqvam-left {
@@ -93,7 +117,7 @@ canvas:active {
   font-weight: 100;    
 }
   
-#btn-start button:hover , #btn-play button:hover , #btn-pause button:hover, #btn-count button:hover , #btn-quantity button:hover, #btn-back button:hover, #btn-cameraC button:hover, #btn-cameraH button:hover, #btn-hide-boxes1 button:hover, #btn-hide-boxes2 button:hover,#btn-hide-boxes3 button:hover, #btn-jump-to-column button:hover, #btn-previous-column button:hover  {
+#btn-start button:hover , #btn-play button:hover , #btn-pause button:hover, #btn-count button:hover , #btn-quantity button:hover, #btn-back button:hover, #btn-cameraC button:hover, #btn-cameraH button:hover, #btn-hide-boxes1 button:hover, #btn-hide-boxes2 button:hover,#btn-hide-boxes3 button:hover, #btn-jump-to-column button:hover, #btn-previous-column button:hover, #btn-audio-white button:hover  {
   cursor: pointer;
   border: 1px solid rgb(162, 255, 0);
   color: rgb(162, 255, 0);

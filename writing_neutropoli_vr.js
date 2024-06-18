@@ -409,7 +409,7 @@ export default function(){
   // SUBWAY GLB
   const subwayGLoader = new GLTFLoader();
   subwayGLoader.load(    
-   './3d/subway/subway7.glb',
+   './3d/subway/subway6.glb',
     function (glt) {
       const subwayG = glt.scene;
       subwayG.position.set( 0, 0, 0 );

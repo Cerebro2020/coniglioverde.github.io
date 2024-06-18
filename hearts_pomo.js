@@ -110,47 +110,53 @@ export default function(choose,quadri){
     
     ///////////////////////////////////////////////
 
-// Inizializza un array per tenere traccia del conteggio delle aree
-let conteggioAree = [0, 0, 0, 0];
+    // Inizializza un array per tenere traccia del conteggio delle aree
+    let conteggioAree = [0, 0, 0, 0];
 
-let mappaColori = {
-  'area1': '#AA8A0E', // giallo
-  'area2': '#AA0E28', // rosso
-  'area3': '#0E5FAA', // blu
-  'area4': '#2D821C'  // verde
-};
+    let mappaColori = {
+      'area1': '#E1BB0D', // giallo
+      'area2': '#E10D0D', // rosso
+      'area3': '#0DA5E1', // blu
+      'area4': '#57D743', // verde
+      'areaEquivalente': '#777777' // arancione per scelte equivalenti
+    };
 
-
-// Itera su ogni colore scelto
-for (let quad in choose) {
-  // Ottieni il colore corrente
-  let coloreCorrente = new THREE.Color(choose[quad][1]).getHexString().toUpperCase();
-
-  // Determina a quale area appartiene il colore
-  let indiceArea;
-  for (let i = 0; i < gruppiColori.length; i++) {
-    if (gruppiColori[i].includes(coloreCorrente)) {
-      indiceArea = i;
-      break;
+    // Itera su ogni colore scelto
+    for (let quad in choose) {
+      // Ottieni il colore corrente
+      let coloreCorrente = new THREE.Color(choose[quad][1]).getHexString().toUpperCase();
+      // Determina a quale area appartiene il colore
+      let indiceArea;
+      for (let i = 0; i < gruppiColori.length; i++) {
+        if (gruppiColori[i].includes(coloreCorrente)) {
+          indiceArea = i;
+          break;
+        }
+      }
+      // Aggiorna il conteggio per l'area solo se il colore corrente non è bianco
+      if (indiceArea !== undefined && choose[quad][1] !== '#FFFFFF') {
+        conteggioAree[indiceArea]++;
+      }
     }
-  }
 
-  // Aggiorna il conteggio per l'area
-  if (indiceArea !== undefined && choose[quad][1] !== '#FFFFFF') {
-    conteggioAree[indiceArea]++;
-  }
-}
+    // Trova il massimo conteggio
+    let maxConteggio = Math.max(...conteggioAree);
 
-// Trova l'area con il maggior numero di scelte
-let areaPiuScelta = conteggioAree.indexOf(Math.max(...conteggioAree));
+    // Verifica se ci sono più aree con lo stesso massimo conteggio
+    let areeEquivalenti = conteggioAree.filter(conteggio => conteggio === maxConteggio).length > 1;
 
-console.log(`L'area con il maggior numero di scelte è l'area ${areaPiuScelta + 1}.`);
+    let coloreOggetto;
+    // Se ci sono scelte equivalenti, usa il colore per scelte equivalenti
+    if (areeEquivalenti) {
+      coloreOggetto = mappaColori['areaEquivalente'];
+    } else {
+      // Trova l'area con il maggior numero di scelte
+      let areaPiuScelta = conteggioAree.indexOf(maxConteggio);
+      // Se nessun'area è stata scelta (tutte hanno conteggio 0), usa il colore bianco
+      coloreOggetto = maxConteggio > 0 ? mappaColori[`area${areaPiuScelta + 1}`] : '#FFFFFF';
+    }
 
-let coloreOggetto;
-// Assegna il colore corrispondente all'oggetto
-coloreOggetto = mappaColori[`area${areaPiuScelta + 1}`];
-
-console.log(`Il colore dell'oggetto è ${coloreOggetto}.`);
+    console.log(`Il colore dell'oggetto è ${coloreOggetto}.`);
 
 // let gTotale = new THREE.SphereGeometry(1200, 16, 16);
 // let matTotale = new THREE.MeshPhysicalMaterial ({

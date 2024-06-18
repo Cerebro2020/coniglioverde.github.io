@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import {FirstPersonControls} from './three_class/FirstPersonControls.js';
 import { GLTFLoader } from './three_class/GLTFLoader.js';
+
 export default function(){
   const clock = new THREE.Clock();
   window.resetCamera = resetCamera;
@@ -10,12 +11,15 @@ export default function(){
   scene.fog = new THREE.Fog(0x008888, 10, 100);
   //CAMERA
   const camera = new THREE.PerspectiveCamera( 50 , window.innerWidth / window.innerHeight, 0.1, 10000 );
-  let player = { height:1.8, speed:0.2, turnSpeed:Math.PI*0.02 };
   camera.position.set( 0, 0, -150 );
+  // PLAYER
+  let player = { height:1.8, speed:0.2, turnSpeed:Math.PI*0.02 };
+
   //RENDERER
   const renderer = new THREE.WebGLRenderer({    
     alpha:true, 
-    antialias:true}) ;
+    antialias:true
+  });
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap; 
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -31,7 +35,7 @@ export default function(){
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
   } );  
-  const gridHelper = new THREE.GridHelper( 250,50 );  
+  // const gridHelper = new THREE.GridHelper( 250,50 );  
   //scene.add(gridHelper);    
   // CAMERA  
   camera.lookAt(new THREE.Vector3( 0, player.height, 10));
@@ -49,7 +53,6 @@ export default function(){
   let dist = 1000;
   let decay = 0.5;
   let pointcolor = 0Xddddff;
-
   //let yp = 50;
   //POINT
   const pointLight = new THREE.PointLight( pointcolor, int, dist, decay); 
@@ -85,7 +88,7 @@ export default function(){
     soundEmme.setBuffer(buffer);
     soundEmme.setLoop(true);
     soundEmme.setVolume(0.5);
-    soundEmme.play();
+    //soundEmme.play();
   });
   // POETRY 2
   var listenerFotogramma = new THREE.AudioListener();
@@ -96,7 +99,7 @@ export default function(){
     soundFotogramma.setBuffer(buffer);
     soundFotogramma.setLoop(true);
     soundFotogramma.setVolume(0.5);
-    soundFotogramma.play();
+    //soundFotogramma.play();
   });
    // POETRY 3
    var listenerChiaha = new THREE.AudioListener();
@@ -108,7 +111,7 @@ export default function(){
     soundChiha.setBuffer(buffer);
     soundChiha.setLoop(true);
     soundChiha.setVolume(0.5);
-    soundChiha.play();
+    //soundChiha.play();
    });
    // POETRY 4
    var listenerCiocca = new THREE.AudioListener();
@@ -119,7 +122,7 @@ export default function(){
     soundCiocca.setBuffer(buffer);
     soundCiocca.setLoop(true);
     soundCiocca.setVolume(0.5);
-    soundCiocca.play();
+    //soundCiocca.play();
    });
    // POETRY 5
    var listenerAccavalla= new THREE.AudioListener();
@@ -130,7 +133,7 @@ export default function(){
     soundAccavalla.setBuffer(buffer);
     soundAccavalla.setLoop(true);
     soundAccavalla.setVolume(0.5);
-    soundAccavalla.play();
+    //soundAccavalla.play();
   });     
   // POETRY 6
   var listenerPeriferia= new THREE.AudioListener();
@@ -141,7 +144,7 @@ export default function(){
     soundPeriferia.setBuffer(buffer);
     soundPeriferia.setLoop(true);
     soundPeriferia.setVolume(0.5);
-    soundPeriferia.play();
+    //soundPeriferia.play();
   });  
   // BACKGROUND 
   const listenerBcg = new THREE.AudioListener();
@@ -162,7 +165,6 @@ export default function(){
    cameraButton.addEventListener('click', function() {
      resetCamera();
    });  
-   // Funzione per resettare la camera
    function resetCamera() {
      camera.position.set(  0, 0, -150 ); 
      camera.rotation.set( 1, 0, 0 );
@@ -192,10 +194,8 @@ export default function(){
         soundAccavalla.play();
         soundPeriferia.play();
      }
-     // Cambiamo lo stato
      isPlaying = !isPlaying;
   });
-
   // SPEAKER
   const speakerLoader = new GLTFLoader();
   speakerLoader.load(    
@@ -216,8 +216,6 @@ export default function(){
             clearcoat: 0,
             ior: 0.152,
             sheen: 0.5,
-             
-             
            });  
            node.material = materialSGL;
            node.castShadow = true;
@@ -263,24 +261,46 @@ export default function(){
         soundChiha.setVolume(volume3)
         soundCiocca.setVolume(volume4);
         soundAccavalla.setVolume(volume5);
-        soundPeriferia.setVolume(volume6);
+        soundPeriferia.setVolume(volume6);     
 
         if (!soundEmme.isPlaying && volume > 0) {
           soundEmme.play();
+        } else if ( volume <= 0){          
+          soundEmme.play();
+          soundEmme.stop();                      
         }
         if (!soundFotogramma.isPlaying && volume2 > 0) {
+          soundFotogramma.play(); 
+        } else if ( volume2 <= 0){          
           soundFotogramma.play();
+          soundFotogramma.stop();
         }
         if (!soundChiha.isPlaying && volume3 > 0) {
           soundChiha.play();
+        } else if ( volume3 <= 0){
+          soundChiha.play();
+          soundChiha.stop(); 
         }
         if (!soundCiocca.isPlaying && volume4 > 0) {
           soundCiocca.play();
+        } else if ( volume4 <= 0){
+          soundCiocca.play();
+          soundCiocca.stop();
         }
         if (!soundAccavalla.isPlaying && volume5 > 0) {
+          soundAccavalla.play();;
+        } else if ( volume5 <= 0){
           soundAccavalla.play();
-        }      
-        soundEmme.setVolume(volume);
+          soundAccavalla.stop();
+        }       
+
+        if (soundEmme.isPlaying || soundFotogramma.isPlaying || soundChiha.isPlaying || soundCiocca.isPlaying || soundAccavalla.isPlaying) {
+          backgroundSound.setVolume(0.03);
+        } else {
+          backgroundSound.setVolume(0.2);
+        }
+        
+        soundEmme.setVolume(volume)
         soundFotogramma.setVolume(volume2)
         soundChiha.setVolume(volume3)
         soundCiocca.setVolume(volume4)
@@ -289,7 +309,7 @@ export default function(){
       };
       animateScene();
     }, 
-    undefined, // funzione di progresso opzionale da passare al caricatore
+    undefined, 
     function (error) {
       console.error(error);      
     }
@@ -329,5 +349,94 @@ export default function(){
     } 
   );
 
-};
+//   // ANIMATION
 
+//   let positions = [
+//   //START
+//   {moveTime: 6, waitTime: 1, pos: {x: 0, y: 0, z: -150}},
+//   // MOVE ////    
+//   {moveTime: 6, waitTime: 1, pos: {x: -20, y: 0, z: -120}},    
+//   {moveTime: 6, waitTime: 1, pos: {x: 0, y: -16, z: 46}}, 
+//   {moveTime: 6, waitTime: 1, pos: {x: -22, y: 0, z: 46}}, 
+
+//   // speakerFotogramma.position.set(0,-27,50);
+//   // speakerChiHa.position.set(-18,-7.5,-110);
+//   // speakerCiocca.position.set(-22,13,50);
+//   // speakerAccavalla.position.set(22,-27,-50);
+//   // speakerPeriferia.position.set(-22,13,-50);
+
+
+
+
+  
+//   // FINISH
+//   {moveTime: 6, waitTime: 1, pos: {x: 0, y: 0, z: -150}},
+//   ];
+
+// // ROTATION
+
+// // let rotations = [
+
+// //   //START
+// //   {rotTime: 1, rotWait: 10, rot: {x: 0, y: 0, z: 0}},
+
+// //   // ROTATE////    
+// //   /*1*/{rotTime: 6, rotWait: 0, rot: {x: 0, y: 0, z: 0}},
+// //   /*2*/{rotTime: 6, rotWait: 0, rot: {x: 0, y: 0, z: 0}},
+
+// //   ///*8*/{rotTime: 3, rotWait: 3, rot: {x: -Math.PI/2, y: -2*Math.PI, z: 0}}, //Mountain
+// //   ///*9*/{rotTime: 3, rotWait: 3, rot: {x: 0, y: 2*Math.PI, z: -Math.PI/2}},// Ocean     
+
+// //   // FINISH
+// //   {rotTime: 6, rotWait: 0, rot: {x: 0, y: 0, z: 0}},
+      
+// // ];
+
+// let tweenScene = function(index) {
+//   if (index >= positions.length) index = 0;
+
+//   gsap.to(camera.position, {
+//     duration: positions[index].moveTime,
+//     x: positions[index].pos.x,
+//     y: positions[index].pos.y,
+//     z: positions[index].pos.z,
+//     onComplete: function() {
+//       gsap.delayedCall(positions[index].waitTime, function() {
+//         tweenScene(index + 1);
+//       });
+//     }    
+//   });
+
+
+//   // if (rotations[index]) {
+//   //   gsap.to(scene.rotation, {
+//   //     duration: rotations[index].rotTime,
+//   //     x: rotations[index].rot.x,
+//   //     y: rotations[index].rot.y,
+//   //     z: rotations[index].rot.z,
+//   //     onComplete: function() {
+//   //       gsap.delayedCall(rotations[index].rotWait, function() {
+//   //         tweenScene(index + 1);
+//   //       });
+//   //     }
+//   //   });
+//   // }
+// };
+
+// tweenScene(0);
+
+// renderer.render(scene, camera);    
+
+// // Funzione di animazione
+// function animate() {
+//   requestAnimationFrame(animate);
+
+//   // Rotazione della camera sull'asse y
+//   camera.rotation.y += 0.001;
+
+//   renderer.render(scene, camera);
+// }
+
+// Avvio dell'animazione
+animate();
+};

@@ -176,70 +176,76 @@ export default function(choose, quadri){
 
 ///////////////////////////////////////////////
 
-// Inizializza un array per tenere traccia del conteggio delle aree
-let conteggioAree = [0, 0, 0, 0];
+  // Inizializza un array per tenere traccia del conteggio delle aree
+  let conteggioAree = [0, 0, 0, 0];
 
-let mappaColori = {
-  'area1': '#FFFF00', // giallo
-  'area2': '#FF0000', // rosso
-  'area3': '#0000FF', // blu
-  'area4': '#008000'  // verde
-};
+  let mappaColori = {
+    'area1': '#E1BB0D', // giallo
+    'area2': '#E10D0D', // rosso
+    'area3': '#0DA5E1', // blu
+    'area4': '#57D743', // verde
+    'areaEquivalente': '#777777' // arancione per scelte equivalenti
+  };
 
-
-// Itera su ogni colore scelto
-for (let quad in choose) {
-  // Ottieni il colore corrente
-  let coloreCorrente = new THREE.Color(choose[quad][1]).getHexString().toUpperCase();
-
-  // Determina a quale area appartiene il colore
-  let indiceArea;
-  for (let i = 0; i < gruppiColori.length; i++) {
-    if (gruppiColori[i].includes(coloreCorrente)) {
-      indiceArea = i;
-      break;
-    }
-  }
-
-  // Aggiorna il conteggio per l'area
-  if (indiceArea !== undefined && choose[quad][1] !== '#FFFFFF') {
-    conteggioAree[indiceArea]++;
-  }
-}
-
-// Trova l'area con il maggior numero di scelte
-let areaPiuScelta = conteggioAree.indexOf(Math.max(...conteggioAree));
-
-console.log(`L'area con il maggior numero di scelte è l'area ${areaPiuScelta + 1}.`);
-
-let coloreOggetto;
-// Assegna il colore corrispondente all'oggetto
-coloreOggetto = mappaColori[`area${areaPiuScelta + 1}`];
-
-console.log(`Il colore dell'oggetto è ${coloreOggetto}.`);
-
-let gTotale = new THREE.SphereGeometry(1200, 16, 16);
-let matTotale = new THREE.MeshPhysicalMaterial ({
-  color: new THREE.Color(coloreOggetto), 
-  map: TextureQ2,
-  side: THREE.DoubleSide, 
-  alphaMap: alphaCielo,
-  transparent: true,
-});
-let emotionTotale = new THREE.Mesh(gTotale, matTotale);
-emotionTotale.rotation.set(0,1,0);
-scene.add(emotionTotale);
-
-
-///////////////////////////////////////
-
+  // Itera su ogni colore scelto
+  for (let quad in choose) {
+    // Ottieni il colore corrente
+    let coloreCorrente = new THREE.Color(choose[quad][1]).getHexString().toUpperCase();
+    // Determina a quale area appartiene il colore
+    let indiceArea;
     for (let i = 0; i < gruppiColori.length; i++) {
       if (gruppiColori[i].includes(coloreCorrente)) {
-        forma = formeGeometriche[nomiFormeGeometriche[i]];
-        espressione = textureEspressioni[nomiEspressioni[i]];        
-        break; 
+        indiceArea = i;
+        break;
       }
-    }   
+    }
+    // Aggiorna il conteggio per l'area solo se il colore corrente non è bianco
+    if (indiceArea !== undefined && choose[quad][1] !== '#FFFFFF') {
+      conteggioAree[indiceArea]++;
+    }
+    }
+
+  // Trova il massimo conteggio
+  let maxConteggio = Math.max(...conteggioAree);
+
+  // Verifica se ci sono più aree con lo stesso massimo conteggio
+  let areeEquivalenti = conteggioAree.filter(conteggio => conteggio === maxConteggio).length > 1;
+
+  let coloreOggetto;
+  // Se ci sono scelte equivalenti, usa il colore per scelte equivalenti
+  if (areeEquivalenti) {
+    coloreOggetto = mappaColori['areaEquivalente'];
+  } else {
+    // Trova l'area con il maggior numero di scelte
+    let areaPiuScelta = conteggioAree.indexOf(maxConteggio);
+    // Se nessun'area è stata scelta (tutte hanno conteggio 0), usa il colore bianco
+    coloreOggetto = maxConteggio > 0 ? mappaColori[`area${areaPiuScelta + 1}`] : '#FFFFFF';
+  }
+
+  console.log(`Il colore dell'oggetto è ${coloreOggetto}.`);
+
+  let gTotale = new THREE.SphereGeometry(1200, 16, 16);
+  let matTotale = new THREE.MeshPhysicalMaterial({
+    color: new THREE.Color(coloreOggetto), 
+    map: TextureQ2,
+    side: THREE.DoubleSide, 
+    alphaMap: alphaCielo,
+    transparent: true,
+  });
+
+  let emotionTotale = new THREE.Mesh(gTotale, matTotale);
+  emotionTotale.rotation.set(0, 1, 0);
+  scene.add(emotionTotale);
+
+ ///////////////////////////////////////
+
+  for (let i = 0; i < gruppiColori.length; i++) {
+    if (gruppiColori[i].includes(coloreCorrente)) {
+      forma = formeGeometriche[nomiFormeGeometriche[i]];
+      espressione = textureEspressioni[nomiEspressioni[i]];        
+      break; 
+    }
+  }   
 
     if (!forma) {
       forma = formeGeometriche['octaedro'];
@@ -773,7 +779,7 @@ scene.add(emotionTotale);
       // MOUNT
       const loaderMount = new GLTFLoader();
       loaderMount.load(    
-        './mountains6B.glb',
+        './3d/mountains6B.glb',
           function (glt) {
           const mount = glt.scene;
           mount.position.set(0, 0.5, -160 );
@@ -798,7 +804,7 @@ scene.add(emotionTotale);
       );   
       const loaderMount2 = new GLTFLoader();
       loaderMount.load(    
-        './mountains6C.glb',
+        './3d/mountains6C.glb',
           function (glt) {
           const mount = glt.scene;
           mount.position.set(0, 0.5, -160 );
@@ -823,7 +829,7 @@ scene.add(emotionTotale);
       );
       const loaderMount3 = new GLTFLoader();
       loaderMount.load(    
-        './mountains6Cast.glb',
+        './3d/mountains6Cast.glb',
           function (glt) {
           const mount = glt.scene;
           mount.position.set(0, 0.5, -160 );
@@ -848,7 +854,7 @@ scene.add(emotionTotale);
       );  
       const loaderMount4 = new GLTFLoader();
       loaderMount.load(    
-        './mountains6O.glb',
+        './3d/mountains6O.glb',
           function (glt) {
           const mount = glt.scene;
           mount.position.set(0, 0.5, -160 );
@@ -873,7 +879,7 @@ scene.add(emotionTotale);
       ); 
       const loaderMount5 = new GLTFLoader();
       loaderMount.load(    
-        './mountains6T.glb',
+        './3d/mountains6T.glb',
           function (glt) {
           const mount = glt.scene;
           mount.position.set(0, 0.5, -160 );
@@ -1719,17 +1725,7 @@ scene.add(emotionTotale);
     backgroundSound.setVolume( 0.05 );
     backgroundSound.play();
   });
-  // BACKGROUND MUSIC
-  const listenerBcgM = new THREE.AudioListener();
-  camera.add(listenerBcgM);
-  const audioLoaderM = new THREE.AudioLoader();
-  const backgroundSoundM = new THREE.Audio( listenerBcgM );
-  audioLoaderM.load('audio/garden-of-eden-186428', function( buffer ) {
-    backgroundSoundM.setBuffer( buffer );
-    backgroundSoundM.setLoop( true );
-    backgroundSoundM.setVolume( 0.4 );
-    //backgroundSoundM.play();
-  });
+
   // Selezioniamo i pulsanti
   let cameraButton = document.querySelector('#btn-camera button');  
   let audioButton = document.querySelector('#btn-audio button');

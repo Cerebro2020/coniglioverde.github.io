@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import {OrbitControls} from './three_class/OrbitControls.js';
 import { GLTFLoader } from './three_class/GLTFLoader.js';
-import { VRButton } from './three_class/VRButton.js';
+
 export default function(choose, quadri){
 
   const colore0 = choose[0][0]; 
@@ -32,14 +32,14 @@ export default function(choose, quadri){
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(  0x0A9EE8 );
   //scene.fog = new THREE.Fog( 0x0A9EE8, 1100, 1400 );
-  scene.position.set(0,-10,-25);
+  scene.position.set(0,-30,0);
   // CAMERA //////
   const camera = new THREE.PerspectiveCamera( 50 , window.innerWidth / window.innerHeight, 0.1, 4000 );
   let player = { height:1.8, speed:0.2, turnSpeed:Math.PI*0.02 };  
-  camera.position.set(0, 0, 0 ); 
+  camera.position.set(0, 0, 80 ); 
   camera.rotation.set( 1, 0, 0 );
   camera.lookAt(new THREE.Vector3( 0, player.height, 0));  
-  camera.setFocalLength ( 15 );
+  camera.setFocalLength ( 20 );
   // RENDERER
   const renderer = new THREE.WebGLRenderer({
     alpha:true, 
@@ -74,12 +74,7 @@ export default function(choose, quadri){
     renderer.setSize( width, height );
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
-  } ); 
-  //VRBUTTON
-  document.body.appendChild( VRButton.createButton( renderer ) );
-  renderer.setAnimationLoop( function () {
-    renderer.render( scene, camera );    
-  } );   
+  } );    
   // LIGHTS //////
   //AMBIENT
   const ambient = new THREE.AmbientLight( 0xFFFFFF, 0.6 );  
@@ -163,7 +158,6 @@ export default function(choose, quadri){
       '227BFF', '3E39FF', '222EFF', '001DEC', '2A23A3',
       '49C51A', '2D7121', '3C6232', '0A5C0A', '008000'
     ]; 
-    
     // Definisci i gruppi di colori
     const gruppiColori = [
       colori.slice(0, 5),  // Primi 5 colori
@@ -178,287 +172,288 @@ export default function(choose, quadri){
     }
 
     let forma;
-    let espressione;     
+    let espressione; 
 
-    ///////////////////////////////////////////////
+///////////////////////////////////////////////
 
-    // Inizializza un array per tenere traccia del conteggio delle aree
-    let conteggioAree = [0, 0, 0, 0];
+  // Inizializza un array per tenere traccia del conteggio delle aree
+  let conteggioAree = [0, 0, 0, 0];
 
-    let mappaColori = {
-      'area1': '#E1BB0D', // giallo
-      'area2': '#E10D0D', // rosso
-      'area3': '#0DA5E1', // blu
-      'area4': '#57D743', // verde
-      'areaEquivalente': '#777777' // arancione per scelte equivalenti
-    };
+  let mappaColori = {
+    'area1': '#E1BB0D', // giallo
+    'area2': '#E10D0D', // rosso
+    'area3': '#0DA5E1', // blu
+    'area4': '#57D743', // verde
+    'areaEquivalente': '#777777' // arancione per scelte equivalenti
+  };
 
-    // Itera su ogni colore scelto
-    for (let quad in choose) {
-      // Ottieni il colore corrente
-      let coloreCorrente = new THREE.Color(choose[quad][1]).getHexString().toUpperCase();
-      // Determina a quale area appartiene il colore
-      let indiceArea;
-      for (let i = 0; i < gruppiColori.length; i++) {
-        if (gruppiColori[i].includes(coloreCorrente)) {
-          indiceArea = i;
-          break;
-        }
-      }
-      // Aggiorna il conteggio per l'area solo se il colore corrente non è bianco
-      if (indiceArea !== undefined && choose[quad][1] !== '#FFFFFF') {
-        conteggioAree[indiceArea]++;
-      }
-    }
-
-    // Trova il massimo conteggio
-    let maxConteggio = Math.max(...conteggioAree);
-
-    // Verifica se ci sono più aree con lo stesso massimo conteggio
-    let areeEquivalenti = conteggioAree.filter(conteggio => conteggio === maxConteggio).length > 1;
-
-    let coloreOggetto;
-    // Se ci sono scelte equivalenti, usa il colore per scelte equivalenti
-    if (areeEquivalenti) {
-      coloreOggetto = mappaColori['areaEquivalente'];
-    } else {
-      // Trova l'area con il maggior numero di scelte
-      let areaPiuScelta = conteggioAree.indexOf(maxConteggio);
-      // Se nessun'area è stata scelta (tutte hanno conteggio 0), usa il colore bianco
-      coloreOggetto = maxConteggio > 0 ? mappaColori[`area${areaPiuScelta + 1}`] : '#FFFFFF';
-    }
-
-    console.log(`Il colore dell'oggetto è ${coloreOggetto}.`);
-
-    let gTotale = new THREE.SphereGeometry(1200, 16, 16);
-    let matTotale = new THREE.MeshPhysicalMaterial({
-      color: new THREE.Color(coloreOggetto), 
-      map: TextureQ2,
-      side: THREE.DoubleSide, 
-      alphaMap: alphaCielo,
-      transparent: true,
-    });
-
-    let emotionTotale = new THREE.Mesh(gTotale, matTotale);
-    emotionTotale.rotation.set(0, 1, 0);
-    scene.add(emotionTotale);
-
-    /////////////////////////////////////////////
-
+  // Itera su ogni colore scelto
+  for (let quad in choose) {
+    // Ottieni il colore corrente
+    let coloreCorrente = new THREE.Color(choose[quad][1]).getHexString().toUpperCase();
+    // Determina a quale area appartiene il colore
+    let indiceArea;
     for (let i = 0; i < gruppiColori.length; i++) {
       if (gruppiColori[i].includes(coloreCorrente)) {
-        forma = formeGeometriche[nomiFormeGeometriche[i]];
-        espressione = textureEspressioni[nomiEspressioni[i]];        
+        indiceArea = i;
+        break;
+      }
+    }
+    // Aggiorna il conteggio per l'area solo se il colore corrente non è bianco
+    if (indiceArea !== undefined && choose[quad][1] !== '#FFFFFF') {
+      conteggioAree[indiceArea]++;
+    }
+    }
+
+  // Trova il massimo conteggio
+  let maxConteggio = Math.max(...conteggioAree);
+
+  // Verifica se ci sono più aree con lo stesso massimo conteggio
+  let areeEquivalenti = conteggioAree.filter(conteggio => conteggio === maxConteggio).length > 1;
+
+  let coloreOggetto;
+  // Se ci sono scelte equivalenti, usa il colore per scelte equivalenti
+  if (areeEquivalenti) {
+    coloreOggetto = mappaColori['areaEquivalente'];
+  } else {
+    // Trova l'area con il maggior numero di scelte
+    let areaPiuScelta = conteggioAree.indexOf(maxConteggio);
+    // Se nessun'area è stata scelta (tutte hanno conteggio 0), usa il colore bianco
+    coloreOggetto = maxConteggio > 0 ? mappaColori[`area${areaPiuScelta + 1}`] : '#FFFFFF';
+  }
+
+  console.log(`Il colore dell'oggetto è ${coloreOggetto}.`);
+
+  let gTotale = new THREE.SphereGeometry(1200, 16, 16);
+  let matTotale = new THREE.MeshPhysicalMaterial({
+    color: new THREE.Color(coloreOggetto), 
+    map: TextureQ2,
+    side: THREE.DoubleSide, 
+    alphaMap: alphaCielo,
+    transparent: true,
+  });
+
+  let emotionTotale = new THREE.Mesh(gTotale, matTotale);
+  emotionTotale.rotation.set(0, 1, 0);
+  scene.add(emotionTotale);
+
+ ///////////////////////////////////////
+
+  for (let i = 0; i < gruppiColori.length; i++) {
+    if (gruppiColori[i].includes(coloreCorrente)) {
+      forma = formeGeometriche[nomiFormeGeometriche[i]];
+      espressione = textureEspressioni[nomiEspressioni[i]];        
+      break; 
+    }
+  }   
+
+    if (!forma) {
+      forma = formeGeometriche['octaedro'];
+      espressione = textureEspressioni['none'];
+    }
+    // EMOTION MATERIAL
+    const emoMaterial = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color(v[1]), 
+      map: espressione, 
+    }); 
+
+    //  EMOTION 1
+    const emotion1 = new THREE.Mesh( forma, emoMaterial);  
+    emotion1.position.set(-7.1, 13.5, -0.3 );
+    emotion1.rotation.set( 0, 0, 0);
+    emotion1.scale.set( 1.5, 1.5, 1.5 );    
+    emotion1.castShadow = true; 
+    emotion1.receiveShadow = true;    
+    //  EMOTION 2
+    let newMat = emoMaterial.clone()
+    newMat.color = new THREE.Color(v[2] ? v[2] : v[1]);
+    let forma2;
+    let espressione2; 
+    for (let i = 0; i < gruppiColori.length; i++) {
+      const coloreCorrente2 = newMat.color.getHexString().toUpperCase();
+      if (gruppiColori[i].includes(coloreCorrente2)) {
+        forma2 = formeGeometriche[nomiFormeGeometriche[i]]; 
+        espressione2 = textureEspressioni[nomiEspressioni[i]];         
         break; 
       }
+    }
+    if (!forma2) {
+      forma2 = formeGeometriche['octaedro'];
+      espressione2 = textureEspressioni['none'];
+    }
+    newMat.map = espressione2;
+    const emotion2 = new THREE.Mesh(forma2, newMat);  
+    emotion2.position.set( -6.1, 12.5, -0.3 );
+    emotion2.rotation.set( 0, 0, -Math.PI/3 );
+    emotion2.scale.set( 1.3, 1.3, 1.3 );    
+    emotion2.castShadow = true; 
+    emotion2.receiveShadow = true;   
+    // EMOTION 3 
+    newMat = emoMaterial.clone();
+    newMat.color = new THREE.Color(v[3] ? v[3] : v[1]);
+    let forma3;
+    let espressione3;
+    for (let i = 0; i < gruppiColori.length; i++) {
+      const coloreCorrente2 = newMat.color.getHexString().toUpperCase();
+      if (gruppiColori[i].includes(coloreCorrente2)) {
+        forma3 = formeGeometriche[nomiFormeGeometriche[i]];
+        espressione3 = textureEspressioni[nomiEspressioni[i]];         
+        break;
+      }
+    }  
+    if (!forma3) {
+      forma3 = formeGeometriche['octaedro'];
+      espressione3 = textureEspressioni['none'];
     }   
+    newMat.map = espressione3;
+    const emotion3 = new THREE.Mesh(forma3, newMat);  
+    emotion3.position.set( -7.7, 11.6, -0.3 );
+    emotion3.rotation.set( 0, 0, Math.PI/1.5 );
+    emotion3.scale.set( 1.1, 1.1, 1.1 ); 
+    emotion3.castShadow = true; 
+    emotion3.receiveShadow = true;
+    const ret = emotionGroup.clone(true);
+    ret.add(emotion1, emotion2, emotion3);
+    ret.position.set( 2, k*1.1 + (0.2*Math.PI/Math.cos(k+8)), 0); // B Centro
+    ret.rotation.set( 0, k/3, 0 );
+    ret.scale.set( 2.2, 2.2, 2.2 );
+    // EMOZIONI CLONATE   
+    //TREEC1 
+    const ret2 = ret.clone();
+    ret2.position.set( -195,k*1.1 + (0.2*Math.PI/Math.cos(k+8))+155, -100 );// S Alto 
+    // TREEC2
+    const ret3 = ret.clone();//D cielo
+    ret3.position.set( 270, 350+k*1.1 + (0.2*Math.PI/Math.cos(k+8)), -100 ); 
+    // TREEC3
+    const ret4 = ret.clone();    
+    ret4.position.set( 240, 144+(k*1.1 + (0.2*Math.PI/Math.cos(k+8))), 80 );// D Cubo B 
+    // TREEC4
+    const ret5 = ret.clone();
+    ret5.position.set( -40, k*1.1 + (0.2*Math.PI/Math.cos(k+8)) + 155, 150 );// A Octa        
+    scene.add(ret, ret2, ret3, ret4,ret5);  
+  })  
+  // SCALA
+  let leyerGroup = new THREE.Group();
+  const livelli=_.map(choose,(v,k)=>{ 
+    const gBox = new THREE.BoxGeometry( 4, 4, 4 );
+    const mBox = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color(v[1]),
+      transparent:true,
+      opacity: 1,      
+    });  
+    // SCALE 1
+    const box1 = new THREE.Mesh ( gBox, mBox );     
+    box1.position.set( 30, 68, 560 );
+    box1.castShadow = true;
+    box1.receiveShadow = true;
+    // SCALE 2
+    let newmatBox = mBox.clone(); 
+    newmatBox.color= 0X000000;
+    newmatBox.color = new THREE.Color(v[2] ? v[2] : v[1]);
+    const box2 = new THREE.Mesh (gBox, newmatBox);
+    box2.castShadow = true;
+    box2.receiveShadow = true;
+    box2.position.set( 30, 72, 556 );
+    // SCALE 3
+    newmatBox = mBox.clone(); 
+    newmatBox.color = new THREE.Color(v[3] ? v[3] : v[1]);
+    const box3 = new THREE.Mesh (gBox, newmatBox);
+    box3.position.set( 30, 76, 552 );   
+    box3.castShadow = true;
+    box3.receiveShadow = true;
+    leyerGroup.add( box1, box2, box3 ); 
+    // CLONE SCALE
+    const leyerScale = leyerGroup.clone(true);
+    scene.add(leyerScale);
+    leyerScale.position.set( -50, 90+(6*k), -(6*k)+180 );
+    leyerScale.rotation.set( 0, 0, 0 );
+    leyerScale.scale.set( 5, 0.5, 0.5);
+  })
+  //// BUBBLE
+  let leyerSnake = new THREE.Group();
+  const livelli2=_.map(choose,(v,k)=>{
+    const gSnake = new THREE.SphereGeometry( 1.5, 16, 16);
+    const mSnake = new THREE.MeshPhysicalMaterial({
+      color: new THREE.Color(v[1]),
+    });   
+    // BUBBLE 1
+    const snake1 = new THREE.Mesh ( gSnake, mSnake );    
+    snake1.castShadow = true;
+    snake1.receiveShadow = true;    
+    snake1.position.set( -320, 3, -740 );
+    // BUBBLE 2
+    let newmatSnake = mSnake.clone();     
+    newmatSnake.color = new THREE.Color(v[2] ? v[2] : v[1]);
+    const snake2 = new THREE.Mesh (gSnake, newmatSnake);
+    snake2.castShadow = true;
+    snake2.receiveShadow = true;
+    snake2.position.set( -319, 3, -741);  
+    snake2.scale.set( 0.8, 0.8, 0.8); 
+    // BUBBLE 3
+    let newmatSnake2 = mSnake.clone(); 
+    newmatSnake2.color = new THREE.Color(v[3] ? v[3] : v[1]);
+    const snake3 = new THREE.Mesh (gSnake, newmatSnake2);
+    snake3.castShadow = true;
+    snake3.receiveShadow = true;
+    snake3.position.set( -318, 3, -740);
+    snake3.scale.set( 0.6, 0.6, 0.6); 
+    leyerSnake.add( snake1, snake2, snake3 );   
+    // CLONE BUBBLE
+    const leyerSnake2 = leyerSnake.clone(true);
+    leyerSnake2.position.set(-k*2, 22, 130); 
+    leyerSnake2.rotation.set(k/150,-k/150,k/150);              
+    scene.add(leyerSnake2);
+  })
 
-      if (!forma) {
-        forma = formeGeometriche['octaedro'];
-        espressione = textureEspressioni['none'];
-      }
-      // EMOTION MATERIAL
-      const emoMaterial = new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color(v[1]), 
-        map: espressione, 
-      }); 
-
-      //  EMOTION 1
-      const emotion1 = new THREE.Mesh( forma, emoMaterial);  
-      emotion1.position.set(-7.1, 13.5, -0.3 );
-      emotion1.rotation.set( 0, 0, 0);
-      emotion1.scale.set( 1.5, 1.5, 1.5 );    
-      emotion1.castShadow = true; 
-      emotion1.receiveShadow = true;    
-      //  EMOTION 2
-      let newMat = emoMaterial.clone()
-      newMat.color = new THREE.Color(v[2] ? v[2] : v[1]);
-      let forma2;
-      let espressione2; 
-      for (let i = 0; i < gruppiColori.length; i++) {
-        const coloreCorrente2 = newMat.color.getHexString().toUpperCase();
-        if (gruppiColori[i].includes(coloreCorrente2)) {
-          forma2 = formeGeometriche[nomiFormeGeometriche[i]]; 
-          espressione2 = textureEspressioni[nomiEspressioni[i]];         
-          break; 
-        }
-      }
-      if (!forma2) {
-        forma2 = formeGeometriche['octaedro'];
-        espressione2 = textureEspressioni['none'];
-      }
-      newMat.map = espressione2;
-      const emotion2 = new THREE.Mesh(forma2, newMat);  
-      emotion2.position.set( -6.1, 12.5, -0.3 );
-      emotion2.rotation.set( 0, 0, -Math.PI/3 );
-      emotion2.scale.set( 1.3, 1.3, 1.3 );    
-      emotion2.castShadow = true; 
-      emotion2.receiveShadow = true;   
-      // EMOTION 3 
-      newMat = emoMaterial.clone();
-      newMat.color = new THREE.Color(v[3] ? v[3] : v[1]);
-      let forma3;
-      let espressione3;
-      for (let i = 0; i < gruppiColori.length; i++) {
-        const coloreCorrente2 = newMat.color.getHexString().toUpperCase();
-        if (gruppiColori[i].includes(coloreCorrente2)) {
-          forma3 = formeGeometriche[nomiFormeGeometriche[i]];
-          espressione3 = textureEspressioni[nomiEspressioni[i]];         
-          break;
-        }
-      }  
-      if (!forma3) {
-        forma3 = formeGeometriche['octaedro'];
-        espressione3 = textureEspressioni['none'];
-      }   
-      newMat.map = espressione3;
-      const emotion3 = new THREE.Mesh(forma3, newMat);  
-      emotion3.position.set( -7.7, 11.6, -0.3 );
-      emotion3.rotation.set( 0, 0, Math.PI/1.5 );
-      emotion3.scale.set( 1.1, 1.1, 1.1 ); 
-      emotion3.castShadow = true; 
-      emotion3.receiveShadow = true;
-      const ret = emotionGroup.clone(true);
-      ret.add(emotion1, emotion2, emotion3);
-      ret.position.set( 2, k*1.1 + (0.2*Math.PI/Math.cos(k+8)), 0); // B Centro
-      ret.rotation.set( 0, k/3, 0 );
-      ret.scale.set( 2.2, 2.2, 2.2 );
-      // EMOZIONI CLONATE   
-      //TREEC1 
-      const ret2 = ret.clone();
-      ret2.position.set( -195,k*1.1 + (0.2*Math.PI/Math.cos(k+8))+155, -100 );// S Alto 
-      // TREEC2
-      const ret3 = ret.clone();//D cielo
-      ret3.position.set( 270, 350+k*1.1 + (0.2*Math.PI/Math.cos(k+8)), -100 ); 
-      // TREEC3
-      const ret4 = ret.clone();    
-      ret4.position.set( 240, 144+(k*1.1 + (0.2*Math.PI/Math.cos(k+8))), 80 );// D Cubo B 
-      // TREEC4
-      const ret5 = ret.clone();
-      ret5.position.set( -40, k*1.1 + (0.2*Math.PI/Math.cos(k+8)) + 155, 150 );// A Octa        
-      scene.add(ret, ret2, ret3, ret4,ret5);  
-    })  
-    // SCALA
-    let leyerGroup = new THREE.Group();
-    const livelli=_.map(choose,(v,k)=>{ 
-      const gBox = new THREE.BoxGeometry( 4, 4, 4 );
-      const mBox = new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color(v[1]),
-        transparent:true,
-        opacity: 1,      
-      });  
-      // SCALE 1
-      const box1 = new THREE.Mesh ( gBox, mBox );     
-      box1.position.set( 30, 68, 560 );
-      box1.castShadow = true;
-      box1.receiveShadow = true;
-      // SCALE 2
-      let newmatBox = mBox.clone(); 
-      newmatBox.color= 0X000000;
-      newmatBox.color = new THREE.Color(v[2] ? v[2] : v[1]);
-      const box2 = new THREE.Mesh (gBox, newmatBox);
-      box2.castShadow = true;
-      box2.receiveShadow = true;
-      box2.position.set( 30, 72, 556 );
-      // SCALE 3
-      newmatBox = mBox.clone(); 
-      newmatBox.color = new THREE.Color(v[3] ? v[3] : v[1]);
-      const box3 = new THREE.Mesh (gBox, newmatBox);
-      box3.position.set( 30, 76, 552 );   
-      box3.castShadow = true;
-      box3.receiveShadow = true;
-      leyerGroup.add( box1, box2, box3 ); 
-      // CLONE SCALE
-      const leyerScale = leyerGroup.clone(true);
-      scene.add(leyerScale);
-      leyerScale.position.set( -50, 90+(6*k), -(6*k)+180 );
-      leyerScale.rotation.set( 0, 0, 0 );
-      leyerScale.scale.set( 5, 0.5, 0.5);
-    })
-    //// BUBBLE
-    let leyerSnake = new THREE.Group();
-    const livelli2=_.map(choose,(v,k)=>{
-      const gSnake = new THREE.SphereGeometry( 1.5, 16, 16);
-      const mSnake = new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color(v[1]),
-      });   
-      // BUBBLE 1
-      const snake1 = new THREE.Mesh ( gSnake, mSnake );    
-      snake1.castShadow = true;
-      snake1.receiveShadow = true;    
-      snake1.position.set( -320, 3, -740 );
-      // BUBBLE 2
-      let newmatSnake = mSnake.clone();     
-      newmatSnake.color = new THREE.Color(v[2] ? v[2] : v[1]);
-      const snake2 = new THREE.Mesh (gSnake, newmatSnake);
-      snake2.castShadow = true;
-      snake2.receiveShadow = true;
-      snake2.position.set( -319, 3, -741);  
-      snake2.scale.set( 0.8, 0.8, 0.8); 
-      // BUBBLE 3
-      let newmatSnake2 = mSnake.clone(); 
-      newmatSnake2.color = new THREE.Color(v[3] ? v[3] : v[1]);
-      const snake3 = new THREE.Mesh (gSnake, newmatSnake2);
-      snake3.castShadow = true;
-      snake3.receiveShadow = true;
-      snake3.position.set( -318, 3, -740);;
-      snake3.scale.set( 0.6, 0.6, 0.6); 
-      leyerSnake.add( snake1, snake2, snake3 );   
-      // CLONE BUBBLE
-      const leyerSnake2 = leyerSnake.clone(true);
-      leyerSnake2.position.set(-k*2, 22, 130); 
-      leyerSnake2.rotation.set(k/150,-k/150,k/150);              
-      scene.add(leyerSnake2);
-    })
-
-    // ROOM ////
-    const gPavimento = new THREE.CylinderGeometry(250, 250,10, 64,64, false, -Math.PI/2, Math.PI);
-    const pavimento = new THREE.Mesh(gPavimento, eleMat);
-    pavimento.position.set( 10, -5, -340 ); 
-    pavimento.scale.set(6,1,6); 
-    scene.add(pavimento);
-    // TREE TOON
-    const loaderTree = new GLTFLoader();
-    loaderTree.load(    
-      '3d/Tree/toon_tree.glb',
-      function (glt) {
-        const tree = glt.scene;
-        tree.position.set(0, 0.4, 0);
-        tree.rotation.set(0, Math.PI/-2, 0);     
-        tree.scale.set(0.9, 0.9, 0.9);
-        tree.traverse(function (node) {
-          if (node.isMesh) {
-            const material = eleMat;          
-            node.material = material;
-            node.castShadow = true;
-            node.receiveShadow = true;
-          }
-        });
-        scene.add(tree);      
-        let treeC1 = tree.clone(true);       
-        treeC1.position.set(-200, 160, -100);// S alto
-        treeC1.rotation.set(0, 0.2, 0.01);      
-        treeC1.scale.set(0.8, 0.8, 0.8)
-        let treeC2 = tree.clone(true);
-        treeC2.position.set(270, 360, -100);//D Sospeso 
-        treeC2.rotation.set(0, 0.4, 0.01); 
-        let treeC3 = tree.clone(true);
-        treeC3.position.set(240,150, 80); //D cubo B
-        treeC3.rotation.set(0, 2, 0.01);      
-        treeC3.scale.set(0.9, 0.9, 0.9);
-        let treeC4 = tree.clone(true);
-        treeC4.position.set(-40, 162, 150);//S S Octa
-        treeC4.rotation.set(0, 1, 0.01);      
-        treeC4.scale.set(0.9, 0.9, 0.9); 
-        scene.add( treeC1, treeC2, treeC3, treeC4 );
-        tree.castShadow = true; 
-        tree.receiveShadow = true; 
-      },    
-      undefined, // funzione di progresso opzionale da passare al caricatore
-      function (error) {
-        console.error(error);      
-      }
-    );
+  // ROOM //// 
+  const gPavimento = new THREE.CylinderGeometry(250, 250,10, 64,64, false, -Math.PI/2, Math.PI);
+  const pavimento = new THREE.Mesh(gPavimento, eleMat);
+  pavimento.position.set( 10, -5, -340 ); 
+  pavimento.scale.set(6,1,6); 
+  pavimento.receiveShadow = true; 
+  scene.add(pavimento);
+  // TREE TOON
+   const loaderTree = new GLTFLoader();
+   loaderTree.load(    
+     '3d/Tree/toon_tree.glb',
+     function (glt) {
+       const tree = glt.scene;
+       tree.position.set(0, 0.4, 0);
+       tree.rotation.set(0, Math.PI/-2, 0);     
+       tree.scale.set(0.9, 0.9, 0.9);
+       tree.traverse(function (node) {
+         if (node.isMesh) {
+           const material = eleMat;          
+           node.material = material;
+           node.castShadow = true;
+           node.receiveShadow = true;
+         }
+       });
+       scene.add(tree);      
+       let treeC1 = tree.clone(true);       
+       treeC1.position.set(-200, 160, -100);// S alto
+       treeC1.rotation.set(0, 0.2, 0.01);      
+       treeC1.scale.set(0.8, 0.8, 0.8)
+       let treeC2 = tree.clone(true);
+       treeC2.position.set(270, 360, -100);//D Sospeso 
+       treeC2.rotation.set(0, 0.4, 0.01); 
+       let treeC3 = tree.clone(true);
+       treeC3.position.set(240,150, 80); //D cubo B
+       treeC3.rotation.set(0, 2, 0.01);      
+       treeC3.scale.set(0.9, 0.9, 0.9);
+       let treeC4 = tree.clone(true);
+       treeC4.position.set(-40, 162, 150);//S S Octa
+       treeC4.rotation.set(0, 1, 0.01);      
+       treeC4.scale.set(0.9, 0.9, 0.9); 
+      scene.add( treeC1, treeC2, treeC3, treeC4 );
+       tree.castShadow = true; 
+       tree.receiveShadow = true; 
+     },    
+     undefined, // funzione di progresso opzionale da passare al caricatore
+     function (error) {
+       console.error(error);      
+     }
+   );
    // TREE 2
    const loaderTree2 = new GLTFLoader();
    loaderTree2.load(    
@@ -704,7 +699,7 @@ export default function(choose, quadri){
        console.error(error);      
      } 
    );
-
+   
    // BENCH
    const loaderBench = new GLTFLoader();
    loaderBench.load(    
@@ -716,9 +711,8 @@ export default function(choose, quadri){
        bench.scale.set( 1, 1, 1 );    
        bench.traverse(function (node) {
          if (node.isMesh) {
-           const material = new THREE.MeshPhysicalMaterial({    
-             color: 0XFFFFFF,      
-             //color: colore1,       
+           const material = new THREE.MeshPhysicalMaterial({       
+             color: colore1,       
              map: TextureQ2,      
            });
            node.material = material;
@@ -734,8 +728,7 @@ export default function(choose, quadri){
        bench2.traverse(function (node) {
         if (node.isMesh) {
           const material = new THREE.MeshPhysicalMaterial({       
-            color: 0XFFFFFF,  
-            // color: colore2,       
+            color: colore2,       
             map: TextureQ2,      
           });
           node.material = material;
@@ -749,9 +742,8 @@ export default function(choose, quadri){
       bench3.scale.set( 1, 1, 1 );
       bench3.traverse(function (node) {
         if (node.isMesh) {
-          const material = new THREE.MeshPhysicalMaterial({   
-            color: 0XFFFFFF,      
-            // color: colore3,       
+          const material = new THREE.MeshPhysicalMaterial({       
+            color: colore3,       
             map: TextureQ2,      
           });
           node.material = material;
@@ -760,16 +752,15 @@ export default function(choose, quadri){
         }
       }); 
 
+
       let bench4 = bench.clone();
       bench4.position.set(-5, 0, 570);
       bench4.rotation.set(0, -Math.PI, 0 );      
       bench4.scale.set( 1, 1, 1 );
       bench4.traverse(function (node) {
         if (node.isMesh) {
-          const material = new THREE.MeshPhysicalMaterial({  
-            
-            color: 0XFFFFFF,  
-            // color: colore4,       
+          const material = new THREE.MeshPhysicalMaterial({       
+            color: colore4,       
             map: TextureQ2,      
           });
           node.material = material;
@@ -785,132 +776,133 @@ export default function(choose, quadri){
      }   
    );
 
-   // MOUNT
-   const loaderMount = new GLTFLoader();
-   loaderMount.load(    
-     'mountains6B.glb',
-       function (glt) {
-       const mount = glt.scene;
-       mount.position.set(0, 0.5, -160 );
-       mount.rotation.set(0, 0, 0 );      
-       mount.scale.set( 1, 1, 1 ); 
-       mount.traverse(function (node) {
-         if (node.isMesh) {
-           const material = new THREE.MeshPhysicalMaterial({
-            map: TextureQ2, 
-           });
-           node.material = material;
-           node.castShadow = true;
-           node.receiveShadow = true;
-         }
-       });  
-       scene.add(mount);
-     },      
-     undefined, // funzione di progresso opzionale da passare al caricatore
-     function (error) {
-       console.error(error);      
-     } 
-   );   
-   const loaderMount2 = new GLTFLoader();
-   loaderMount.load(    
-     'mountains6C.glb',
-       function (glt) {
-       const mount = glt.scene;
-       mount.position.set(0, 0.5, -160 );
-       mount.rotation.set(0, 0, 0 );      
-       mount.scale.set( 1, 1, 1 ); 
-       mount.traverse(function (node) {
-         if (node.isMesh) {
-           const material = new THREE.MeshPhysicalMaterial({
-            map: TextureQ2, 
-           });
-           node.material = material;
-           node.castShadow = true;
-           node.receiveShadow = true;
-         }
-       });  
-       scene.add(mount);
-     },      
-     undefined, // funzione di progresso opzionale da passare al caricatore
-     function (error) {
-       console.error(error);      
-     } 
-   );
-   const loaderMount3 = new GLTFLoader();
-   loaderMount.load(    
-     'mountains6Cast.glb',
-       function (glt) {
-       const mount = glt.scene;
-       mount.position.set(0, 0.5, -160 );
-       mount.rotation.set(0, 0, 0 );      
-       mount.scale.set( 1, 1, 1 ); 
-       mount.traverse(function (node) {
-         if (node.isMesh) {
-           const material = new THREE.MeshPhysicalMaterial({
-            map: TextureQ2, 
-           });
-           node.material = material;
-           node.castShadow = true;
-           node.receiveShadow = true;
-         }
-       });  
-       scene.add(mount);
-     },      
-     undefined, // funzione di progresso opzionale da passare al caricatore
-     function (error) {
-       console.error(error);      
-     } 
-   );  
-   const loaderMount4 = new GLTFLoader();
-   loaderMount.load(    
-     'mountains6O.glb',
-       function (glt) {
-       const mount = glt.scene;
-       mount.position.set(0, 0.5, -160 );
-       mount.rotation.set(0, 0, 0 );      
-       mount.scale.set( 1, 1, 1 ); 
-       mount.traverse(function (node) {
-         if (node.isMesh) {
-           const material = new THREE.MeshPhysicalMaterial({
-            map: TextureQ2, 
-           });
-           node.material = material;
-           node.castShadow = true;
-           node.receiveShadow = true;
-         }
-       });  
-       scene.add(mount);
-     },      
-     undefined, // funzione di progresso opzionale da passare al caricatore
-     function (error) {
-       console.error(error);      
-     } 
-   ); 
-   const loaderMount5 = new GLTFLoader();
-   loaderMount.load(    
-     'mountains6T.glb',
-       function (glt) {
-       const mount = glt.scene;
-       mount.position.set(0, 0.5, -160 );
-       mount.rotation.set(0, 0, 0 );      
-       mount.scale.set( 1, 1, 1 ); 
-       mount.traverse(function (node) {
-         if (node.isMesh) {
-           const material = new THREE.MeshPhysicalMaterial({
-            map: TextureQ2, 
-           });
-           node.material = material;
-           node.castShadow = true;
-           node.receiveShadow = true;
-         }
-       });  
-       scene.add(mount);
-     },      
-     undefined, // funzione di progresso opzionale da passare al caricatore
-     function (error) {
-       console.error(error);      
-     } 
-   ); 
+      // MOUNT
+      const loaderMount = new GLTFLoader();
+      loaderMount.load(    
+        './3d/mountains6B.glb',
+          function (glt) {
+          const mount = glt.scene;
+          mount.position.set(0, 0.5, -160 );
+          mount.rotation.set(0, 0, 0 );      
+          mount.scale.set( 1, 1, 1 ); 
+          mount.traverse(function (node) {
+            if (node.isMesh) {
+              const material = new THREE.MeshPhysicalMaterial({
+               map: TextureQ2, 
+              });
+              node.material = material;
+              node.castShadow = true;
+              node.receiveShadow = true;
+            }
+          });  
+          scene.add(mount);
+        },      
+        undefined, // funzione di progresso opzionale da passare al caricatore
+        function (error) {
+          console.error(error);      
+        } 
+      );   
+      const loaderMount2 = new GLTFLoader();
+      loaderMount.load(    
+        './3d/mountains6C.glb',
+          function (glt) {
+          const mount = glt.scene;
+          mount.position.set(0, 0.5, -160 );
+          mount.rotation.set(0, 0, 0 );      
+          mount.scale.set( 1, 1, 1 ); 
+          mount.traverse(function (node) {
+            if (node.isMesh) {
+              const material = new THREE.MeshPhysicalMaterial({
+               map: TextureQ2, 
+              });
+              node.material = material;
+              node.castShadow = true;
+              node.receiveShadow = true;
+            }
+          });  
+          scene.add(mount);
+        },      
+        undefined, // funzione di progresso opzionale da passare al caricatore
+        function (error) {
+          console.error(error);      
+        } 
+      );
+      const loaderMount3 = new GLTFLoader();
+      loaderMount.load(    
+        './3d/mountains6Cast.glb',
+          function (glt) {
+          const mount = glt.scene;
+          mount.position.set(0, 0.5, -160 );
+          mount.rotation.set(0, 0, 0 );      
+          mount.scale.set( 1, 1, 1 ); 
+          mount.traverse(function (node) {
+            if (node.isMesh) {
+              const material = new THREE.MeshPhysicalMaterial({
+               map: TextureQ2, 
+              });
+              node.material = material;
+              node.castShadow = true;
+              node.receiveShadow = true;
+            }
+          });  
+          scene.add(mount);
+        },      
+        undefined, // funzione di progresso opzionale da passare al caricatore
+        function (error) {
+          console.error(error);      
+        } 
+      );  
+      const loaderMount4 = new GLTFLoader();
+      loaderMount.load(    
+        './3d/mountains6O.glb',
+          function (glt) {
+          const mount = glt.scene;
+          mount.position.set(0, 0.5, -160 );
+          mount.rotation.set(0, 0, 0 );      
+          mount.scale.set( 1, 1, 1 ); 
+          mount.traverse(function (node) {
+            if (node.isMesh) {
+              const material = new THREE.MeshPhysicalMaterial({
+               map: TextureQ2, 
+              });
+              node.material = material;
+              node.castShadow = true;
+              node.receiveShadow = true;
+            }
+          });  
+          scene.add(mount);
+        },      
+        undefined, // funzione di progresso opzionale da passare al caricatore
+        function (error) {
+          console.error(error);      
+        } 
+      ); 
+      const loaderMount5 = new GLTFLoader();
+      loaderMount.load(    
+        './3d/mountains6T.glb',
+          function (glt) {
+          const mount = glt.scene;
+          mount.position.set(0, 0.5, -160 );
+          mount.rotation.set(0, 0, 0 );      
+          mount.scale.set( 1, 1, 1 ); 
+          mount.traverse(function (node) {
+            if (node.isMesh) {
+              const material = new THREE.MeshPhysicalMaterial({
+               map: TextureQ2, 
+              });
+              node.material = material;
+              node.castShadow = true;
+              node.receiveShadow = true;
+            }
+          });  
+          scene.add(mount);
+        },      
+        undefined, // funzione di progresso opzionale da passare al caricatore
+        function (error) {
+          console.error(error);      
+        } 
+      ); 
+  
   // RABBIT 
   const loaderRabbitg = new GLTFLoader();
   loaderRabbitg.load(    
@@ -946,6 +938,7 @@ export default function(choose, quadri){
        console.error(error);      
      }
    );    
+   
     // HUMANS 1
     const loaderH1 = new GLTFLoader();
     loaderH1.load(    
@@ -1279,14 +1272,15 @@ export default function(choose, quadri){
       undefined, 
       function (error) {
         console.error(error);      
-      }  
-    );
-
-  // LAGHETTO
-  const gTorus = new THREE.TorusGeometry (30, 1.5, 16, 12);
-  const mTorus = new THREE.MeshPhysicalMaterial({                
-    map: TextureQ2,
-  })
+      }
+      
+      
+    ); 
+   // LAGHETTO
+   const gTorus = new THREE.TorusGeometry (30, 1.5, 16, 12);
+   const mTorus = new THREE.MeshPhysicalMaterial({                
+     map: TextureQ2,
+   })
    const torus = new THREE.Mesh(gTorus, mTorus); 
    torus.scale.set(1,1,3); 
    torus.position.set( 0, 1.2, 0 );
@@ -1384,8 +1378,8 @@ export default function(choose, quadri){
      function (error) {
        console.error(error);      
      }
-   );
-
+   );   
+    
   const Deers=_.map(choose,(v,k)=>{ 
     const loaderDeerC = new GLTFLoader();
     loaderDeerC.load(    
@@ -1399,7 +1393,7 @@ export default function(choose, quadri){
         deerColored.traverse(function (node) {
           if (node.isMesh) {
             const material = new THREE.MeshPhysicalMaterial({
-              color: new THREE.Color(choose[k-1][1]), 
+              color: new THREE.Color(choose[k][1]), 
               map: TextureQ2,
             });             
             node.material = material;
@@ -1431,7 +1425,7 @@ export default function(choose, quadri){
         cloudColored.traverse(function (node) {
           if (node.isMesh) {
             const material = new THREE.MeshPhysicalMaterial({
-              color: new THREE.Color(choose[k-1][1]), 
+              color: new THREE.Color(choose[k][1]), 
               map: TextureQ2,
             });   
             node.material = material;
@@ -1450,68 +1444,69 @@ export default function(choose, quadri){
     );    
   });
 
-  // ELEMENTO  // ELEMENTO
+  // ELEMENTO
   const gElemento1 = new THREE.BoxGeometry( 10, 10, 10 );  
-  const elemento1 = new THREE.Mesh(gElemento1, eleMat);
-  elemento1.traverse(function (child) {
-    if (child instanceof THREE.Mesh) {
-      child.material = child.material.clone(); 
-     child.material.color.set(colore1);
-    }
-  }); 
-  elemento1.position.set( 240,130, 80);
-  elemento1.scale.set( 4, 4, 4);
-  elemento1.castShadow = true;
-  elemento1.receiveShadow = true; 
-  // TREEC2   
-  const elemento2 = new THREE.Mesh(gElemento1, eleMat);
-  elemento2.traverse(function (child) {
-    if (child instanceof THREE.Mesh) {
-      child.material = child.material.clone(); 
-      child.material.color.set(colore2);
-    }
-  }); 
-  elemento2.position.set( 270, 335, -100 );
-  elemento2.scale.set( 5, 5, 5);
-  elemento2.castShadow = true;
-  elemento2.receiveShadow = true;
-
-  // TREEC1
-  const elemento3 = new THREE.Mesh(gElemento1, eleMat);
-  elemento3.traverse(function (child) {
-    if (child instanceof THREE.Mesh) {
+    const elemento1 = new THREE.Mesh(gElemento1, eleMat);
+    elemento1.traverse(function (child) {
+      if (child instanceof THREE.Mesh) {
         child.material = child.material.clone(); 
-        child.material.color.set(colore3);
+       child.material.color.set(colore1);
       }
-  }); 
-  elemento3.position.set( -200, 136, -100 );
-  elemento3.scale.set( 5, 5, 5);   
-  elemento3.castShadow = true;
-  elemento3.receiveShadow = true;
-
-  const elemento4 = new THREE.Mesh(gElemento1, eleMat);
-  elemento4.traverse(function (child) {
-    if (child instanceof THREE.Mesh) {
+    }); 
+    elemento1.position.set( 240,130, 80);
+    elemento1.scale.set( 4, 4, 4);
+    elemento1.castShadow = true;
+    elemento1.receiveShadow = true; 
+    // TREEC2   
+    const elemento2 = new THREE.Mesh(gElemento1, eleMat);
+    elemento2.traverse(function (child) {
+      if (child instanceof THREE.Mesh) {
         child.material = child.material.clone(); 
-        child.material.color.set(colore4);
+        child.material.color.set(colore2);
       }
-  }); 
-  elemento4.position.set( 585, 140, 300 );
-  elemento4.scale.set( 4, 4, 4);    
-  elemento4.castShadow = true;
-  elemento4.receiveShadow = true;
+    }); 
+    elemento2.position.set( 270, 335, -100 );
+    elemento2.scale.set( 5, 5, 5);
+    elemento2.castShadow = true;
+    elemento2.receiveShadow = true;
 
-  const elemento5 = new THREE.Mesh(gElemento1, eleMat); 
-  elemento5.traverse(function (child) {
-    if (child instanceof THREE.Mesh) {
-        child.material = child.material.clone(); 
-        child.material.color.set(colore5);// D Sosp
-      }
-  }); 
-  elemento5.position.set( 500, 60, 520 );//Porta
-  elemento5.scale.set( 4, 4, 4);    
-  elemento5.castShadow = true;
-  elemento5.receiveShadow = true;
+    // TREEC1
+    const elemento3 = new THREE.Mesh(gElemento1, eleMat);
+    elemento3.traverse(function (child) {
+      if (child instanceof THREE.Mesh) {
+          child.material = child.material.clone(); 
+          child.material.color.set(colore3);
+        }
+    }); 
+    elemento3.position.set( -200, 136, -100 );
+    elemento3.scale.set( 5, 5, 5);   
+    elemento3.castShadow = true;
+    elemento3.receiveShadow = true;
+
+    const elemento4 = new THREE.Mesh(gElemento1, eleMat);
+    elemento4.traverse(function (child) {
+      if (child instanceof THREE.Mesh) {
+          child.material = child.material.clone(); 
+          child.material.color.set(colore4);
+        }
+    }); 
+    elemento4.position.set( 585, 140, 300 );
+    elemento4.scale.set( 4, 4, 4);    
+    elemento4.castShadow = true;
+    elemento4.receiveShadow = true;
+
+    const elemento5 = new THREE.Mesh(gElemento1, eleMat); 
+    elemento5.traverse(function (child) {
+      if (child instanceof THREE.Mesh) {
+          child.material = child.material.clone(); 
+          child.material.color.set(colore5);// D Sosp
+        }
+    }); 
+    elemento5.position.set( 500, 60, 520 );//Porta
+    elemento5.scale.set( 4, 4, 4);    
+    elemento5.castShadow = true;
+    elemento5.receiveShadow = true;
+   
   scene.add(elemento1,elemento2,elemento3, elemento4,elemento5 );
 
   // PALLA 
@@ -1576,8 +1571,8 @@ export default function(choose, quadri){
   palla5.castShadow = true;
   palla5.receiveShadow = true;
   scene.add(palla1, palla2, palla3,palla4,palla5);
-  
-  /// PIRAMIDI
+
+  /// PIRAMIDI  
   const gPiramid = new THREE.ConeGeometry( 5, 10, 4 );
   const piramid = new THREE.Mesh(gPiramid, eleMat);
   piramid.traverse(function (child) {
@@ -1656,9 +1651,8 @@ export default function(choose, quadri){
   dodeca.position.set( 0 , 60, 920 );
   dodeca.scale.set(0.6,0.6,0.6); 
   dodeca.castShadow = true;
-  dodeca.receiveShadow = true; 
-
-
+  dodeca.receiveShadow = true;   
+  
   // TREEC4 
   const dodeca2 = new THREE.Mesh(gDodeca, eleMat);    
   dodeca2.position.set(-40,140,140);
@@ -1712,7 +1706,6 @@ export default function(choose, quadri){
   const cielo = new THREE.Mesh(gCielo, mCielo);
   cielo.rotation.set(0,1.4,0);
   //scene.add(cielo);
-
   const gCielo2 = new THREE.SphereGeometry(1300, 16, 16);
   const mCielo2 = new THREE.MeshPhysicalMaterial({
     map: TextureB2,
@@ -1726,86 +1719,37 @@ export default function(choose, quadri){
   camera.add(listenerBcg);
   const audioLoader = new THREE.AudioLoader();
   const backgroundSound = new THREE.Audio( listenerBcg );
-  // audioLoader.load('audio/hearts/gardenbcg2.mp3', function( buffer )
-  audioLoader.load('audio/garden-of-eden-186428.mp3', function( buffer ) {
+  audioLoader.load('audio/midnight-forest-184304.mp3', function( buffer ) {
     backgroundSound.setBuffer( buffer );
     backgroundSound.setLoop( true );
     backgroundSound.setVolume( 0.05 );
-    //backgroundSound.play();
+    backgroundSound.play();
   });
-    // BACKGROUND MUSIC
-    const listenerBcgM = new THREE.AudioListener();
-    camera.add(listenerBcgM);
-    const audioLoaderM = new THREE.AudioLoader();
-    const backgroundSoundM = new THREE.Audio( listenerBcgM );
-    audioLoaderM.load('audio/midnight-forest-184304.mp3', function( buffer ) {
-      backgroundSoundM.setBuffer( buffer );
-      backgroundSoundM.setLoop( true );
-      backgroundSoundM.setVolume( 0.5 );
-      backgroundSoundM.play();
-    });
-  
-  
-  
-    // Selezioniamo i pulsanti
-  // let cameraButton = document.querySelector('#btn-camera button');  
-  // let audioButton = document.querySelector('#btn-audio button');
-  // let isPlaying = true;
-  // cameraButton.addEventListener('click', function() {
-  //   resetCamera();
-  // });
-  // audioButton.addEventListener('click', function() {
-  //   if (isPlaying) {
-  //     backgroundSound.pause();
-  //   } else {
-  //     backgroundSound.play();
-  //   }
-  //   // Cambiamo lo stato
-  //   isPlaying = !isPlaying;
-  // });
-  // // Funzione per resettare la camera
-  // function resetCamera() {
-  //   camera.position.set( 0, 0, 0 ); 
-  //   camera.rotation.set( 1, 0, 0 );
-  //   camera.lookAt(new THREE.Vector3( 0, player.height, 0)); 
-  //   controls.listenToKeyEvents( window );
-  //   controls.minDistance =  5;    
-  //   controls.maxDistance = 1100;
-  //   controls.maxPolarAngle = 1.5; 
-  // } 
 
-  let positions = [
-    {moveTime:0, waitTime: 5, pos: {x:0,y:-10,z:-25}},
-    {moveTime: 20, waitTime: 0, pos: {x:0,y:-57,z:-25}},    
-    
-    {moveTime: 20, waitTime: 0, pos: {x:0,y:-20,z:-520}},
-    {moveTime: 10, waitTime: 0, pos: {x:-100,y:-160,z:-476}},
-    {moveTime: 10, waitTime: 5, pos: {x:-100,y:-280,z:-330}},
-    {moveTime: 10, waitTime: 1, pos: {x:-540,y:-100,z:-940}},
-    {moveTime: 10, waitTime: 0, pos: {x:340,y:-100,z: -840}},
-    {moveTime: 10, waitTime: 0, pos: {x:340,y:-20,z:540}},
-    {moveTime: 10, waitTime: 10, pos: {x:70,y:-376,z:520}},
-    {moveTime: 4, waitTime: 1, pos: {x:-540,y:-26,z:520}},
-    {moveTime: 10, waitTime: 10, pos: {x:-730,y:-26,z:-340}},
-
-    {moveTime: 10, waitTime: 0, pos: {x:0,y:-57,z:-25}}, 
-    {moveTime:20,waitTime:0,pos: {x:0,y:-10,z:-25}},
-  ];
-  
-  let tweenScene = function(index) {
-    if (index >= positions.length) index = 0;
-  
-    gsap.to(scene.position, {
-      duration: positions[index].moveTime,
-      x: positions[index].pos.x,
-      y: positions[index].pos.y,
-      z: positions[index].pos.z,
-      onComplete: function() {
-        gsap.delayedCall(positions[index].waitTime, function() {
-          tweenScene(index + 1);
-        });
-      }    
-    });
-  };  
-  tweenScene(0);    
+  // Selezioniamo i pulsanti
+  let cameraButton = document.querySelector('#btn-camera button');  
+  let audioButton = document.querySelector('#btn-audio button');
+  let isPlaying = true;
+  cameraButton.addEventListener('click', function() {
+    resetCamera();
+  });
+  audioButton.addEventListener('click', function() {
+    if (isPlaying) {
+      backgroundSound.pause();
+    } else {
+      backgroundSound.play();
+    }
+    // Cambiamo lo stato
+    isPlaying = !isPlaying;
+  });
+  // Funzione per resettare la camera
+  function resetCamera() {
+    camera.position.set( 0, 0, 80 ); 
+    camera.rotation.set( 1, 0, 0 );
+    camera.lookAt(new THREE.Vector3( 0, player.height, 0)); 
+    controls.listenToKeyEvents( window );
+    controls.minDistance =  5;    
+    controls.maxDistance = 1100;
+    controls.maxPolarAngle = 1.5; 
+  }    
 };

@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import {OrbitControls} from './three_class/OrbitControls.js';
 import { OBJLoader } from './three_class/OBJLoader.js';
+import { GLTFLoader } from './three_class/GLTFLoader.js';
 export default function(){
   // SCENE  
   const scene = new THREE.Scene();
@@ -57,7 +58,7 @@ export default function(){
   vTexture2.format = THREE.RGBAFormat;
   // SCENE & FOG
   scene.background = new THREE.Color( 0x000000 );
-  scene.fog = new THREE.Fog( 0x000000, 40, 170);  
+  scene.fog = new THREE.Fog( 0x000000, 40, 180);  
   // CAMERA
   camera.position.set( 0, 0, 0);
   camera.lookAt(new THREE.Vector3( 0, player.height, 0)); 
@@ -79,7 +80,8 @@ export default function(){
   //SCROLLING
   function moveCamera () {
     const t = document.body.getBoundingClientRect().top;
-    camera.position.set( 0, 0, t * 0.15 );    
+    camera.position.set( 0, 0, t * 0.15 );   
+    camera.rotation.set( 0, -(t * 0.0001), 0 );   
   }
   document.body.onscroll = moveCamera;
   // RABBIT - HOME
@@ -88,14 +90,14 @@ export default function(){
   // LOAD A RESOURCE
   loaderRabbit.load('3d/rabbit/Rabbit.obj',
     function ( object ) {
-      object.position.set( 15, 0.5, -50 );
-      object.rotation.set( 0, -Math.PI/2, 0 );      
+      object.position.set( -7, -10, -40 );
+      object.rotation.set( 0, Math.PI/2.7, 0 );      
       try{
       const matRabbit=new THREE.MeshPhysicalMaterial({
         color: 0xC1FF4D,        
-        map: vTexture1, 
-        roughness:0,
-        metalness:0,                 
+        //map: vTexture1, 
+        // roughness:0,
+        // metalness:0,                 
       })      
       object.children[0].material=matRabbit;
       }catch(e){
@@ -103,32 +105,14 @@ export default function(){
       }
       rabbit=object;     
       console.log( 'body was loaded', rabbit );
-      scene.add( rabbit );      
-      rabbit.scale.set( 2, 2, 2);    
-      //RABBIT 2 - DATA       
-      let rabbit2 = rabbit.clone();
-      rabbit2.position.set( 10, -8, -150 );
-      rabbit2.rotation.set( 0, -0.5, 0 );  
-      //rabbit2.scale.set(2, 2, 2);       
-      //scene.add( rabbit2 );      
-      //RABBIT 3 - CINEMATIC      
-      let rabbit3 = rabbit.clone();
-      rabbit3.position.set( 6, -5, -245 );
-      rabbit3.scale.set(1, 1, 1); 
-      rabbit3.rotation.set( 0, 5, 0.4 );     
-      //scene.add( rabbit3 );
+      //scene.add( rabbit );      
+      rabbit.scale.set( 4, 4, 4);    
       //RABBIT 4 - WRITING      
-      let rabbit4 = rabbit.clone();
-      rabbit4.position.set( 5, -5, -360 );
-      rabbit4.scale.set(1, 1, 1); 
-      rabbit4.rotation.set( 0, 3.5, 0 );     
-      scene.add( rabbit4 );
-      //RABBIT 5 - STATIC      
-      let rabbit5 = rabbit.clone();
-      rabbit5 .position.set( -6, -6, -470 );
-      rabbit5 .scale.set(1, 1, 1); 
-      rabbit5 .rotation.set( 0, -4.5, 0 );     
-      //scene.add( rabbit5  );
+      let rabbitB = rabbit.clone();
+      rabbitB.position.set( 0, -5, -540 );
+      rabbitB.scale.set(2,2,2); 
+      rabbitB.rotation.set( 0, -2, 0 );     
+      //scene.add( rabbitB ); 
     },
     // called when loading is in progresses
     function ( xhr ) {
@@ -138,7 +122,118 @@ export default function(){
     function ( error ) {
       console.log( 'An error happened' );
     }
-  );   
+  );  
+  
+  const loaderBuco = new GLTFLoader();
+  loaderBuco.load('3d/Buco.glb', (gltf) => {
+    const model = gltf.scene;
+    scene.add(model); // Aggiungi il modello alla scena
+    model.position.set(25, 0, -260);
+    model.rotation.set(0, Math.PI/2, Math.PI/2);
+    model.scale.set(0.65,0.65,0.65);
+  });
+
+  const loaderRabbitB = new GLTFLoader();
+  loaderRabbitB.load('3d/RabbitBlack.glb', (gltf) => {
+    const modelB = gltf.scene;
+    scene.add(modelB); // Aggiungi il modello alla scena
+    modelB.position.set(-9, -12, -48);
+    modelB.rotation.set(0, Math.PI/2.7, 0);
+    modelB.scale.set(4,4,4);
+    let rabbitB = modelB.clone();
+      rabbitB.position.set( -3, -8, -520 );
+      rabbitB.scale.set(2,2,2); 
+      rabbitB.rotation.set( 0, -2, 0 );     
+      scene.add( rabbitB ); 
+  });
+
+  // Load a glTF resource
+  loader.load(
+    // resource URL
+    '3d/Buco.glb',
+    // called when the resource is loaded
+    function ( gltf ) {
+      //scene.add( gltf.scene );
+      gltf.animations; // Array<THREE.AnimationClip>
+      gltf.scene; // THREE.Group
+      gltf.scenes; // Array<THREE.Group>
+      gltf.cameras; // Array<THREE.Camera>
+      gltf.asset; // Object
+    },
+    // called while loading is progressing
+    function ( xhr ) {
+      console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    },
+    // called when loading has errors
+    function ( error ) {
+      console.log( 'An error happened' );
+    }
+  );
+  
+
+  // HOLEBody - HOME
+  const loaderHoleB = new OBJLoader();
+  let holeB;   
+  // LOAD A RESOURCE
+  loaderHoleB.load('3d/HoleB.obj',
+    function ( object ) {
+      object.position.set( 25, 0, -260 );
+      object.rotation.set( 0, Math.PI/2, Math.PI/2);      
+      try{
+        const matHoleB=new THREE.MeshPhysicalMaterial({
+        color: 0x000000,               
+        })      
+      object.children[0].material=matHoleB;
+        }catch(e){
+        console.log(e);
+        }
+        holeB=object;     
+        console.log( 'body was loaded', holeB );
+        //scene.add( holeB ); 
+        let SH2 = 0.65;     
+        holeB.scale.set( SH2, SH2, SH2); 
+      },
+      // called when loading is in progresses
+      function ( xhr ) {
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+      },
+      // called when loading has errors
+      function ( error ) {
+        console.log( 'An error happened' );
+      }
+    );  
+
+  // HOLEE - HOME
+  const loaderHoleE = new OBJLoader();
+  let holeE;   
+  // LOAD A RESOURCE
+  loaderHoleE.load('3d/HoleE.obj',
+    function ( object ) {
+      object.position.set( 25, 0, -260 );
+      object.rotation.set( 0, Math.PI/2, Math.PI/2);      
+      try{
+        const matHole=new THREE.MeshPhysicalMaterial({
+          color: 0xaa56FF,              
+        })      
+        object.children[0].material=matHole;
+      }catch(e){
+        console.log(e);
+      }
+      holeE=object;     
+      console.log( 'body was loaded', holeE );
+      //scene.add( holeE ); 
+      let SH = 0.65;     
+      holeE.scale.set( SH, SH, SH); 
+    },
+    // called when loading is in progresses
+    function ( xhr ) {
+      console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    },
+    // called when loading has errors
+    function ( error ) {
+      console.log( 'An error happened' );
+    }
+  );  
   // MATERIALS
   const material1 = new THREE.MeshPhysicalMaterial({
     color: 0xac2ac2,   
@@ -164,17 +259,17 @@ export default function(){
   let pianeta = new THREE.Mesh( gPianeta, material1 );
   pianeta.position.set( 15 , -3.5, -50);  
   pianeta.rotation.set( 0,0,1);
-  scene.add(pianeta);  
+  //scene.add(pianeta);  
   //CYLINDER
   const gCylinder = new THREE.CylinderGeometry( 20, 20, 1400, 64, 700, 0, true  );
   const Cylinder1 = new THREE.Mesh(gCylinder, material2);
   Cylinder1.position.set( 0, 0, -120 );
   Cylinder1.rotation.set( 0, Math.PI/2, Math.PI/2);
-  scene.add(Cylinder1);  
+  // scene.add(Cylinder1);  
   //DATA
   const gData = new THREE.CylinderGeometry ( 2, 2, 0.1, 64, 1,  true  );
   const dataForm = new THREE.Mesh(gData, material3 );  
   dataForm.position.set( -1 , 4.5, -142 ); 
   dataForm.rotation.set( 0, Math.PI/2, Math.PI/2); 
-  scene.add(dataForm);
+  //scene.add(dataForm);
 };

@@ -13,7 +13,6 @@
         <title>coniglioverde|writing|neutropoli</title>
         <link rel="stylesheet" href="style.css">  
         <link rel="stylesheet" href="writing.css">
-        <link rel="stylesheet" href="writing_neutropoli.css">
         <!-- Loading -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
@@ -25,14 +24,20 @@
                 });
             });
         </script>
+
+        <style>
+            canvas {
+                cursor:none
+            }
+        </style>
     </head> 
     <body> 
         <div id="loader">
             <div class="loader"></div>
-                <span></span>
-            <div class="text-loader">
-                <p>Loading...</p>
-            </div>
+        <span></span>
+        <div class="text-loader">
+          <p>Loading...</p>
+        </div>
         </div>
         <script type="importmap">
             {
@@ -42,10 +47,10 @@
             }
         </script>	
         <script type = "module">
-            import scene from "./writing_neutropoli.js";          
+            import scene from "./writing_neutropoli_animate.js";          
             scene();
         </script>  
-        <header>
+        <!-- <header>
             <div id="logo">
                 <a href="index.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>
             </div>
@@ -58,8 +63,8 @@
                 <li><a href="writing.html#">WRITING</a></li>
                 <li><a href="writing_neutropoli_it.html">EN | IT</a> 
             </ul>
-        </header> 
-        <div class="info_leyer">
+        </header>  -->
+        <!-- <div class="info_leyer">
             <div id="info">
                 <p>
                     POINTER directon<br>WSDA constols
@@ -73,14 +78,14 @@
             <div id="btn-audio">
                 <button>AUDIO</button>
             </div>           
-        </div>
-        <footer id="footer"> 
+        </div> -->
+        <!-- <footer id="footer"> 
             <ul>
                 <li>&copy; 2023 felice vino</li>
                 <li><a href="https://www.instagram.com/felice_vino/" target="_blank" rel="noopener"><img src="images/icons/instagram.png" alt="instagram icon"></a></li>
                 <li><a href="https://www.facebook.com/coniglio.verde.2024" target="_blank" rel="noopener"><img src="images/icons/meta.png" alt="meta icon"></a></li>
                 <li><a href="https://vimeo.com/felicevino" target="_blank" rel="noopener"><img src="images/icons/vimeo.png" alt="vimeo icon"></a></li>
             </ul>       
-        </footer>        
+        </footer>         -->
     </body>
 </html>

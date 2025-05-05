@@ -77,8 +77,6 @@ export default function(choose,quadri){
   TextureF.wrapS = THREE.RepeatWrapping;
   TextureF.wrapT = THREE.RepeatWrapping;
   TextureF.repeat.set(15, 15); 
-  const exhib = loader.load('./images/equirectangulars/space.jpg');
-  let TextureRoom = loader.load('./images/textures/Bronze.jpg')
   
   // GRUPPO EMOZIONI //////
   let emotionGroup = new THREE.Group();
@@ -105,8 +103,7 @@ export default function(choose,quadri){
       colori.slice(15, 20)  // Ultimi 5 colori
     ];    
     const coloreCorrente = new THREE.Color(v[1]).getHexString().toUpperCase(); 
-    let forma;
-    
+    let forma;    
     
     ///////////////////////////////////////////////
 
@@ -204,8 +201,7 @@ loaderTorsolo.load(
   function (error) {
     console.error(error);      
   }  
-);  
-
+); 
 
 ///////////////////////////////////////
     for (let i = 0; i < gruppiColori.length; i++) {

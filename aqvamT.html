@@ -2,19 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="Felice Vino">
-        <meta name="description" content="Digital creator and storyteller.">
-        <meta property="og:title" content="CONIGLIO VERDE">
-        <meta property="og:description" content="Digital creator and storyteller.">
-        <link rel="canonical" href="https://cerebro2020.github.io/coniglioverde.github.io/">
-        <link rel="icon" href="./images/loghi/favicon.ico">
-        <title>coniglioverde|data|aqvam</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Felice Vino">
+    <meta name="description" content="Digital creator and storyteller.">
+    <meta property="og:title" content="CONIGLIO VERDE">
+    <meta property="og:description" content="Digital creator and storyteller.">
+    <link rel="canonical" href="https://cerebro2020.github.io/coniglioverde.github.io/">
+    <link rel="icon" href="./images/loghi/favicon.ico">
+    <title>coniglioverde|data|aqvam</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <!-- loading-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        
+        $(document).ready(function() {
+            $(window).on("load", function() {
+                $("#loader").fadeOut("slow");
+            });
+        });
+    </script>
+</head>
     <link rel="stylesheet" href="style.css">  
     <link rel="stylesheet" href="aqvam.css">     
-<body>  
+<body>
+    <div id="loader">
+        <div class="loader"></div>
+        <span></span>
+        <div class="text-loader">
+            <p>Loading...</p>
+        </div>
+    </div>  
     <canvas>       
         <script type="importmap">
             {
@@ -23,13 +41,11 @@
                 }
             }
         </script> 
-
         <script type = "module">                    
             import scene from "./aqvamT.js";
             scene();
         </script>   
-    </canvas>
-             
+    </canvas>             
     <header>
         <div id="logo">
             <a href="index.html"><img src="images/loghi/coniglio_verde_logo.png" alt="logo coniglio verde"></a>

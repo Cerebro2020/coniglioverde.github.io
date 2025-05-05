@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import {OrbitControls} from './three_class/OrbitControls.js';
 import { OBJLoader } from './three_class/OBJLoader.js';
+import { GLTFLoader } from './three_class/GLTFLoader.js';
 
 export default function(){
 
@@ -37,7 +38,7 @@ export default function(){
 
   const textureP2 = loader.load ('images/bcg/Sfondo2.jpg');
   const textureP3 = loader.load ('images/bcg/SfondoS.jpg');
-  const textureSpace = loader.load ('images/equirectangulars/space.jpg');
+  // const textureSpace = loader.load ('images/equirectangulars/space.jpg');
 
   const bumpP = loader.load ('images/textures/texture_planet.jpeg');
   bumpP.wrapS = THREE.RepeatWrapping;
@@ -75,11 +76,11 @@ export default function(){
 
   // SCENE & FOG
   scene.background = new THREE.Color( 0x000000 );
-  scene.fog = new THREE.Fog( 0x000000, 1, 40 );  
+  scene.fog = new THREE.Fog( 0x000000, 1, 70 );  
 
   const gridHelper = new THREE.GridHelper( 1000, 1000 );
   gridHelper.position.set(0, -3, -40);  
-  scene.add(gridHelper);
+  // scene.add(gridHelper);
    
   // CAMERA
   camera.position.set( 0, 0, 0);
@@ -88,14 +89,14 @@ export default function(){
 
   // LIGHTS
   //AMBIENT
-  const ambiente = new THREE.AmbientLight ( 0xffffff, 0.5 )
+  const ambiente = new THREE.AmbientLight ( 0xffffff, 1 )
   scene.add( ambiente);
   //POINT
   const pointLight = new THREE.PointLight( 0xffffff, 0.5, 100); 
   pointLight.position.set( 0, 0, -40 );
   const pointLight2 = new THREE.PointLight( 0xffffff, 0.5, 100);    
   pointLight2.position.set(0,0, -79);   
-  scene.add( pointLight, pointLight2);
+  // scene.add( pointLight, pointLight2);
   
   // ANIMATE SCENE
   function animateScene(){
@@ -113,7 +114,7 @@ export default function(){
   //SCROLLING
   function moveCamera () {
     const t = document.body.getBoundingClientRect().top;
-    camera.position.set( 0, 0, t * 0.05 );    
+    camera.position.set( 0, 0, t * 0.005 );    
   }
 
   document.body.onscroll = moveCamera;
@@ -141,11 +142,33 @@ export default function(){
     side: THREE.DoubleSide, 
   });
 
+
+  const loaderPlanet = new GLTFLoader();
+  loaderPlanet.load('3d/hallway.glb', (gltf) => {
+
+    const model = gltf.scene;
+
+    // Attiva proiezione e ricezione ombre per ogni mesh nel modello
+    model.traverse((node) => {
+      if (node.isMesh) {
+        node.castShadow = true;    // Proietta ombre
+        node.receiveShadow = true; // Riceve ombre
+      }
+    });
+
+    scene.add(model); // Aggiungi il modello alla scena
+    model.position.set(0, 0, -150);
+    model.rotation.set(Math.PI/2, -Math.PI/2, Math.PI/2);
+    model.scale.set(15,15,15);     
+  });
+
+
+
   //SALA
   const gPavimento = new THREE.BoxGeometry( 8, 4.5, 400, 16, 9, 400 );
   let pavimento = new THREE.Mesh( gPavimento, material2 );
   pavimento.position.set( 0, 2, -200 );  
-  scene.add(pavimento);
+  // scene.add(pavimento);
 
   const gSchermo = new THREE.BoxGeometry( 1.6, 0.9, 0.1);
   let schermo = new THREE.Mesh( gSchermo, materialButter );

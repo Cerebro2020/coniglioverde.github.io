@@ -60,7 +60,9 @@ export default function(){
   //SCROLLING
   function moveCamera () {
     const t = document.body.getBoundingClientRect().top;
-    camera.position.set( 0, t*0.02, t*0.002 );    
+    // camera.position.set( 0, t*0.02, t*0.002 );
+    camera.position.set( 0, t*0.0025, 0 );  
+    camera.rotation.set( 0, -(t/20000), 0 );     
   }
   document.body.onscroll = moveCamera;
   // HEARTS
@@ -84,8 +86,7 @@ export default function(){
       });
       scene.add(heart);
       let heart2 = heart.clone();      
-      heart2.position.set( 0, 20, -64 );      
-      heart2.rotation.set( 0, 0, 0 );
+      heart2.position.set(-24, 1016, -164 );
       heart2.scale.set( 10, 10, 10 );
       heart2.rotation.set(0.1,0.2,0.20);
       scene.add(heart2);
@@ -105,22 +106,22 @@ export default function(){
   });
   // SFERA
   let sfera = new THREE.Mesh( gSfera, materialN );
-  sfera.position.set(-12 , 6, -48);
+  sfera.position.set(-12 , 8.5, -48);
   scene.add(sfera);
   let sfera2 = sfera.clone();
-  sfera2.position.set(20, -16, -50);
+  sfera2.position.set(-20, -6, -60);
   scene.add(sfera2);  
   // CUBE
   const gBox = new THREE.BoxGeometry( 4, 4, 4 ); 
   const Box = new THREE.Mesh( gBox, materialN );
-  Box.position.set( -14, -5, -40 );
+  Box.position.set( 2, -6, -40 );
   Box.rotation.set( 0, -0.4, 0.5 );
   let Box2 = Box.clone();
-  Box.position.set( 8, 6, -40 );
-  Box.rotation.set( 0, 0.4, -0.5 );
+  Box2.position.set( 8, 6, -40 );
+  Box2.rotation.set( 0, 0.4, -0.5 );
   scene.add( Box, Box2 );
   let Box3 = Box.clone();
-  Box3.position.set( -7, -7, -20 );
+  Box3.position.set( -2, -6, -20 );
   Box3.rotation.set( 0, -0.4, 0.5 );
   scene.add( Box, Box2, Box3 );
   //PIRAMID

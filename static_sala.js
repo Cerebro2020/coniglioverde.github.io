@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {OrbitControls} from './three_class/OrbitControls.js';
+import { GLTFLoader } from './three_class/GLTFLoader.js';
 
 export default function(){
 
@@ -48,7 +49,7 @@ export default function(){
 
   // LIGHTS
   //AMBIENT
-  const ambiente = new THREE.AmbientLight ( 0xffffff, 4 )
+  const ambiente = new THREE.AmbientLight ( 0xffffff, 1 )
   scene.add( ambiente);
   
   // ANIMATE SCENE
@@ -67,7 +68,8 @@ export default function(){
   //SCROLLING
   function moveCamera () {
     const t = document.body.getBoundingClientRect().top;
-    camera.position.set( 0, t * 0.05, 0 );    
+    camera.position.set( (t/20000), t * 0.0075, 0 );
+    camera.rotation.set(0,(t/100) * 0.0025,0);    
   }
 
   document.body.onscroll = moveCamera;
@@ -82,7 +84,7 @@ export default function(){
   const gSala = new THREE.BoxGeometry( 3, 1000, 20, 8, 4200, 80 );
   let sala = new THREE.Mesh( gSala, material );
   sala.position.set( 0, -190, 0 ); 
-  scene.add(sala);
+  // scene.add(sala);
   
   // OBJ
   for (let i=0; i<150; i++){
@@ -106,5 +108,30 @@ export default function(){
     objectSclone.rotation.set(0,i*-2,-10);
     //scene.add(objectSclone);
   };
+
+  const loaderPlanet = new GLTFLoader();
+  loaderPlanet.load('3d/hallway2.glb', (gltf) => {
+
+    const model = gltf.scene;
+
+    // Attiva proiezione e ricezione ombre per ogni mesh nel modello
+    model.traverse((node) => {
+      if (node.isMesh) {
+        node.castShadow = true;    // Proietta ombre
+        node.receiveShadow = true; // Riceve ombre
+      }
+    });
+
+    scene.add(model); // Aggiungi il modello alla scena
+    model.position.set(0, -120, -38);
+    model.rotation.set(0, Math.PI/2, Math.PI/2);
+    model.scale.set(15,15,15);
+
+    let model2 = model.clone();
+    scene.add(model2);
+    model2.position.set(0, -240, -60);
+    model2.rotation.set(0, Math.PI/2, Math.PI/2);
+    model2.scale.set(15,15,15);    
+  });
 
 };

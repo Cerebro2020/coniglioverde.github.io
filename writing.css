@@ -1,3 +1,6 @@
+#neutropoli{
+  background-color: white;
+}
 .canvas {
   z-index: -1;
 }  
@@ -13,6 +16,7 @@
 }
 
 #info {   
+  /* border: 1px solid red; */
   width: 160px;
   height: 30px;   
   text-align: center; 
@@ -34,7 +38,9 @@ cursor: grabbing;
 }
 
 /* COVER AND BOOK CONTAINER*/
-.container-book {
+.container-book {    
+  /* border: 1px solid red; */
+  width: 160px;
   display: flex;
   flex-direction: column;
   flex-direction: row;   
@@ -45,7 +51,9 @@ cursor: grabbing;
   height: 60vh; 
 }
 
-.cover-container {   
+.cover-container {    
+  /* border: 1px solid rgb(11, 166, 255); */
+  width: 160px;   
   width: auto;
   height: 100%;
 }
@@ -54,7 +62,8 @@ cursor: grabbing;
   max-height: 100%;
 }
 
-.text-container {        
+.text-container {  
+  /* border: 1px solid rgb(11, 255, 39);   */
   overflow: auto;   
   width: 60%;
   height: 100%;
@@ -79,13 +88,13 @@ cursor: grabbing;
 
 .text-book p {     
   font-size: 20px;
-  line-height: 22px;   
+  line-height: 22px;  
+  color: black; 
 }
 
 .italic {
   font-style: italic;  
 }
-
 
 .button_div_writing {  
   width: 90%;   
@@ -98,12 +107,12 @@ cursor: grabbing;
 }
 
 .button_div_writing button {
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(255, 255, 255, 0);
   width: 70px;
   height: 20px;
-  border: 1px solid white;
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 8px;   
   border-radius: 2px;
 }
@@ -126,7 +135,45 @@ cursor: grabbing;
   align-items: right;
   height: 40px;
   bottom: 40px;  
-  width: 100%;
+  width: 100%; 
+}
+
+.button-controls {
+    width: 90%;
+    position: absolute;
+    display: flex;
+    bottom: 40px;
+    align-items: center;
+    justify-content: right;
+    z-index: 1;
+}
+
+ #btn-camera button , #btn-audio button {
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+  width:70px;
+  height: 20px;
+  margin-right: 10px;;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 9px;
+  font-weight: 100;    
+}
+  
+#btn-camera button:hover,  #btn-count button:hover {
+  cursor: pointer;
+  border: 1px solid rgb(162, 255, 0);
+  color: rgb(162, 255, 0);
+}
+
+.scrolling {
+  /* position: absolute; */
+  padding-top: 100px 
+}
+
+.scrolling img {
+  filter: invert(0);
 }
 
 
@@ -229,6 +276,6 @@ cursor: grabbing;
 
   .button_div_writing {    
     justify-content: center;    
-  }
+  } 
   
 }

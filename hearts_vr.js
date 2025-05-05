@@ -1,9 +1,7 @@
 import * as THREE from 'three';
 import {OrbitControls} from './three_class/OrbitControls.js';
 import { GLTFLoader } from './three_class/GLTFLoader.js';
-import { OBJLoader } from './three_class/OBJLoader.js';
 import { VRButton } from './three_class/VRButton.js';
-import { XRControllerModelFactory } from './three_class/XRControllerModelFactory.js';
 export default function(choose, quadri){
 
   const colore0 = choose[0][0]; 
@@ -76,11 +74,11 @@ export default function(choose, quadri){
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
   } );
-      //VRBUTTON
-      document.body.appendChild( VRButton.createButton( renderer ) );
-      renderer.setAnimationLoop( function () {
-          renderer.render( scene, camera );    
-      } );
+  //VRBUTTON
+  document.body.appendChild( VRButton.createButton( renderer ) );
+  renderer.setAnimationLoop( function () {
+    renderer.render( scene, camera );    
+  } );
   // LIGHTS //////
   //AMBIENT
   const ambient = new THREE.AmbientLight( 0xFFFFFF, 0.6 );  
@@ -89,16 +87,16 @@ export default function(choose, quadri){
   const pLight = new THREE.PointLight( 0xFFFFFF, 0.8, 5000 );  
   pLight.position.set( 800, 800, 800);  
   pLight.castShadow = true;  
-  pLight.shadow.mapSize.width = 512; // default
-  pLight.shadow.mapSize.height = 512; // default
+  pLight.shadow.mapSize.width = 2048; // default
+  pLight.shadow.mapSize.height = 2048; // default
   pLight.shadow.camera.near = 0.5; // default
   pLight.shadow.camera.far = 10; // default
   scene.add( pLight); 
   const pLight2 = new THREE.PointLight( 0xFFFFFF, 0.8, 5000 );  
   pLight2.position.set( -1020, 400, -1000);  
   pLight2.castShadow = true;   
-  pLight2.shadow.mapSize.width = 512; // default
-  pLight2.shadow.mapSize.height = 512; // default
+  pLight2.shadow.mapSize.width = 2048; // default
+  pLight2.shadow.mapSize.height = 2048; // default
   pLight2.shadow.camera.near = 0.5; // default
   pLight2.shadow.camera.far = 10; // default
   scene.add( pLight2);
@@ -547,7 +545,8 @@ export default function(choose, quadri){
          park.traverse(function (node) {
            if (node.isMesh) {
              const material = new THREE.MeshPhysicalMaterial({
-               map: TextureQ2,
+               color: 0Xffffff,
+              map: TextureQ2,
              });
              node.material = material;
              node.castShadow = true;
@@ -555,7 +554,8 @@ export default function(choose, quadri){
            }
          });        
        let materialV = new THREE.MeshPhysicalMaterial({              
-         map: TextureQ2,        
+        color: 0Xffffff, 
+        //map: TextureQ2,        
        });
        scene.add(park);
        let park2 = park.clone();
@@ -586,7 +586,8 @@ export default function(choose, quadri){
        park2.traverse(function (node) {
          if (node.isMesh) {
            const material = new THREE.MeshPhysicalMaterial({ 
-             map: TextureQ2,      
+            color: 0Xffffff, 
+            map: TextureQ2,      
            });
            node.material = material;
            node.castShadow = true;
@@ -594,6 +595,7 @@ export default function(choose, quadri){
          }
        });      
        let materialV = new THREE.MeshPhysicalMaterial({              
+        color: 0Xffffff,
           map: TextureQ2,       
       });
       scene.add(park2);
@@ -688,7 +690,8 @@ export default function(choose, quadri){
          if (node.isMesh) {
            const material = new THREE.MeshPhysicalMaterial({
              //color: 0xDA3A2B,  
-             map: TextureQ2, 
+             color: 0xffffff,
+             //map: TextureQ2, 
            });
            node.material = material;
            node.castShadow = true;
@@ -715,6 +718,7 @@ export default function(choose, quadri){
          if (node.isMesh) {
            const material = new THREE.MeshPhysicalMaterial({
            //color: 0x89F1EE,
+           color: 0xffffff,
            map: TextureQ2, 
            });
            node.material = material;
@@ -730,45 +734,41 @@ export default function(choose, quadri){
      }      
    );    
    // CONIGLIO
-   const loaderRabbit = new OBJLoader();
-   let rabbit;
-   // LOAD A RESOURCE
-   loaderRabbit.load('3d/rabbit/RabbitO.obj',
-   function ( object ) {
-       object.position.set( 180, 0.51, 130 );      
-       object.rotation.set( 0, -Math.PI/2, 0 );      
-       try{
-       const matRabbit=new THREE.MeshPhysicalMaterial({
-         color: 0xC1FF4D,
-         roughness: 0,
-         metalness: 0.5,                         
-         }) 
-       object.children[0].material=matRabbit;
-       }catch(e){
-       console.log(e);
-       }
-       object.castShadow = true;
-       rabbit=object;     
-       console.log( 'body was loaded', rabbit );
-       scene.add( rabbit );      
-       rabbit.scale.set( 3, 3, 3); 
-       //RABBIT 2       
-       let rabbit2 = rabbit.clone();
-       rabbit2.position.set( -20, 0.51, -80 );
-       rabbit2.rotation.set( 0, 5, 0 );     
-       scene.add( rabbit2 );
-       rabbit2.castShadow = true; 
-       rabbit2.receiveShadow = true; 
-     },
-     // called when loading is in progresses
-     function ( xhr ) {
-       console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-     },
-     // called when loading has errors
-     function ( error ) {
-       console.log( 'An error happened' );
+     // RABBIT 
+  const loaderRabbitg = new GLTFLoader();
+  loaderRabbitg.load(    
+    '3d/rabbit/RabbitO.glb',
+    function (glt) {
+      const rabbitG = glt.scene;
+      rabbitG.position.set( 180, 0.51, 130 );      
+      rabbitG.rotation.set( 0, -Math.PI/2, 0 ); 
+      rabbitG.scale.set( 3, 3, 3);        
+      rabbitG.traverse(function (node) {
+        if (node.isMesh) {
+          const materialR =new THREE.MeshPhysicalMaterial({
+            color: 0xC1FF4D,
+            roughness: 0,
+            metalness: 0.5,                         
+            })                  
+          node.material = materialR;
+          node.castShadow = true;
+          node.receiveShadow = true;
+        }
+      });
+      scene.add(rabbitG);
+      //RABBIT 2       
+      let rabbitG2 = rabbitG.clone();
+      rabbitG2.position.set( -20, 0.51, -80 );
+      rabbitG2.rotation.set( 0, 5, 0 );     
+      scene.add( rabbitG2 );
+      rabbitG2.castShadow = true; 
+      rabbitG2.receiveShadow = true;    
+    },    
+     undefined, // funzione di progresso opzionale da passare al caricatore
+     function (error) {
+       console.error(error);      
      }
-   );    
+   ); 
    // HUMANS 1
    const loaderH1 = new GLTFLoader();
    loaderH1.load(    
@@ -782,7 +782,7 @@ export default function(choose, quadri){
          if (node.isMesh) {
            const material = new THREE.MeshPhysicalMaterial({
              color: colore1,
-             map: TextureQ2,
+             //map: TextureQ2,
            });   
            node.material = material;
            node.castShadow = true;
@@ -880,7 +880,7 @@ export default function(choose, quadri){
          if (node.isMesh) {
            const material = new THREE.MeshPhysicalMaterial({
              color: colore3, 
-             map: TextureQ2, 
+             //map: TextureQ2, 
            });     
            node.material = material;
            node.castShadow = true;
@@ -899,7 +899,8 @@ export default function(choose, quadri){
    // LAGHETTO
    const gTorus = new THREE.TorusGeometry (30, 1.5, 16, 12);
    const mTorus = new THREE.MeshPhysicalMaterial({                
-     map: TextureQ2,
+    color: 0xffffff, 
+    map: TextureQ2,
    })
    const torus = new THREE.Mesh(gTorus, mTorus); 
    torus.scale.set(1,1,3); 
@@ -1086,7 +1087,7 @@ export default function(choose, quadri){
           if (node.isMesh) {
             const material = new THREE.MeshPhysicalMaterial({
               color: new THREE.Color(choose[k-1][1]), 
-              map: TextureQ2,
+              //map: TextureQ2,
             });             
             node.material = material;
             node.castShadow = true;
@@ -1231,6 +1232,7 @@ export default function(choose, quadri){
   const gCielo = new THREE.SphereGeometry(800, 16, 16);
   const mCielo = new THREE.MeshPhysicalMaterial({
     map: TextureQ2,
+    color: 0xffffff,
     side: THREE.DoubleSide, 
     alphaMap: alphaCielo,
     transparent: true,
@@ -1240,6 +1242,7 @@ export default function(choose, quadri){
   scene.add(cielo);
   const gCielo2 = new THREE.SphereGeometry(1800, 16, 16);
   const mCielo2 = new THREE.MeshPhysicalMaterial({
+    //color: 0x1e90ff,
     map: TextureB2,
     side: THREE.DoubleSide,     
   })
@@ -1285,84 +1288,86 @@ export default function(choose, quadri){
     controls.maxPolarAngle = 1.5; 
   }  
    
-  /// ANMIATION KEYFRAME 
-  var scenePositions = [  
-
-    new THREE.Vector3(0, -16, 0),
-    new THREE.Vector3(0, -16, 0),
-
-    new THREE.Vector3(0, -30, -120),
-    new THREE.Vector3(0, -30, -120),
-
-    new THREE.Vector3(-150, -80, -130),
-    new THREE.Vector3(-150, -80, -130),
-
-    new THREE.Vector3(0, -80, -130),
-    new THREE.Vector3(0, -80, -130),
-    
-    new THREE.Vector3(200, -80, -130),
-    new THREE.Vector3(200, -80, -130), 
-
-    new THREE.Vector3(200, -80, 0),
-    new THREE.Vector3(200, -80, 0),
-
-    new THREE.Vector3(200, -280, 0),
-    new THREE.Vector3(200, -280, 0),
-
-    new THREE.Vector3(200,-440, 160),
-    new THREE.Vector3(200,-440, 160),
-
-    new THREE.Vector3(-150,-440, 160),
-    new THREE.Vector3(-150,-440, 160),
-
-    new THREE.Vector3(-150,-540, 300),
-    new THREE.Vector3(-150,-540, 300),
-
-    new THREE.Vector3(-150,-440, 160),
-    new THREE.Vector3(-150,-440, 160),
-
-    new THREE.Vector3(300,-540, -160),
-    new THREE.Vector3(300,-540, -160),
-
-    new THREE.Vector3(0,-540, -160),
-    new THREE.Vector3(0,-540, -160),
-
-    new THREE.Vector3(0,-540, 160),
-    new THREE.Vector3(0,-540, 160),
-
-    new THREE.Vector3(0,-80, 160),
-    new THREE.Vector3(0,-80, 160),
-
-
-
-   
-
-    // new THREE.Vector3(0, -16, 0),    
-  ];
-
-
-  var moveStartTime = Date.now();
-  var currentIndex = 0;
   
 
-  var animate = function () {
+  let positions = [
+
+      //START
+    {moveTime: 6, waitTime: 10, pos: {x: 0, y: -16, z: 0}},
+
+    // MOVE ////    
+    /*1*/{moveTime: 6, waitTime: 0, pos: {x: 0, y: -400, z: 0}},    
+    /*2*/{moveTime: 6, waitTime: 0, pos: {x: 150, y: -300, z: 50}}, 
+
+    // FINISH
+    {moveTime: 6, waitTime: 0, pos: {x: 0, y: -16, z: 0}},
+  ];
+
+  // ROTATION
+
+  let rotations = [
+
+    //START
+    {rotTime: 1, rotWait: 10, rot: {x: 0, y: 0, z: 0}},
+
+    // ROTATE////    
+    /*1*/{rotTime: 6, rotWait: 0, rot: {x: 0, y: 0, z: 0}},
+    /*2*/{rotTime: 6, rotWait: 0, rot: {x: 0, y: 0, z: 0}},
+
+    ///*8*/{rotTime: 3, rotWait: 3, rot: {x: -Math.PI/2, y: -2*Math.PI, z: 0}}, //Mountain
+    ///*9*/{rotTime: 3, rotWait: 3, rot: {x: 0, y: 2*Math.PI, z: -Math.PI/2}},// Ocean     
+
+    // FINISH
+    {rotTime: 6, rotWait: 0, rot: {x: 0, y: 0, z: 0}},
+        
+  ];
+  
+  let tweenScene = function(index) {
+    if (index >= positions.length) index = 0;
+  
+    gsap.to(scene.position, {
+      duration: positions[index].moveTime,
+      x: positions[index].pos.x,
+      y: positions[index].pos.y,
+      z: positions[index].pos.z,
+      onComplete: function() {
+        gsap.delayedCall(positions[index].waitTime, function() {
+          tweenScene(index + 1);
+        });
+      }    
+    });
+  
+
+  if (rotations[index]) {
+    gsap.to(scene.rotation, {
+      duration: rotations[index].rotTime,
+      x: rotations[index].rot.x,
+      y: rotations[index].rot.y,
+      z: rotations[index].rot.z,
+      onComplete: function() {
+        gsap.delayedCall(rotations[index].rotWait, function() {
+          tweenScene(index + 1);
+        });
+      }
+    });
+  }
+};
+  
+  tweenScene(0);
+
+  renderer.render(scene, camera);    
+
+  // Funzione di animazione
+  function animate() {
     requestAnimationFrame(animate);
-    var now = Date.now();            
-    var duration = 1*(5*(1000));
-    var elapsed = (now - moveStartTime) / duration;
-    if (elapsed > 1) {
-      moveStartTime = now;
-      elapsed = 0;
-      currentIndex = (currentIndex + 1) % scenePositions.length;
-    }
 
-    var currentPos = scenePositions[currentIndex];
-    var nextPos = scenePositions[(currentIndex + 1) % scenePositions.length];
-    scene.position.copy(currentPos);
-    scene.position.lerp(nextPos, elapsed);
+    // Rotazione della camera sull'asse y
+    camera.rotation.y += 0.001;
 
-    renderer.render(scene, camera);    
-  };
+    renderer.render(scene, camera);
+  }
+
+  // Avvio dell'animazione
   animate();
 
 };

@@ -2,15 +2,12 @@ import * as THREE from 'three';
 export default function(){
   const clock = new THREE.Clock();
   const time = clock.getElapsedTime; 
-  let isMouseDown = false;
-  let scrollPos = 0;
-  let currentKeyframeIndex = 0;
-  let lerpDuration = []; 
   // SCENE  
   const scene = new THREE.Scene();
   // var gridHelper = new THREE.GridHelper(100, 100);
   //scene.add(gridHelper);       
-  scene.background = new THREE.Color( 0xc35831 );
+  //scene.background = new THREE.Color( 0xc35831 );
+  scene.background = new THREE.Color( 0x000000 );
   //scene.fog = new THREE.Fog(0xc35831 , 0, 20);  
   // CAMERA
   const camera = new THREE.PerspectiveCamera( 50 , window.innerWidth / window.innerHeight, 0.1, 10000 );
@@ -54,7 +51,8 @@ export default function(){
   var videoA1 = document.createElement('video');
   videoA1.src = "./video/writing/dal_deserto_rosso (1).mp4";
   videoA1.style.display = 'none';
-  //videoA1.muted = true; 
+  videoA1.muted = false; 
+  videoA1.volume = 1;
   videoA1.loop = true; 
   document.body.appendChild(videoA1); 
   var vTextureA1 = new THREE.VideoTexture(videoA1);
@@ -64,100 +62,36 @@ export default function(){
   videoA1.load();
   videoA1.play();
   // MARTE
-  const gSphere = new THREE.SphereGeometry( 8, 640, 640 );
+  const gSphere = new THREE.SphereGeometry( 16, 640, 640 );
   const mSphere = new THREE.MeshPhysicalMaterial({ 
-    color: 0xff0000,       
-    //map: texturMars,  
-    //bumpMap: uvMap,    
-    //bumpScale: 0.2,
-    //displacementMap: uvMap,
-    //displacementScale: 0.1,
+    color: 0xff8855,       
+    map: texturMars,  
+    bumpMap: uvMap,    
+    bumpScale: 0.2,
+    displacementMap: uvMap,
+    displacementScale: 0.1,
   });
-  const sphere = new THREE.Mesh(gSphere, mSphere); 
-  sphere.position.set( 0, 0, 0 );
-  sphere.rotation.set( Math.PI/2, 0, 0);
-  scene.add( sphere );
+  const marte = new THREE.Mesh(gSphere, mSphere); 
+  marte.position.set( 0, 0, 0 );
+  marte.rotation.set( Math.PI, 0, 0);
+  scene.add( marte );  
   // PALLA VIDEO
-  // PALLA VIDEO
-  const gSphere2 = new THREE.BoxGeometry( 1.6,0.9,2);
+  const gSphere2 = new THREE.SphereGeometry( 2,32,32);
   const mSphere2 = new THREE.MeshPhysicalMaterial({ 
+    //color: 0Xffffff,
     map: vTextureA1,    
   });
   const sphere2 = new THREE.Mesh(gSphere2, mSphere2); 
   sphere2.position.set( 0, 0, 8);
-  sphere2.rotation.set( 0, 0, 0);
   scene.add(sphere2);
-  // ANIMATION MARS
-  function mars(){
-    requestAnimationFrame(mars);
-    sphere.rotation.y -=0.00001;
-    renderer.render(scene, camera);  
-  }
-  mars();
-  // ANIMATION MOUSE
-  const keyframes = [
-    new THREE.Vector3(0, 0, 25),
-    new THREE.Vector3(0, 10, 5),
-    new THREE.Vector3(0, 0, 35),  
-  ];
-  let lookAtPoints = [
-    new THREE.Vector3(0, 0, 0),
-    new THREE.Vector3(0, 10, -10),
-    new THREE.Vector3(0, -10, 0),
-  ];
 
-  let lerpDurations = [
-    2,
-    2,
-    2
-  ];  
-  window.addEventListener('mousedown', function() {
-    currentKeyframeIndex = (currentKeyframeIndex + 1) % keyframes.length;  
-    const targetPosition = keyframes[currentKeyframeIndex];
-    const targetLookAt = lookAtPoints[currentKeyframeIndex];
-    const lerpDuration = lerpDurations[currentKeyframeIndex];
-    const startTime = Date.now();
-    function updateCameraPosition() {
-      const currentTime = Date.now();
-      const elapsedTime = (currentTime - startTime) / 1000; 
-      const lerpProgress = Math.min(elapsedTime / lerpDuration, 1); 
-      camera.position.lerpVectors(camera.position, targetPosition, lerpProgress);
-      sphere2.position.lerpVectors(sphere2.position, targetLookAt, lerpProgress);
-      const lookAtDirection = targetLookAt.clone().sub(sphere2.position).normalize();
+  function animateMoon() {
+    requestAnimationFrame(animateMoon);        
+    marte.rotation.y += 0.0003;
+    renderer.render( scene, camera );
+  };
 
-      console.log(lerpDuration);
+  animateMoon();
 
-      camera.lookAt(sphere2.position.clone().add(lookAtDirection));
-      if (lerpProgress < 1) {
-        requestAnimationFrame(updateCameraPosition); 
-      }
-    }  
-    updateCameraPosition();
-  });
-  // window.addEventListener('mousedown', function() {
-  //   isMouseDown = true;
-  // });
-  // window.addEventListener('mouseup', function() {
-  //    isMouseDown = false;
-  // });
-  // function handleScroll() {
-  //   if (isMouseDown) {
-  //     scrollPos += 1;
-  //     const keyframeIndex = Math.floor(scrollPos / 500 % keyframes.length); 
-  //     const keyframeProgress = (scrollPos % 500) / 500; 
-  //     camera.position.lerpVectors(
-  //       keyframes[keyframeIndex],
-  //       keyframes[(keyframeIndex + 1) % keyframes.length],
-  //       keyframeProgress
-  //     );
-  //     camera.lookAt(
-  //       lookAtPoints[keyframeIndex].clone().lerp(
-  //       lookAtPoints[(keyframeIndex + 1) % lookAtPoints.length],
-  //       keyframeProgress
-  //       )
-  //   );  
-  //   }
-  // }
-  //window.addEventListener('scroll', handleScroll);
-  camera.lookAt(sphere2.position);
+
 };

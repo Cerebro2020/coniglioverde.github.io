@@ -56,7 +56,7 @@ export default function(){
   concrete.repeat.set(20,40); 
   // video schermo 1
   var videoQ = document.createElement('video');
-  videoQ.src = "video/video_textures/aqvam_video_2Q.mp4";  
+  videoQ.src = "video/aqvam/aqvam_video_2Q.mp4";  
   videoQ.style.display = 'none'; 
   videoQ.muted = true;
   videoQ.loop = true; 
@@ -70,7 +70,7 @@ export default function(){
   
   // video schermo 2  
   var video = document.createElement('video');
-  video.src = "video/video_textures/sphere_skin.mp4";  
+  video.src = "video/aqvam/sphere_skin.mp4";  
   video.style.display = 'none'; 
   video.muted = true;
   video.loop = true; 

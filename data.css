@@ -4,7 +4,7 @@ body {
     background-image: url('images/bcg/SfondoI.jpg');
     background-size: cover;     
     background-repeat: no-repeat;
-    background-attachment: fixed;      
+    background-attachment: fixed;
     z-index: -9999;      
 }
 
@@ -58,9 +58,33 @@ body {
     height: 90%;
     display: flex;       
     align-items: flex-end;    
-    justify-content: flex-end;
+    justify-content: center;
     margin-top: auto; 
     flex-direction: column;
+}
+
+.home-paragraph { 
+    /* border: 1px solid rgb(239, 7, 228); */     
+    font-size: 28px;       
+    line-height: 32px;    
+}
+
+.data_ul {
+    /* border: 1px solid blue; */
+    width: 100%;
+    display: flex;
+    flex-direction: row;    
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.data_ul li {
+    /* border: 1px solid rgb(234, 255, 0); */
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;    
+    padding: 10px;
+
 }
 
 /* GALLERY */
@@ -118,8 +142,8 @@ body {
     }
 
     .home-paragraph p {                   
-        font-size: 22px;     
-        line-height: 24px;
+        font-size: 28px;     
+        line-height: 32px;
     } 
  
 }
@@ -156,8 +180,8 @@ body {
     } 
 
     .home-paragraph p {
-        font-size: 17px;
-        line-height: 18px;
+        font-size: 20px;
+        line-height: 22px;
     } 
 
 }

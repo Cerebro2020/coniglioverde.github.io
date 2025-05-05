@@ -73,7 +73,7 @@
 				<div class="button-choose">	
 					<!-- <div id="choose">Hai scelto: <span></span>
 					</div> -->
-					<button class="btn btn-secondary" id="openscene" type="button">RESULT</button>
+					<button class="btn btn-secondary" id="openscene" type="button">RISULTATO</button>
 				</div>
 			</div>
 			<canvas>
@@ -167,6 +167,7 @@
 					setTimeout(function(){
 
 						$('#info').hide();
+						$('#btn-camera, #btn-audio').hide();
 						
 						const swiper = new Swiper('.swiper',
 							{
@@ -197,7 +198,8 @@
 					
 					$('#openscene').click(function(){
 						$('#first_step').hide();
-						$('#info').show();						
+						$('#info').show();	
+						$('#btn-camera, #btn-audio').show();					
 						scene(choose,quadri);
 					});
 					
@@ -214,7 +216,7 @@
 				<div id="btn-camera">
 					<button>CAMERA</button>
 				</div>
-				<div id="btn-audio">
+				<div id="btn-audio-white">
 					<button>AUDIO</button>
 				</div>
 			</div>

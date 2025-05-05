@@ -218,51 +218,42 @@ export default function(){
           }
         });
       }
-
       ////
-        // Ensure the boxes' visibility is respected during jump or previous actions
+        // Ensure the boxes' visibility is respected 
       function updateVisibility() {
         setBoxesVisibility(boxes1, isVisibleBoxes1);
         setBoxesVisibility(boxes2, isVisibleBoxes2);
         setBoxesVisibility(boxes3, isVisibleBoxes3);
       }
-
       ////
-
       document.getElementById('btn-jump-to-column').addEventListener('click', () => {
         if (isPaused) {
           jumpToNextColumn();
-          updateVisibility(); // Apply visibility state after jumping
+          updateVisibility();
         }
       });
-
       document.getElementById('btn-previous-column').addEventListener('click', () => {
         if (isPaused) {
           goToPreviousColumn();
-          updateVisibility(); // Apply visibility state after going to the previous column
-
+          updateVisibility();
         }
-      });
-      
+      });      
       function jumpToNextColumn() {
         currentColumn = (currentColumn + 1) % totalColumns; 
         targetRotation = rotationPerColumn * currentColumn; 
         console.log("valore current");
         animateBoxesImmediately();
         updateCenterRotation();
-      }   
-      
+      }     
       function goToPreviousColumn() {
         currentColumn = (currentColumn - 1 + totalColumns) % totalColumns;        
         targetRotation = rotationPerColumn * currentColumn;
         animateBoxesImmediately();
         updateCenterRotation();
       }
-
       function updateCenterRotation() {
         centro.rotation.y = targetRotation;
-      }
-      
+      }      
       function animateBoxesImmediately() {
         function animateBoxes(boxesArray, startColumnIndex) {
           for (let i = 0; i < allCsvData.length; i++) {
@@ -283,12 +274,10 @@ export default function(){
             } else if (targetY <= 99999999) {
               targetY /= 10000;
               targetY += 500;
-            }
-      
-            boxesArray[i].position.y = targetY;
-            boxesArray[i].visible = boxesArray[i].position.y >= 1;
-      
+            }      
             const targetRY = i * boxSpacingX;
+            boxesArray[i].position.y = targetY;
+            boxesArray[i].visible = boxesArray[i].position.y >= 1;            
             boxesArray[i].rotation.y = -targetRY;
             let scaleFactor = 0.6;
             let boxTrans = boxesArray[i];
@@ -297,16 +286,14 @@ export default function(){
               box.position.z = -302.5 - (boxTrans.position.y * scaleFactor);
             }
           }
-        }
-      
+        }      
         animateBoxes(boxes1, 1);
         animateBoxes(boxes2, 2);
         animateBoxes(boxes3, 3);
-      }  
-
+      } 
       let currentColumn = 0;
-      let totalColumns = Math.floor(allCsvData[0].length / 3); // Numero totale di colonne da considerare (1 ogni 3)
-      let rotationPerColumn = -2 * Math.PI / totalColumns; // Rotazione del boxTrans
+      let totalColumns = Math.floor(allCsvData[0].length / 3); 
+      let rotationPerColumn = -2 * Math.PI / totalColumns;
       let currentRotation = 0;
       let targetRotation = rotationPerColumn;
       function animateScene() {
